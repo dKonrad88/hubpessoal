@@ -186,6 +186,12 @@ body.dark{--bg:#1a1a2e;--surface:#12192a;--surface2:#1e2330;--border:#1e2d45;--t
 .cloud-acct{font-size:.92rem;margin-bottom:.4rem}.cloud-acct .ti{color:#5aa469}
 .cloud-hint{font-size:.72rem;color:var(--muted);margin-top:.5rem;line-height:1.4}
 .mfoot2{display:flex;gap:.5rem;margin-top:.3rem}
+.cas-status-sel{font-size:.72rem;padding:.22rem .4rem;border-radius:7px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:inherit;max-width:150px;cursor:pointer;font-weight:600}
+.cas-status-sel:focus{outline:none}
+.cas-status-sel.st-inicio{border-color:#7a8fa6;color:#7a8fa6}
+.cas-status-sel.st-meio{border-color:#e0a23a;color:#e0a23a}
+.cas-status-sel.st-fechado{border-color:#5aa469;color:#5aa469}
+.cas-status-sel.st-cancel{border-color:#e0556b;color:#e0556b;text-decoration:line-through}
 .gasto-inline{width:100%;background:transparent;border:none;border-bottom:1px dashed transparent;border-radius:4px;padding:.25rem .3rem;color:var(--text);font-family:inherit;font-size:.8rem;outline:none;transition:background .15s,border-color .15s}
 .gasto-inline:hover{background:rgba(128,128,128,.08)}
 .gasto-inline:focus{background:rgba(167,139,250,.12);border-bottom-color:#a78bfa}
@@ -1560,6 +1566,12 @@ function pagCalc(){var t=pagTotal();var rows=pagRows();var pago=0,soma=0;rows.fo
 function salvarPagamento(){var g=casGastos.find(function(x){return x.id===pagEditId;});if(!g)return;g.parcelas=pagRows().map(function(r){var d=r.querySelector('.parc-date');return {label:r.querySelector('.parc-lbl-in').value.trim(),valor:parseMoney(r.querySelector('.parc-val').value),paga:r.querySelector('input[type=checkbox]').checked,venc:d?d.value:''};});saveAll();renderCasGastos();renderCasDash();closeModal('modalPagamento');}
 function fmtData(d){if(!d)return '';var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d);return m?m[3]+'/'+m[2]+'/'+m[1]:d;}
 function gProxVenc(g){var p=gParcelas(g);var ds=p.filter(function(x){return !x.paga&&x.venc;}).map(function(x){return x.venc;}).sort();if(!ds.length)return g.venc||'';var extra=ds.length>1?' <span style="color:var(--muted);font-size:.72rem">+'+(ds.length-1)+'</span>':'';return fmtData(ds[0])+extra;}
+const CAS_STATUS=['Não iniciado','Pesquisando','Contatado','Aguardando retorno','Orçamento recebido','Em negociação','Escolhido','Contratado','Em andamento','Finalizado','Cancelado'];
+function casStatusTipo(s){return (['Contratado','Em andamento','Finalizado'].indexOf(s)>=0)?'fechado':'planejado';}
+function casStatusClass(s){if(s==='Cancelado')return 'st-cancel';if(['Contratado','Em andamento','Finalizado'].indexOf(s)>=0)return 'st-fechado';if(['Orçamento recebido','Em negociação','Escolhido'].indexOf(s)>=0)return 'st-meio';return 'st-inicio';}
+function casStatusOf(g){return g.statusForn||(gTipo(g)==='fechado'?'Contratado':'Não iniciado');}
+function casStatusSelect(g){var cur=casStatusOf(g);var opts=CAS_STATUS.map(function(s){return '<option'+(s===cur?' selected':'')+'>'+s+'</option>';}).join('');return '<select class="cas-status-sel '+casStatusClass(cur)+'" onchange="casGastoSetStatus('+g.id+',this.value)" onclick="event.stopPropagation()">'+opts+'</select>';}
+function casGastoSetStatus(id,value){var g=casGastos.find(function(x){return x.id===id;});if(!g)return;g.statusForn=value;g.cancelado=(value==='Cancelado');var antes=gTipo(g);var novo=casStatusTipo(value);g.tipo=novo;if(novo==='fechado'&&!gParcelas(g).length){g.parcelas=[{valor:g.valor||0,paga:false}];}saveAll();renderCasGastos();renderCasDash();if(antes!==novo){try{toast(novo==='fechado'?'Movido para Fechados':'Movido para Planejando');}catch(e){}}}
 function renderCasGastos(){
   const tb=document.getElementById('cas-gastos-tbody');const empty=document.getElementById('cas-gastos-empty');
   var list=casGastos.filter(function(g){return casGastoFiltro==='todos'?true:gTipo(g)===casGastoFiltro;});
@@ -1572,26 +1584,26 @@ function renderCasGastos(){
     if(gTipo(g)==='planejado'){
       var actP='<div style="display:flex;gap:.25rem"><button class="action-btn" title="Editar" onclick="editarGasto('+g.id+')"><i class="ti ti-pencil"></i></button><button class="action-btn" title="Fechar — marca como contratado" onclick="fecharGasto('+g.id+')"><i class="ti ti-check"></i></button><button class="action-btn" onclick="delCasGasto('+g.id+')"><i class="ti ti-trash" style="color:#f87171"></i></button></div>';
       var noteP=g.obs?' <span title="'+escH(g.obs)+'" style="cursor:help;color:var(--muted);margin-left:.2rem">\u270e</span>':'';
-      return '<tr><td>'+g.data+'</td><td><input class="gasto-inline" value="'+escH(g.desc)+'" oninput="casGastoSet('+g.id+',\'desc\',this.value)">'+noteP+'</td><td><input class="gasto-inline" value="'+escH(g.empresa||'')+'" placeholder="\u2014" oninput="casGastoSet('+g.id+',\'empresa\',this.value)"></td><td><input class="gasto-inline gasto-inline-val" inputmode="numeric" value="'+fmtMoney(g.valorIni||0)+'" oninput="maskMoney(this);casGastoSet('+g.id+',\'valorIni\',this.value)"></td><td><input class="gasto-inline gasto-inline-val" inputmode="numeric" value="'+fmtMoney(g.valor)+'" oninput="maskMoney(this);casGastoSet('+g.id+',\'valor\',this.value)" onchange="renderCasDash()"></td><td><span style="color:var(--muted)">\u2014</span></td><td><span class="badge-status badge-plan">Planejado</span></td><td><span style="color:var(--muted)">\u2014</span></td><td>'+actP+'</td></tr>';
+      return '<tr><td>'+g.data+'</td><td><input class="gasto-inline" value="'+escH(g.desc)+'" oninput="casGastoSet('+g.id+',\'desc\',this.value)">'+noteP+'</td><td><input class="gasto-inline" value="'+escH(g.empresa||'')+'" placeholder="\u2014" oninput="casGastoSet('+g.id+',\'empresa\',this.value)"></td><td><input class="gasto-inline gasto-inline-val" inputmode="numeric" value="'+fmtMoney(g.valorIni||0)+'" oninput="maskMoney(this);casGastoSet('+g.id+',\'valorIni\',this.value)"></td><td><input class="gasto-inline gasto-inline-val" inputmode="numeric" value="'+fmtMoney(g.valor)+'" oninput="maskMoney(this);casGastoSet('+g.id+',\'valor\',this.value)" onchange="renderCasDash()"></td><td><span style="color:var(--muted)">\u2014</span></td><td>'+casStatusSelect(g)+'</td><td><span style="color:var(--muted)">\u2014</span></td><td>'+actP+'</td></tr>';
     }
     var hasP=gParcelas(g).length>0;var pago=gPago(g);var pagas=gParcelas(g).filter(function(x){return x.paga;}).length;var tot=gParcelas(g).length;var st=gStatus(g);var vcell=gProxVenc(g);
     var iniCell=g.valorIni?fmt(g.valorIni):'<span style="color:var(--muted)">\u2014</span>';
     var eco=(g.valorIni&&g.valorIni>g.valor)?(g.valorIni-g.valor):0;
     var ecoTxt=eco>0?' <span style="color:#34d399;font-size:.7rem" title="Economia na negociação">\u2193'+fmt(eco)+'</span>':'';
     var pagoCell=hasP?(fmt(pago)+' <span style="color:var(--muted);font-size:.72rem">\u00b7 '+pagas+'/'+tot+'</span>'):'<span style="color:var(--muted)">\u2014</span>';
-    return '<tr><td>'+g.data+'</td><td>'+descCell+'</td><td>'+empCell+'</td><td>'+iniCell+'</td><td>'+fmt(g.valor)+ecoTxt+'</td><td>'+pagoCell+'</td><td>'+badgeStatus(st)+'</td><td>'+(vcell||'\u2014')+'</td><td><div style="display:flex;gap:.25rem"><button class="action-btn" title="Editar" onclick="editarGasto('+g.id+')"><i class="ti ti-pencil"></i></button><button class="action-btn" title="Pagamentos / parcelas" onclick="abrirPagamento('+g.id+')"><i class="ti ti-cash"></i></button><button class="action-btn" onclick="delCasGasto('+g.id+')"><i class="ti ti-trash" style="color:#f87171"></i></button></div></td></tr>';
+    return '<tr><td>'+g.data+'</td><td>'+descCell+'</td><td>'+empCell+'</td><td>'+iniCell+'</td><td>'+fmt(g.valor)+ecoTxt+'</td><td>'+pagoCell+'</td><td>'+casStatusSelect(g)+'</td><td>'+(vcell||'\u2014')+'</td><td><div style="display:flex;gap:.25rem"><button class="action-btn" title="Editar" onclick="editarGasto('+g.id+')"><i class="ti ti-pencil"></i></button><button class="action-btn" title="Pagamentos / parcelas" onclick="abrirPagamento('+g.id+')"><i class="ti ti-cash"></i></button><button class="action-btn" onclick="delCasGasto('+g.id+')"><i class="ti ti-trash" style="color:#f87171"></i></button></div></td></tr>';
   }).join('');
 }
 function renderCasDash(){
-  const fechados=casGastos.filter(g=>gTipo(g)==='fechado');
-  const planejados=casGastos.filter(g=>gTipo(g)==='planejado');
+  const fechados=casGastos.filter(g=>!g.cancelado&&gTipo(g)==='fechado');
+  const planejados=casGastos.filter(g=>!g.cancelado&&gTipo(g)==='planejado');
   const totalFechado=fechados.reduce((s,g)=>s+(parseFloat(g.valor)||0),0);
   const totalPlanejado=planejados.reduce((s,g)=>s+(parseFloat(g.valor)||0),0);
   const pago=fechados.reduce((s,g)=>s+gPago(g),0);
   const apagar=totalFechado-pago;
   const projecao=totalFechado+totalPlanejado;
   const saldoProj=casMeta-projecao;
-  const economia=casGastos.reduce(function(s,g){var vi=parseFloat(g.valorIni)||0;return s+(vi>0?(vi-(parseFloat(g.valor)||0)):0);},0);
+  const economia=casGastos.reduce(function(s,g){if(g.cancelado)return s;var vi=parseFloat(g.valorIni)||0;return s+(vi>0?(vi-(parseFloat(g.valor)||0)):0);},0);
   const m=casMeta||0;
   document.getElementById('casMetaTotal').textContent=fmt(casMeta);
   document.getElementById('casFechadoTotal').textContent=fmt(totalFechado);
