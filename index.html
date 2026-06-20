@@ -754,7 +754,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 <!-- CAS GASTOS -->
 <div class="tab-pane" id="tabcas-gastos">
 <div class="page-header"><div class="page-title"><i class="ti ti-receipt" style="color:#e84393"></i> Gastos do Casamento</div><div class="page-actions"><button class="btn btn-ghost btn-sm" onclick="abrirMetaCas()"><i class="ti ti-target"></i> Meta</button><button class="btn btn-primary btn-sm" onclick="abrirNovoGastoCas()"><i class="ti ti-plus"></i> Novo Gasto</button></div></div>
-<div class="cl-tabs" id="cas-gastos-filtros"><select class="leve-select" onchange="setCasGastoFiltro(this.value)"><option value="fechado">Fechados</option><option value="planejado">Planejando</option><option value="todos">Todos</option></select></div>
+<div class="cl-tabs" id="cas-gastos-filtros"><div class="cl-tab active" data-f="fechado" onclick="setCasGastoFiltro('fechado')">Fechados</div><div class="cl-tab" data-f="planejado" onclick="setCasGastoFiltro('planejado')">Planejando</div><div class="cl-tab" data-f="todos" onclick="setCasGastoFiltro('todos')">Todos</div></div>
 <table class="gastos-table"><thead><tr><th>Data</th><th>Descrição</th><th>Empresa</th><th>Valor inicial</th><th>Valor final</th><th>Pago</th><th>Status</th><th>Vencimento</th><th></th></tr></thead><tbody id="cas-gastos-tbody"></tbody></table>
 <div id="cas-gastos-empty" class="coming-soon" style=""><i class="ti ti-receipt-off"></i><p>Nenhum gasto lançado ainda.</p></div>
 </div>
@@ -1707,7 +1707,7 @@ function editarGasto(id){var g=casGastos.find(function(x){return x.id===id;});if
 function gcTipoChange(){var pl=document.getElementById('gcTipo').value==='planejado';var p=document.getElementById('gcParc'),v=document.getElementById('gcVenc');p.disabled=pl;v.disabled=pl;p.style.opacity=pl?'.45':'';v.style.opacity=pl?'.45':'';}
 function gTipo(g){return g.tipo==='planejado'?'planejado':'fechado';}
 var casGastoFiltro='fechado';
-function setCasGastoFiltro(f){casGastoFiltro=f;renderCasGastos();}
+function setCasGastoFiltro(f){casGastoFiltro=f;document.querySelectorAll('#cas-gastos-filtros .cl-tab').forEach(function(t){t.classList.toggle('active',t.dataset.f===f);});renderCasGastos();}
 function fecharGasto(id){var g=casGastos.find(function(x){return x.id===id;});if(!g)return;g.tipo='fechado';if(!gParcelas(g).length){g.parcelas=[{label:'Parcela 1',valor:g.valor,paga:false}];}g.status='apagar';saveAll();setCasGastoFiltro('fechado',null);renderCasDash();abrirPagamento(id);}
 function casGastoSet(id,field,value){var g=casGastos.find(function(x){return x.id===id;});if(!g)return;if(field==='valor')g.valor=parseMoney(value);else if(field==='valorIni')g.valorIni=parseMoney(value);else if(field==='desc'){if(!(value&&value.trim()))return;g.desc=value;}else if(field==='empresa')g.empresa=value;saveAll();}
 function delCasGasto(id){var g=casGastos.find(x=>x.id===id);if(!g)return;lixAdd('casgasto',g,g.desc,'💍');casGastos=casGastos.filter(g=>g.id!==id);saveAll();renderCasGastos();renderCasDash();try{toast('Movido para a lixeira');}catch(e){}}
