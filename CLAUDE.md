@@ -36,6 +36,7 @@ O usuário avisa onde está; o Claude Code cuida do git:
 2. (Opcional) Reaplicar as correções de bug listadas acima no código do Mac, se as mesmas funções existirem lá.
 
 ## Log de handoff (a sessão mais recente escreve no topo)
+- **2026-06-20 — PC da Empresa (cont. 4):** Itens menores no `index.html`: botão "Exportar HTML" no menu de config estava só com ícone → adicionei o texto e alinhei ao estilo do menu. Commit + push.
 - **2026-06-20 — PC da Empresa (cont. 3):** Mesclei os dias 2–5 detalhados do roteiro no SEED do `index.html` (substituindo os dias simples). O `roteiroRepair` (via `cloudApply`) re-injeta por cima do roteiro simples do Supabase → roteiro detalhado aparece **sem mexer no Supabase**. Removi o `roteiro-detalhado-dias-1-5.js`. Commit + push. **No Mac: `git pull` antes de editar.**
 - **2026-06-20 — PC da Empresa (cont. 2):** Bug na versão do Mac: o `#config-menu` (menu da engrenagem) estava com `style="display: block"` fixo no HTML → abria sozinho a cada refresh. Troquei para `display: none`. Commit + push. **No Mac: `git pull` antes de editar o index.html.**
 - **2026-06-20 — PC da Empresa (cont.):** Editei o `index.html` (versão do Mac) **a partir do PC**: reapliquei o filtro de erros de extensão no handler global de erro (`window.addEventListener('error'…` ignora `-extension://` e "Script error."). Isso tinha se perdido no alinhamento. Commit + push feitos → Pages atualiza e o banner "ERRO DETECTADO" (causado pela extensão Dashlane) some. **No Mac: dar `git pull` antes de editar o index.html** pra pegar essa mudança.
