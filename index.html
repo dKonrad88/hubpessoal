@@ -1194,8 +1194,8 @@ Na hora da compra:
     document.getElementById('__errtxt').textContent='ERRO DETECTADO (mande print disto):\n'+msg;
   }
   window.__paintErr=paint;
-  window.addEventListener('error',function(e){paint((e.message||'erro')+'\n'+(e.filename||'')+':'+(e.lineno||'')+':'+(e.colno||'')+'\n'+((e.error&&e.error.stack)||''));});
-  window.addEventListener('unhandledrejection',function(e){paint('Promise rejeitada: '+(e.reason&&(e.reason.stack||e.reason.message)||e.reason));});
+  window.addEventListener('error',function(e){var f=e.filename||'';if(/-extension:\/\//.test(f))return;if(!f&&/^Script error\.?$/.test(e.message||''))return;paint((e.message||'erro')+'\n'+f+':'+(e.lineno||'')+':'+(e.colno||'')+'\n'+((e.error&&e.error.stack)||''));});
+  window.addEventListener('unhandledrejection',function(e){var s=(e.reason&&(e.reason.stack||e.reason.message))||String(e.reason||'');if(/-extension:\/\//.test(s))return;paint('Promise rejeitada: '+s);});
   try{var _t='__ls_test__';localStorage.setItem(_t,'1');localStorage.removeItem(_t);}catch(err){paint('localStorage BLOQUEADO neste navegador/modo:\n'+(err&&err.message||err)+'\n\n(Safari em janela privada ou file:// pode bloquear. Tente fora do modo privado.)');}
 })();
 // DATE

@@ -36,4 +36,5 @@ O usuário avisa onde está; o Claude Code cuida do git:
 2. (Opcional) Reaplicar as correções de bug listadas acima no código do Mac, se as mesmas funções existirem lá.
 
 ## Log de handoff (a sessão mais recente escreve no topo)
+- **2026-06-20 — PC da Empresa (cont.):** Editei o `index.html` (versão do Mac) **a partir do PC**: reapliquei o filtro de erros de extensão no handler global de erro (`window.addEventListener('error'…` ignora `-extension://` e "Script error."). Isso tinha se perdido no alinhamento. Commit + push feitos → Pages atualiza e o banner "ERRO DETECTADO" (causado pela extensão Dashlane) some. **No Mac: dar `git pull` antes de editar o index.html** pra pegar essa mudança.
 - **2026-06-20 — PC da Empresa:** Alinhei o PC ao Mac (git init + reset para `origin/main`). Criei este CLAUDE.md e o `roteiro-detalhado-dias-1-5.js`. Backup da versão paralela salvo localmente no PC. **Próximo passo (no Mac):** mesclar os dias 1–5 detalhados no `index.html` e dar push.
