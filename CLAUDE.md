@@ -31,11 +31,12 @@ O usuário avisa onde está; o Claude Code cuida do git:
   - Correções de bug: restaurar **previsão** da lixeira (faltava em `LIX_TIPOS`); `htStreak` alinhado ao `htDone`; `cloudApply` chamando `ajustarCounters`; checklist `clAutoGrow` (textarea com altura 0 quando a aba está oculta); handler global de erro ignorando erros de extensão do navegador.
 - Backup da versão paralela do PC: `index.BACKUP-pre-git-20260620-1020.html` (local no PC, **não** versionado).
 
-## Pendências (fazer no Mac)
-1. **Trazer o roteiro detalhado Dias 1–5 para o Mac.** O conteúdo (JS verbatim) está em **`roteiro-detalhado-dias-1-5.js`** (versionado, chega no Mac via git). No `index.html` do Mac, no array `const roteiro=[ ... ]`, substituir os objetos dos dias 1 a 5 por esses. Fazer no **código** (não importar como dado) pra não conflitar com o sync do Supabase. Depois apagar o arquivo `.js`.
+## Pendências
+1. ~~Trazer o roteiro detalhado Dias 1–5 para o Mac.~~ ✅ **FEITO em 2026-06-20** (no PC): os dias 2–5 detalhados foram mesclados no SEED do `const roteiro` em `index.html`. O `roteiroRepair` (chamado pelo `cloudApply`) re-injeta esses `stops` por cima do roteiro simples do Supabase — sem tocar no Supabase. Arquivo `roteiro-detalhado-dias-1-5.js` removido (já mesclado).
 2. (Opcional) Reaplicar as correções de bug listadas acima no código do Mac, se as mesmas funções existirem lá.
 
 ## Log de handoff (a sessão mais recente escreve no topo)
+- **2026-06-20 — PC da Empresa (cont. 3):** Mesclei os dias 2–5 detalhados do roteiro no SEED do `index.html` (substituindo os dias simples). O `roteiroRepair` (via `cloudApply`) re-injeta por cima do roteiro simples do Supabase → roteiro detalhado aparece **sem mexer no Supabase**. Removi o `roteiro-detalhado-dias-1-5.js`. Commit + push. **No Mac: `git pull` antes de editar.**
 - **2026-06-20 — PC da Empresa (cont. 2):** Bug na versão do Mac: o `#config-menu` (menu da engrenagem) estava com `style="display: block"` fixo no HTML → abria sozinho a cada refresh. Troquei para `display: none`. Commit + push. **No Mac: `git pull` antes de editar o index.html.**
 - **2026-06-20 — PC da Empresa (cont.):** Editei o `index.html` (versão do Mac) **a partir do PC**: reapliquei o filtro de erros de extensão no handler global de erro (`window.addEventListener('error'…` ignora `-extension://` e "Script error."). Isso tinha se perdido no alinhamento. Commit + push feitos → Pages atualiza e o banner "ERRO DETECTADO" (causado pela extensão Dashlane) some. **No Mac: dar `git pull` antes de editar o index.html** pra pegar essa mudança.
 - **2026-06-20 — PC da Empresa:** Alinhei o PC ao Mac (git init + reset para `origin/main`). Criei este CLAUDE.md e o `roteiro-detalhado-dias-1-5.js`. Backup da versão paralela salvo localmente no PC. **Próximo passo (no Mac):** mesclar os dias 1–5 detalhados no `index.html` e dar push.
