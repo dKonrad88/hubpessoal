@@ -36,6 +36,7 @@ O usuário avisa onde está; o Claude Code cuida do git:
 2. (Opcional) Reaplicar as correções de bug listadas acima no código do Mac, se as mesmas funções existirem lá.
 
 ## Log de handoff (a sessão mais recente escreve no topo)
+- **2026-06-20 — PC da Empresa (cont. 7):** Estado inicial no refresh: (1) 5 grupos da sidebar começam recolhidos (`sb-group collapsed` estático + `sbGroupsOpen=false` + ícone `ti-fold-up`); (2) nada selecionado (removido `active` de `page-casamento` e `nav-cas-convidados`); (3) nova `#page-welcome` (ativa) com `.coming-soon` "Selecione uma área no menu…". Init ajustado pra limpar seleção e cair na welcome. Commit + push.
 - **2026-06-20 — PC da Empresa (cont. 6):** Roteiro: (1) lista em **2 colunas** (`.roteiro-list` virou grid 1fr 1fr, com fallback 1 coluna em ≤760px); (2) bug corrigido — `roteiroDiaRico` tinha `dia-chevron open`/`dia-body open` fixos → dias nasciam expandidos no refresh. Removido (agora começam recolhidos). Commit + push.
 - **2026-06-20 — PC da Empresa (cont. 5):** Cards do Roteiro mais compactos (`.dia-header` padding .85→.5rem, `.dia-header-rico` 1rem→.55rem, `.dia-num` 28→24px, `.dia-num-rico` 34→26px). Commit + push.
 - **2026-06-20 — PC da Empresa (cont. 4):** Itens menores no `index.html`: botão "Exportar HTML" no menu de config estava só com ícone → adicionei o texto e alinhei ao estilo do menu. Commit + push.

@@ -517,12 +517,12 @@ body.sb-collapsed .sb-reopen{display:flex}
 <div class="layout">
 <aside class="sidebar">
 <div class="sb-tools">
-<button class="sb-tool" id="sbToolGroups" onclick="sbToggleGroups()" title="Recolher / expandir grupos"><i class="ti ti-fold-down"></i></button>
+<button class="sb-tool" id="sbToolGroups" onclick="sbToggleGroups()" title="Recolher / expandir grupos"><i class="ti ti-fold-up"></i></button>
 <button class="sb-tool" id="sbToolBar" onclick="sbToggleBar()" title="Recolher menu"><i class="ti ti-layout-sidebar-left-collapse"></i></button>
 </div>
 
 <!-- FINANÇAS -->
-<div class="sb-group">
+<div class="sb-group collapsed">
 <div class="sb-area-label" onclick="sbToggleGroup(this)">Finanças<i class="ti ti-chevron-down sb-grp-chev"></i></div>
 <div class="sb-group-body">
 <div class="sb-subitem" id="nav-orlando" onclick="toggleSubpage('orlando',this)" style="justify-content:space-between">
@@ -544,7 +544,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 <div class="sb-subsubgroup open" id="subsub-casamento">
 <div class="sb-subsubitem" id="nav-cas-dashboard" onclick="setTabCas('dashboard',this)"><i class="ti ti-dashboard"></i> Dashboard</div>
 <div class="sb-subsubitem" id="nav-cas-gastos" onclick="setTabCas('gastos',this)"><i class="ti ti-receipt"></i> Gastos</div>
-<div class="sb-subsubitem active" id="nav-cas-convidados" onclick="setTabCas('convidados',this)"><i class="ti ti-users"></i> Convidados</div>
+<div class="sb-subsubitem" id="nav-cas-convidados" onclick="setTabCas('convidados',this)"><i class="ti ti-users"></i> Convidados</div>
 <div class="sb-subsubitem" id="nav-cas-checklist" onclick="setTabCas('checklist',this)"><i class="ti ti-checklist"></i> Checklist</div>
 <div class="sb-subsubitem" id="nav-cas-tarefas" onclick="setTabCas('tarefas',this)"><i class="ti ti-list-check"></i> Tarefas</div>
 </div>
@@ -554,7 +554,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 
 </div></div>
 <!-- ROTINA -->
-<div class="sb-group">
+<div class="sb-group collapsed">
 <div class="sb-area-label" onclick="sbToggleGroup(this)">Rotina<i class="ti ti-chevron-down sb-grp-chev"></i></div>
 <div class="sb-group-body">
 <div class="sb-subitem" id="nav-habits" onclick="setSimplePage('habits',this)"><i class="ti ti-flame"></i> Habit Tracker</div>
@@ -562,7 +562,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 
 </div></div>
 <!-- CONHECIMENTO -->
-<div class="sb-group">
+<div class="sb-group collapsed">
 <div class="sb-area-label" onclick="sbToggleGroup(this)">Conhecimento<i class="ti ti-chevron-down sb-grp-chev"></i></div>
 <div class="sb-group-body">
 <div class="sb-subitem" id="nav-leitura" onclick="setSimplePage('leitura',this)"><i class="ti ti-book"></i> Leitura</div>
@@ -570,7 +570,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 
 </div></div>
 <!-- PESSOAL -->
-<div class="sb-group">
+<div class="sb-group collapsed">
 <div class="sb-area-label" onclick="sbToggleGroup(this)">Pessoal<i class="ti ti-chevron-down sb-grp-chev"></i></div>
 <div class="sb-group-body">
 <div class="sb-subitem" id="nav-presentes" onclick="setSimplePage('presentes',this)"><i class="ti ti-gift"></i> Presentes &amp; Datas</div>
@@ -578,7 +578,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 
 </div></div>
 <!-- SISTEMA -->
-<div class="sb-group">
+<div class="sb-group collapsed">
 <div class="sb-area-label" onclick="sbToggleGroup(this)">Sistema<i class="ti ti-chevron-down sb-grp-chev"></i></div>
 <div class="sb-group-body">
 <div class="sb-subitem" id="nav-notas-global" onclick="setSimplePage('notasglobal',this)"><i class="ti ti-note"></i> Notas</div>
@@ -588,6 +588,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 </aside>
 <main class="content">
 <button class="sb-reopen" onclick="sbToggleBar()" title="Abrir menu"><i class="ti ti-layout-sidebar-left-expand"></i></button>
+<div class="page active" id="page-welcome"><div class="coming-soon"><i class="ti ti-arrow-left"></i><p>Selecione uma área no menu à esquerda para começar.</p></div></div>
 <div class="page" id="page-orlando">
 <div class="tab-content">
 <!-- ROTEIRO -->
@@ -736,7 +737,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 </div>
 </div>
 <div class="page" id="page-apartamento"><div class="coming-soon"><i class="ti ti-building"></i><p>Apartamento — em breve</p></div></div>
-<div class="page active" id="page-casamento">
+<div class="page" id="page-casamento">
 <!-- CAS DASHBOARD -->
 <div class="tab-pane" id="tabcas-dashboard">
 <div class="page-header"><div class="page-title"><i class="ti ti-heart" style="color:#e84393"></i> Casamento — Dashboard</div></div>
@@ -2343,7 +2344,7 @@ function emojiChoose(e){if(emojiTarget){var el=document.getElementById(emojiTarg
 function emojiClear(){if(emojiTarget){var el=document.getElementById(emojiTarget);if(el)el.value='';}closeModal('modalEmoji');}
 
 /* ===================== SIDEBAR TOOLS ===================== */
-var sbGroupsOpen=true;
+var sbGroupsOpen=false;
 function sbCloseSubs(root){root.querySelectorAll('.sb-subsubgroup.open').forEach(function(ss){ss.classList.remove('open');});root.querySelectorAll('[id^="chev-"]').forEach(function(c){c.style.transform='';});}
 function sbToggleGroups(){
   sbGroupsOpen=!sbGroupsOpen;
@@ -2633,7 +2634,7 @@ _safe(mvRender);
 _safe(lixRender);
 _safe(cloudInit);_cloudSuppress=false;
 
-_safe(()=>{if(!document.querySelector('.page.active'))setTabCas('convidados',document.getElementById('nav-cas-convidados'));});
+_safe(()=>{document.querySelectorAll('.sb-subsubitem,.sb-subitem,.sb-item-flat').forEach(function(i){i.classList.remove('active');});if(!document.querySelector('.page.active')){var w=document.getElementById('page-welcome');if(w)w.classList.add('active');}});
 window.addEventListener('load',function(){try{renderGastos();}catch(e){console.warn('charts pós-load falharam:',e);}});
 _safe(()=>{const h=document.getElementById('refreshHint');if(h){const mac=/Mac|iPhone|iPad/i.test(navigator.platform)||/Mac/i.test(navigator.userAgent);h.textContent=mac?'\u2318 + \u2325 + R':'Ctrl + F5';}});
 window.addEventListener('beforeunload',function(){try{saveAllFlush();}catch(e){}});
