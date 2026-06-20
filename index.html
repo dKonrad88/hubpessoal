@@ -1215,7 +1215,7 @@ function closeModal(id){if(id==='modalGasto')previsaoConvertId=null;document.get
 
 // NAV
 // NAV (legado removido)
-function setCLTab(t,el){document.querySelectorAll('.cl-tab').forEach(b=>b.classList.remove('active'));el.classList.add('active');document.querySelectorAll('.cl-panel').forEach(p=>p.classList.remove('active'));document.getElementById('cl-'+t).classList.add('active');currentClPanel=t;}
+function setCLTab(t,el){document.querySelectorAll('.cl-tab').forEach(b=>b.classList.remove('active'));el.classList.add('active');document.querySelectorAll('.cl-panel').forEach(p=>p.classList.remove('active'));document.getElementById('cl-'+t).classList.add('active');currentClPanel=t;try{renderCL(t);}catch(e){}}
 
 // PANELS
 function openPanel(id){closeAllPanels();document.getElementById('panel-'+id).classList.add('open');document.getElementById('panel-overlay').style.display='block';if(id==='notas')renderNotes();if(id==='etiquetas')renderTags();}
@@ -1651,7 +1651,7 @@ function loadAll(){
   }catch(e){console.warn('Erro ao carregar localStorage',e);}
 }
 function toggleSubpage(page,el){const sub=document.getElementById('subsub-'+page);const chev=document.getElementById('chev-'+page);const isOpen=sub.classList.contains('open');var grp=el&&el.closest?el.closest('.sb-group'):null;if(grp)grp.classList.remove('collapsed');if(!isOpen){document.querySelectorAll('.page').forEach(pg=>pg.classList.remove('active'));document.getElementById('page-'+page).classList.add('active');sub.classList.add('open');if(chev)chev.style.transform='rotate(90deg)';const first=sub.querySelector('.sb-subsubitem');if(first)first.click();}else{sub.classList.remove('open');if(chev)chev.style.transform='';}}
-function setTab2(t,el){document.querySelectorAll('.page').forEach(pg=>pg.classList.remove('active'));document.getElementById('page-orlando').classList.add('active');document.querySelectorAll('.sb-subsubitem,.sb-subitem').forEach(i=>i.classList.remove('active'));el.classList.add('active');document.querySelectorAll('.tab-pane').forEach(tp=>tp.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');if(t==='dashboard')renderDashboard();if(t==='gastos')renderGastos();if(t==='notas')renderNotes();}
+function setTab2(t,el){document.querySelectorAll('.page').forEach(pg=>pg.classList.remove('active'));document.getElementById('page-orlando').classList.add('active');document.querySelectorAll('.sb-subsubitem,.sb-subitem').forEach(i=>i.classList.remove('active'));el.classList.add('active');document.querySelectorAll('.tab-pane').forEach(tp=>tp.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');if(t==='dashboard')renderDashboard();if(t==='gastos')renderGastos();if(t==='notas')renderNotes();if(t==='checklists'){var _ap=document.querySelector('.cl-panel.active');if(_ap){try{renderCL(_ap.id.replace('cl-',''));}catch(e){}}}}
 
 // ========== CASAMENTO ==========
 function escH(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
@@ -1854,7 +1854,7 @@ function casClDel(sid,iid){const s=casCl.sections.find(x=>x.id===sid);if(s){s.it
 function casClDelSec(sid){if(!confirm('Excluir seção?'))return;casCl.sections=casCl.sections.filter(s=>s.id!==sid);saveAll();renderCasCl();}
 function casClAddKey(e,sid){if(e.key==='Enter'){e.preventDefault();const inp=document.getElementById('casni-'+sid);const t=inp?inp.value.trim():'';if(!t)return;const s=casCl.sections.find(x=>x.id===sid);if(s){s.items.push({id:'ci'+(casCounter++),text:t,done:false});saveAll();renderCasCl();const ni=document.getElementById('casni-'+sid);if(ni)ni.focus();}}else if(e.key==='Escape'){e.target.value='';e.target.blur();}}
 function casClEdit(sid,iid,v){v=(v||'').trim();const s=casCl.sections.find(x=>x.id===sid);const it=s&&s.items.find(i=>i.id===iid);if(!it)return;if(v&&v!==it.text){it.text=v;saveAll();}renderCasCl();}
-function clAutoGrow(el){el.style.height='auto';el.style.height=el.scrollHeight+'px';}
+function clAutoGrow(el){el.style.height='auto';if(el.scrollHeight)el.style.height=el.scrollHeight+'px';}
 function renderCasCl(){
   const cont=document.getElementById('sections-cascl');let total=0,done=0;
   const arr=casCl.sections.map(sec=>{
