@@ -1976,7 +1976,8 @@ function htMetaCalc(h,asOf){
   return {valor:valor,alvo:alvo,pct:pct,periodo:h.meta.periodo,metrica:h.meta.metrica,pace:pace};
 }
 function htStreak(id){
-  var set={};htLogs.forEach(l=>{if(l.habitId===id)set[l.data]=1;});
+  var h=htHabits.find(x=>x.id===id);if(!h)return 0;
+  var set={};htLogs.forEach(l=>{if(l.habitId===id&&htDone(h,l))set[l.data]=1;});
   var d=new Date();if(!set[htIso(d)])d.setDate(d.getDate()-1);
   var c=0;while(set[htIso(d)]){c++;d.setDate(d.getDate()-1);}return c;
 }
