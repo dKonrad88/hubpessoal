@@ -46,6 +46,9 @@ body.dark{--bg:#262522;--surface:#1c1b19;--surface2:#322f2b;--border:#3a3733;--t
 .page-title{font-size:1.05rem;font-weight:600;display:flex;align-items:center;gap:.4rem}
 .page-actions{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
 .btn{border:none;border-radius:7px;padding:.4rem .9rem;font-size:.78rem;font-family:'Inter',sans-serif;cursor:pointer;display:flex;align-items:center;gap:.35rem;font-weight:500;transition:all .15s}
+.btn:active{transform:translateY(1px)}
+*:focus-visible{outline:2px solid #009C3B!important;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
 .btn-primary{background:#009C3B;color:#fff}.btn-primary:hover{background:#00b34a}
 .btn-ghost{background:rgba(128,128,128,.1);color:var(--text);border:1px solid var(--border)}.btn-ghost:hover{background:rgba(128,128,128,.18)}
 .btn-sm{padding:.28rem .6rem;font-size:.72rem}
@@ -1435,7 +1438,6 @@ function roteiroStop(s,diaIdx,stopIdx){
   var desloc=s.desloc?'<div class="rot-desloc"><i class="ti ti-car"></i> '+escH(s.desloc)+'</div>':'';
   return '<div class="rot-stop"><div class="rot-stop-time">'+escH(s.hora)+'</div><div class="rot-stop-line"><div class="rot-stop-dot">'+(s.icone||'📍')+'</div></div><div class="rot-stop-content"><div class="rot-stop-head"><span class="rot-stop-title">'+escH(s.titulo)+'</span>'+alerta+'<button class="rot-stop-edit" onclick="editStop('+diaIdx+','+stopIdx+')"><i class="ti ti-pencil"></i></button><button class="rot-stop-del" onclick="delStop('+diaIdx+','+stopIdx+')"><i class="ti ti-trash"></i></button></div>'+metaHtml+detHtml+desloc+'</div></div>';
 }
-function toggleDia(i){const b=document.getElementById('body-'+i),c=document.getElementById('chev-'+i);const o=b.classList.toggle('open');c.classList.toggle('open',o);}
 var diaViewIdx=null;
 function openDiaView(i){diaViewIdx=i;renderDiaView();openModal('modalDiaView');}
 function renderDiaView(){
