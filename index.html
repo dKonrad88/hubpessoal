@@ -1793,7 +1793,7 @@ function renderCasDash(){
   const fechados=casGastos.filter(g=>!g.cancelado&&gTipo(g)==='fechado');
   const planejados=casGastos.filter(g=>!g.cancelado&&gTipo(g)==='planejado');
   const totalFechado=fechados.reduce((s,g)=>s+(parseFloat(g.valor)||0),0);
-  const totalPlanejado=planejados.reduce((s,g)=>s+(parseFloat(g.valor)||0),0);
+  const totalPlanejado=planejados.reduce((s,g)=>s+(parseFloat(g.valorIni)||parseFloat(g.valor)||0),0);
   const pago=fechados.reduce((s,g)=>s+gPago(g),0);
   const apagar=totalFechado-pago;
   const projecao=totalFechado+totalPlanejado;
