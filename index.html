@@ -1306,7 +1306,7 @@ function saveNote(){
   else notes.unshift(obj);
   renderNotes();saveAll();closeModal('modalNota');
 }
-function deleteNote(id){var n=notes.find(x=>x.id===id);if(n)lixAdd('nota',n,n.title||n.titulo,'📝');notes=notes.filter(n=>n.id!==id);renderNotes();saveAll();}
+function deleteNote(id){var n=notes.find(x=>x.id===id);if(!confirm('Excluir a nota "'+((n&&(n.title||n.titulo))||'sem título')+'"?'))return;if(n)lixAdd('nota',n,n.title||n.titulo,'📝');notes=notes.filter(n=>n.id!==id);renderNotes();saveAll();}
 function renderNotes(){
   const q=(noteSearch||'').toLowerCase();
   const filtered=notes.filter(n=>(n.title||'').toLowerCase().includes(q)||(n.body||'').toLowerCase().includes(q)||(n.category||'').toLowerCase().includes(q));
@@ -1801,7 +1801,7 @@ const NIVEIS=[['obrigatorio','Com certeza','#34d399'],['queremos','Queremos','#f
 function abrirNovoConvidado(){convEditId=null;document.getElementById('modalConvTitle').textContent='Novo Convidado';document.getElementById('cvNome').value='';document.getElementById('cvConjuge').value='';document.getElementById('cvNivel').value='obrigatorio';openModal('modalConvidado');setTimeout(()=>document.getElementById('cvNome').focus(),60);}
 function salvarConvidado(){const nome=document.getElementById('cvNome').value.trim();if(!nome){document.getElementById('cvNome').focus();return;}const conj=document.getElementById('cvConjuge').value.trim();const nivel=document.getElementById('cvNivel').value;const qtd=conj?2:1;casConvidados.push({id:casCounter++,nome,conjuge:conj,nivel,qtd});saveAll();renderConvidados();renderCasDash();closeModal('modalConvidado');}
 function updConv(id,campo,val){const c=casConvidados.find(x=>x.id===id);if(c){c[campo]=val;saveAll();if(campo!=='nome')renderConvidados();renderCasDash();}}
-function delConv(id){var c=casConvidados.find(x=>x.id===id);if(c)lixAdd('conv',c,c.nome,'🧑');casConvidados=casConvidados.filter(c=>c.id!==id);saveAll();renderConvidados();renderCasDash();}
+function delConv(id){var c=casConvidados.find(x=>x.id===id);if(!confirm('Excluir o convidado "'+((c&&c.nome)||'sem nome')+'"?'))return;if(c)lixAdd('conv',c,c.nome,'🧑');casConvidados=casConvidados.filter(c=>c.id!==id);saveAll();renderConvidados();renderCasDash();}
 let convFilter='all';let convCollapsed={};
 function effStatus(c){return c.status||(c.nivel==='obrigatorio'?'confirmado':'pendente');}
 function setStatus(id,st){var c=casConvidados.find(function(x){return x.id===id;});if(c){c.status=(effStatus(c)===st?'pendente':st);saveAll();renderConvidados();renderCasDash();}}
@@ -2424,7 +2424,7 @@ function lixRestaurar(lid){
   lixRender();
   try{toast('Restaurado ✓');}catch(_){}
 }
-function lixExcluir(lid){lixeira=lixeira.filter(function(x){return x.lid!==lid;});saveAll();lixRender();}
+function lixExcluir(lid){var e=lixeira.find(function(x){return x.lid===lid;});if(!confirm('Apagar definitivamente "'+((e&&e.label)||'item')+'"? Isso não pode ser desfeito.'))return;lixeira=lixeira.filter(function(x){return x.lid!==lid;});saveAll();lixRender();}
 function lixEsvaziar(){if(!lixeira.length)return;if(!confirm('Apagar definitivamente os '+lixeira.length+' item(ns) da lixeira? Isso não pode ser desfeito.'))return;lixeira=[];saveAll();lixRender();}
 function lixRender(){
   var box=document.getElementById('lix-box'); if(!box)return;
