@@ -1901,10 +1901,12 @@ function exportJSON(){
 }
 function importJSON(input){
   const file=input.files[0];if(!file)return;
+  if(!confirm('⚠️ Importar SUBSTITUI todos os dados atuais por este arquivo. Um backup do estado atual será guardado. Continuar?')){input.value='';return;}
   const reader=new FileReader();
   reader.onload=function(ev){
     try{
       const d=JSON.parse(ev.target.result);
+      try{localStorage.setItem(LS+'preImportBackup',JSON.stringify({at:new Date().toISOString(),data:cloudGather()}));}catch(e){}
       if(d.gastos)gastos=d.gastos;if(d.meta!==undefined)meta=d.meta;if(d.cambio!==undefined)cambio=d.cambio;
       if(Array.isArray(d.previsao))previsao=d.previsao;if(d.counters&&d.counters.pvIdCounter)pvIdCounter=d.counters.pvIdCounter;
       if(d.notes)notes=d.notes;if(d.tags)tags=d.tags;if(d.docs)docs=d.docs;
@@ -2666,5 +2668,7 @@ _safe(()=>{document.querySelectorAll('.sb-subsubitem,.sb-subitem,.sb-item-flat')
 window.addEventListener('load',function(){try{renderGastos();}catch(e){console.warn('charts pós-load falharam:',e);}});
 _safe(()=>{const h=document.getElementById('refreshHint');if(h){const mac=/Mac|iPhone|iPad/i.test(navigator.platform)||/Mac/i.test(navigator.userAgent);h.textContent=mac?'\u2318 + \u2325 + R':'Ctrl + F5';}});
 window.addEventListener('beforeunload',function(){try{saveAllFlush();}catch(e){}});
+window.addEventListener('pagehide',function(){try{saveAllFlush();}catch(e){}});
+document.addEventListener('visibilitychange',function(){if(document.hidden){try{saveAllFlush();}catch(e){}}else if(sb&&cloudUser&&Date.now()-(cloudLastSync||0)>8000){try{cloudSyncBoot();}catch(e){}}});
 </script>
 </body></html>
