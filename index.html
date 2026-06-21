@@ -109,6 +109,11 @@ body.dark{--bg:#262522;--surface:#1c1b19;--surface2:#322f2b;--border:#3a3733;--t
 .modal-x{flex-shrink:0;background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.2rem;line-height:1;padding:.15rem .35rem;border-radius:6px;transition:all .12s}
 .modal-x:hover{color:var(--text);background:rgba(128,128,128,.12)}
 .pv-cat td{background:rgba(0,156,59,.08);font-size:.68rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:.35rem .6rem!important}
+#aiMsgs{display:flex;flex-direction:column;gap:.6rem}
+.ai-msg{max-width:85%;padding:.5rem .7rem;border-radius:10px;font-size:.82rem;line-height:1.35;white-space:pre-wrap;word-break:break-word}
+.ai-user{align-self:flex-end;background:#009C3B;color:#fff;border-bottom-right-radius:3px}
+.ai-bot{align-self:flex-start;background:var(--surface2);border:1px solid var(--border);border-bottom-left-radius:3px}
+.ai-err{align-self:stretch;background:rgba(248,113,113,.12);color:#f87171;font-size:.74rem;border-radius:8px;padding:.45rem .6rem}
 .pessoas-check{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.3rem}
 .p-check{display:flex;align-items:center;gap:.35rem;padding:.35rem .7rem;border:1px solid var(--border);border-radius:20px;cursor:pointer;font-size:.78rem;transition:all .15s;user-select:none}
 .p-check input{display:none}
@@ -518,6 +523,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 <button onclick="restaurarPadrao()" style="color:#f87171"><i class="ti ti-refresh-alert"></i> Restaurar dados padrão</button>
 </div>
 </div>
+<button class="hdr-btn" onclick="openPanel('chat')" title="Assistente IA"><i class="ti ti-sparkles"></i></button>
 <button class="hdr-btn" onclick="toggleTheme()"><i class="ti ti-sun" id="themeIcon"></i></button>
 </div>
 </div>
@@ -1065,6 +1071,15 @@ body.sb-collapsed .sb-reopen{display:flex}
 <div class="page" id="page-lixeira"><div class="page-header"><div class="page-title"><i class="ti ti-trash" style="color:#009C3B"></i> Lixeira</div><div class="page-actions"><button class="btn btn-ghost btn-sm" onclick="lixEsvaziar()"><i class="ti ti-trash-x"></i> Esvaziar lixeira</button></div></div><p class="lix-intro">Itens excluídos a partir de agora ficam aqui. Você pode restaurar ou apagar definitivamente.</p><div id="lix-box"><div class="lix-row"><div class="lix-ic">🧾</div><div class="lix-body"><div class="lix-label">Teste</div><div class="lix-meta">Gasto · Orlando · excluído 14 de jun. 21:23</div></div><button class="btn btn-ghost btn-sm" onclick="lixRestaurar('lix4')"><i class="ti ti-arrow-back-up"></i> Restaurar</button><button class="action-btn" onclick="lixExcluir('lix4')" title="Apagar definitivamente"><i class="ti ti-trash" style="color:var(--danger)"></i></button></div><div class="lix-row"><div class="lix-ic">💍</div><div class="lix-body"><div class="lix-label">Lugar para o Noivo ficar com os padrinhos</div><div class="lix-meta">Gasto · Casamento · excluído 14 de jun. 20:06</div></div><button class="btn btn-ghost btn-sm" onclick="lixRestaurar('lix3')"><i class="ti ti-arrow-back-up"></i> Restaurar</button><button class="action-btn" onclick="lixExcluir('lix3')" title="Apagar definitivamente"><i class="ti ti-trash" style="color:var(--danger)"></i></button></div><div class="lix-row"><div class="lix-ic">💍</div><div class="lix-body"><div class="lix-label">Votos noiva</div><div class="lix-meta">Gasto · Casamento · excluído 14 de jun. 19:49</div></div><button class="btn btn-ghost btn-sm" onclick="lixRestaurar('lix2')"><i class="ti ti-arrow-back-up"></i> Restaurar</button><button class="action-btn" onclick="lixExcluir('lix2')" title="Apagar definitivamente"><i class="ti ti-trash" style="color:var(--danger)"></i></button></div><div class="lix-row"><div class="lix-ic">💍</div><div class="lix-body"><div class="lix-label">Votos noivo</div><div class="lix-meta">Gasto · Casamento · excluído 14 de jun. 19:49</div></div><button class="btn btn-ghost btn-sm" onclick="lixRestaurar('lix1')"><i class="ti ti-arrow-back-up"></i> Restaurar</button><button class="action-btn" onclick="lixExcluir('lix1')" title="Apagar definitivamente"><i class="ti ti-trash" style="color:var(--danger)"></i></button></div></div></div>
 </main>
 </div>
+<!-- PAINEL GLOBAL: CHAT IA -->
+<div class="global-panel" id="panel-chat">
+<div class="gp-header"><div class="gp-title"><i class="ti ti-sparkles"></i> Assistente (Claude)</div><button class="gp-close" onclick="closePanel('chat')"><i class="ti ti-x"></i></button></div>
+<div class="gp-body" id="aiMsgs"></div>
+<div class="gp-footer">
+<div style="display:flex;gap:.5rem;align-items:flex-end"><textarea id="aiInput" rows="2" placeholder="Pergunte algo sobre o HUB…" style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:.82rem;padding:.5rem;outline:none;resize:none" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();aiSend();}"></textarea><button class="btn btn-primary" id="aiSendBtn" onclick="aiSend()" style="padding:.55rem .7rem"><i class="ti ti-send"></i></button></div>
+<div style="font-size:.68rem;color:var(--muted);margin-top:.4rem">Enter envia · Shift+Enter quebra linha · precisa estar logado na nuvem</div>
+</div>
+</div>
 <!-- PAINEL GLOBAL: NOTAS -->
 <div class="global-panel" id="panel-notas">
 <div class="gp-header">
@@ -1228,6 +1243,12 @@ function closeModal(id){if(id==='modalGasto')previsaoConvertId=null;document.get
 function setCLTab(t,el){document.querySelectorAll('.cl-tab').forEach(b=>b.classList.remove('active'));el.classList.add('active');document.querySelectorAll('.cl-panel').forEach(p=>p.classList.remove('active'));document.getElementById('cl-'+t).classList.add('active');currentClPanel=t;try{renderCL(t);}catch(e){}}
 
 // PANELS
+var aiHist=[];
+function aiAdd(role,text){var box=document.getElementById('aiMsgs');if(!box)return null;var d=document.createElement('div');d.className='ai-msg '+(role==='user'?'ai-user':role==='error'?'ai-err':'ai-bot');d.textContent=text;box.appendChild(d);box.scrollTop=box.scrollHeight;return d;}
+function aiSystem(){var ctx='';try{ctx='Contexto atual: '+(gastos?gastos.length:0)+' gastos Orlando, '+(previsao?previsao.length:0)+' itens na previsao, '+(roteiro?roteiro.length:0)+' dias de roteiro, '+(casConvidados?casConvidados.length:0)+' convidados, '+(htHabits?htHabits.length:0)+' habitos.';}catch(e){}
+return "Voce e o assistente do HUB Pessoal (app pessoal do Diego, em portugues do Brasil). Areas: Viagem Orlando (roteiro, checklists, gastos, previsao de compras), Casamento, Habitos, Metas, Notas. "+ctx+" Seja direto, curto e util. Voce ainda nao consegue alterar os dados do app (em breve) - so responder e orientar.";}
+function aiSend(){var inp=document.getElementById('aiInput'),btn=document.getElementById('aiSendBtn');var text=((inp&&inp.value)||'').trim();if(!text)return;if(!sb||!cloudUser){aiAdd('error','Faca login na nuvem (icone de nuvem no topo) para usar o assistente.');return;}inp.value='';aiAdd('user',text);aiHist.push({role:'user',content:text});if(btn)btn.disabled=true;var thinking=aiAdd('bot','…');var done=function(){if(btn)btn.disabled=false;if(inp)inp.focus();};
+sb.auth.getSession().then(function(r){var token=r&&r.data&&r.data.session&&r.data.session.access_token;return fetch(SB_URL+'/functions/v1/claude-chat',{method:'POST',headers:{'content-type':'application/json','authorization':'Bearer '+token},body:JSON.stringify({messages:aiHist.slice(-12),system:aiSystem()})});}).then(function(res){return res.json().then(function(j){return {ok:res.ok,j:j};});}).then(function(o){if(thinking)thinking.remove();if(!o.ok||o.j.error){aiAdd('error',o.j.error||'Erro ao falar com o assistente.');}else{var t=o.j.text||'(sem resposta)';aiAdd('bot',t);aiHist.push({role:'assistant',content:t});}done();}).catch(function(e){if(thinking)thinking.remove();aiAdd('error','Falha de rede: '+e);done();});}
 function openPanel(id){closeAllPanels();document.getElementById('panel-'+id).classList.add('open');document.getElementById('panel-overlay').style.display='block';if(id==='notas')renderNotes();if(id==='etiquetas')renderTags();}
 function closePanel(id){document.getElementById('panel-'+id).classList.remove('open');document.getElementById('panel-overlay').style.display='none';}
 function closeAllPanels(){document.querySelectorAll('.global-panel').forEach(p=>p.classList.remove('open'));document.getElementById('panel-overlay').style.display='none';}
