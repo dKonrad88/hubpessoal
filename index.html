@@ -1012,10 +1012,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 #page-habits .ht-ck.on{background:rgba(0,156,59,.14);color:var(--text);border-color:transparent}
 #page-habits .ht-sublab{font-size:.72rem;color:var(--muted)}
 </style>
-<div style="padding:1.25rem">
-<div class="page-header" style="margin-bottom:1rem"><div class="page-title"><i class="ti ti-flame" style="color:#009C3B"></i> Habit Tracker <span style="font-size:.72rem;font-weight:400;color:var(--muted)">· via Foco</span></div><a class="btn btn-ghost btn-sm" href="https://dkonrad88.github.io/Foco/" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> Abrir em nova aba</a></div>
-<iframe id="focoFrame" src="https://dkonrad88.github.io/Foco/" title="Foco — Hábitos" style="width:100%;height:calc(100vh - 150px);border:1px solid var(--border);border-radius:12px;background:var(--surface);display:block" loading="lazy"></iframe>
-</div>
+<div id="focoDash"><div class="fd-loading">Carregando hábitos…</div></div>
 </div>
 <div class="page" id="page-metas">
 <style>
@@ -2015,7 +2012,7 @@ function setSimplePage(p,el){
   if(el)el.classList.add('active');
   document.querySelectorAll('.page').forEach(pg=>pg.classList.remove('active'));
   const pg=document.getElementById('page-'+p);if(pg)pg.classList.add('active');
-  if(p==='habits'){try{htRenderAll();}catch(e){}}
+  if(p==='habits'){try{FOCO.open();}catch(e){}}
   if(p==='metas'){try{mvRender();}catch(e){}}
   if(p==='lixeira'){try{lixRender();}catch(e){}}
 }
@@ -2757,5 +2754,220 @@ _safe(()=>{const h=document.getElementById('refreshHint');if(h){const mac=/Mac|i
 window.addEventListener('beforeunload',function(){try{saveAllFlush();}catch(e){}});
 window.addEventListener('pagehide',function(){try{saveAllFlush();}catch(e){}});
 document.addEventListener('visibilitychange',function(){if(document.hidden){try{saveAllFlush();}catch(e){}}else if(sb&&cloudUser&&Date.now()-(cloudLastSync||0)>8000){try{cloudSyncBoot();}catch(e){}}});
+
+/* ===================== FOCO DASH (lê foco_state, render desktop, read-only) ===================== */
+var FOCO=(function(){
+  var habits=[], logs={}, counter=1, curDate=null, lastSync=null, state='init', errMsg='';
+  function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+  function today(){return iso(new Date());}
+  function dayIdx(ds){return Math.round(Date.parse(ds+'T00:00:00Z')/86400000);}
+  function fmtD(s){return new Date(s+'T12:00:00').toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'short'});}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function rgba(hex,a){var h=String(hex||'#185FA5').replace('#','');var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);return 'rgba('+r+','+g+','+b+','+a+')';}
+  function fmt(n){n=Math.round(n*100)/100;return Number.isInteger(n)?n:(''+n).replace('.',',');}
+  function daysInMonth(n){return new Date(n.getFullYear(),n.getMonth()+1,0).getDate();}
+  var PER={dia:'no dia',semana:'na semana',mes:'no mês',trimestre:'no trimestre',semestre:'no semestre',ano:'no ano'};
+  function inPeriod(dateStr,periodo){
+    var d=new Date(dateStr+'T12:00:00'),now=new Date(curDate+'T12:00:00');
+    if(periodo==='dia')return dateStr===curDate;
+    if(periodo==='ano')return d.getFullYear()===now.getFullYear();
+    if(periodo==='semana'){var a=new Date(now);a.setDate(a.getDate()-a.getDay());a.setHours(0,0,0,0);var b=new Date(a);b.setDate(a.getDate()+7);return d>=a&&d<b;}
+    if(periodo==='trimestre')return d.getFullYear()===now.getFullYear()&&Math.floor(d.getMonth()/3)===Math.floor(now.getMonth()/3);
+    if(periodo==='semestre')return d.getFullYear()===now.getFullYear()&&Math.floor(d.getMonth()/6)===Math.floor(now.getMonth()/6);
+    return d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth();
+  }
+  function isQty(h){return !!(h&&h.tipo==='item'&&h.unidade&&String(h.unidade).trim());}
+  function isEvitar(h){return h.tipo==='bool'&&h.tom==='evitar';}
+  function getLog(id,date){return (logs[date]||{})[id]||null;}
+  function relapseOn(h,ds){var l=logs[ds]&&logs[ds][h.id];return !!(l&&l.recaida);}
+  function relapsesIn(h,per){var c=0;for(var d in logs){if(inPeriod(d,per)&&logs[d][h.id]&&logs[d][h.id].recaida)c++;}return c;}
+  function evtSince(h){return h.desde?dayIdx(h.desde):dayIdx(today());}
+  function isDoneLog(h,l){if(isEvitar(h))return !(l&&l.recaida);if(!l)return false;if(h.tipo==='numero')return (parseFloat(l.valor)||0)>0;if(h.tipo==='item')return (l.items||[]).length>0;return !!l.feito;}
+  function isDone(h){return isDoneLog(h,getLog(h.id,curDate));}
+  function doneOn(h,ds){if(isEvitar(h)){var di=dayIdx(ds);return di>=evtSince(h)&&di<=dayIdx(today())&&!relapseOn(h,ds);}var l=logs[ds]&&logs[ds][h.id];return isDoneLog(h,l);}
+  function metaProgress(h){
+    if(isEvitar(h))return relapsesIn(h,h.periodo);
+    if(h.tipo==='numero'||isQty(h)){var s=0;for(var dt in logs){if(inPeriod(dt,h.periodo)&&logs[dt][h.id])s+=(parseFloat(logs[dt][h.id].valor)||0);}return s;}
+    var n=0;for(var d2 in logs){if(inPeriod(d2,h.periodo)&&logs[d2][h.id]&&isDoneLog(h,logs[d2][h.id]))n++;}return n;
+  }
+  function metaLine(h){
+    if(isEvitar(h)){if(!h.alvo)return '';var r=metaProgress(h);return r+'/'+h.alvo+' deslize'+(h.alvo===1?'':'s')+' '+PER[h.periodo];}
+    if(!h.alvo)return '';
+    var cur=metaProgress(h);
+    if(h.tipo==='numero'||isQty(h))return fmt(cur)+'/'+fmt(h.alvo)+(h.unidade?' '+esc(h.unidade):'')+' '+PER[h.periodo];
+    return cur+'/'+h.alvo+' dias '+PER[h.periodo];
+  }
+  function periodDays(p){return p==='dia'?1:p==='semana'?7:p==='mes'?30:p==='trimestre'?91:p==='semestre'?182:p==='ano'?365:30;}
+  function periodFrac(p){var n=new Date();
+    if(p==='semana')return (n.getDay()+1)/7;
+    if(p==='ano')return ((n-new Date(n.getFullYear(),0,0))/86400000)/365;
+    if(p==='trimestre')return ((n.getMonth()%3)+n.getDate()/daysInMonth(n))/3;
+    if(p==='semestre')return ((n.getMonth()%6)+n.getDate()/daysInMonth(n))/6;
+    return n.getDate()/daysInMonth(n);
+  }
+  function cadence(h){
+    if(isEvitar(h))return {kind:'evitar',intervalo:0};
+    var pd=periodDays(h.periodo);
+    if(h.tipo==='numero'||isQty(h))return {kind:'volume',intervalo:1,pd:pd};
+    var occ=h.alvo||0;
+    if(occ<=0)return {kind:'livre',intervalo:0,pd:pd};
+    var intervalo=pd/occ,kind=intervalo<=1.6?'diario':(intervalo<=10?'semanal':(intervalo<=40?'mensal':'raro'));
+    return {kind:kind,intervalo:intervalo,occ:occ,pd:pd};
+  }
+  function lastDoneAgo(h){var ti=dayIdx(today()),best=null,d;for(d in logs){if(doneOn(h,d)){var x=dayIdx(d);if(x<=ti&&(best===null||x>best))best=x;}}return best===null?null:(ti-best);}
+  function isDue(h){
+    if(isDone(h))return false;
+    var c=cadence(h);
+    if(c.kind==='evitar'||c.kind==='livre')return false;
+    if(c.kind==='diario')return true;
+    if(c.kind==='volume'){if(!h.alvo)return false;var cur=metaProgress(h),fr=periodFrac(h.periodo);return (h.alvo*fr-cur)>=(h.alvo/Math.max(c.pd,1));}
+    var ago=lastDoneAgo(h);if(ago===null)return false;return ago>=c.intervalo;
+  }
+  function expectedToday(h){
+    if(isDone(h))return true;
+    if(isEvitar(h))return true;
+    var c=cadence(h);
+    if(c.kind==='diario')return true;
+    if(c.kind==='volume')return h.alvo?(metaProgress(h)<h.alvo):true;
+    if(c.kind==='livre')return false;
+    return isDue(h);
+  }
+  function cleanStreak(h){
+    var ti=dayIdx(today()),since=evtSince(h),rels=[],d;
+    for(d in logs){var l=logs[d][h.id];if(l&&l.recaida){var x=dayIdx(d);if(x>=since&&x<=ti)rels.push(x);}}
+    rels.sort(function(a,b){return a-b;});
+    var lastRel=rels.length?rels[rels.length-1]:null;
+    var cur=(lastRel!==null)?(ti-lastRel):(ti-since+1);if(cur<0)cur=0;
+    var best=0,prev=since-1,i;
+    for(i=0;i<rels.length;i++){var gap=rels[i]-prev-1;if(gap>best)best=gap;prev=rels[i];}
+    var tail=ti-prev;if(tail>best)best=tail;if(best<0)best=0;
+    return {cur:cur,best:Math.max(best,cur),rel:rels.length};
+  }
+  function streakSoft(h){
+    var done={},d;for(d in logs){if(doneOn(h,d))done[dayIdx(d)]=1;}
+    var ti=dayIdx(today()),start=done[ti]?ti:(done[ti-1]?ti-1:null),cur=0,gap=0,usedF=false;
+    if(start!==null){var i=start;while(i>start-400){if(done[i]){cur++;i--;}else{if(gap<1){gap++;usedF=true;i--;}else break;}}}
+    var ks=Object.keys(done).map(Number).sort(function(a,b){return a-b;}),best=0,a;
+    for(a=0;a<ks.length;a++){var cnt=1,g=0,prev=ks[a],j;for(j=a+1;j<ks.length;j++){var df=ks[j]-prev;if(df===1){cnt++;prev=ks[j];}else if(df===2&&g<1){g++;cnt++;prev=ks[j];}else break;}if(cnt>best)best=cnt;}
+    return {cur:cur,best:Math.max(best,cur),forgiven:usedF&&gap>=1&&cur>0};
+  }
+  function streak(h){return isEvitar(h)?cleanStreak(h):streakSoft(h);}
+  function catKey(h){return (h.cat&&String(h.cat).trim())?String(h.cat).trim():'';}
+  function catOrder(){var seen=[];habits.forEach(function(h){var c=catKey(h);if(seen.indexOf(c)<0)seen.push(c);});return seen;}
+  function catColor(c){var h=habits.find(function(x){return catKey(x)===c;});return (h&&h.cor)||'#185FA5';}
+  function last7(h){var out=[],base=new Date(today()+'T12:00:00');for(var i=6;i>=0;i--){var d=new Date(base);d.setDate(d.getDate()-i);var ds=iso(d);out.push({ds:ds,on:doneOn(h,ds)});}return out;}
+
+  function pull(cb){
+    if(typeof sb==='undefined'||!sb||typeof cloudUser==='undefined'||!cloudUser){state='nologin';if(cb)cb();return;}
+    state='loading';
+    sb.from('foco_state').select('key,value').eq('user_id',cloudUser.id).then(function(r){
+      if(r.error){state='error';errMsg=r.error.message;if(cb)cb();return;}
+      var map={};(r.data||[]).forEach(function(x){map[x.key]=x.value;});
+      habits=Array.isArray(map.habits)?map.habits:[];
+      logs=(map.logs&&typeof map.logs==='object')?map.logs:{};
+      counter=+map.counter||1;
+      curDate=today();lastSync=new Date();
+      state=habits.length?'ok':'empty';
+      if(cb)cb();
+    },function(e){state='error';errMsg=String(e);if(cb)cb();});
+  }
+
+  function elTime(){return lastSync?lastSync.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}):'';}
+  function header(){
+    return '<div class="fd-head"><div class="fd-head-l"><div class="fd-title"><i class="ti ti-flame"></i> Hábitos</div>'
+      +'<div class="fd-sub">'+(curDate?('Hoje · '+fmtD(curDate)):'')+'</div></div>'
+      +'<div class="fd-head-r">'
+      +(lastSync?'<span class="fd-synced"><i class="ti ti-cloud-check"></i> Atualizado '+elTime()+'</span>':'')
+      +'<button class="btn btn-ghost btn-sm" onclick="FOCO.open()"><i class="ti ti-refresh"></i> Atualizar</button>'
+      +'<a class="btn btn-ghost btn-sm" href="https://dkonrad88.github.io/Foco/" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> Abrir Foco</a>'
+      +'</div></div>';
+  }
+  function card(h){
+    var ev=isEvitar(h), s=streak(h), done=isDone(h), ml=metaLine(h);
+    var prog=h.alvo?Math.min(1,metaProgress(h)/h.alvo):0;
+    var statusIc = ev ? (done?'<i class="ti ti-shield-check" style="color:#3aa3a3"></i>':'<i class="ti ti-alert-triangle" style="color:#e0913a"></i>')
+                      : (done?'<i class="ti ti-circle-check-filled" style="color:#009C3B"></i>':'<i class="ti ti-circle" style="color:var(--muted)"></i>');
+    var strip=last7(h).map(function(p){return '<span class="fd-day'+(p.on?' on':'')+'" title="'+p.ds+'"></span>';}).join('');
+    var streakTxt = s.cur>0 ? '<span class="fd-streak">'+(ev?'🛡️':'🔥')+' '+s.cur+'</span>' : '';
+    return '<div class="fd-card'+(done?' done':'')+(ev?' evitar':'')+(!done&&!ev&&expectedToday(h)?' due':'')+'">'
+      +'<div class="fd-card-top"><div class="fd-ic" style="background:'+rgba(h.cor,.16)+'">'+(h.icon||'•')+'</div>'
+      +'<div class="fd-nm">'+esc(h.nome)+'</div><div class="fd-status">'+statusIc+'</div></div>'
+      +(ml?'<div class="fd-meta">'+ml+'</div>':'')
+      +(h.alvo&&!ev?'<div class="fd-bar"><div class="fd-bar-fill" style="width:'+Math.round(prog*100)+'%;background:'+(h.cor||'#009C3B')+'"></div></div>':'')
+      +'<div class="fd-card-bot"><div class="fd-strip">'+strip+'</div>'+streakTxt+'</div></div>';
+  }
+  function stateMsg(ic,t,s){return '<div class="fd-empty"><i class="ti '+ic+'"></i><div class="fd-empty-t">'+t+'</div><div class="fd-empty-s">'+s+'</div></div>';}
+  function render(){
+    var box=document.getElementById('focoDash');if(!box)return;
+    injectCSS();
+    if(state==='nologin'){box.innerHTML=header()+stateMsg('ti-cloud-off','Entre na sua conta','Faça login na nuvem (ícone ☁ no topo) com a mesma conta do Foco para ver seus hábitos aqui.');return;}
+    if(state==='loading'){box.innerHTML=header()+'<div class="fd-loading"><i class="ti ti-loader-2"></i> Carregando hábitos…</div>';return;}
+    if(state==='error'){box.innerHTML=header()+stateMsg('ti-alert-triangle','Erro ao carregar',esc(errMsg));return;}
+    if(state==='empty'){box.innerHTML=header()+stateMsg('ti-mood-empty','Nenhum hábito ainda','Crie hábitos no app Foco — aparecem aqui automaticamente.');return;}
+    var due=habits.filter(function(h){return !isEvitar(h)&&expectedToday(h);});
+    var doneCount=due.filter(isDone).length;
+    var pct=due.length?Math.round(doneCount/due.length*100):0;
+    var sum='<div class="fd-summary"><div class="fd-sum-num">'+doneCount+'<span>/'+due.length+'</span></div>'
+      +'<div class="fd-sum-mid"><div class="fd-sum-lbl">concluídos hoje</div><div class="fd-sum-bar"><div class="fd-sum-fill" style="width:'+pct+'%"></div></div></div>'
+      +'<div class="fd-sum-meta">'+habits.length+' hábitos</div></div>';
+    var groups=catOrder().map(function(c){
+      var membros=habits.filter(function(h){return catKey(h)===c;});
+      return '<div class="fd-group"><div class="fd-group-h"><span class="fd-dot" style="background:'+catColor(c)+'"></span>'+esc(c||'Sem categoria')+'<span class="fd-group-n">'+membros.length+'</span></div>'
+        +'<div class="fd-grid">'+membros.map(card).join('')+'</div></div>';
+    }).join('');
+    box.innerHTML=header()+sum+groups;
+  }
+  function open(){
+    var box=document.getElementById('focoDash');
+    if(box&&state==='init')box.innerHTML='<div class="fd-loading"><i class="ti ti-loader-2"></i> Carregando hábitos…</div>';
+    pull(render);
+  }
+  function injectCSS(){
+    if(document.getElementById('fd-css'))return;
+    var css='#page-habits{max-width:1200px;margin:0 auto}'
+      +'#focoDash{padding:1.25rem 1.5rem}'
+      +'.fd-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:1.1rem;flex-wrap:wrap}'
+      +'.fd-title{font-size:1.15rem;font-weight:600;display:flex;align-items:center;gap:.45rem}.fd-title i{color:#009C3B}'
+      +'.fd-sub{font-size:.8rem;color:var(--muted);margin-top:.15rem;text-transform:capitalize}'
+      +'.fd-head-r{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}'
+      +'.fd-synced{font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:.3rem}.fd-synced i{color:#009C3B}'
+      +'.fd-summary{display:flex;align-items:center;gap:1.1rem;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem 1.25rem;margin-bottom:1.4rem}'
+      +'.fd-sum-num{font-size:1.8rem;font-weight:700;line-height:1}.fd-sum-num span{font-size:1rem;color:var(--muted);font-weight:500}'
+      +'.fd-sum-mid{flex:1;min-width:120px}.fd-sum-lbl{font-size:.78rem;color:var(--muted);margin-bottom:.4rem}'
+      +'.fd-sum-bar{height:7px;background:var(--surface2);border-radius:4px;overflow:hidden}'
+      +'.fd-sum-fill{height:100%;background:linear-gradient(90deg,#009C3B,#3fb950);border-radius:4px;transition:width .4s}'
+      +'.fd-sum-meta{font-size:.78rem;color:var(--muted)}'
+      +'.fd-group{margin-bottom:1.5rem}'
+      +'.fd-group-h{display:flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:.7rem}'
+      +'.fd-dot{width:10px;height:10px;border-radius:50%}'
+      +'.fd-group-n{background:var(--surface2);border-radius:10px;padding:.05rem .45rem;font-size:.72rem}'
+      +'.fd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem}'
+      +'.fd-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:.9rem 1rem;transition:border-color .15s,transform .15s,box-shadow .15s}'
+      +'.fd-card:hover{border-color:rgba(0,156,59,.4);transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.08)}'
+      +'.fd-card.done{background:linear-gradient(180deg,rgba(0,156,59,.07),transparent)}'
+      +'.fd-card.due{border-left:3px solid #f0a500}'
+      +'.fd-card-top{display:flex;align-items:center;gap:.6rem}'
+      +'.fd-ic{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}'
+      +'.fd-nm{flex:1;font-weight:600;font-size:.92rem;min-width:0}'
+      +'.fd-status{font-size:1.3rem;flex-shrink:0;display:flex;align-items:center}'
+      +'.fd-meta{font-size:.76rem;color:var(--muted);margin-top:.55rem}'
+      +'.fd-bar{height:5px;background:var(--surface2);border-radius:3px;overflow:hidden;margin-top:.5rem}'
+      +'.fd-bar-fill{height:100%;border-radius:3px;transition:width .4s}'
+      +'.fd-card-bot{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.7rem}'
+      +'.fd-strip{display:flex;gap:3px}'
+      +'.fd-day{width:13px;height:13px;border-radius:4px;background:var(--surface2);border:1px solid var(--border)}'
+      +'.fd-day.on{background:#009C3B;border-color:#009C3B}'
+      +'.fd-streak{font-size:.82rem;font-weight:600;white-space:nowrap}'
+      +'.fd-loading{padding:3rem;text-align:center;color:var(--muted)}.fd-loading i{animation:fdspin 1s linear infinite;display:inline-block}'
+      +'@keyframes fdspin{to{transform:rotate(360deg)}}'
+      +'.fd-empty{padding:3rem 1rem;text-align:center;color:var(--muted)}'
+      +'.fd-empty i{font-size:2.2rem;opacity:.4;display:block;margin-bottom:.6rem}'
+      +'.fd-empty-t{font-weight:600;color:var(--text);margin-bottom:.3rem}'
+      +'.fd-empty-s{font-size:.82rem;max-width:400px;margin:0 auto;line-height:1.5}';
+    var st=document.createElement('style');st.id='fd-css';st.textContent=css;document.head.appendChild(st);
+  }
+  return {open:open, pull:pull, render:render};
+})();
+
 </script>
 </body></html>
