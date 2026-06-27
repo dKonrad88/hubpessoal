@@ -95,6 +95,35 @@ body.dark{--bg:#262522;--surface:#1c1b19;--surface2:#322f2b;--border:#3a3733;--t
 /* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:600;align-items:center;justify-content:center}
 .modal-overlay.open{display:flex}
+.foco-top{display:flex;flex-direction:column;gap:.5rem;margin-bottom:.6rem;padding:0 .2rem}
+.foco-prog{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.foco-dots{display:flex;gap:4px;flex-wrap:wrap}
+.foco-dot{width:9px;height:9px;border-radius:50%;background:rgba(150,150,150,.25)}
+.foco-dot.done{background:rgba(0,156,59,.5)}
+.foco-dot.on{background:#009C3B;transform:scale(1.3)}
+.foco-card{padding:.2rem .3rem}
+.foco-icon{font-size:2.7rem;text-align:center;margin:.4rem 0 .1rem}
+.foco-hora{text-align:center;font-size:1.05rem;color:#009C3B;font-weight:700}
+.foco-titulo{text-align:center;font-size:1.28rem;font-weight:700;margin:.2rem 0 .8rem;line-height:1.25}
+.foco-end{font-size:.85rem;color:var(--muted);display:flex;gap:.35rem;align-items:flex-start;margin:.3rem 0}
+.foco-meta{font-size:.8rem;color:var(--muted);display:flex;gap:.35rem;align-items:center;margin:.15rem 0}
+.foco-nota{font-size:.85rem;background:rgba(120,120,120,.1);border-left:3px solid #009C3B;padding:.5rem .7rem;border-radius:0 8px 8px 0;margin:.6rem 0;line-height:1.4}
+.foco-alerta{font-size:.82rem;background:rgba(251,146,60,.14);color:#d97706;padding:.5rem .7rem;border-radius:8px;margin:.5rem 0;display:flex;gap:.4rem;align-items:flex-start}
+.foco-sec{margin:.7rem 0}
+.foco-sec-t{font-weight:600;font-size:.9rem;margin-bottom:.3rem}
+.foco-sec ul{margin:0;padding-left:1.15rem}
+.foco-sec li{font-size:.86rem;margin:.22rem 0;line-height:1.38}
+.foco-maps{display:flex;align-items:center;justify-content:center;gap:.4rem;background:#009C3B;color:#fff;border-radius:9px;padding:.65rem;font-weight:600;font-size:.88rem;text-decoration:none;margin:.85rem 0 .3rem}
+.foco-maps:hover{background:#00873a;color:#fff}
+.foco-next{margin-top:.8rem;padding:.6rem .7rem;border:1px dashed var(--border,rgba(150,150,150,.3));border-radius:9px;font-size:.86rem}
+.foco-next-l{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:.2rem}
+.foco-desloc{font-size:.76rem;color:var(--muted);margin-top:.3rem;display:flex;gap:.3rem;align-items:center}
+.foco-nav{display:flex;gap:.5rem;margin-top:.7rem;padding-top:.7rem;border-top:1px solid var(--border,rgba(150,150,150,.18))}
+.foco-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:.3rem;background:rgba(150,150,150,.1);border:1px solid var(--border,rgba(150,150,150,.25));color:inherit;border-radius:9px;padding:.6rem;font-size:.85rem;font-weight:600;cursor:pointer}
+.foco-btn:hover{border-color:#009C3B}
+.foco-now{background:rgba(0,156,59,.15);border-color:#009C3B;color:#009C3B}
+.dia-foco-btn{display:inline-flex;align-items:center;gap:.4rem;background:rgba(0,156,59,.12);color:#009C3B;border:1px solid #009C3B;border-radius:8px;padding:.55rem .85rem;font-size:.82rem;font-weight:600;cursor:pointer;margin:0 0 .85rem 0}
+.dia-foco-btn:hover{background:rgba(0,156,59,.2)}
 .modal{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem;width:min(540px,94vw);max-height:88vh;overflow-y:auto}
 .modal h3{font-size:.95rem;font-weight:600;margin-bottom:1.1rem}
 .form-group{margin-bottom:.85rem}
@@ -610,7 +639,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 <div class="page-header">
 <div class="page-title"><i class="ti ti-map" style="color:#009C3B"></i> Roteiro — Orlando 2026</div>
 <div class="page-actions">
-<button class="btn btn-ghost btn-sm" onclick="abrirModalVoos()"><i class="ti ti-plane"></i> Voos</button>
+<button class="btn btn-primary btn-sm" onclick="focoAgora()"><i class="ti ti-player-play"></i> Agora</button><button class="btn btn-ghost btn-sm" onclick="abrirModalVoos()"><i class="ti ti-plane"></i> Voos</button>
 <button class="btn btn-ghost btn-sm" onclick="exportPage()" title="Exportar página em HTML"><i class="ti ti-download"></i></button>
 <button class="btn btn-primary btn-sm" onclick="openModal('modalDia')"><i class="ti ti-plus"></i> Novo Dia</button>
 </div>
@@ -1177,6 +1206,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 <div class="modal-overlay" id="modalMeta"><div class="modal"><h3>Meta de Gastos</h3><div class="form-group"><label>Meta total (R$)</label><input id="inputMeta" type="number" value="80000"></div><div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal('modalMeta')">Cancelar</button><button class="btn btn-primary" onclick="saveMeta()">Salvar</button></div></div></div>
 <div class="modal-overlay" id="modalCambio"><div class="modal"><h3>Câmbio US$ → R$</h3><div class="form-group"><label>1 US$ equivale a (R$)</label><input id="inputCambio" step="0.01" type="number" value="5.00"></div><div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal('modalCambio')">Cancelar</button><button class="btn btn-primary" onclick="saveCambio()">Salvar</button></div></div></div>
 <div class="modal-overlay" id="modalDiaView"><div class="modal" style="width:min(680px,94vw)"><div class="modal-head"><h3 id="diaViewTitle" style="display:flex;align-items:center;gap:.5rem"></h3><button class="modal-x" onclick="closeModal('modalDiaView')" aria-label="Fechar"><i class="ti ti-x"></i></button></div><div id="diaViewSub" style="font-size:.78rem;color:var(--muted);margin-bottom:.8rem"></div><div id="diaViewBody"></div><div class="modal-footer"><button class="btn btn-ghost" onclick="editDia(diaViewIdx)"><i class="ti ti-pencil"></i> Editar dia</button><button class="btn btn-primary" id="diaViewAddBtn" onclick="addStop(diaViewIdx)"><i class="ti ti-plus"></i> Adicionar parada</button></div></div></div>
+<div class="modal-overlay" id="modalFoco"><div class="modal" style="width:min(560px,96vw);max-height:93vh;display:flex;flex-direction:column"><div class="modal-head"><h3 style="display:flex;align-items:center;gap:.5rem"><i class="ti ti-player-play" style="color:#009C3B"></i> Modo foco</h3><button class="modal-x" onclick="closeModal('modalFoco')" aria-label="Fechar"><i class="ti ti-x"></i></button></div><div id="focoBody" style="overflow-y:auto;flex:1"></div><div class="foco-nav"><button class="foco-btn" onclick="focoNav(-1)"><i class="ti ti-chevron-left"></i> Anterior</button><button class="foco-btn foco-now" onclick="focoAgora()"><i class="ti ti-current-location"></i> Agora</button><button class="foco-btn" onclick="focoNav(1)">Próximo <i class="ti ti-chevron-right"></i></button></div></div></div>
 <div class="modal-overlay" id="modalStop"><div class="modal" style="max-width:540px"><div class="modal-head"><h3 id="modalStopTitle">Parada</h3><button class="modal-x" onclick="closeModal('modalStop')" aria-label="Fechar"><i class="ti ti-x"></i></button></div><div style="display:grid;grid-template-columns:90px 70px 1fr;gap:.5rem"><div class="form-group" style="margin:0"><label>Hora</label><input id="stHora" type="text" placeholder="~17h45"></div><div class="form-group" style="margin:0"><label>Ícone</label><input id="stIcone" type="text" placeholder="🍎" maxlength="4"></div><div class="form-group" style="margin:0"><label>Título *</label><input id="stTitulo" type="text" placeholder="Apple Store — Florida Mall"></div></div><div class="form-group"><label>Endereço</label><input id="stEndereco" type="text" placeholder="8001 S Orange Blossom Trl, Orlando FL"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem"><div class="form-group" style="margin:0"><label>Horário de funcionamento</label><input id="stHorario" type="text" placeholder="10h–20h (qua)"></div><div class="form-group" style="margin:0"><label>Telefone</label><input id="stFone" type="text" placeholder="+1 407-563-1020"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem"><div class="form-group" style="margin:0"><label>Nota / avaliação</label><input id="stNota" type="text" placeholder="4.3 ⭐ · 5.000+"></div><div class="form-group" style="margin:0"><label>Duração no local</label><input id="stDuracao" type="text" placeholder="~2h"></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem"><div class="form-group" style="margin:0"><label>Alerta (badge laranja)</label><input id="stAlerta" type="text" placeholder="Fecha 20h"></div><div class="form-group" style="margin:0"><label>Deslocamento até a próxima</label><input id="stDesloc" type="text" placeholder="16 min · 10,5 km"></div></div><div class="form-group"><label>Detalhes (listas)</label><textarea id="stDetalhes" style="height:120px" placeholder="Use 'Título:' para criar uma seção e '- ' para itens.
 
 Checklist antes de ir:
@@ -1484,6 +1514,29 @@ function roteiroStop(s,diaIdx,stopIdx){
   return '<div class="rot-stop"><div class="rot-stop-time">'+escH(s.hora)+'</div><div class="rot-stop-line"><div class="rot-stop-dot">'+(s.icone||'📍')+'</div></div><div class="rot-stop-content"><div class="rot-stop-head"><span class="rot-stop-title">'+escH(s.titulo)+'</span>'+alerta+'<button class="rot-stop-edit" onclick="editStop('+diaIdx+','+stopIdx+')"><i class="ti ti-pencil"></i></button><button class="rot-stop-del" onclick="delStop('+diaIdx+','+stopIdx+')"><i class="ti ti-trash"></i></button></div>'+metaHtml+detHtml+desloc+'</div></div>';
 }
 var diaViewIdx=null;
+var focoState={diaIdx:0,stopIdx:0};
+function focoParseHora(h){if(!h)return null;var m=String(h).replace(/~/g,'').match(/(\d{1,2})\s*h\s*(\d{0,2})/i);return m?parseInt(m[1],10)*60+(m[2]?parseInt(m[2],10):0):null;}
+function focoDiaDeHoje(){try{var ini=new Date('2026-09-30T00:00:00'),hoje=new Date();var diff=Math.floor((hoje-ini)/86400000);return(diff>=0&&diff<roteiro.length)?diff:-1;}catch(e){return -1;}}
+function focoStopAtual(diaIdx){var d=roteiro[diaIdx];if(!d||!d.stops||!d.stops.length)return 0;if(focoDiaDeHoje()!==diaIdx)return 0;var a=new Date();var mm=a.getHours()*60+a.getMinutes();var idx=0;for(var i=0;i<d.stops.length;i++){var sh=focoParseHora(d.stops[i].hora);if(sh!==null&&sh<=mm)idx=i;}return idx;}
+function focoMapsUrl(end){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(String(end||'').split('(')[0].trim());}
+function focoOpen(diaIdx,stopIdx){if(typeof stopIdx!=='number')stopIdx=focoStopAtual(diaIdx);focoState={diaIdx:diaIdx,stopIdx:stopIdx};focoRender();openModal('modalFoco');}
+function focoAgora(){var idx=focoDiaDeHoje();if(idx<0)idx=0;focoOpen(idx,focoStopAtual(idx));}
+function focoNav(delta){var d=roteiro[focoState.diaIdx];if(!d)return;var ni=focoState.stopIdx+delta;if(ni<0){if(focoState.diaIdx>0){focoState.diaIdx--;var pd=roteiro[focoState.diaIdx];focoState.stopIdx=pd.stops?pd.stops.length-1:0;}}else if(ni>=(d.stops?d.stops.length:0)){if(focoState.diaIdx<roteiro.length-1){focoState.diaIdx++;focoState.stopIdx=0;}}else{focoState.stopIdx=ni;}focoRender();}
+function focoRender(){var d=roteiro[focoState.diaIdx];if(!d)return;var stops=d.stops||[];var i=focoState.stopIdx;var s=stops[i];if(!s)return;var body=document.getElementById('focoBody');if(!body)return;
+var hoje=focoDiaDeHoje()===focoState.diaIdx;var atual=hoje&&i===focoStopAtual(focoState.diaIdx);
+var dots=stops.map(function(_,k){return '<span class="foco-dot'+(k===i?' on':(k<i?' done':''))+'"></span>';}).join('');
+var det=(s.detalhes||[]).map(function(sec){return '<div class="foco-sec"><div class="foco-sec-t">'+escH(sec.titulo)+'</div><ul>'+(sec.itens||[]).map(function(it){return '<li>'+escH(it)+'</li>';}).join('')+'</ul></div>';}).join('');
+var maps=s.endereco?'<a class="foco-maps" href="'+focoMapsUrl(s.endereco)+'" target="_blank" rel="noopener"><i class="ti ti-map-pin"></i> Abrir no Google Maps</a>':'';
+var prox=stops[i+1];
+var proxH=prox?'<div class="foco-next"><span class="foco-next-l">Depois</span>'+escH(prox.icone||'')+' '+escH(prox.titulo)+(s.desloc?'<div class="foco-desloc"><i class="ti ti-car"></i> '+escH(s.desloc)+'</div>':'')+'</div>':'<div class="foco-next"><span class="foco-next-l">Fim do dia</span>\U0001F3C1</div>';
+body.innerHTML='<div class="foco-top"><span class="foco-prog">Dia '+escH(d.dia)+' · '+escH(d.data)+' · parada '+(i+1)+'/'+stops.length+(atual?' · <b style=\"color:#009C3B\">AGORA</b>':'')+'</span><div class="foco-dots">'+dots+'</div></div>'+
+'<div class="foco-card"><div class="foco-icon">'+escH(s.icone||'\U0001F4CD')+'</div><div class="foco-hora">'+escH(s.hora||'')+'</div><div class="foco-titulo">'+escH(s.titulo||'')+'</div>'+
+(s.endereco?'<div class="foco-end"><i class="ti ti-map-pin"></i> '+escH(s.endereco)+'</div>':'')+
+(s.horarioFunc?'<div class="foco-meta"><i class="ti ti-clock"></i> '+escH(s.horarioFunc)+'</div>':'')+
+(s.fone?'<div class="foco-meta"><i class="ti ti-phone"></i> '+escH(s.fone)+'</div>':'')+
+(s.alerta?'<div class="foco-alerta"><i class="ti ti-alert-triangle"></i> '+escH(s.alerta)+'</div>':'')+
+(s.nota?'<div class="foco-nota">'+escH(s.nota)+'</div>':'')+
+det+maps+proxH+'</div>';}
 function openDiaView(i){diaViewIdx=i;renderDiaView();openModal('modalDiaView');}
 function renderDiaView(){
   if(diaViewIdx==null)return;var r=roteiro[diaViewIdx];if(!r)return;var i=diaViewIdx;
@@ -1494,7 +1547,7 @@ function renderDiaView(){
   if(Array.isArray(r.stops)&&r.stops.length){
     var avisosHtml=(r.avisos&&r.avisos.length)?'<div class="rot-avisos">'+r.avisos.map(function(a){return '<div class="rot-aviso"><i class="ti ti-alert-triangle"></i><span>'+escH(a)+'</span></div>';}).join('')+'</div>':'';
     var stopsHtml=r.stops.map(function(s,si){return roteiroStop(s,i,si);}).join('');
-    body.innerHTML=diaMapsBtn(r)+avisosHtml+'<div class="rot-timeline">'+stopsHtml+'</div>';
+    body.innerHTML='<button class="dia-foco-btn" onclick="focoOpen('+i+')"><i class="ti ti-player-play"></i> Modo foco (uma parada por vez)</button>'+diaMapsBtn(r)+avisosHtml+'<div class="rot-timeline">'+stopsHtml+'</div>';
   }else{
     body.innerHTML='<div class="dia-detail"><strong>Resumo:</strong> '+escH(r.resumo||'—')+'</div><div class="dia-detail" style="margin-top:.5rem"><strong>Detalhes:</strong> '+escH(r.detalhes||'—')+'</div>';
   }
