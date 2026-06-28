@@ -591,7 +591,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 <div style="position:relative">
 <button class="hdr-btn" onclick="toggleConfig(event)"><i class="ti ti-settings"></i></button>
 <div class="config-menu" id="config-menu" style="display: none;">
-<button onclick="location.reload()"><i class="ti ti-refresh"></i> Atualizar página <span id="refreshHint" style="margin-left:auto;font-size:.7rem;color:var(--muted);border:1px solid var(--border);border-radius:4px;padding:.05rem .3rem">⌘ + ⌥ + R</span></button>
+<button onclick="updateApp()"><i class="ti ti-refresh"></i> Atualizar o app <span style="margin-left:auto;font-size:.7rem;color:var(--muted)">versão nova</span></button>
 <button onclick="exportPage()" title="Exportar página em HTML"><i class="ti ti-file-download"></i> Exportar HTML</button>
 <button onclick="openCloud()"><i class="ti ti-cloud"></i> Conta &amp; Sincronização</button>
 <button onclick="exportJSON()"><i class="ti ti-download"></i> Exportar JSON</button>
@@ -2855,6 +2855,23 @@ function cloudStateEmpty(){return !((gastos&&gastos.length)||(previsao&&previsao
 function cloudSyncBoot(){if(!sb||!cloudUser)return;sb.from('hub_state').select('updated_at').eq('user_id',cloudUser.id).maybeSingle().then(function(r){if(r.error){if(isDirty())cloudPush();else cloudBadge('ok');return;}var remote=r.data&&r.data.updated_at;if(!remote){if(isDirty())cloudPush();else cloudBadge('ok');return;}var newer=new Date(remote).getTime()>new Date(cloudSyncTs()||0).getTime();if(newer)cloudPull();else if(isDirty())cloudPush();else cloudBadge('ok');});}
 function cloudPush(){if(!sb||!cloudUser)return;if(cloudStateEmpty())return;var ts=new Date().toISOString();cloudBadge('sync');cloudSet('Sincronizando…','');sb.from('hub_state').upsert({user_id:cloudUser.id,data:cloudGather(),updated_at:ts},{onConflict:'user_id'}).then(function(r){if(r.error){cloudBadge('pending');cloudSet('Erro ao sincronizar: '+r.error.message,'warn');return;}clearDirty();cloudSetSyncTs(ts);cloudLastSync=Date.now();cloudBadge('ok');cloudSet('Tudo sincronizado ✓','ok');cloudRenderModal();});}
 function cloudPull(){if(!sb||!cloudUser)return;cloudBadge('sync');cloudSet('Baixando da nuvem…','');sb.from('hub_state').select('data,updated_at').eq('user_id',cloudUser.id).maybeSingle().then(function(r){if(r.error){cloudBadge('pending');cloudSet('Erro ao baixar: '+r.error.message,'warn');return;}var has=r.data&&r.data.data&&Object.keys(r.data.data).length;if(has){if(isDirty()&&!cloudStateEmpty()){try{localStorage.setItem(LS+'cloudConflictBackup',JSON.stringify({at:new Date().toISOString(),data:cloudGather()}));}catch(e){}}withSuppress(function(){cloudApply(r.data.data);saveAll();});clearDirty();cloudSetSyncTs(r.data.updated_at);cloudLastSync=Date.now();cloudBadge('ok');cloudSet('Dados recuperados da nuvem ✓','ok');rerenderAll();toast('☁️ Sincronizado');cloudRenderModal();}else{cloudPush();}});}
+async function updateApp(){
+  try{if(typeof toast==='function')toast('Atualizando…');}catch(e){}
+  if(!('serviceWorker' in navigator)){location.reload();return;}
+  try{
+    var reg=await navigator.serviceWorker.getRegistration();
+    if(reg){try{await reg.update();}catch(e){}}
+    if(reg&&reg.waiting){
+      var done=false;
+      navigator.serviceWorker.addEventListener('controllerchange',function(){if(done)return;done=true;location.reload();});
+      reg.waiting.postMessage({type:'SKIP_WAITING'});
+      setTimeout(function(){if(!done){done=true;location.reload();}},1500);
+      return;
+    }
+    if(window.caches){var keys=await caches.keys();await Promise.all(keys.map(function(k){return caches.delete(k);}));}
+    location.reload();
+  }catch(e){location.reload();}
+}
 function cloudLogin(){if(!sb){cloudSet('Conector ainda carregando…','warn');return;}var em=(document.getElementById('cloudEmail').value||'').trim(),pw=document.getElementById('cloudPass').value||'';if(!em||!pw){cloudSet('Preencha e-mail e senha','warn');return;}cloudSet('Entrando…','');sb.auth.signInWithPassword({email:em,password:pw}).then(function(r){if(r.error){cloudSet('Falhou: '+r.error.message,'warn');return;}cloudUser=r.data.user;clearDirty();cloudSet('Conectado: '+cloudUser.email,'ok');cloudBadge('ok');cloudRenderModal();cloudPull();});}
 function cloudSignup(){cloudSet('🔒 Cadastro fechado — este app é privado. Use "Entrar" com a sua conta.','warn');return;if(!sb){cloudSet('Conector ainda carregando…','warn');return;}var em=(document.getElementById('cloudEmail').value||'').trim(),pw=document.getElementById('cloudPass').value||'';if(!em||!pw){cloudSet('Preencha e-mail e senha','warn');return;}if(pw.length<6){cloudSet('A senha precisa de ao menos 6 caracteres','warn');return;}cloudSet('Criando conta…','');sb.auth.signUp({email:em,password:pw}).then(function(r){if(r.error){cloudSet('Falhou: '+r.error.message,'warn');return;}if(r.data.session&&r.data.user){cloudUser=r.data.user;clearDirty();cloudSet('Conta criada e conectada','ok');cloudBadge('ok');cloudRenderModal();cloudPull();}else{cloudSet('Conta criada! Confirme pelo e-mail e depois entre.','ok');}});}
 function cloudLogout(){if(!sb)return;sb.auth.signOut().then(function(){cloudUser=null;cloudBadge('out');cloudSet('Desconectado','');cloudRenderModal();});}
