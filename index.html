@@ -55,6 +55,16 @@ body.dark{--bg:#262522;--surface:#1c1b19;--surface2:#322f2b;--border:#3a3733;--t
 .etd-msg i{font-size:2rem;opacity:.5;display:block;margin-bottom:.6rem}
 .etd-msg-t{font-weight:600;color:var(--text);margin-bottom:.3rem}
 .etd-msg-s{font-size:.82rem;max-width:420px;margin:0 auto;line-height:1.5}
+.hrs-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:680px){.hrs-grid{grid-template-columns:1fr}}
+.hrs-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1rem}
+.hrs-top{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem}
+.hrs-name{font-weight:600;font-size:1.02rem}
+.hrs-leave{font-weight:700;color:#185FA5;font-size:1.05rem;white-space:nowrap}
+.hrs-var{color:var(--muted);font-weight:600;font-size:.85rem}
+.hrs-sub{font-size:.8rem;color:var(--muted);margin-top:.3rem}
+.hrs-chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem}
+.hrs-chip{display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:.2rem .6rem}
 .br-flag{flex-shrink:0;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35));transform-origin:left center;animation:brWave 3.5s ease-in-out infinite}
 @keyframes brWave{0%,100%{transform:rotate(0) skewX(0)}25%{transform:rotate(-1.5deg) skewX(-3deg)}75%{transform:rotate(1.5deg) skewX(3deg)}}
 .copa-pill{font-size:.62rem;font-weight:700;letter-spacing:.06em;background:#FEDD00;color:#005c1f;padding:.12rem .45rem;border-radius:20px;text-transform:uppercase;display:inline-flex;align-items:center;gap:.25rem}
@@ -641,6 +651,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 <div class="sb-group-body">
 <div class="sb-subitem" id="nav-habits" onclick="setSimplePage('habits',this)"><i class="ti ti-flame"></i> Habit Tracker</div>
 <div class="sb-subitem" id="nav-metas" onclick="setSimplePage('metas',this)"><i class="ti ti-target"></i> Metas</div>
+<div class="sb-subitem" id="nav-horas" onclick="setSimplePage('horas',this)"><i class="ti ti-clock-hour-8"></i> Que horas sair?</div>
 
 </div></div>
 <!-- CONHECIMENTO -->
@@ -1136,6 +1147,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 <div class="page" id="page-leitura"><div class="coming-soon"><i class="ti ti-book"></i><p>Leitura — em breve</p></div></div>
 <div class="page" id="page-insights"><div class="coming-soon"><i class="ti ti-bulb"></i><p>Insights &amp; Frases — em breve</p></div></div>
 <div class="page" id="page-ingles"><div class="etd-head"><div class="etd-h-title">🇬🇧 Estudar Inglês <span class="etd-h-sub">como estamos evoluindo</span></div><div class="etd-h-actions"><button class="etd-refresh" onclick="try{ING.open()}catch(e){}" title="Atualizar"><i class="ti ti-refresh"></i></button><a class="etd-openapp" href="https://dkonrad88.github.io/english-trainer/" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> Abrir app</a></div></div><div id="ingDash"></div></div>
+<div class="page" id="page-horas"><div class="etd-head"><div class="etd-h-title">⏰ Que horas sair? <span class="etd-h-sub">seus modelos de horário</span></div><div class="etd-h-actions"><button class="etd-refresh" onclick="try{HORAS.open()}catch(e){}" title="Atualizar"><i class="ti ti-refresh"></i></button><a class="etd-openapp" href="https://dkonrad88.github.io/horas/" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> Abrir app</a></div></div><div id="horasDash"></div></div>
 <div class="page" id="page-presentes"><div class="coming-soon"><i class="ti ti-gift"></i><p>Presentes &amp; Datas — em breve</p></div></div>
 <div class="page" id="page-contas"><div class="coming-soon"><i class="ti ti-lock"></i><p>Contas &amp; Assinaturas — em breve</p></div></div>
 <div class="page" id="page-lixeira"><div class="page-header"><div class="page-title"><i class="ti ti-trash" style="color:#009C3B"></i> Lixeira</div><div class="page-actions"><button class="btn btn-ghost btn-sm" onclick="lixEsvaziar()"><i class="ti ti-trash-x"></i> Esvaziar lixeira</button></div></div><p class="lix-intro">Itens excluídos a partir de agora ficam aqui. Você pode restaurar ou apagar definitivamente.</p><div id="lix-box"><div class="lix-row"><div class="lix-ic">🧾</div><div class="lix-body"><div class="lix-label">Teste</div><div class="lix-meta">Gasto · Orlando · excluído 14 de jun. 21:23</div></div><button class="btn btn-ghost btn-sm" onclick="lixRestaurar('lix4')"><i class="ti ti-arrow-back-up"></i> Restaurar</button><button class="action-btn" onclick="lixExcluir('lix4')" title="Apagar definitivamente"><i class="ti ti-trash" style="color:var(--danger)"></i></button></div><div class="lix-row"><div class="lix-ic">💍</div><div class="lix-body"><div class="lix-label">Lugar para o Noivo ficar com os padrinhos</div><div class="lix-meta">Gasto · Casamento · excluído 14 de jun. 20:06</div></div><button class="btn btn-ghost btn-sm" onclick="lixRestaurar('lix3')"><i class="ti ti-arrow-back-up"></i> Restaurar</button><button class="action-btn" onclick="lixExcluir('lix3')" title="Apagar definitivamente"><i class="ti ti-trash" style="color:var(--danger)"></i></button></div><div class="lix-row"><div class="lix-ic">💍</div><div class="lix-body"><div class="lix-label">Votos noiva</div><div class="lix-meta">Gasto · Casamento · excluído 14 de jun. 19:49</div></div><button class="btn btn-ghost btn-sm" onclick="lixRestaurar('lix2')"><i class="ti ti-arrow-back-up"></i> Restaurar</button><button class="action-btn" onclick="lixExcluir('lix2')" title="Apagar definitivamente"><i class="ti ti-trash" style="color:var(--danger)"></i></button></div><div class="lix-row"><div class="lix-ic">💍</div><div class="lix-body"><div class="lix-label">Votos noivo</div><div class="lix-meta">Gasto · Casamento · excluído 14 de jun. 19:49</div></div><button class="btn btn-ghost btn-sm" onclick="lixRestaurar('lix1')"><i class="ti ti-arrow-back-up"></i> Restaurar</button><button class="action-btn" onclick="lixExcluir('lix1')" title="Apagar definitivamente"><i class="ti ti-trash" style="color:var(--danger)"></i></button></div></div></div>
@@ -2128,6 +2140,7 @@ function setSimplePage(p,el){
   const pg=document.getElementById('page-'+p);if(pg)pg.classList.add('active');
   if(p==='habits'){try{FOCO.open();}catch(e){}}
   if(p==='ingles'){try{ING.open();}catch(e){}}
+  if(p==='horas'){try{HORAS.open();}catch(e){}}
   if(p==='metas'){try{mvRender();}catch(e){}}
   if(p==='lixeira'){try{lixRender();}catch(e){}}
 }
@@ -2871,6 +2884,49 @@ window.addEventListener('pagehide',function(){try{saveAllFlush();}catch(e){}});
 document.addEventListener('visibilitychange',function(){if(document.hidden){try{saveAllFlush();}catch(e){}}else if(sb&&cloudUser&&Date.now()-(cloudLastSync||0)>8000){try{cloudSyncBoot();}catch(e){}}});
 
 /* ===================== FOCO DASH (lê foco_state, render desktop, read-only) ===================== */
+var HORAS=(function(){
+  var tpls=[],state='init',errMsg='';
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function pad(n){return (n<10?'0':'')+n;}
+  function hhmm(min){min=((min%1440)+1440)%1440;return pad(Math.floor(min/60))+':'+pad(min%60);}
+  function fmtDur(min){min=Math.max(0,min);var h=Math.floor(min/60),m=min%60;if(h&&m)return h+'h '+m+'min';if(h)return h+'h';return m+'min';}
+  function tplTotal(t){return (t.etapas||[]).reduce(function(s,e){return s+((e[1]||0)*60+(e[2]||0));},0);}
+  function card(t){
+    var n=(t.etapas||[]).length,total=tplTotal(t),line,sub;
+    if(t.fixedComp!=null){
+      var leave=t.fixedComp-(t.anteMin||0)-total;
+      line='<span class="hrs-leave">sai '+hhmm(leave)+'</span>';
+      sub='compromisso '+hhmm(t.fixedComp)+' · chega '+fmtDur(t.anteMin||0)+' antes';
+    }else{
+      line='<span class="hrs-leave hrs-var">horário varia</span>';
+      sub='chega '+fmtDur(t.anteMin||0)+' antes do compromisso';
+    }
+    return '<div class="hrs-card"><div class="hrs-top"><span class="hrs-name">'+esc(t.name||'(sem nome)')+'</span>'+line+'</div>'
+      +'<div class="hrs-sub">'+esc(sub)+'</div>'
+      +'<div class="hrs-chips"><span class="hrs-chip"><i class="ti ti-list-numbers"></i> '+n+' etapa'+(n===1?'':'s')+'</span><span class="hrs-chip"><i class="ti ti-hourglass-low"></i> '+fmtDur(total)+' de preparo</span></div></div>';
+  }
+  function msg(icon,t,s){return '<div class="etd-msg"><i class="ti '+icon+'"></i><div class="etd-msg-t">'+esc(t)+'</div><div class="etd-msg-s">'+esc(s)+'</div></div>';}
+  function render(){
+    var box=document.getElementById('horasDash');if(!box)return;
+    if(state==='nologin'){box.innerHTML=msg('ti-cloud-off','Entre na sua conta','Faça login na nuvem (ícone ☁ no topo) com a mesma conta do app "Que horas sair?" para ver os modelos aqui.');return;}
+    if(state==='loading'||state==='init'){box.innerHTML='<div class="etd-loading"><i class="ti ti-loader-2"></i> Carregando…</div>';return;}
+    if(state==='error'){box.innerHTML=msg('ti-alert-triangle','Não consegui carregar',errMsg);return;}
+    if(!tpls.length){box.innerHTML=msg('ti-clock-hour-4','Sem modelos ainda','Crie um modelo de horário no app (botão acima) que ele aparece aqui.');return;}
+    box.innerHTML='<div class="hrs-grid">'+tpls.map(card).join('')+'</div>';
+  }
+  function open(){var box=document.getElementById('horasDash');if(box&&state==='init')box.innerHTML='<div class="etd-loading"><i class="ti ti-loader-2"></i> Carregando modelos…</div>';pull(render);}
+  function pull(cb){
+    if(typeof sb==='undefined'||!sb||typeof cloudUser==='undefined'||!cloudUser){state='nologin';if(cb)cb();return;}
+    state='loading';
+    sb.from('horas_state').select('key,value').eq('user_id',cloudUser.id).then(function(r){
+      if(r.error){state='error';errMsg=r.error.message;if(cb)cb();return;}
+      var map={};(r.data||[]).forEach(function(x){map[x.key]=x.value;});
+      tpls=Array.isArray(map.templates)?map.templates:[];
+      state='ok';if(cb)cb();
+    },function(e){state='error';errMsg=(e&&e.message)||'falha de rede';if(cb)cb();});
+  }
+  return {open:open};
+})();
 var ING=(function(){
   var rows={},state='init',errMsg='';
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
