@@ -1,0 +1,17 @@
+{
+  "name": "HUB Pessoal",
+  "short_name": "HUB",
+  "description": "Hub pessoal: viagem, casamento, hábitos, metas e mais.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#262522",
+  "theme_color": "#009C3B",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
