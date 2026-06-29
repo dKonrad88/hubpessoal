@@ -540,6 +540,17 @@ body.light .parc-date{color-scheme:light}
 .sb-reopen{display:none;position:fixed;top:64px;left:10px;z-index:90;background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:8px;width:38px;height:38px;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.18);font-size:1.1rem}
 .sb-reopen:hover{border-color:#185FA5;color:#185FA5}
 body.sb-collapsed .sb-reopen{display:flex}
+.mnav-btn{display:none}.sb-backdrop{display:none}
+@media(max-width:760px){
+.mnav-btn{display:flex}
+.sb-tools{display:none}
+.sb-reopen{display:none!important}
+.sidebar{position:fixed;top:52px;left:0;bottom:0;width:min(84vw,300px);z-index:120;transform:translateX(-100%);transition:transform .25s ease;box-shadow:2px 0 18px rgba(0,0,0,.35)}
+.sidebar.collapsed{width:min(84vw,300px);padding:.75rem 0;border-right:1px solid var(--border)}
+body.mnav-open .sidebar{transform:translateX(0)}
+.sb-backdrop{display:block;position:fixed;inset:52px 0 0 0;background:rgba(0,0,0,.5);z-index:110;opacity:0;pointer-events:none;transition:opacity .25s}
+body.mnav-open .sb-backdrop{opacity:1;pointer-events:auto}
+}
 /* --- emoji picker --- */
 #modalEmoji{z-index:700}
 #modalEmoji .emoji-search{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.5rem .7rem;color:var(--text);font-family:inherit;font-size:1.1rem;outline:none;text-align:center}
@@ -584,6 +595,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 <div class="topbar">
 <div class="topbar-title">HUB <span>Pessoal</span></div>
 <div class="topbar-right">
+<button class="hdr-btn mnav-btn" onclick="mnavToggle()" title="Menu" aria-label="Abrir menu"><i class="ti ti-menu-2"></i></button>
 <button class="hdr-btn cloud-badge" id="cloudBadge" onclick="openCloud()" title="Conta &amp; sincronização"><i class="ti ti-cloud-check cb-ok" id="cloudBadgeIc"></i></button>
 <div style="position:relative">
 <button class="hdr-btn" onclick="toggleConfig(event)"><i class="ti ti-settings"></i></button>
@@ -604,6 +616,7 @@ body.sb-collapsed .sb-reopen{display:flex}
 </div>
 <div class="navbar" style="display:none"></div>
 <div class="layout">
+<div class="sb-backdrop" onclick="mnavClose()"></div>
 <aside class="sidebar">
 <div class="sb-tools">
 <button class="sb-tool" id="sbToolGroups" onclick="sbToggleGroups()" title="Recolher / expandir grupos"><i class="ti ti-fold-up"></i></button>
@@ -2587,6 +2600,9 @@ function sbToggleGroups(){
   var ic=document.querySelector('#sbToolGroups i'); if(ic)ic.className=sbGroupsOpen?'ti ti-fold-down':'ti ti-fold-up';
 }
 function sbToggleGroup(label){var g=label.closest&&label.closest('.sb-group'); if(!g)return; var collapsing=!g.classList.contains('collapsed'); g.classList.toggle('collapsed'); if(collapsing)sbCloseSubs(g);}
+function mnavToggle(){document.body.classList.toggle('mnav-open');}
+function mnavClose(){document.body.classList.remove('mnav-open');}
+document.addEventListener('click',function(e){if(!document.body.classList.contains('mnav-open'))return;var t=e.target.closest&&e.target.closest('.sb-subsubitem,.sb-item-flat,.sb-subitem');if(t){var oc=t.getAttribute('onclick')||'';if(/setSimplePage|setTab2|setTabCas/.test(oc))mnavClose();}});
 function sbToggleBar(){
   var sb=document.querySelector('.sidebar'); if(!sb)return;
   var col=sb.classList.toggle('collapsed');
