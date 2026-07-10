@@ -1520,11 +1520,11 @@ function renderGastos(){
 }
 
 // COUNTDOWN
-const PARTIDA=new Date('2026-09-30T00:00:00');
+const PARTIDA=new Date('2026-09-29T12:10:00');
 function renderCountdown(){const diff=PARTIDA-new Date();if(diff<=0){document.getElementById('countdown').innerHTML='<div style="color:#34d399;font-weight:600">Viagem em andamento! 🎉</div>';return;}const dias=Math.floor(diff/86400000),hrs=Math.floor((diff%86400000)/3600000),min=Math.floor((diff%3600000)/60000),sec=Math.floor((diff%60000)/1000);document.getElementById('countdown').innerHTML=`<div class="cd-block"><div class="cd-num">${dias}</div><div class="cd-label">Dias</div></div><div class="cd-block"><div class="cd-num">${hrs}</div><div class="cd-label">Horas</div></div><div class="cd-block"><div class="cd-num">${min}</div><div class="cd-label">Min</div></div><div class="cd-block"><div class="cd-num">${sec}</div><div class="cd-label">Seg</div></div>`;}
 setInterval(renderCountdown,1000);renderCountdown();
 
-var voos={t1:{saida:'',chegada:''},t2:{saida:'',chegada:''},t3:{saida:'',chegada:''},t4:{saida:'',chegada:''},viajantes:'Diego, Débora, Hélio, Quizela'};
+var voos={t1:{saida:'29 Set - 12h10',chegada:'29 Set - 13h55'},t2:{saida:'30 Set - 08h30',chegada:'30 Set - 16h20'},t3:{saida:'16 Out - 19h25',chegada:'17 Out - 05h00'},t4:{saida:'17 Out - 15h15',chegada:'17 Out - 17h00'},viajantes:'Diego, Débora'};
 function renderVoos(){var g=function(id){return document.getElementById(id);};var set=function(id,v){var e=g(id);if(e)e.textContent=v||'—';};set('vw-1-saida',voos.t1.saida);set('vw-1-chegada',voos.t1.chegada);set('vw-2-saida',voos.t2.saida);set('vw-2-chegada',voos.t2.chegada);set('vw-3-saida',voos.t3.saida);set('vw-3-chegada',voos.t3.chegada);set('vw-4-saida',voos.t4.saida);set('vw-4-chegada',voos.t4.chegada);set('vw-viajantes',voos.viajantes);}
 function abrirModalVoos(){var g=function(id){return document.getElementById(id);};g('v1saida').value=voos.t1.saida;g('v1chegada').value=voos.t1.chegada;g('v2saida').value=voos.t2.saida;g('v2chegada').value=voos.t2.chegada;g('v3saida').value=voos.t3.saida;g('v3chegada').value=voos.t3.chegada;g('v4saida').value=voos.t4.saida;g('v4chegada').value=voos.t4.chegada;g('vViajantes').value=voos.viajantes;openModal('modalVoos');}
 function saveVoos(){var g=function(id){return document.getElementById(id).value;};voos={t1:{saida:g('v1saida'),chegada:g('v1chegada')},t2:{saida:g('v2saida'),chegada:g('v2chegada')},t3:{saida:g('v3saida'),chegada:g('v3chegada')},t4:{saida:g('v4saida'),chegada:g('v4chegada')},viajantes:g('vViajantes')};saveAll();renderVoos();closeModal('modalVoos');}
