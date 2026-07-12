@@ -3193,13 +3193,20 @@ function _bar(pct,cor){return '<div style="height:7px;background:var(--border);b
 
 /* ===================== VIAGEM ORLANDO — mini-dash (lê viagem_state compartilhado) ===================== */
 var VIAG=(function(){
-  var LID='ab3b1cf0-0b0e-4378-b7f3-6cb374af02a0',M={},state='init',errMsg='';
+  var M={},state='init',errMsg='';
   function open(){state='loading';render();
     if(!(window.sb&&cloudUser)){state='nologin';return render();}
-    sb.from('viagem_state').select('key,value').eq('lista_id',LID).then(function(r){
-      if(r.error){state='error';errMsg=r.error.message;return render();}
-      M={}; (r.data||[]).forEach(function(row){M[row.key]=row.value;});
-      state='ok'; render();
+    // resolve o espaço da Viagem Orlando dinamicamente (IDs já foram recriados antes → não hardcodar)
+    sb.from('listas').select('id,nome').eq('tipo','viagem').then(function(lr){
+      if(lr.error){state='error';errMsg=lr.error.message;return render();}
+      var listas=lr.data||[];
+      var alvo=listas.filter(function(l){return /orlando/i.test(l.nome||'');})[0]||listas[0];
+      if(!alvo){state='empty';return render();}
+      sb.from('viagem_state').select('key,value').eq('lista_id',alvo.id).then(function(r){
+        if(r.error){state='error';errMsg=r.error.message;return render();}
+        M={}; (r.data||[]).forEach(function(row){M[row.key]=row.value;});
+        state='ok'; render();
+      }).catch(function(e){state='error';errMsg=(e&&e.message)||'falha';render();});
     }).catch(function(e){state='error';errMsg=(e&&e.message)||'falha';render();});
   }
   function render(){
@@ -3207,6 +3214,7 @@ var VIAG=(function(){
     if(state==='nologin'){box.innerHTML=_dmsg('ti-cloud-off','Entre na sua conta','Faça login na nuvem (☁ no topo) para ver o resumo da viagem.');return;}
     if(state==='loading'||state==='init'){box.innerHTML='<div class="etd-loading"><i class="ti ti-loader-2"></i> Carregando…</div>';return;}
     if(state==='error'){box.innerHTML=_dmsg('ti-alert-triangle','Não consegui carregar',errMsg);return;}
+    if(state==='empty'){box.innerHTML=_dmsg('ti-map-pin','Nenhum espaço de viagem','Crie/entre na viagem pelo app (Trabalhar no app) que o resumo aparece aqui.');return;}
     var meta=M.meta||{},cambio=Number(meta.cambio)||5,total=Number(meta.total)||0;
     var gastos=Array.isArray(M.gastos)?M.gastos:[];
     var gastoBRL=gastos.reduce(function(a,g){var v=Number(g.valor)||0;return a+((g.moeda==='US$'||g.moeda==='USD')?v*cambio:v);},0);
@@ -3238,10 +3246,16 @@ var CASA=(function(){
   var M={},state='init',errMsg='';
   function open(){state='loading';render();
     if(!(window.sb&&cloudUser)){state='nologin';return render();}
-    sb.from('casamento_state').select('key,value').then(function(r){
-      if(r.error){state='error';errMsg=r.error.message;return render();}
-      M={}; (r.data||[]).forEach(function(row){M[row.key]=row.value;});
-      state='ok'; render();
+    // resolve o espaço do casamento dinamicamente (o espaço já foi recriado antes → não hardcodar id)
+    sb.from('listas').select('id').eq('tipo','casamento').then(function(lr){
+      if(lr.error){state='error';errMsg=lr.error.message;return render();}
+      var alvo=(lr.data||[])[0];
+      if(!alvo){state='empty';return render();}
+      sb.from('casamento_state').select('key,value').eq('lista_id',alvo.id).then(function(r){
+        if(r.error){state='error';errMsg=r.error.message;return render();}
+        M={}; (r.data||[]).forEach(function(row){M[row.key]=row.value;});
+        state='ok'; render();
+      }).catch(function(e){state='error';errMsg=(e&&e.message)||'falha';render();});
     }).catch(function(e){state='error';errMsg=(e&&e.message)||'falha';render();});
   }
   function render(){
@@ -3249,6 +3263,7 @@ var CASA=(function(){
     if(state==='nologin'){box.innerHTML=_dmsg('ti-cloud-off','Entre na sua conta','Faça login na nuvem (☁ no topo) para ver o resumo do casamento.');return;}
     if(state==='loading'||state==='init'){box.innerHTML='<div class="etd-loading"><i class="ti ti-loader-2"></i> Carregando…</div>';return;}
     if(state==='error'){box.innerHTML=_dmsg('ti-alert-triangle','Não consegui carregar',errMsg);return;}
+    if(state==='empty'){box.innerHTML=_dmsg('ti-heart','Nenhum espaço de casamento','Crie/entre no casamento pelo app (Trabalhar no app) que o resumo aparece aqui.');return;}
     var meta=Number(M.meta)||0;
     var gastos=Array.isArray(M.gastos)?M.gastos:[];
     var ativos=gastos.filter(function(g){return !g.cancelado;});
