@@ -3295,7 +3295,7 @@ var CASA=(function(){
 })();
 
 var RUN=(function(){
-  var acts=[],totals={},meta={},state='init',errMsg='';
+  var acts=[],totals={},meta={},garmin={},state='init',errMsg='';
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function pad(n){return (n<10?'0':'')+n;}
   function pace(sk){if(sk==null||!isFinite(sk))return '—';var m=Math.floor(sk/60),s=Math.round(sk%60);if(s===60){m++;s=0;}return m+':'+pad(s);}
@@ -3338,18 +3338,46 @@ var RUN=(function(){
       +'<div class="etd-prog"><div class="etd-prog-bar" style="width:'+meta21+'%"></div></div>'
       +'<div class="etd-foot"><span>Rumo aos 21K · '+meta21.toFixed(0)+'%</span><span>faltam '+Math.max(0,21.0975-longest).toFixed(1)+' km</span></div>'
     +'</div>';
-    box.innerHTML='<div class="etd-grid">'+card1+card2+'</div>'
-      +'<div style="text-align:center;color:var(--muted);font-size:.72rem;margin-top:.7rem">Sincronizado '+ago(meta.last_sync)+' · '+acts.length+' atividades</div>';
+    box.innerHTML='<div class="etd-grid">'+card1+card2+'</div>'+ghealth()
+      +'<div style="text-align:center;color:var(--muted);font-size:.72rem;margin-top:.7rem">Strava sincronizado '+ago(meta.last_sync)+' · '+acts.length+' atividades</div>';
+  }
+  function ghealth(){
+    var daily=garmin.daily||{},trends=(garmin.trends&&garmin.trends.days)||[],gm=garmin.meta||{};
+    if(!gm.connected&&!trends.length)return '';
+    function pick(tf,df){if(daily[df]!=null)return daily[df];for(var i=trends.length-1;i>=0;i--){if(trends[i]&&trends[i][tf]!=null)return trends[i][tf];}return null;}
+    var hrv=pick('hrv','hrv_avg'),sleep=pick('sleep_h','sleep_hours'),rhr=pick('resting_hr','resting_hr'),bb=pick('body_battery_high','body_battery_high');
+    if([hrv,sleep,rhr,bb].every(function(v){return v==null;}))return '';
+    // sparkline HRV (até 12 dias com dado)
+    var hs=trends.filter(function(d){return d&&d.hrv!=null;}).slice(-12);
+    var spark='';
+    if(hs.length>1){var mn=Math.min.apply(null,hs.map(function(d){return d.hrv;})),mx=Math.max.apply(null,hs.map(function(d){return d.hrv;})),rng=(mx-mn)||1;
+      spark='<div style="display:flex;align-items:flex-end;gap:3px;height:34px;margin-top:.5rem">'+hs.map(function(d){var h=6+Math.round((d.hrv-mn)/rng*24);return '<div title="'+d.date+': HRV '+d.hrv+'" style="flex:1;height:'+h+'px;background:linear-gradient(#5b9bd5,#185FA5);border-radius:3px 3px 0 0;min-width:5px"></div>';}).join('')+'</div>'
+        +'<div style="display:flex;justify-content:space-between;font-size:.62rem;color:var(--muted);margin-top:.15rem"><span>HRV '+mn+'–'+mx+' ms · '+hs.length+' dias</span><span>agora '+(hrv!=null?hrv+' ms':'—')+'</span></div>';}
+    return '<div class="etd-card" style="margin-top:.7rem">'
+      +'<div class="etd-top"><span class="etd-name">❤️ Prontidão & recuperação</span><span class="etd-lvl">Garmin'+(gm.connected?' · conectado':'')+'</span></div>'
+      +'<div class="etd-stats">'
+        +stat((hrv!=null?hrv+unit('ms'):'—'),'HRV (VFC)')
+        +stat((sleep!=null?(Math.round(sleep*10)/10)+unit('h'):'—'),'sono')
+        +stat((rhr!=null?rhr+unit('bpm'):'—'),'FC repouso')
+        +stat((bb!=null?bb:'—'),'body battery')
+      +'</div>'+spark
+      +'<div class="etd-foot"><span>última leitura disponível</span><span>'+(gm.last_sync?'sync '+ago(gm.last_sync):'')+'</span></div>'
+    +'</div>';
   }
   function open(){var box=document.getElementById('corridaDash');if(box&&state==='init')box.innerHTML='<div class="etd-loading"><i class="ti ti-loader-2"></i> Carregando corridas…</div>';pull(render);}
   function pull(cb){
     if(typeof sb==='undefined'||!sb||typeof cloudUser==='undefined'||!cloudUser){state='nologin';if(cb)cb();return;}
     state='loading';
-    sb.from('strava_state').select('key,value').eq('user_id',cloudUser.id).then(function(r){
+    Promise.all([
+      sb.from('strava_state').select('key,value').eq('user_id',cloudUser.id),
+      sb.from('garmin_state').select('key,value').eq('user_id',cloudUser.id)
+    ]).then(function(rs){
+      var r=rs[0];
       if(r.error){state='error';errMsg=r.error.message;if(cb)cb();return;}
       var map={};(r.data||[]).forEach(function(x){map[x.key]=x.value;});
       acts=(map.activities&&Array.isArray(map.activities.items))?map.activities.items:[];
       totals=map.totals||{};meta=map.meta||{};
+      garmin={};if(!rs[1].error)(rs[1].data||[]).forEach(function(x){garmin[x.key]=x.value;});
       state='ok';if(cb)cb();
     },function(e){state='error';errMsg=(e&&e.message)||'falha de rede';if(cb)cb();});
   }
