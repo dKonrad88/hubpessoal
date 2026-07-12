@@ -34,6 +34,19 @@ body.dark{--bg:#262522;--surface:#1c1b19;--surface2:#322f2b;--border:#3a3733;--t
 .etd-refresh{background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:8px;width:36px;height:36px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
 .etd-refresh:hover{border-color:#185FA5}
 .etd-openapp{display:inline-flex;align-items:center;gap:.4rem;background:#185FA5;color:#fff;text-decoration:none;font-weight:600;font-size:.85rem;padding:.5rem .9rem;border-radius:8px}
+/* ===== App embed (Resumo ↔ App vivo) ===== */
+.appseg{display:inline-flex;gap:2px;background:var(--surface2,rgba(128,128,128,.1));border:1px solid var(--border);border-radius:9px;padding:3px;margin-bottom:1rem}
+.appseg button{border:none;background:transparent;color:var(--muted);font-family:inherit;font-size:.82rem;font-weight:600;padding:.42rem .9rem;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:all .12s}
+.appseg button:hover{color:var(--text)}
+.appseg button.on{background:#185FA5;color:#fff}
+.app-embed-pane{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.app-embed-pane iframe{width:100%;height:calc(100vh - 150px);min-height:520px;border:0;display:block;background:var(--card)}
+.app-embed-hint{font-size:.72rem;color:var(--muted);margin:-.4rem 0 .7rem;display:flex;align-items:center;gap:.35rem}
+.page[data-view="app"]>:not(.appseg):not(.app-embed-pane):not(.app-embed-hint){display:none}
+.page:not([data-view="app"])>.app-embed-pane,.page:not([data-view="app"])>.app-embed-hint{display:none}
+/* moldura de celular opcional p/ apps mobile-first */
+.app-embed-pane.phone{border:none;background:transparent;box-shadow:none;display:flex;justify-content:center;padding:.5rem 0}
+.app-embed-pane.phone iframe{width:392px;max-width:100%;height:calc(100vh - 170px);min-height:600px;border:10px solid #111;border-radius:34px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
 .etd-openapp:hover{background:#134b78}
 .etd-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media(max-width:680px){.etd-grid{grid-template-columns:1fr}}
@@ -3025,6 +3038,59 @@ var HORAS=(function(){
   }
   return {open:open};
 })();
+/* ===================== APP EMBED (iframe do app vivo p/ trabalhar no desktop) =====================
+   Todos os apps vivem na MESMA origin (dkonrad88.github.io) → o iframe herda o login do Supabase,
+   fica sempre atualizado e não duplica código (regra da suíte: ligar por link, não copiar).
+   Cada página registrada ganha um seletor "Resumo ↔ Trabalhar no app" injetado no boot. */
+var EMBED=(function(){
+  var BASE='https://dkonrad88.github.io/';
+  // dash = id do container da mini-dash (só p/ referência); phone = usar moldura de celular
+  var REG={
+    habits:{url:BASE+'Foco/',            phone:true},
+    ingles:{url:BASE+'english-trainer/', phone:false},
+    horas: {url:BASE+'horas/',           phone:true},
+    lista: {url:BASE+'lista/',           phone:true},
+    corrida:{url:BASE+'strava/',         phone:false}
+  };
+  function seg(key){
+    return '<div class="appseg">'
+      +'<button data-m="resumo" class="on" onclick="EMBED.setView(\''+key+'\',\'resumo\')"><i class="ti ti-layout-dashboard"></i> Resumo</button>'
+      +'<button data-m="app" onclick="EMBED.setView(\''+key+'\',\'app\')"><i class="ti ti-device-mobile"></i> Trabalhar no app</button>'
+    +'</div>';
+  }
+  function setView(key,mode){
+    var pg=document.getElementById('page-'+key); if(!pg)return;
+    pg.dataset.view=mode;
+    var s=pg.querySelector('.appseg');
+    if(s)s.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.m===mode);});
+    if(mode==='app'){
+      var pane=document.getElementById('embed-'+key);
+      if(pane&&!pane.dataset.loaded){
+        pane.innerHTML='<iframe src="'+REG[key].url+'" loading="lazy" allow="clipboard-write; geolocation; camera; microphone" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+        pane.dataset.loaded='1';
+      }
+    }
+  }
+  function boot(){
+    Object.keys(REG).forEach(function(key){
+      var pg=document.getElementById('page-'+key); if(!pg||pg.querySelector('.appseg'))return;
+      var cfg=REG[key];
+      // seletor no topo
+      var wrap=document.createElement('div'); wrap.innerHTML=seg(key);
+      pg.insertBefore(wrap.firstChild,pg.firstChild);
+      // dica + pane do iframe no fim
+      var hint=document.createElement('div'); hint.className='app-embed-hint';
+      hint.innerHTML='<i class="ti ti-info-circle"></i> Mesmo app do celular, aqui no desktop — já logado, salva na nuvem em tempo real.';
+      pg.appendChild(hint);
+      var pane=document.createElement('div'); pane.className='app-embed-pane'+(cfg.phone?' phone':''); pane.id='embed-'+key;
+      pg.appendChild(pane);
+      pg.dataset.view='resumo';
+    });
+  }
+  return {boot:boot,setView:setView,reg:REG};
+})();
+try{EMBED.boot();}catch(e){console.warn('EMBED.boot',e);}
+
 var RUN=(function(){
   var acts=[],totals={},meta={},state='init',errMsg='';
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
