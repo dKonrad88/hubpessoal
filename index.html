@@ -2899,13 +2899,10 @@ function cloudInit(tries){tries=tries||0;if(!(window.supabase&&window.supabase.c
 _safe(loadAll);_safe(clCollapseAll);
 _safe(renderConvidados);
 _safe(renderCasDash);
-_safe(()=>{const s=document.getElementById('subsub-orlando');if(s)s.classList.add('open');});
-_safe(()=>{const c=document.getElementById('chev-orlando');if(c)c.style.transform='rotate(90deg)';});
-_safe(renderRoteiro);
-_safe(()=>['levar','visitar','comprar','previagem'].forEach(renderCL));
-_safe(renderGastos);
-_safe(renderDashboard);
-_safe(renderDocs);
+/* Orlando/Casamento nativos saíram do nav (Bloco C) → dados vivem no app /viagem e /casamento.
+   Renders pesados dessas páginas órfãs NÃO rodam mais no boot (perf). As funções seguem
+   definidas; se um dia voltarem ao nav, setTab2/setTabCas as chamam sob demanda.
+   Mantidos no boot só os que alimentam páginas VIVAS: renderNotes (Notas global), renderTags. */
 _safe(renderNotes);
 _safe(renderTags);
 _safe(htRenderAll);
@@ -2914,7 +2911,6 @@ _safe(lixRender);
 _safe(cloudInit);_cloudSuppress=false;
 
 _safe(()=>{document.querySelectorAll('.sb-subsubitem,.sb-subitem,.sb-item-flat').forEach(function(i){i.classList.remove('active');});if(!document.querySelector('.page.active')){var w=document.getElementById('page-welcome');if(w)w.classList.add('active');}});
-window.addEventListener('load',function(){try{renderGastos();}catch(e){console.warn('charts pós-load falharam:',e);}});
 _safe(()=>{const h=document.getElementById('refreshHint');if(h){const mac=/Mac|iPhone|iPad/i.test(navigator.platform)||/Mac/i.test(navigator.userAgent);h.textContent=mac?'\u2318 + \u2325 + R':'Ctrl + F5';}});
 window.addEventListener('beforeunload',function(){try{saveAllFlush();}catch(e){}});
 window.addEventListener('pagehide',function(){try{saveAllFlush();}catch(e){}});
