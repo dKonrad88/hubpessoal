@@ -2151,6 +2151,7 @@ function setSimplePage(p,el){
   if(el)el.classList.add('active');
   document.querySelectorAll('.page').forEach(pg=>pg.classList.remove('active'));
   const pg=document.getElementById('page-'+p);if(pg)pg.classList.add('active');
+  try{localStorage.setItem('hub_lastPage',p);}catch(e){} // lembra a tela p/ reabrir no refresh
   if(EMBED.reg[p]){try{EMBED.onShow(p);}catch(e){}} // apps embed: abre direto no app; Resumo busca dados só ao clicar
   if(p==='metas'){try{mvRender();}catch(e){}}
   if(p==='lixeira'){try{lixRender();}catch(e){}}
@@ -3041,6 +3042,7 @@ var EMBED=(function(){
   function setView(key,mode){
     var pg=document.getElementById('page-'+key); if(!pg)return;
     pg.dataset.view=mode;
+    try{localStorage.setItem('hub_view_'+key,mode);}catch(e){} // lembra a escolha app/resumo por app
     var s=pg.querySelector('.appseg');
     if(s)s.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.m===mode);});
     if(mode==='app'){
@@ -3066,12 +3068,25 @@ var EMBED=(function(){
       pg.appendChild(hint);
       var pane=document.createElement('div'); pane.className='app-embed-pane'+(cfg.phone?' phone':''); pane.id='embed-'+key;
       pg.appendChild(pane);
-      pg.dataset.view='app'; // padrão: abrir direto no "Trabalhar no app"
+      var sv='app'; try{sv=localStorage.getItem('hub_view_'+key)||'app';}catch(e){} // padrão: "Trabalhar no app"; lembra a última escolha
+      pg.dataset.view=sv;
+      var s=pg.querySelector('.appseg'); if(s)s.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.m===sv);});
     });
   }
   return {boot:boot,setView:setView,onShow:onShow,reg:REG};
 })();
 try{EMBED.boot();}catch(e){console.warn('EMBED.boot',e);}
+/* Reabre a última tela no refresh (em vez de cair no welcome). Roda após EMBED.boot (segs/panes já existem). */
+function hubRestore(){
+  var last=null; try{last=localStorage.getItem('hub_lastPage');}catch(e){}
+  if(!last)return;
+  var pageEl=document.getElementById('page-'+last); if(!pageEl)return;
+  var navEl=document.querySelector('.sidebar [onclick*="setSimplePage(\''+last+'\'"]');
+  try{setSimplePage(last,navEl);}catch(e){return;}
+  if(navEl&&navEl.closest){var grp=navEl.closest('.sb-group'); if(grp)grp.classList.remove('collapsed');
+    var ss=navEl.closest('.sb-subsubgroup'); if(ss)ss.classList.add('open');}
+}
+try{hubRestore();}catch(e){console.warn('hubRestore',e);}
 
 /* ===================== SUPERCOFFEE — monitor de preços 380g (read-only) =====================
    Contrato: sc_precos + sc_config. Alimentado pelo coletor do repo supercoffee; o HUB só lê. */
