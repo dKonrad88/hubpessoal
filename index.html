@@ -3379,20 +3379,25 @@ var APTO=(function(){
         +'<div style="margin-top:.2rem"><div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>contrato '+_brl(ir.contrato)+(ir.construtora?(' · '+_dashEsc(ir.construtora)):'')+'</span><span>'+pctQ+'% quitado'+(ir.prox?(' · vence '+String(ir.prox.venc||'').slice(8)+'/'+String(ir.prox.venc||'').slice(5,7)):'')+'</span></div>'+_bar(pctQ,'#185FA5')+'</div>'
       +'</div>';
     }
-    // montagem do apê (obra + mobília, cada uma na sua categoria)
+    // obra + mobília (mesma key `montagem`, separadas pelo campo `grupo`)
     var M2=Array.isArray(M.montagem)?M.montagem:[];
     if(M2.length||Number(cfg.orcMontagem)){
+      // itens antigos sem `grupo`: deduz pela categoria (mesma regra do app)
+      var CATS_MOB=['Móveis','Eletrodomésticos','Eletrônicos','Cama, mesa e banho','Decoração','Utensílios de cozinha','Ferramentas','Eletro','Utensílios'];
+      function grpDe(m){return m&&m.grupo?m.grupo:(CATS_MOB.indexOf((m&&m.cat)||'')>-1?'mobilia':'obra');}
       var tot=M2.reduce(function(a,m){return a+(Number(m.valor)||0);},0);
       var pg=M2.filter(function(m){return m.pago;}).reduce(function(a,m){return a+(Number(m.valor)||0);},0);
+      var tObra=M2.filter(function(m){return grpDe(m)==='obra';}).reduce(function(a,m){return a+(Number(m.valor)||0);},0);
+      var tMob=tot-tObra;
       var orc=Number(cfg.orcMontagem)||0, pct=orc?Math.min(100,Math.round(tot/orc*100)):0;
-      out+='<div class="etd-card" style="margin-top:.7rem"><div class="etd-top"><span class="etd-name">🛋️ Montando o apê</span><span class="etd-lvl">'+M2.length+' item(ns)</span></div>'
+      out+='<div class="etd-card" style="margin-top:.7rem"><div class="etd-top"><span class="etd-name">🔨 Obra e mobília</span><span class="etd-lvl">'+M2.length+' item(ns)</span></div>'
         +'<div class="etd-stats">'
-          +_dstat(_brl(tot),'já investido')
-          +_dstat(_brl(pg),'pago')
+          +_dstat(_brl(tObra),'🔨 obra')
+          +_dstat(_brl(tMob),'🛋️ mobília')
           +_dstat(_brl(tot-pg),'a pagar')
           +_dstat(orc?(pct+'%'):'—','do orçamento')
         +'</div>'
-        +(orc?('<div style="margin-top:.2rem"><div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>orçamento '+_brl(orc)+'</span><span>'+_brl(Math.max(0,orc-tot))+' disponível</span></div>'+_bar(pct,pct>100?'#c47a92':'#185FA5')+'</div>'):'')
+        +(orc?('<div style="margin-top:.2rem"><div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>investido '+_brl(tot)+' de '+_brl(orc)+'</span><span>'+_brl(Math.max(0,orc-tot))+' disponível</span></div>'+_bar(pct,pct>100?'#c47a92':'#185FA5')+'</div>'):'')
       +'</div>';
     }
     // divisão do casal — só o que já foi pago de verdade (previstas não entram)
