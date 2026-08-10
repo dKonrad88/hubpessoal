@@ -856,7 +856,7 @@ body.mnav-open .sb-backdrop{opacity:1;pointer-events:auto}
 </div>
 </div>
 </div>
-<div class="page" id="page-apartamento"><div class="coming-soon"><i class="ti ti-building"></i><p>Apartamento — em breve</p></div></div>
+<div class="page" id="page-apartamento"><div class="etd-head"><div class="etd-h-title">🏠 Apartamento <span class="etd-h-sub">contas do mês, montagem do apê e a divisão do casal</span></div><div class="etd-h-actions"><button class="etd-refresh" onclick="try{APTO.open()}catch(e){}" title="Atualizar"><i class="ti ti-refresh"></i></button><a class="etd-openapp" href="https://dkonrad88.github.io/apartamento/" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> Abrir app</a></div></div><div id="apartamentoDash"></div></div>
 <div class="page" id="page-casamento">
 <!-- CAS DASHBOARD -->
 <div class="tab-pane" id="tabcas-dashboard">
@@ -2922,10 +2922,11 @@ var EMBED=(function(){
     supercoffee:{url:BASE+'supercoffee/',phone:true},
     paris: {url:BASE+'viagem/',          phone:true},
     vorlando:{url:BASE+'viagem/',        phone:true},
-    casa:  {url:BASE+'casamento/',       phone:true}
+    casa:  {url:BASE+'casamento/',       phone:true},
+    apartamento:{url:BASE+'apartamento/',phone:true}
   };
   // openers das mini-dashes (lazy: só busca dados quando o Resumo é aberto)
-  var DASHMOD={habits:'FOCO',ingles:'ING',supercoffee:'SUPERCOFFEE',paris:'PARIS',vorlando:'VIAG',casa:'CASA'};
+  var DASHMOD={habits:'FOCO',ingles:'ING',supercoffee:'SUPERCOFFEE',paris:'PARIS',vorlando:'VIAG',casa:'CASA',apartamento:'APTO'};
   function dashOpen(key){var n=DASHMOD[key];if(n&&window[n]&&window[n].open){try{window[n].open();}catch(e){}}}
   function seg(key){
     return '<div class="appseg">'
@@ -3248,6 +3249,126 @@ var CASA=(function(){
       +'<div class="etd-foot"><span>'+p.d+'/'+p.t+' itens do checklist</span><span>'+tarefasAbertas+' tarefa(s) aberta(s)</span></div>'
     +'</div>'
     +'<div class="app-embed-hint" style="display:flex"><i class="ti ti-arrow-right"></i> Para editar convidados, gastos e checklist, use <b style="margin:0 .3rem">Trabalhar no app</b> acima.</div>';
+    box.innerHTML=out;
+  }
+  return {open:open};
+})();
+
+/* ===================== APARTAMENTO — mini-dash (lê apartamento_state compartilhado) =====================
+   CONTRATO (app dKonrad88/apartamento): keys `config`, `recorrentes`, `montagem` e `gastos:YYYY-MM`
+   (uma linha por mês). Contas fixas do mês = recorrente ativo que ainda NÃO virou lançamento (o app
+   chama de "virtual" e só grava quando o pagamento é confirmado) → o total previsto soma as duas coisas. */
+var APTO=(function(){
+  var M={},state='init',errMsg='',ym='';
+  var MES_N=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  function hojeISO(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+  function pnome(id){return id==='debora'?'Débora':(id==='diego'?'Diego':id);}
+  function open(){state='loading';render();
+    if(!(window.sb&&cloudUser)){state='nologin';return render();}
+    ym=hojeISO().slice(0,7);
+    // resolve o espaço do apartamento dinamicamente (IDs de espaço de casal já foram recriados → não hardcodar)
+    sb.from('listas').select('id').eq('tipo','apartamento').then(function(lr){
+      if(lr.error){state='error';errMsg=lr.error.message;return render();}
+      var alvo=(lr.data||[])[0];
+      if(!alvo){state='empty';return render();}
+      // só as 4 keys que a dash usa — o histórico tem 1 linha por mês e não precisa vir inteiro
+      sb.from('apartamento_state').select('key,value').eq('lista_id',alvo.id)
+        .in('key',['config','recorrentes','montagem','gastos:'+ym]).then(function(r){
+        if(r.error){state='error';errMsg=r.error.message;return render();}
+        M={}; (r.data||[]).forEach(function(row){M[row.key]=row.value;});
+        state='ok'; render();
+      }).catch(function(e){state='error';errMsg=(e&&e.message)||'falha';render();});
+    }).catch(function(e){state='error';errMsg=(e&&e.message)||'falha';render();});
+  }
+  function diasNoMes(y){var p=String(y).split('-');return new Date(Number(p[0]),Number(p[1]),0).getDate();}
+  function vencISO(y,dia){var d=Math.min(Math.max(Number(dia)||1,1),diasNoMes(y));return y+'-'+String(d).padStart(2,'0');}
+  function mesCompleto(){
+    var reais=Array.isArray(M['gastos:'+ym])?M['gastos:'+ym]:[];
+    var recs=Array.isArray(M.recorrentes)?M.recorrentes:[];
+    var usados={};reais.forEach(function(l){if(l.recId)usados[l.recId]=1;});
+    var virt=recs.filter(function(r){
+      if(r.ativo===false||usados[r.id])return false;
+      if(r.desde&&ym<r.desde)return false;
+      if(r.ate&&ym>r.ate)return false;
+      return true;
+    }).map(function(r){
+      return {desc:r.nome,valor:Number(r.valor)||0,cat:r.cat,tipo:'fixo',pago:false,venc:vencISO(ym,r.dia),
+        pagou:r.pagou||'diego',divide:(Array.isArray(r.divide)&&r.divide.length)?r.divide:['diego','debora'],virtual:true};
+    });
+    return reais.concat(virt);
+  }
+  function acerto(L){ // mesmo algoritmo do app (greedy credor/devedor)
+    var bal={};
+    L.forEach(function(g){
+      var v=Number(g.valor)||0,spl=(Array.isArray(g.divide)&&g.divide.length)?g.divide:[];
+      if(!v||!g.pagou||!spl.length)return;
+      bal[g.pagou]=(bal[g.pagou]||0)+v;
+      spl.forEach(function(s){bal[s]=(bal[s]||0)-v/spl.length;});
+    });
+    var cred=[],deb=[];
+    Object.keys(bal).forEach(function(p){var v=Math.round(bal[p]*100)/100;if(v>0.01)cred.push({p:p,v:v});else if(v<-0.01)deb.push({p:p,v:-v});});
+    cred.sort(function(a,b){return b.v-a.v;});deb.sort(function(a,b){return b.v-a.v;});
+    var tr=[],ci=0,di=0;
+    while(ci<cred.length&&di<deb.length){
+      var m=Math.min(cred[ci].v,deb[di].v);
+      tr.push({de:deb[di].p,para:cred[ci].p,v:Math.round(m*100)/100});
+      cred[ci].v-=m;deb[di].v-=m;
+      if(cred[ci].v<0.01)ci++;if(deb[di].v<0.01)di++;
+    }
+    return tr;
+  }
+  function render(){
+    var box=document.getElementById('apartamentoDash');if(!box)return;
+    if(state==='nologin'){box.innerHTML=_dmsg('ti-cloud-off','Entre na sua conta','Faça login na nuvem (☁ no topo) para ver o resumo do apartamento.');return;}
+    if(state==='loading'||state==='init'){box.innerHTML='<div class="etd-loading"><i class="ti ti-loader-2"></i> Carregando…</div>';return;}
+    if(state==='error'){box.innerHTML=_dmsg('ti-alert-triangle','Não consegui carregar',errMsg);return;}
+    if(state==='empty'){box.innerHTML=_dmsg('ti-building','Nenhum espaço de apartamento','Crie/entre no apartamento pelo app (Trabalhar no app) que o resumo aparece aqui.');return;}
+    var cfg=(M.config&&typeof M.config==='object')?M.config:{};
+    var L=mesCompleto(),hoje=hojeISO();
+    var prev=0,pago=0,fixo=0,porCat={};
+    L.forEach(function(l){var v=Number(l.valor)||0;prev+=v;if(l.pago)pago+=v;if(l.tipo==='fixo')fixo+=v;porCat[l.cat||'Outros']=(porCat[l.cat||'Outros']||0)+v;});
+    var abertos=L.filter(function(l){return !l.pago;}).sort(function(a,b){return String(a.venc||a.data||'').localeCompare(String(b.venc||b.data||''));});
+    var atrasadas=abertos.filter(function(l){return (l.venc||l.data||'')<hoje;}).length;
+    var prox=abertos[0];
+    var metaMes=Number(cfg.metaMes)||0, pctMeta=metaMes?Math.round(prev/metaMes*100):0; // sem cap: 104% precisa aparecer como 104%
+    var pctPago=prev?Math.round(pago/prev*100):0;
+    var nomeMes=MES_N[Number(ym.split('-')[1])-1];
+    var out='<div class="etd-card">'
+      +'<div class="etd-top"><span class="etd-name">🏠 '+_dashEsc(nomeMes)+'</span><span class="etd-lvl">'+(atrasadas?('⚠️ '+atrasadas+' atrasada(s)'):(prox?('próxima: '+_dashEsc(prox.desc||'—')+' em '+String(prox.venc||'').slice(8)+'/'+String(prox.venc||'').slice(5,7)):'tudo pago 🎉'))+'</span></div>'
+      +'<div class="etd-stats">'
+        +_dstat(_brl(prev),'total do mês')
+        +_dstat(_brl(pago),'já pago')
+        +_dstat(_brl(prev-pago),'a pagar')
+        +_dstat(_brl(fixo),'contas fixas')
+      +'</div>'
+      +'<div style="margin-top:.2rem"><div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>'+pctPago+'% pago'+(metaMes?(' · meta '+_brl(metaMes)):'')+'</span>'+(metaMes?('<span>'+pctMeta+'% da meta</span>'):'')+'</div>'+_bar(pctPago,'#2fa96b')+'</div>'
+      +'<div class="etd-foot"><span>'+L.length+' lançamento(s) no mês</span><span>'+(metaMes?(prev>metaMes?'⚠️ acima da meta':'dentro da meta'):'sem meta definida')+'</span></div>'
+    +'</div>';
+    // montagem do apê
+    var M2=Array.isArray(M.montagem)?M.montagem:[];
+    if(M2.length||Number(cfg.orcMontagem)){
+      var tot=M2.reduce(function(a,m){return a+(Number(m.valor)||0);},0);
+      var pg=M2.filter(function(m){return m.pago;}).reduce(function(a,m){return a+(Number(m.valor)||0);},0);
+      var orc=Number(cfg.orcMontagem)||0, pct=orc?Math.min(100,Math.round(tot/orc*100)):0;
+      out+='<div class="etd-card" style="margin-top:.7rem"><div class="etd-top"><span class="etd-name">🛋️ Montando o apê</span><span class="etd-lvl">'+M2.length+' item(ns)</span></div>'
+        +'<div class="etd-stats">'
+          +_dstat(_brl(tot),'já investido')
+          +_dstat(_brl(pg),'pago')
+          +_dstat(_brl(tot-pg),'a pagar')
+          +_dstat(orc?(pct+'%'):'—','do orçamento')
+        +'</div>'
+        +(orc?('<div style="margin-top:.2rem"><div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>orçamento '+_brl(orc)+'</span><span>'+_brl(Math.max(0,orc-tot))+' disponível</span></div>'+_bar(pct,pct>100?'#c47a92':'#185FA5')+'</div>'):'')
+      +'</div>';
+    }
+    // divisão do casal — só o que já foi pago de verdade (previstas não entram)
+    var reais=L.filter(function(l){return !l.virtual;});
+    var tr=acerto(reais);
+    out+='<div class="etd-card" style="margin-top:.7rem"><div class="etd-top"><span class="etd-name">🤝 Divisão do mês</span><span class="etd-lvl">'+reais.length+' lançado(s)</span></div>'
+      +(tr.length
+        ? tr.map(function(t){return '<div style="display:flex;justify-content:space-between;align-items:center;padding:.45rem 0"><span>'+_dashEsc(pnome(t.de))+' <span style="color:var(--muted)">→</span> <b>'+_dashEsc(pnome(t.para))+'</b></span><span style="font-weight:600;color:#1a7a8a">'+_brl(t.v)+'</span></div>';}).join('')
+        : '<div style="padding:.45rem 0;color:var(--muted);font-size:.85rem">'+(reais.length?'Tudo quitado — ninguém deve nada. 🎉':'Nada lançado ainda neste mês.')+'</div>')
+    +'</div>'
+    +'<div class="app-embed-hint" style="display:flex"><i class="ti ti-arrow-right"></i> Para lançar contas, itens da montagem e acertar a divisão, use <b style="margin:0 .3rem">Trabalhar no app</b> acima.</div>';
     box.innerHTML=out;
   }
   return {open:open};
