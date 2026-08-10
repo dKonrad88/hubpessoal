@@ -3273,7 +3273,7 @@ var APTO=(function(){
       if(!alvo){state='empty';return render();}
       // só as 4 keys que a dash usa — o histórico tem 1 linha por mês e não precisa vir inteiro
       sb.from('apartamento_state').select('key,value').eq('lista_id',alvo.id)
-        .in('key',['config','recorrentes','montagem','gastos:'+ym]).then(function(r){
+        .in('key',['config','recorrentes','montagem','imovel','gastos:'+ym]).then(function(r){
         if(r.error){state='error';errMsg=r.error.message;return render();}
         M={}; (r.data||[]).forEach(function(row){M[row.key]=row.value;});
         state='ok'; render();
@@ -3295,7 +3295,28 @@ var APTO=(function(){
       return {desc:r.nome,valor:Number(r.valor)||0,cat:r.cat,tipo:'fixo',pago:false,venc:vencISO(ym,r.dia),
         pagou:r.pagou||'diego',divide:(Array.isArray(r.divide)&&r.divide.length)?r.divide:['diego','debora'],virtual:true};
     });
-    return reais.concat(virt);
+    // parcela do imóvel que vence no mês e ainda não foi confirmada (mesma regra do app)
+    var im=(M.imovel&&typeof M.imovel==='object')?M.imovel:{};
+    var PA=Array.isArray(im.parcelas)?im.parcelas:[];
+    var usadasP={};reais.forEach(function(l){if(l.imParc)usadasP[l.imParc]=1;});
+    var virtIm=PA.filter(function(p){return !p.pago&&!usadasP[p.id]&&String(p.venc||'').slice(0,7)===ym;}).map(function(p){
+      return {desc:'Parcela do apê'+(p.n?(' '+p.n):''),valor:Number(p.previsto)||0,cat:'Parcela do apê',tipo:'fixo',
+        pago:false,venc:p.venc,pagou:p.pagou||im.pagou||'diego',
+        divide:(Array.isArray(p.divide)&&p.divide.length)?p.divide:['diego','debora'],virtual:true};
+    });
+    return reais.concat(virt).concat(virtIm);
+  }
+  function imResumo(){
+    var im=(M.imovel&&typeof M.imovel==='object')?M.imovel:{};
+    var P=Array.isArray(im.parcelas)?im.parcelas:[];
+    var prevTotal=0,pago=0,prevPagas=0,saldo=0,nPagas=0;
+    P.forEach(function(p){
+      var pv=Number(p.previsto)||0;prevTotal+=pv;
+      if(p.pago){pago+=(Number(p.valorPago)||pv);prevPagas+=pv;nPagas++;}else saldo+=pv;
+    });
+    var abertas=P.filter(function(p){return !p.pago;}).sort(function(a,b){return String(a.venc||'').localeCompare(String(b.venc||''));});
+    return {contrato:Number(im.valorTotal)||prevTotal,pago:pago,saldo:saldo,correcao:pago-prevPagas,
+      nPagas:nPagas,n:P.length,prox:abertas[0]||null,construtora:im.construtora||''};
   }
   function acerto(L){ // mesmo algoritmo do app (greedy credor/devedor)
     var bal={};
@@ -3344,7 +3365,21 @@ var APTO=(function(){
       +'<div style="margin-top:.2rem"><div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>'+pctPago+'% pago'+(metaMes?(' · meta '+_brl(metaMes)):'')+'</span>'+(metaMes?('<span>'+pctMeta+'% da meta</span>'):'')+'</div>'+_bar(pctPago,'#2fa96b')+'</div>'
       +'<div class="etd-foot"><span>'+L.length+' lançamento(s) no mês</span><span>'+(metaMes?(prev>metaMes?'⚠️ acima da meta':'dentro da meta'):'sem meta definida')+'</span></div>'
     +'</div>';
-    // montagem do apê
+    // parcelas do imóvel (compra direto com a construtora — parcela variável, corrigida por índice)
+    var ir=imResumo();
+    if(ir.n){
+      var pctQ=ir.contrato?Math.min(100,Math.round(ir.pago/ir.contrato*100)):0;
+      out+='<div class="etd-card" style="margin-top:.7rem"><div class="etd-top"><span class="etd-name">🔑 Parcelas do apê</span><span class="etd-lvl">'+ir.nPagas+' de '+ir.n+' pagas</span></div>'
+        +'<div class="etd-stats">'
+          +_dstat(_brl(ir.saldo),'saldo devedor')
+          +_dstat(_brl(ir.pago),'já pago')
+          +_dstat(ir.prox?_brl(ir.prox.previsto):'—','próxima')
+          +_dstat((ir.correcao>0.5?'+':'')+_brl(ir.correcao).replace('R$ ',''),'correção')
+        +'</div>'
+        +'<div style="margin-top:.2rem"><div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>contrato '+_brl(ir.contrato)+(ir.construtora?(' · '+_dashEsc(ir.construtora)):'')+'</span><span>'+pctQ+'% quitado'+(ir.prox?(' · vence '+String(ir.prox.venc||'').slice(8)+'/'+String(ir.prox.venc||'').slice(5,7)):'')+'</span></div>'+_bar(pctQ,'#185FA5')+'</div>'
+      +'</div>';
+    }
+    // montagem do apê (obra + mobília, cada uma na sua categoria)
     var M2=Array.isArray(M.montagem)?M.montagem:[];
     if(M2.length||Number(cfg.orcMontagem)){
       var tot=M2.reduce(function(a,m){return a+(Number(m.valor)||0);},0);
