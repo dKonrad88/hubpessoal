@@ -47,8 +47,11 @@ body.dark{--bg:#262522;--surface:#1c1b19;--surface2:#322f2b;--border:#3a3733;--t
 /* moldura de celular opcional p/ apps mobile-first */
 .app-embed-pane.full iframe{height:calc(100vh - 128px);min-height:560px}
 /* app integrado ao HUB: sem card, colado nas bordas da área de conteúdo */
-.app-embed-pane.flush{border:0;border-radius:0;box-shadow:none;background:transparent;margin:-1.25rem -1.75rem -2rem}
+.app-embed-pane.flush{border:0;border-radius:0;box-shadow:none;background:transparent;margin:-1.25rem -1.75rem -2rem;position:relative}
 .app-embed-pane.flush iframe{height:calc(100vh - 52px);min-height:520px}
+/* app integrado ocupa a página inteira e some com o cabeçalho: este é o único jeito de estourar o app numa aba */
+.embed-pop{position:absolute;right:16px;bottom:16px;z-index:5;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--surface);color:var(--muted);border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,.18);opacity:.45;transition:opacity .15s,color .15s;text-decoration:none}
+.embed-pop:hover{opacity:1;color:var(--text)}
 @media(max-width:600px){.app-embed-pane.flush{margin:-1.25rem -1rem -2rem}}
 .app-embed-pane.phone{border:none;background:transparent;box-shadow:none;display:flex;justify-content:center;padding:.5rem 0}
 .app-embed-pane.phone iframe{width:392px;max-width:100%;height:calc(100vh - 170px);min-height:600px;border:10px solid #111;border-radius:34px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
@@ -2968,6 +2971,15 @@ var EMBED=(function(){
         if(pane.dataset.src!==src){
           pane.innerHTML='<iframe src="'+src+'" loading="lazy" allow="clipboard-write; geolocation; camera; microphone" referrerpolicy="no-referrer-when-downgrade"></iframe>';
           pane.dataset.src=src; pane.dataset.loaded='1';
+        }
+        // integrado: sem cabeçalho, então o "abrir numa aba" vira um botão flutuante (sem os params de embed)
+        if(cfg.embed&&!pane.querySelector('.embed-pop')){
+          var pop=document.createElement('a');
+          pop.className='embed-pop'; pop.target='_blank'; pop.rel='noopener';
+          pop.href=cfg.url+'?wide=1&trip='+encodeURIComponent(cfg.embed.trip);
+          pop.title='Abrir o app numa aba';
+          pop.innerHTML='<i class="ti ti-external-link"></i>';
+          pane.appendChild(pop);
         }
       }
       var h=pg.querySelector('.app-embed-hint');
