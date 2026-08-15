@@ -706,7 +706,7 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 </head>
 <body class="dark">
 <div class="topbar">
-<div class="topbar-title">HUB <span>Pessoal</span></div>
+<div class="topbar-title" onclick="setSimplePage('welcome')" style="cursor:pointer" title="Início">HUB <span>Pessoal</span></div>
 <div class="topbar-right">
 <button class="hdr-btn mnav-btn" onclick="mnavToggle()" title="Menu" aria-label="Abrir menu"><i class="ti ti-menu-2"></i></button>
 <button class="hdr-btn cloud-badge" id="cloudBadge" onclick="openCloud()" title="Conta &amp; sincronização"><i class="ti ti-cloud-check cb-ok" id="cloudBadgeIc"></i></button>
@@ -735,6 +735,7 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 <button class="sb-tool" id="sbToolGroups" onclick="sbToggleGroups()" title="Recolher / expandir grupos"><i class="ti ti-fold-up"></i></button>
 <button class="sb-tool" id="sbToolBar" onclick="sbToggleBar()" title="Recolher menu"><i class="ti ti-layout-sidebar-left-collapse"></i></button>
 </div>
+<div class="sb-subitem" id="nav-inicio" onclick="setSimplePage('welcome',this)" style="margin:.15rem .3rem .55rem"><i class="ti ti-home"></i> Início</div>
 
 <!-- FINANÇAS -->
 <div class="sb-group collapsed">
@@ -794,7 +795,45 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 </aside>
 <main class="content">
 <button class="sb-reopen" onclick="sbToggleBar()" title="Abrir menu"><i class="ti ti-layout-sidebar-left-expand"></i></button>
-<div class="page active" id="page-welcome"><div class="coming-soon"><i class="ti ti-sparkles"></i><h2 style="font-size:1.3rem;margin-bottom:.5rem">Bem-vindo ao Hub! 🚀</h2><p>Organize sua vida em um só lugar:</p><p style="font-size:.9rem;margin-top:.3rem;opacity:.7">📍 Viagens • 💍 Casamentos • 📈 Hábitos • 💰 Gastos • 📝 Notas</p><p style="font-size:.85rem;color:var(--muted);margin-top:1.2rem">👈 Escolha uma área no menu para começar</p></div></div>
+<div class="page active" id="page-welcome">
+<style>
+.home{max-width:1000px;margin:0 auto}
+.home-hero{padding:1.2rem 0 2rem}
+.home-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.home-h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin:.5rem 0}
+.home-sub{color:var(--muted);font-size:1.02rem;max-width:54ch;margin:0}
+.home-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:.9rem}
+.home-card{display:flex;align-items:center;gap:.9rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.05rem;cursor:pointer;text-decoration:none;color:inherit;transition:transform .18s,box-shadow .18s,border-color .18s;box-shadow:var(--shadow)}
+.home-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
+.hc-ic{width:48px;height:48px;border-radius:14px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex:none}
+.hc-body{flex:1;min-width:0}
+.hc-t{font-weight:700;font-size:1rem}
+.hc-s{font-size:.8rem;color:var(--muted);margin-top:.12rem}
+.hc-s b{color:var(--accent)}
+.hc-go{color:var(--muted);font-size:1.4rem;font-weight:300}
+.home-card.feat{background:var(--grad);color:#fff;border-color:transparent}
+.home-card.feat .hc-ic{background:rgba(255,255,255,.2)}
+.home-card.feat .hc-s,.home-card.feat .hc-go{color:rgba(255,255,255,.9)}
+.home-card.feat .hc-s b{color:#fff}
+.home-card.feat:hover{filter:brightness(1.04)}
+</style>
+<div class="home">
+<div class="home-hero">
+<div class="home-eyebrow">✦ HUB Pessoal</div>
+<h1 class="home-h1"><span id="homeGreet">Olá</span>, Diego 👋</h1>
+<p class="home-sub">Sua vida organizada num lugar só — viagens, casa, hábitos e metas. Escolha por onde começar.</p>
+</div>
+<div class="home-grid">
+<a class="home-card feat" onclick="setSimplePage('orlando',document.getElementById('nav-orlando'))"><div class="hc-ic">✈️</div><div class="hc-body"><div class="hc-t">Viagem Orlando</div><div class="hc-s"><b id="homeCountdown">—</b> dias pra viagem</div></div><div class="hc-go">›</div></a>
+<a class="home-card" onclick="setSimplePage('casa',document.getElementById('nav-casamento'))"><div class="hc-ic">💍</div><div class="hc-body"><div class="hc-t">Casamento</div><div class="hc-s">Gastos, convidados e tarefas</div></div><div class="hc-go">›</div></a>
+<a class="home-card" onclick="setSimplePage('apartamento',document.getElementById('nav-apartamento'))"><div class="hc-ic">🏠</div><div class="hc-body"><div class="hc-t">Apartamento</div><div class="hc-s">Obra, mobília e contas</div></div><div class="hc-go">›</div></a>
+<a class="home-card" onclick="setSimplePage('habits',document.getElementById('nav-habits'))"><div class="hc-ic">🔥</div><div class="hc-body"><div class="hc-t">Hábitos</div><div class="hc-s">Sua rotina e sequências</div></div><div class="hc-go">›</div></a>
+<a class="home-card" onclick="setSimplePage('metas',document.getElementById('nav-metas'))"><div class="hc-ic">🎯</div><div class="hc-body"><div class="hc-t">Metas</div><div class="hc-s">Objetivos de vida</div></div><div class="hc-go">›</div></a>
+<a class="home-card" onclick="setSimplePage('paris',document.getElementById('nav-paris'))"><div class="hc-ic">🗼</div><div class="hc-body"><div class="hc-t">Viagem Paris</div><div class="hc-s">Monitor de voo e hotel</div></div><div class="hc-go">›</div></a>
+</div>
+</div>
+<script>(function(){try{var h=new Date().getHours();var g=h<12?'Bom dia':(h<18?'Boa tarde':'Boa noite');var ge=document.getElementById('homeGreet');if(ge)ge.textContent=g;var ini=new Date('2026-09-30T00:00:00');var n=Math.ceil((ini-new Date())/86400000);var ce=document.getElementById('homeCountdown');if(ce)ce.textContent=(n>0?n:0);}catch(e){}})();</script>
+</div>
 <div class="page" id="page-orlando">
 <div class="tab-content">
 <!-- ROTEIRO -->
