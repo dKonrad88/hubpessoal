@@ -45,6 +45,7 @@ body.dark{--bg:#262522;--surface:#1c1b19;--surface2:#322f2b;--border:#3a3733;--t
 .page[data-view="app"]>:not(.appseg):not(.app-embed-pane):not(.app-embed-hint){display:none}
 .page:not([data-view="app"])>.app-embed-pane,.page:not([data-view="app"])>.app-embed-hint{display:none}
 /* moldura de celular opcional p/ apps mobile-first */
+.app-embed-pane.full iframe{height:calc(100vh - 128px);min-height:560px}
 .app-embed-pane.phone{border:none;background:transparent;box-shadow:none;display:flex;justify-content:center;padding:.5rem 0}
 .app-embed-pane.phone iframe{width:392px;max-width:100%;height:calc(100vh - 170px);min-height:600px;border:10px solid #111;border-radius:34px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
 .etd-openapp:hover{background:#134b78}
@@ -2921,7 +2922,7 @@ var EMBED=(function(){
     ingles:{url:BASE+'english-trainer/', phone:true},
     supercoffee:{url:BASE+'supercoffee/',phone:true},
     paris: {url:BASE+'viagem/',          phone:true},
-    vorlando:{url:BASE+'viagem/',        phone:true},
+    vorlando:{url:BASE+'viagem/',        phone:true, wide:true}, // wide: abre o app em página inteira (?wide=1)
     casa:  {url:BASE+'casamento/',       phone:true},
     apartamento:{url:BASE+'apartamento/',phone:true}
   };
@@ -2929,6 +2930,11 @@ var EMBED=(function(){
   var DASHMOD={habits:'FOCO',ingles:'ING',supercoffee:'SUPERCOFFEE',paris:'PARIS',vorlando:'VIAG',casa:'CASA',apartamento:'APTO'};
   function dashOpen(key){var n=DASHMOD[key];if(n&&window[n]&&window[n].open){try{window[n].open();}catch(e){}}}
   function seg(key){
+    if(REG[key].wide) // app com modo largo: página inteira (padrão no desktop) ou moldura de celular
+      return '<div class="appseg">'
+        +'<button data-m="full" class="on" onclick="EMBED.setView(\''+key+'\',\'full\')"><i class="ti ti-layout-sidebar"></i> Tela cheia</button>'
+        +'<button data-m="app" onclick="EMBED.setView(\''+key+'\',\'app\')"><i class="ti ti-device-mobile"></i> Celular</button>'
+      +'</div>';
     return '<div class="appseg">'
       +'<button data-m="resumo" onclick="EMBED.setView(\''+key+'\',\'resumo\')"><i class="ti ti-layout-dashboard"></i> Resumo</button>'
       +'<button data-m="app" class="on" onclick="EMBED.setView(\''+key+'\',\'app\')"><i class="ti ti-device-mobile"></i> Trabalhar no app</button>'
@@ -2936,16 +2942,28 @@ var EMBED=(function(){
   }
   function setView(key,mode){
     var pg=document.getElementById('page-'+key); if(!pg)return;
-    pg.dataset.view=mode;
-    try{localStorage.setItem('hub_view_'+key,mode);}catch(e){} // lembra a escolha app/resumo por app
+    var cfg=REG[key];
+    if(cfg.wide&&mode==='resumo')mode='full'; // app largo não tem mini-dash: cai na página inteira
+    // 'full' e 'app' são o mesmo slot (o iframe) — muda só a URL e a moldura
+    pg.dataset.view=(mode==='full')?'app':mode;
+    try{localStorage.setItem('hub_view_'+key,mode);}catch(e){} // lembra a escolha por app
     var s=pg.querySelector('.appseg');
     if(s)s.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.m===mode);});
-    if(mode==='app'){
+    if(mode==='app'||mode==='full'){
       var pane=document.getElementById('embed-'+key);
-      if(pane&&!pane.dataset.loaded){
-        pane.innerHTML='<iframe src="'+REG[key].url+'" loading="lazy" allow="clipboard-write; geolocation; camera; microphone" referrerpolicy="no-referrer-when-downgrade"></iframe>';
-        pane.dataset.loaded='1';
+      if(pane){
+        var src=(mode==='full')?(cfg.url+'?wide=1'):cfg.url;
+        pane.classList.toggle('phone',mode==='app'&&!!cfg.phone);
+        pane.classList.toggle('full',mode==='full');
+        if(pane.dataset.src!==src){
+          pane.innerHTML='<iframe src="'+src+'" loading="lazy" allow="clipboard-write; geolocation; camera; microphone" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+          pane.dataset.src=src; pane.dataset.loaded='1';
+        }
       }
+      var h=pg.querySelector('.app-embed-hint');
+      if(h)h.innerHTML=(mode==='full')
+        ?'<i class="ti ti-info-circle"></i> Página inteira — o app da viagem ocupando a tela, já logado, salvando na nuvem em tempo real.'
+        :'<i class="ti ti-info-circle"></i> Mesmo app do celular, aqui no desktop — já logado, salva na nuvem em tempo real.';
     }else{ dashOpen(key); } // Resumo → busca os dados só agora
   }
   // chamado pelo setSimplePage ao abrir uma página de app: aplica a view atual (padrão = app)
@@ -2961,9 +2979,11 @@ var EMBED=(function(){
       var hint=document.createElement('div'); hint.className='app-embed-hint';
       hint.innerHTML='<i class="ti ti-info-circle"></i> Mesmo app do celular, aqui no desktop — já logado, salva na nuvem em tempo real.';
       pg.appendChild(hint);
-      var pane=document.createElement('div'); pane.className='app-embed-pane'+(cfg.phone?' phone':''); pane.id='embed-'+key;
+      var pane=document.createElement('div'); pane.className='app-embed-pane'+((cfg.phone&&!cfg.wide)?' phone':''); pane.id='embed-'+key;
       pg.appendChild(pane);
-      var sv='app'; try{sv=localStorage.getItem('hub_view_'+key)||'app';}catch(e){} // padrão: "Trabalhar no app"; lembra a última escolha
+      var def=cfg.wide?'full':'app';
+      var sv=def; try{sv=localStorage.getItem('hub_view_'+key)||def;}catch(e){} // padrão: app (ou tela cheia); lembra a última escolha
+      if(cfg.wide&&sv==='resumo')sv='full'; // preferência antiga ("Resumo") vira a página inteira
       pg.dataset.view=sv;
       var s=pg.querySelector('.appseg'); if(s)s.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.m===sv);});
     });
