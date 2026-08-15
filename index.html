@@ -46,6 +46,10 @@ body.dark{--bg:#262522;--surface:#1c1b19;--surface2:#322f2b;--border:#3a3733;--t
 .page:not([data-view="app"])>.app-embed-pane,.page:not([data-view="app"])>.app-embed-hint{display:none}
 /* moldura de celular opcional p/ apps mobile-first */
 .app-embed-pane.full iframe{height:calc(100vh - 128px);min-height:560px}
+/* app integrado ao HUB: sem card, colado nas bordas da área de conteúdo */
+.app-embed-pane.flush{border:0;border-radius:0;box-shadow:none;background:transparent;margin:-1.25rem -1.75rem -2rem}
+.app-embed-pane.flush iframe{height:calc(100vh - 52px);min-height:520px}
+@media(max-width:600px){.app-embed-pane.flush{margin:-1.25rem -1rem -2rem}}
 .app-embed-pane.phone{border:none;background:transparent;box-shadow:none;display:flex;justify-content:center;padding:.5rem 0}
 .app-embed-pane.phone iframe{width:392px;max-width:100%;height:calc(100vh - 170px);min-height:600px;border:10px solid #111;border-radius:34px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
 .etd-openapp:hover{background:#134b78}
@@ -649,6 +653,7 @@ body.mnav-open .sb-backdrop{opacity:1;pointer-events:auto}
 <div class="sb-area-label" onclick="sbToggleGroup(this)">Finanças<i class="ti ti-chevron-down sb-grp-chev"></i></div>
 <div class="sb-group-body">
 <div class="sb-subitem" id="nav-orlando" onclick="setSimplePage('vorlando',this)"><i class="ti ti-map-pin"></i> Viagem Orlando</div>
+<div class="sb-subsubgroup" id="nav-orlando-secs"></div>
 <div class="sb-subitem" id="nav-casamento" onclick="setSimplePage('casa',this)"><i class="ti ti-heart"></i> Casamento</div>
 <div class="sb-subitem" id="nav-paris" onclick="setSimplePage('paris',this)"><i class="ti ti-tower"></i> Viagem Paris <span style="font-size:.62rem;background:rgba(24,95,165,.18);color:#5b9bd5;padding:.05rem .35rem;border-radius:6px;margin-left:.3rem">monitorando</span></div>
 <div class="sb-subitem" id="nav-apartamento" onclick="setSimplePage('apartamento',this)"><i class="ti ti-building"></i> Apartamento</div>
@@ -2922,7 +2927,8 @@ var EMBED=(function(){
     ingles:{url:BASE+'english-trainer/', phone:true},
     supercoffee:{url:BASE+'supercoffee/',phone:true},
     paris: {url:BASE+'viagem/',          phone:true},
-    vorlando:{url:BASE+'viagem/',        phone:true, wide:true}, // wide: abre o app em página inteira (?wide=1)
+    // embed: o app vira uma página do HUB — sem abas, sem moldura, e as seções dele viram submenu daqui
+    vorlando:{url:BASE+'viagem/',        wide:true, embed:{trip:'orlando', nav:'nav-orlando-secs'}},
     casa:  {url:BASE+'casamento/',       phone:true},
     apartamento:{url:BASE+'apartamento/',phone:true}
   };
@@ -2930,6 +2936,7 @@ var EMBED=(function(){
   var DASHMOD={habits:'FOCO',ingles:'ING',supercoffee:'SUPERCOFFEE',paris:'PARIS',vorlando:'VIAG',casa:'CASA',apartamento:'APTO'};
   function dashOpen(key){var n=DASHMOD[key];if(n&&window[n]&&window[n].open){try{window[n].open();}catch(e){}}}
   function seg(key){
+    if(REG[key].embed)return ''; // integrado ao HUB: quem navega é o menu lateral, sem seletor
     if(REG[key].wide) // app com modo largo: página inteira (padrão no desktop) ou moldura de celular
       return '<div class="appseg">'
         +'<button data-m="full" class="on" onclick="EMBED.setView(\''+key+'\',\'full\')"><i class="ti ti-layout-sidebar"></i> Tela cheia</button>'
@@ -2943,7 +2950,8 @@ var EMBED=(function(){
   function setView(key,mode){
     var pg=document.getElementById('page-'+key); if(!pg)return;
     var cfg=REG[key];
-    if(cfg.wide&&mode==='resumo')mode='full'; // app largo não tem mini-dash: cai na página inteira
+    if(cfg.embed)mode='full'; // integrado: só existe a página inteira
+    else if(cfg.wide&&mode==='resumo')mode='full'; // app largo não tem mini-dash: cai na página inteira
     // 'full' e 'app' são o mesmo slot (o iframe) — muda só a URL e a moldura
     pg.dataset.view=(mode==='full')?'app':mode;
     try{localStorage.setItem('hub_view_'+key,mode);}catch(e){} // lembra a escolha por app
@@ -2952,16 +2960,19 @@ var EMBED=(function(){
     if(mode==='app'||mode==='full'){
       var pane=document.getElementById('embed-'+key);
       if(pane){
-        var src=(mode==='full')?(cfg.url+'?wide=1'):cfg.url;
+        var src=cfg.embed?(cfg.url+'?wide=1&embed=1&trip='+encodeURIComponent(cfg.embed.trip))
+                        :((mode==='full')?(cfg.url+'?wide=1'):cfg.url);
         pane.classList.toggle('phone',mode==='app'&&!!cfg.phone);
-        pane.classList.toggle('full',mode==='full');
+        pane.classList.toggle('full',mode==='full'&&!cfg.embed);
+        pane.classList.toggle('flush',!!cfg.embed);
         if(pane.dataset.src!==src){
           pane.innerHTML='<iframe src="'+src+'" loading="lazy" allow="clipboard-write; geolocation; camera; microphone" referrerpolicy="no-referrer-when-downgrade"></iframe>';
           pane.dataset.src=src; pane.dataset.loaded='1';
         }
       }
       var h=pg.querySelector('.app-embed-hint');
-      if(h)h.innerHTML=(mode==='full')
+      if(h&&cfg.embed)h.style.display='none';
+      else if(h)h.innerHTML=(mode==='full')
         ?'<i class="ti ti-info-circle"></i> Página inteira — o app da viagem ocupando a tela, já logado, salvando na nuvem em tempo real.'
         :'<i class="ti ti-info-circle"></i> Mesmo app do celular, aqui no desktop — já logado, salva na nuvem em tempo real.';
     }else{ dashOpen(key); } // Resumo → busca os dados só agora
@@ -2972,9 +2983,9 @@ var EMBED=(function(){
     Object.keys(REG).forEach(function(key){
       var pg=document.getElementById('page-'+key); if(!pg||pg.querySelector('.appseg'))return;
       var cfg=REG[key];
-      // seletor no topo
+      // seletor no topo (apps integrados não têm: navegam pelo menu do HUB)
       var wrap=document.createElement('div'); wrap.innerHTML=seg(key);
-      pg.insertBefore(wrap.firstChild,pg.firstChild);
+      if(wrap.firstChild)pg.insertBefore(wrap.firstChild,pg.firstChild);
       // dica + pane do iframe no fim
       var hint=document.createElement('div'); hint.className='app-embed-hint';
       hint.innerHTML='<i class="ti ti-info-circle"></i> Mesmo app do celular, aqui no desktop — já logado, salva na nuvem em tempo real.';
@@ -2988,7 +2999,44 @@ var EMBED=(function(){
       var s=pg.querySelector('.appseg'); if(s)s.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.m===sv);});
     });
   }
-  return {boot:boot,setView:setView,onShow:onShow,reg:REG};
+  /* ---- app integrado: ele manda as seções, o HUB desenha no menu lateral e devolve os cliques ---- */
+  var NAVST={}; // key -> {secs, view}
+  function navRender(key){
+    var cfg=REG[key]; if(!cfg||!cfg.embed)return;
+    var host=document.getElementById(cfg.embed.nav); if(!host)return;
+    var st=NAVST[key]||{secs:[],view:''};
+    host.innerHTML=(st.secs||[]).map(function(s){
+      return '<div class="sb-subsubitem'+(s.id===st.view?' active':'')+'" onclick="EMBED.goSec(\''+key+'\',\''+s.id+'\')">'
+        +'<span style="width:1.15em;text-align:center;flex:none">'+s.ic+'</span> '+s.nome+'</div>';
+    }).join('');
+    host.classList.toggle('open',!!(st.secs&&st.secs.length));
+  }
+  function frameOf(key){var f=document.querySelector('#embed-'+key+' iframe');return (f&&f.contentWindow)?f.contentWindow:null;}
+  function goSec(key,view){
+    var pg=document.getElementById('page-'+key);
+    if(pg&&!pg.classList.contains('active')){ // clicou na seção estando em outra página do HUB
+      var navEl=document.querySelector('.sidebar [onclick*="setSimplePage(\''+key+'\'"]');
+      try{setSimplePage(key,navEl);}catch(e){}
+    }
+    var w=frameOf(key); if(w)w.postMessage({type:'via:go',view:view},location.origin);
+  }
+  function pushTheme(key){
+    var w=frameOf(key); if(!w)return;
+    w.postMessage({type:'via:theme',theme:document.body.classList.contains('light')?'light':'dark'},location.origin);
+  }
+  window.addEventListener('message',function(e){
+    if(e.origin!==location.origin)return;
+    var d=e.data||{}; if(d.type!=='via:state')return;
+    Object.keys(REG).forEach(function(key){
+      if(!REG[key].embed||frameOf(key)!==e.source)return;
+      NAVST[key]={secs:d.secs||[],view:d.view||''};
+      navRender(key); pushTheme(key);
+    });
+  });
+  // tema do HUB mudou (body.light/dark) → repassa pros apps integrados
+  try{new MutationObserver(function(){Object.keys(REG).forEach(function(k){if(REG[k].embed)pushTheme(k);});})
+        .observe(document.body,{attributes:true,attributeFilter:['class']});}catch(e){}
+  return {boot:boot,setView:setView,onShow:onShow,goSec:goSec,reg:REG};
 })();
 try{EMBED.boot();}catch(e){console.warn('EMBED.boot',e);}
 /* Reabre a última tela no refresh (em vez de cair no welcome). Roda após EMBED.boot (segs/panes já existem). */
