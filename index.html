@@ -65,26 +65,27 @@ body.dark{--bg:#141220;--surface:#1d1a2b;--surface2:#272338;--border:#332e48;--t
 .av-ta{width:100%;min-height:80px;font-family:inherit;font-size:.85rem;line-height:1.45;padding:.55rem .65rem;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text);resize:vertical}
 .av-eacts{display:flex;gap:.4rem;margin-top:.45rem}
 .av-add{margin-top:.5rem;opacity:.75}
-/* impressão: só o dia aberto vai pro papel */
+/* impressão: só o dia aberto vai pro papel — MESMO layout do HUB (o dia é clonado da tela) */
 #printArea{display:none}
 @media print{
   body.printing>*{display:none!important}
-  body.printing #printArea{display:block!important;color:#000;background:#fff;font:13px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:0}
-  #printArea h1{font-size:19pt;margin:.1rem 0 .2rem}
-  #printArea .pr-num{font-size:8pt;letter-spacing:.16em;text-transform:uppercase;color:#555}
-  #printArea .pr-dt{font-size:10pt;color:#444;margin-bottom:.5rem}
-  #printArea .pr-res{font-size:11pt;margin-bottom:.6rem}
-  #printArea .pr-h{border-bottom:2px solid #000;padding-bottom:.4rem;margin-bottom:.7rem}
-  #printArea .pr-av{border:1px solid #999;border-left:4px solid #666;padding:.4rem .6rem;margin-bottom:.8rem;font-size:10pt}
-  #printArea .pr-av ul{margin:.25rem 0 0 1rem}
-  #printArea .pr-stops{list-style:none;padding:0;margin:0}
-  #printArea .pr-stops>li{border-top:1px solid #ccc;padding:.5rem 0;break-inside:avoid;page-break-inside:avoid}
-  #printArea .pr-st-h{font-size:12pt}
-  #printArea .pr-hr{font-weight:700;margin-right:.35rem}
-  #printArea .pr-l{font-size:10pt;color:#333;margin-top:.12rem}
-  #printArea .pr-sec{margin:.3rem 0 .1rem}
-  #printArea .pr-sec ul{margin:.1rem 0 0 1rem}
-  @page{margin:14mm}
+  body.printing #printArea{display:block!important}
+  /* mesma estrutura e classes da tela; só troco as cores do tema escuro por papel branco */
+  #printArea{--text:#000;--muted:#333;--border:#bbb;--card:#fff;--surface:#fff;--surface2:#f4f4f4;--bg:#fff;
+    color:#000;background:#fff;font-size:10.5pt}
+  #printArea .rdet-avisos-body{display:block!important}          /* lembretes sempre abertos no papel */
+  #printArea .rdet-avisos-tog .chev{display:none}
+  #printArea button,#printArea .av-acts,#printArea .rota-btn,#printArea .rot-add-btn,
+  #printArea .rot-stop-edit,#printArea .rot-stop-del{display:none!important}
+  #printArea .rdnum{background:none!important;color:#000!important;border:1.5px solid #000}
+  #printArea .rdet-body{display:block!important}                 /* uma coluna no papel */
+  #printArea .rdet-side{margin-top:.7rem}
+  #printArea .rot-detalhes{display:block!important}              /* flex-gap vira margem: separa as seções */
+  #printArea .rot-sec{margin-top:.6rem;background:#f4f4f4!important;break-inside:avoid;page-break-inside:avoid}
+  #printArea .rot-sec:first-child{margin-top:0}
+  #printArea .rot-stop{margin-bottom:.55rem;break-inside:avoid;page-break-inside:avoid}
+  #printArea .rot-aviso{break-inside:avoid;page-break-inside:avoid}
+  @page{margin:12mm}
 }
 .app-embed-pane.full iframe{height:calc(100vh - 128px);min-height:560px}
 /* app integrado ao HUB: sem card, colado nas bordas da área de conteúdo */
@@ -2395,44 +2396,23 @@ function orlAviso(){
   b.innerHTML=txt; b.style.display=txt?'flex':'none';
   pg.classList.toggle('orl-wait',!ORLD.d.pronto); // esconde as abas p/ nunca mostrar dado velho
 }
-/* ---- imprimir SÓ o dia aberto (folha limpa, sem o HUB em volta) ---- */
-function rotDiaPrintHTML(d){
-  var esc=(typeof escH==='function')?escH:function(x){return String(x==null?'':x);};
-  var semana=d.diaSemana?esc(d.diaSemana)+', ':'';
-  var h='<div class="pr-h"><div class="pr-num">Dia '+esc(d.dia)+'</div><h1>'+esc(d.titulo||'')+'</h1>'+
-        '<div class="pr-dt">'+semana+esc(d.dataLonga||d.data||'')+(d.gasto?' · previsto US$ '+esc(d.gasto):'')+'</div>'+
-        (d.resumo?'<div class="pr-res">'+esc(d.resumo)+'</div>':'')+'</div>';
-  if(d.avisos&&d.avisos.length)
-    h+='<div class="pr-av"><b>Lembretes do dia</b><ul>'+d.avisos.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul></div>';
-  if(d.stops&&d.stops.length){
-    h+='<ol class="pr-stops">'+d.stops.map(function(s){
-      var det='';
-      if(s.detalhes&&s.detalhes.length)det=s.detalhes.map(function(sec){
-        return '<div class="pr-sec">'+(sec.titulo?'<b>'+esc(sec.titulo)+'</b>':'')+
-               '<ul>'+(sec.itens||[]).map(function(it){return '<li>'+esc(it)+'</li>';}).join('')+'</ul></div>';
-      }).join('');
-      return '<li><div class="pr-st-h"><span class="pr-hr">'+esc(s.hora||'')+'</span> <b>'+esc((s.icone?s.icone+' ':'')+(s.titulo||''))+'</b></div>'+
-        (s.endereco?'<div class="pr-l">📍 '+esc(s.endereco)+'</div>':'')+
-        (s.horarioFunc?'<div class="pr-l">🕒 '+esc(s.horarioFunc)+'</div>':'')+
-        (s.fone?'<div class="pr-l">☎ '+esc(s.fone)+'</div>':'')+
-        (s.duracao?'<div class="pr-l">⏱ '+esc(s.duracao)+'</div>':'')+
-        (s.desloc?'<div class="pr-l">🚗 '+esc(s.desloc)+'</div>':'')+
-        (s.nota?'<div class="pr-l">'+esc(s.nota)+'</div>':'')+
-        (s.alerta?'<div class="pr-l"><b>⚠ '+esc(s.alerta)+'</b></div>':'')+det+'</li>';
-    }).join('')+'</ol>';
-  }else if(d.detalhes&&typeof d.detalhes==='string'){h+='<div class="pr-l">'+esc(d.detalhes)+'</div>';}
-  return h;
-}
+/* ---- imprimir SÓ o dia aberto: clona o dia como está na tela, pra ficar igual ao HUB ---- */
 function rotPrintDia(){
-  var lista=(ORLD.d.pronto&&ORLD.d.roteiro)?ORLD.d.roteiro:roteiro;
-  var d=lista[ROT_DAY]||lista[0]; if(!d)return;
+  if(ROT_VIEW!=='foco'){ setRotView('foco'); }            // o dia inteiro só existe na visão Foco
+  var det=document.querySelector('#roteiro-list .rdet');
+  if(!det){ alert('Abra o dia que você quer imprimir.'); return; }
   var area=document.getElementById('printArea');
-  if(!area){area=document.createElement('div');area.id='printArea';document.body.appendChild(area);}
-  area.innerHTML=rotDiaPrintHTML(d);
+  if(!area){ area=document.createElement('div'); area.id='printArea'; document.body.appendChild(area); }
+  var clone=det.cloneNode(true);
+  var av=clone.querySelector('.rdet-avisos'); if(av)av.classList.add('open'); // lembretes abertos no papel
+  clone.querySelectorAll('.rv-daynav,.av-acts,.rot-add-btn,.rota-btn,.rot-stop-edit,.rot-stop-del,textarea,.av-eacts')
+       .forEach(function(n){ n.parentNode&&n.parentNode.removeChild(n); });
+  clone.querySelectorAll('button').forEach(function(b){ b.parentNode&&b.parentNode.removeChild(b); });
+  area.innerHTML=''; area.appendChild(clone);
   document.body.classList.add('printing');
-  var fim=function(){document.body.classList.remove('printing');window.removeEventListener('afterprint',fim);};
+  var fim=function(){ document.body.classList.remove('printing'); window.removeEventListener('afterprint',fim); };
   window.addEventListener('afterprint',fim);
-  setTimeout(function(){window.print();},30);
+  setTimeout(function(){ window.print(); },30);
 }
 /* ---- Rota do dia: mostra o NOME da parada, não o endereço (casa pelo endereço) ---- */
 function rotLugarNome(p,dia){
