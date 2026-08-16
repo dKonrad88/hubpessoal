@@ -1816,7 +1816,7 @@ function detalhesToText(detalhes){if(!Array.isArray(detalhes))return '';return d
 function addStop(diaIdx){stopCtx={dia:diaIdx,stop:null};fillStopModal({hora:'',icone:'📍',titulo:'',endereco:'',horarioFunc:'',fone:'',nota:'',duracao:'',alerta:'',detalhes:[],desloc:''});document.getElementById('modalStopTitle').textContent='Nova parada';openModal('modalStop');}
 function editStop(diaIdx,stopIdx){stopCtx={dia:diaIdx,stop:stopIdx};var s=orlLista()[diaIdx].stops[stopIdx];fillStopModal(s);document.getElementById('modalStopTitle').textContent='Editar parada';openModal('modalStop');}
 function fillStopModal(s){var g=function(id){return document.getElementById(id);};g('stHora').value=s.hora||'';g('stIcone').value=s.icone||'📍';g('stTitulo').value=s.titulo||'';g('stEndereco').value=s.endereco||'';g('stHorario').value=s.horarioFunc||'';g('stFone').value=s.fone||'';g('stNota').value=s.nota||'';g('stDuracao').value=s.duracao||'';g('stAlerta').value=s.alerta||'';g('stDesloc').value=s.desloc||'';g('stDetalhes').value=detalhesToText(s.detalhes);}
-function saveStop(){var g=function(id){return document.getElementById(id).value;};var s={id:'st'+Date.now(),hora:g('stHora'),icone:g('stIcone')||'📍',titulo:g('stTitulo'),endereco:g('stEndereco'),horarioFunc:g('stHorario'),fone:g('stFone'),nota:g('stNota'),duracao:g('stDuracao'),alerta:g('stAlerta'),desloc:g('stDesloc'),detalhes:parseDetalhes(g('stDetalhes'))};if(ORLD.d.pronto){var _l=orlRoteiroCopia();if(!_l)return;var _d=Object.assign({},_l[stopCtx.dia]);var _s=(_d.stops||[]).slice();if(stopCtx.stop!==null){s.id=_s[stopCtx.stop].id||s.id;_s[stopCtx.stop]=s;}else _s.push(s);_d.stops=_s;_l[stopCtx.dia]=_d;closeModal('modalStop');orlSalvarRoteiro(_l);return;}var d=roteiro[stopCtx.dia];if(!Array.isArray(d.stops))d.stops=[];if(stopCtx.stop!==null){s.id=d.stops[stopCtx.stop].id||s.id;d.stops[stopCtx.stop]=s;}else d.stops.push(s);renderRoteiro();renderDiaView();saveAll();closeModal('modalStop');}
+function saveStop(){var g=function(id){return document.getElementById(id).value;};var s={id:'st'+Date.now(),hora:g('stHora'),icone:g('stIcone')||'📍',titulo:g('stTitulo'),endereco:g('stEndereco'),horarioFunc:g('stHorario'),fone:g('stFone'),nota:g('stNota'),duracao:g('stDuracao'),alerta:g('stAlerta'),desloc:g('stDesloc'),detalhes:parseDetalhes(g('stDetalhes'))};if(ORLD.d.pronto){var _l=orlRoteiroCopia();if(!_l)return;var _d=Object.assign({},_l[stopCtx.dia]);var _s=(_d.stops||[]).slice();if(stopCtx.stop!==null){var _ant=_s[stopCtx.stop];s.id=_ant.id||s.id;_s[stopCtx.stop]=s;_s=rotCascata(_s,stopCtx.stop,_ant,s);}else _s.push(s);_d.stops=_s;_l[stopCtx.dia]=_d;closeModal('modalStop');orlSalvarRoteiro(_l);return;}var d=roteiro[stopCtx.dia];if(!Array.isArray(d.stops))d.stops=[];if(stopCtx.stop!==null){s.id=d.stops[stopCtx.stop].id||s.id;d.stops[stopCtx.stop]=s;}else d.stops.push(s);renderRoteiro();renderDiaView();saveAll();closeModal('modalStop');}
 function delStop(diaIdx,stopIdx){if(ORLD.d.pronto){if(!confirm('Remover esta parada?'))return;var _l=orlRoteiroCopia();if(!_l)return;var _d=Object.assign({},_l[diaIdx]);var _s=(_d.stops||[]).slice();_s.splice(stopIdx,1);_d.stops=_s;_l[diaIdx]=_d;orlSalvarRoteiro(_l);return;}var d=roteiro[diaIdx];if(!d||!Array.isArray(d.stops))return;if(!confirm('Remover esta parada?'))return;d.stops.splice(stopIdx,1);renderRoteiro();renderDiaView();saveAll();}
 
 // CHECKLIST
@@ -2414,6 +2414,34 @@ function rotPrintDia(){
 }
 /* fonte de leitura das telas do roteiro: viagem_state quando carregado */
 function orlLista(){return (ORLD.d.pronto&&ORLD.d.roteiro)?ORLD.d.roteiro:roteiro;}
+/* ---- horários encadeados: mexeu em hora/duração/deslocamento, as paradas SEGUINTES andam junto ---- */
+function rotHoraMin(s){var m=/(\d{1,2})\s*h\s*(\d{2})?/i.exec(String(s||''));return m?((+m[1])*60+(m[2]?+m[2]:0)):null;}
+function rotMinHora(v,orig){                                    // devolve no mesmo formato (mantém o "~")
+  v=((v%1440)+1440)%1440; var h=Math.floor(v/60), mm=v%60;
+  var til=/^\s*~/.test(String(orig||''))?'~':'';
+  return til+(h<10?'0'+h:h)+'h'+(mm<10?'0'+mm:mm);
+}
+function rotDurMin(s){                                          // "~1h30", "45 min", "~1h"
+  var t=String(s||'').toLowerCase();
+  var mh=/(\d+)\s*h\s*(\d{1,2})?/.exec(t); if(mh)return (+mh[1])*60+(mh[2]?+mh[2]:0);
+  var mm=/(\d+)\s*min/.exec(t); return mm?+mm[1]:null;
+}
+function rotDeslocMin(s){var mm=/(\d+)\s*min/.exec(String(s||'').toLowerCase());return mm?+mm[1]:null;}
+/* delta = quanto a parada editada empurrou o dia (hora movida + tempo a mais no local + trajeto maior) */
+function rotCascata(stops,idx,antigo,novo){
+  function dif(f){var a=f(antigo),b=f(novo);return (a==null||b==null)?0:(b-a);}
+  var delta=dif(function(x){return rotHoraMin(x.hora);})
+          + dif(function(x){return rotDurMin(x.duracao);})
+          + dif(function(x){return rotDeslocMin(x.desloc);});
+  if(!delta)return stops;
+  var n=0;
+  for(var i=idx+1;i<stops.length;i++){
+    var h=rotHoraMin(stops[i].hora); if(h==null)continue;
+    stops[i]=Object.assign({},stops[i],{hora:rotMinHora(h+delta,stops[i].hora)}); n++;
+  }
+  if(n)try{toast((delta>0?'+':'')+delta+' min · '+n+(n===1?' parada seguinte ajustada':' paradas seguintes ajustadas'));}catch(e){}
+  return stops;
+}
 /* ---- Rota do dia: mostra o NOME da parada, não o endereço (casa pelo endereço) ---- */
 function rotLugarNome(p,dia){
   var s=String(p||'').trim(), k=s.toLowerCase(), k1=k.split(',')[0].trim();
