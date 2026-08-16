@@ -49,8 +49,6 @@ body.dark{--bg:#141220;--surface:#1d1a2b;--surface2:#272338;--border:#332e48;--t
 .orl-banner{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.6rem .85rem;margin-bottom:1rem}
 #page-orlando.orl-wait .tab-content{display:none}
 /* esconde o que ESCREVE (gravaria no hub_state, fonte errada). Notas ficam: são do HUB, não da viagem */
-#page-orlando [onclick^="editDia("],
-#page-orlando [onclick^="addStop("],#page-orlando [onclick^="editStop("],#page-orlando [onclick^="delStop("],
 #page-orlando [onclick^="abrirModalVoos"],
 #page-orlando [onclick^="openAddSection("],#page-orlando [onclick^="deleteItem("],
 #page-orlando [onclick^="abrirNovoGasto"],#page-orlando [onclick^="editGasto("],#page-orlando [onclick^="deleteGasto("],
@@ -1809,17 +1807,17 @@ function renderDiaView(){
     body.innerHTML='<div class="dia-detail"><strong>Resumo:</strong> '+escH(r.resumo||'—')+'</div><div class="dia-detail" style="margin-top:.5rem"><strong>Detalhes:</strong> '+escH(r.detalhes||'—')+'</div>';
   }
 }
-function editDia(i){editIndex=i;const r=roteiro[i];document.getElementById('modalDiaTitle').textContent='Editar Dia '+r.dia;document.getElementById('inputDiaTitulo').value=r.titulo;document.getElementById('inputDiaResumo').value=r.resumo;document.getElementById('inputDiaDetalhes').value=r.detalhes;document.getElementById('inputDiaGasto').value=r.gasto;openModal('modalDia');}
+function editDia(i){editIndex=i;const r=orlLista()[i];document.getElementById('modalDiaTitle').textContent='Editar Dia '+r.dia;document.getElementById('inputDiaTitulo').value=r.titulo;document.getElementById('inputDiaResumo').value=r.resumo;document.getElementById('inputDiaDetalhes').value=r.detalhes;document.getElementById('inputDiaGasto').value=r.gasto;openModal('modalDia');}
 function saveDia(){const titulo=document.getElementById('inputDiaTitulo').value,resumo=document.getElementById('inputDiaResumo').value,detalhes=document.getElementById('inputDiaDetalhes').value,gasto=parseFloat(document.getElementById('inputDiaGasto').value)||0;if(ORLD.d.pronto){/* fonte = viagem_state (mesma do app) */var _l=orlRoteiroCopia();if(!_l)return;if(editIndex!==null){_l[editIndex]=Object.assign({},_l[editIndex],{titulo:titulo,resumo:resumo,detalhes:detalhes,gasto:gasto});editIndex=null;}else _l.push({dia:_l.length+1,data:'',titulo:titulo,resumo:resumo,detalhes:detalhes,gasto:gasto,stops:[],avisos:[]});closeModal('modalDia');orlSalvarRoteiro(_l);return;}if(editIndex!==null){roteiro[editIndex]={...roteiro[editIndex],titulo,resumo,detalhes,gasto};editIndex=null;}else roteiro.push({dia:roteiro.length+1,data:'',titulo,resumo,detalhes,gasto});renderRoteiro();renderDiaView();saveAll();closeModal('modalDia');}
 // PARADAS DO ROTEIRO (timeline rica)
 var stopCtx={dia:null,stop:null};
 function parseDetalhes(txt){var secs=[];var cur=null;String(txt||'').split('\n').forEach(function(ln){var l=ln.trim();if(!l)return;if(/[:：]$/.test(l)){cur={titulo:l.replace(/[:：]$/,'').trim(),itens:[]};secs.push(cur);}else{var item=l.replace(/^[-•*]\s*/,'');if(!cur){cur={titulo:'',itens:[]};secs.push(cur);}cur.itens.push(item);}});return secs.filter(function(s){return s.titulo||s.itens.length;});}
 function detalhesToText(detalhes){if(!Array.isArray(detalhes))return '';return detalhes.map(function(sec){var head=sec.titulo?sec.titulo+':\n':'';return head+(sec.itens||[]).map(function(it){return '- '+it;}).join('\n');}).join('\n\n');}
 function addStop(diaIdx){stopCtx={dia:diaIdx,stop:null};fillStopModal({hora:'',icone:'📍',titulo:'',endereco:'',horarioFunc:'',fone:'',nota:'',duracao:'',alerta:'',detalhes:[],desloc:''});document.getElementById('modalStopTitle').textContent='Nova parada';openModal('modalStop');}
-function editStop(diaIdx,stopIdx){stopCtx={dia:diaIdx,stop:stopIdx};var s=roteiro[diaIdx].stops[stopIdx];fillStopModal(s);document.getElementById('modalStopTitle').textContent='Editar parada';openModal('modalStop');}
+function editStop(diaIdx,stopIdx){stopCtx={dia:diaIdx,stop:stopIdx};var s=orlLista()[diaIdx].stops[stopIdx];fillStopModal(s);document.getElementById('modalStopTitle').textContent='Editar parada';openModal('modalStop');}
 function fillStopModal(s){var g=function(id){return document.getElementById(id);};g('stHora').value=s.hora||'';g('stIcone').value=s.icone||'📍';g('stTitulo').value=s.titulo||'';g('stEndereco').value=s.endereco||'';g('stHorario').value=s.horarioFunc||'';g('stFone').value=s.fone||'';g('stNota').value=s.nota||'';g('stDuracao').value=s.duracao||'';g('stAlerta').value=s.alerta||'';g('stDesloc').value=s.desloc||'';g('stDetalhes').value=detalhesToText(s.detalhes);}
-function saveStop(){var g=function(id){return document.getElementById(id).value;};var s={id:'st'+Date.now(),hora:g('stHora'),icone:g('stIcone')||'📍',titulo:g('stTitulo'),endereco:g('stEndereco'),horarioFunc:g('stHorario'),fone:g('stFone'),nota:g('stNota'),duracao:g('stDuracao'),alerta:g('stAlerta'),desloc:g('stDesloc'),detalhes:parseDetalhes(g('stDetalhes'))};var d=roteiro[stopCtx.dia];if(!Array.isArray(d.stops))d.stops=[];if(stopCtx.stop!==null){s.id=d.stops[stopCtx.stop].id||s.id;d.stops[stopCtx.stop]=s;}else d.stops.push(s);renderRoteiro();renderDiaView();saveAll();closeModal('modalStop');}
-function delStop(diaIdx,stopIdx){var d=roteiro[diaIdx];if(!d||!Array.isArray(d.stops))return;if(!confirm('Remover esta parada?'))return;d.stops.splice(stopIdx,1);renderRoteiro();renderDiaView();saveAll();}
+function saveStop(){var g=function(id){return document.getElementById(id).value;};var s={id:'st'+Date.now(),hora:g('stHora'),icone:g('stIcone')||'📍',titulo:g('stTitulo'),endereco:g('stEndereco'),horarioFunc:g('stHorario'),fone:g('stFone'),nota:g('stNota'),duracao:g('stDuracao'),alerta:g('stAlerta'),desloc:g('stDesloc'),detalhes:parseDetalhes(g('stDetalhes'))};if(ORLD.d.pronto){var _l=orlRoteiroCopia();if(!_l)return;var _d=Object.assign({},_l[stopCtx.dia]);var _s=(_d.stops||[]).slice();if(stopCtx.stop!==null){s.id=_s[stopCtx.stop].id||s.id;_s[stopCtx.stop]=s;}else _s.push(s);_d.stops=_s;_l[stopCtx.dia]=_d;closeModal('modalStop');orlSalvarRoteiro(_l);return;}var d=roteiro[stopCtx.dia];if(!Array.isArray(d.stops))d.stops=[];if(stopCtx.stop!==null){s.id=d.stops[stopCtx.stop].id||s.id;d.stops[stopCtx.stop]=s;}else d.stops.push(s);renderRoteiro();renderDiaView();saveAll();closeModal('modalStop');}
+function delStop(diaIdx,stopIdx){if(ORLD.d.pronto){if(!confirm('Remover esta parada?'))return;var _l=orlRoteiroCopia();if(!_l)return;var _d=Object.assign({},_l[diaIdx]);var _s=(_d.stops||[]).slice();_s.splice(stopIdx,1);_d.stops=_s;_l[diaIdx]=_d;orlSalvarRoteiro(_l);return;}var d=roteiro[diaIdx];if(!d||!Array.isArray(d.stops))return;if(!confirm('Remover esta parada?'))return;d.stops.splice(stopIdx,1);renderRoteiro();renderDiaView();saveAll();}
 
 // CHECKLIST
 let clData={levar:{sections:[
@@ -2414,6 +2412,8 @@ function rotPrintDia(){
   window.addEventListener('afterprint',fim);
   setTimeout(function(){ window.print(); },30);
 }
+/* fonte de leitura das telas do roteiro: viagem_state quando carregado */
+function orlLista(){return (ORLD.d.pronto&&ORLD.d.roteiro)?ORLD.d.roteiro:roteiro;}
 /* ---- Rota do dia: mostra o NOME da parada, não o endereço (casa pelo endereço) ---- */
 function rotLugarNome(p,dia){
   var s=String(p||'').trim(), k=s.toLowerCase(), k1=k.split(',')[0].trim();
