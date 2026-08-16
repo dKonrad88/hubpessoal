@@ -49,7 +49,7 @@ body.dark{--bg:#141220;--surface:#1d1a2b;--surface2:#272338;--border:#332e48;--t
 .orl-banner{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.6rem .85rem;margin-bottom:1rem}
 #page-orlando.orl-wait .tab-content{display:none}
 /* esconde o que ESCREVE (gravaria no hub_state, fonte errada). Notas ficam: são do HUB, não da viagem */
-#page-orlando [onclick*="modalDia"],#page-orlando [onclick^="editDia("],
+#page-orlando [onclick^="editDia("],
 #page-orlando [onclick^="addStop("],#page-orlando [onclick^="editStop("],#page-orlando [onclick^="delStop("],
 #page-orlando [onclick^="abrirModalVoos"],
 #page-orlando [onclick^="openAddSection("],#page-orlando [onclick^="deleteItem("],
@@ -57,6 +57,35 @@ body.dark{--bg:#141220;--surface:#1d1a2b;--surface2:#272338;--border:#332e48;--t
 #page-orlando [onclick^="abrirNovaPrevisao"],#page-orlando [onclick^="comprarPrevisao("],#page-orlando [onclick^="editPrevisao("],#page-orlando [onclick^="deletePrevisao("],
 #page-orlando [onclick^="openAddDoc"],#page-orlando [onclick^="editDoc("],#page-orlando [onclick^="deleteDoc("]{display:none!important}
 #page-orlando input[onchange^="toggleItem"]{pointer-events:none;opacity:.5}
+/* lembretes do dia: editar / excluir / adicionar */
+.rot-aviso .av-acts{margin-left:auto;display:flex;gap:.1rem;flex:none;opacity:0;transition:opacity .12s}
+.rot-aviso:hover .av-acts,.rot-aviso:focus-within .av-acts{opacity:1}
+.av-b{background:none;border:0;color:var(--muted);cursor:pointer;padding:.15rem .3rem;border-radius:6px;font-size:.9rem;line-height:1}
+.av-b:hover{color:var(--text);background:rgba(128,128,128,.14)}
+.av-ta{width:100%;min-height:80px;font-family:inherit;font-size:.85rem;line-height:1.45;padding:.55rem .65rem;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text);resize:vertical}
+.av-eacts{display:flex;gap:.4rem;margin-top:.45rem}
+.av-add{margin-top:.5rem;opacity:.75}
+/* impressão: só o dia aberto vai pro papel */
+#printArea{display:none}
+@media print{
+  body.printing>*{display:none!important}
+  body.printing #printArea{display:block!important;color:#000;background:#fff;font:13px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;padding:0}
+  #printArea h1{font-size:19pt;margin:.1rem 0 .2rem}
+  #printArea .pr-num{font-size:8pt;letter-spacing:.16em;text-transform:uppercase;color:#555}
+  #printArea .pr-dt{font-size:10pt;color:#444;margin-bottom:.5rem}
+  #printArea .pr-res{font-size:11pt;margin-bottom:.6rem}
+  #printArea .pr-h{border-bottom:2px solid #000;padding-bottom:.4rem;margin-bottom:.7rem}
+  #printArea .pr-av{border:1px solid #999;border-left:4px solid #666;padding:.4rem .6rem;margin-bottom:.8rem;font-size:10pt}
+  #printArea .pr-av ul{margin:.25rem 0 0 1rem}
+  #printArea .pr-stops{list-style:none;padding:0;margin:0}
+  #printArea .pr-stops>li{border-top:1px solid #ccc;padding:.5rem 0;break-inside:avoid;page-break-inside:avoid}
+  #printArea .pr-st-h{font-size:12pt}
+  #printArea .pr-hr{font-weight:700;margin-right:.35rem}
+  #printArea .pr-l{font-size:10pt;color:#333;margin-top:.12rem}
+  #printArea .pr-sec{margin:.3rem 0 .1rem}
+  #printArea .pr-sec ul{margin:.1rem 0 0 1rem}
+  @page{margin:14mm}
+}
 .app-embed-pane.full iframe{height:calc(100vh - 128px);min-height:560px}
 /* app integrado ao HUB: sem card, colado nas bordas da área de conteúdo */
 .app-embed-pane.flush{border:0;border-radius:0;box-shadow:none;background:transparent;margin:-1.25rem -1.75rem -2rem;position:relative}
@@ -853,8 +882,7 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 <div class="page-header">
 <div class="page-title"><i class="ti ti-map" style="color:#6d5efc"></i> Roteiro — Orlando 2026</div>
 <div class="page-actions">
-<button class="btn btn-primary btn-sm" onclick="focoAgora()"><i class="ti ti-player-play"></i> Agora</button><button class="btn btn-ghost btn-sm" onclick="abrirModalVoos()"><i class="ti ti-plane"></i> Voos</button>
-<button class="btn btn-ghost btn-sm" onclick="exportPage()" title="Exportar página em HTML"><i class="ti ti-download"></i></button>
+<button class="btn btn-ghost btn-sm" onclick="rotPrintDia()" title="Imprimir só o dia aberto"><i class="ti ti-printer"></i> Imprimir o dia</button>
 <button class="btn btn-primary btn-sm" onclick="openModal('modalDia')"><i class="ti ti-plus"></i> Novo Dia</button>
 </div>
 </div>
@@ -1704,11 +1732,14 @@ function setRotDay(i){ROT_DAY=i;renderRoteiro();}
 function rotIsPark(r){return /parque|magic kingdom|epic universe|universal|hollywood studios|animal kingdom|epcot/i.test(String(r.titulo||'')+' '+String(r.resumo||''));}
 function rotDiasPra(){try{var ini=new Date('2026-09-30T00:00:00');var n=Math.ceil((ini-new Date())/86400000);return n>0?n:0;}catch(e){return null;}}
 function rotTotGasto(){var t=0;roteiro.forEach(function(r){var g=parseInt(String(r.gasto).replace(/[^0-9]/g,''),10);if(!isNaN(g))t+=g;});return t;}
-function rotSwitch(){function b(v,ic,lb){return '<button class="rotv-btn'+(ROT_VIEW===v?' on':'')+'" onclick="setRotView(\''+v+'\')">'+ic+' '+lb+'</button>';}var d=rotDiasPra();return '<div class="rotv-bar"><div class="rotv-sw">'+b('foco','◧','Foco')+b('mural','▦','Mural')+b('fita','≡','Fita')+'</div><div class="rotv-sum"><span class="rotv-chip"><b>'+roteiro.length+'</b> dias</span>'+(d!==null?'<span class="rotv-chip hi"><b>'+d+'</b> dias pra viagem</span>':'')+'<span class="rotv-chip">US$ <b>'+rotTotGasto().toLocaleString('pt-BR')+'</b> previsto</span></div></div>';}
+function rotSwitch(){function b(v,ic,lb){return '<button class="rotv-btn'+(ROT_VIEW===v?' on':'')+'" onclick="setRotView(\''+v+'\')">'+ic+' '+lb+'</button>';}return '<div class="rotv-bar"><div class="rotv-sw">'+b('foco','◧','Foco')+b('mural','▦','Mural')+b('fita','≡','Fita')+'</div></div>';}
 function renderRoteiro(){var list=document.getElementById('roteiro-list');if(!list)return;rotCss();if(ROT_DAY>=roteiro.length||ROT_DAY<0)ROT_DAY=0;var body=(ROT_VIEW==='mural')?rotMural():((ROT_VIEW==='fita')?rotFita():rotFoco());list.innerHTML=rotSwitch()+body;}
 function rotDayChip(r,i){return '<button class="rv-daychip'+(i===ROT_DAY?' on':'')+(rotIsPark(r)?' park':'')+'" onclick="setRotDay('+i+')"><span class="dn">'+escH(r.dia)+'</span><span class="dd">'+escH(r.data)+'</span></button>';}
 function rotFoco(){var d=roteiro[ROT_DAY]||roteiro[0];if(!d)return '';return '<div class="rv-daynav noscroll">'+roteiro.map(rotDayChip).join('')+'</div>'+rotDayDetail(d,ROT_DAY);}
-function rotDayDetail(d,i){var semana=d.diaSemana?escH(d.diaSemana)+', ':'';var dataL=d.dataLonga?escH(d.dataLonga):escH(d.data);var rb=diaMapsUrl(d)?'<a class="rota-btn" href="'+diaMapsUrl(d)+'" target="_blank" rel="noopener"><i class="ti ti-map-2"></i> Abrir rota</a>':'';var head='<div class="rdet-h"><span class="rdnum">'+escH(d.dia)+'</span><div class="rdet-ht"><h3>'+escH(d.titulo)+'</h3><span class="rdet-hd">'+semana+dataL+'</span></div>'+rb+'<button class="btn btn-ghost btn-sm" onclick="editDia('+i+')"><i class="ti ti-pencil"></i> Editar</button></div>';var avisos=(d.avisos&&d.avisos.length)?'<div class="rdet-avisos"><button class="rdet-avisos-tog" onclick="this.parentNode.classList.toggle(\'open\')"><i class="ti ti-bulb"></i> '+d.avisos.length+' '+(d.avisos.length===1?'lembrete':'lembretes')+' do dia<i class="ti ti-chevron-down chev"></i></button><div class="rdet-avisos-body">'+d.avisos.map(function(a){return '<div class="rot-aviso"><i class="ti ti-alert-triangle"></i><span>'+escH(a)+'</span></div>';}).join('')+'</div></div>':'';var main;if(d.stops&&d.stops.length){main='<div class="rot-timeline">'+d.stops.map(function(s,si){return roteiroStop(s,i,si);}).join('')+'<button class="btn btn-ghost btn-sm rot-add-btn" onclick="addStop('+i+')"><i class="ti ti-plus"></i> Adicionar parada</button></div>';}else{main='<div><div class="dia-detail"><strong>Resumo:</strong> '+escH(d.resumo||'-')+'</div>'+(d.detalhes?'<div class="dia-detail" style="margin-top:.5rem"><strong>Detalhes:</strong> '+escH(d.detalhes)+'</div>':'')+'<button class="btn btn-ghost btn-sm rot-add-btn" style="margin-top:.7rem" onclick="addStop('+i+')"><i class="ti ti-plus"></i> Adicionar parada</button></div>';}var side='<div class="rdet-side"><div class="rdet-card"><div class="rdet-ct">Gasto previsto</div><div class="rdet-big">US$ '+escH(d.gasto)+'</div></div>';if(d.rota&&d.rota.length){side+='<div class="rdet-card"><div class="rdet-ct">Rota do dia</div><div class="rdet-route">'+d.rota.map(function(p,pi){return (pi?'<span class="arw"> → </span>':'')+escH(String(p).split(',')[0]);}).join('')+'</div></div>';}side+='</div>';return '<div class="rdet">'+head+avisos+'<div class="rdet-body">'+main+side+'</div></div>';}
+function rotDayDetail(d,i){var semana=d.diaSemana?escH(d.diaSemana)+', ':'';var dataL=d.dataLonga?escH(d.dataLonga):escH(d.data);var rb=diaMapsUrl(d)?'<a class="rota-btn" href="'+diaMapsUrl(d)+'" target="_blank" rel="noopener"><i class="ti ti-map-2"></i> Abrir rota</a>':'';var head='<div class="rdet-h"><span class="rdnum">'+escH(d.dia)+'</span><div class="rdet-ht"><h3>'+escH(d.titulo)+'</h3><span class="rdet-hd">'+semana+dataL+'</span></div>'+rb+'<button class="btn btn-ghost btn-sm" onclick="editDia('+i+')"><i class="ti ti-pencil"></i> Editar</button></div>';var _nav=(d.avisos&&d.avisos.length)||0;
+var avisos='<div class="rdet-avisos"><button class="rdet-avisos-tog" onclick="this.parentNode.classList.toggle(\'open\')"><i class="ti ti-bulb"></i> '+(_nav?_nav+' '+(_nav===1?'lembrete':'lembretes')+' do dia':'Lembretes do dia')+'<i class="ti ti-chevron-down chev"></i></button><div class="rdet-avisos-body">'+
+ (d.avisos||[]).map(function(a,ai){return '<div class="rot-aviso" id="av-'+i+'-'+ai+'"><i class="ti ti-alert-triangle"></i><span class="av-tx">'+escH(a)+'</span><span class="av-acts"><button class="av-b" title="Editar lembrete" onclick="orlAvisoEdit('+i+','+ai+')"><i class="ti ti-pencil"></i></button><button class="av-b" title="Excluir lembrete" onclick="orlAvisoDel('+i+','+ai+')"><i class="ti ti-trash"></i></button></span></div>';}).join('')+
+ '<div id="av-novo-'+i+'"></div><button class="btn btn-ghost btn-sm av-add" onclick="orlAvisoEdit('+i+',-1)"><i class="ti ti-plus"></i> lembrete</button></div></div>';var main;if(d.stops&&d.stops.length){main='<div class="rot-timeline">'+d.stops.map(function(s,si){return roteiroStop(s,i,si);}).join('')+'<button class="btn btn-ghost btn-sm rot-add-btn" onclick="addStop('+i+')"><i class="ti ti-plus"></i> Adicionar parada</button></div>';}else{main='<div><div class="dia-detail"><strong>Resumo:</strong> '+escH(d.resumo||'-')+'</div>'+(d.detalhes?'<div class="dia-detail" style="margin-top:.5rem"><strong>Detalhes:</strong> '+escH(d.detalhes)+'</div>':'')+'<button class="btn btn-ghost btn-sm rot-add-btn" style="margin-top:.7rem" onclick="addStop('+i+')"><i class="ti ti-plus"></i> Adicionar parada</button></div>';}var side='<div class="rdet-side"><div class="rdet-card"><div class="rdet-ct">Gasto previsto</div><div class="rdet-big">US$ '+escH(d.gasto)+'</div></div>';if(d.rota&&d.rota.length){side+='<div class="rdet-card"><div class="rdet-ct">Rota do dia</div><div class="rdet-route">'+d.rota.map(function(p,pi){return (pi?'<span class="arw"> → </span>':'')+escH(rotLugarNome(p,d));}).join('')+'</div></div>';}side+='</div>';return '<div class="rdet">'+head+avisos+'<div class="rdet-body">'+main+side+'</div></div>';}
 function rotStopsMini(r){if(r.stops&&r.stops.length){return r.stops.slice(0,5).map(function(s){return '<div class="mstop"><div class="tm">'+escH(s.hora||'')+'</div><div class="lb">'+(s.icone?s.icone+' ':'')+escH(s.titulo)+'</div></div>';}).join('');}return '<div class="mstop"><div class="lb">'+escH(r.resumo||r.titulo||'')+'</div></div>';}
 function rotMural(){return '<div class="edge-fade"><div class="rot-mural noscroll">'+roteiro.map(function(r,i){return '<div class="rv-mcol'+(rotIsPark(r)?' park':'')+'"><div class="mcol-h" onclick="openDiaView('+i+')"><span class="rdnum sm">'+escH(r.dia)+'</span><div class="mm"><div class="d">'+escH(r.data)+'</div><div class="t">'+escH(r.titulo)+'</div></div></div><div class="mcol-sp">US$ <b>'+escH(r.gasto)+'</b></div>'+rotStopsMini(r)+'</div>';}).join('')+'</div></div>';}
 function rotFita(){return '<div class="rot-fita">'+roteiro.map(function(r,i){var stops=(r.stops&&r.stops.length)?r.stops.map(function(s){return '<div class="fstop"><div class="tm">'+escH(s.hora||'')+'</div><div class="lb">'+(s.icone?s.icone+' ':'')+escH(s.titulo)+'</div></div>';}).join(''):'<div class="fstop"><div class="lb">'+escH(r.resumo||r.titulo||'')+'</div></div>';return '<div class="rv-fband'+(rotIsPark(r)?' park':'')+'"><div class="fband-rail" onclick="openDiaView('+i+')"><span class="rdnum">'+escH(r.dia)+'</span><div><div class="d">'+escH(r.data)+'</div><div class="t">'+escH(r.titulo)+'</div><div class="spend">US$ '+escH(r.gasto)+'</div></div></div><div class="fband-stops">'+stops+'</div></div>';}).join('')+'</div>';}
@@ -1778,7 +1809,7 @@ function renderDiaView(){
   }
 }
 function editDia(i){editIndex=i;const r=roteiro[i];document.getElementById('modalDiaTitle').textContent='Editar Dia '+r.dia;document.getElementById('inputDiaTitulo').value=r.titulo;document.getElementById('inputDiaResumo').value=r.resumo;document.getElementById('inputDiaDetalhes').value=r.detalhes;document.getElementById('inputDiaGasto').value=r.gasto;openModal('modalDia');}
-function saveDia(){const titulo=document.getElementById('inputDiaTitulo').value,resumo=document.getElementById('inputDiaResumo').value,detalhes=document.getElementById('inputDiaDetalhes').value,gasto=parseFloat(document.getElementById('inputDiaGasto').value)||0;if(editIndex!==null){roteiro[editIndex]={...roteiro[editIndex],titulo,resumo,detalhes,gasto};editIndex=null;}else roteiro.push({dia:roteiro.length+1,data:'',titulo,resumo,detalhes,gasto});renderRoteiro();renderDiaView();saveAll();closeModal('modalDia');}
+function saveDia(){const titulo=document.getElementById('inputDiaTitulo').value,resumo=document.getElementById('inputDiaResumo').value,detalhes=document.getElementById('inputDiaDetalhes').value,gasto=parseFloat(document.getElementById('inputDiaGasto').value)||0;if(ORLD.d.pronto){/* fonte = viagem_state (mesma do app) */var _l=orlRoteiroCopia();if(!_l)return;if(editIndex!==null){_l[editIndex]=Object.assign({},_l[editIndex],{titulo:titulo,resumo:resumo,detalhes:detalhes,gasto:gasto});editIndex=null;}else _l.push({dia:_l.length+1,data:'',titulo:titulo,resumo:resumo,detalhes:detalhes,gasto:gasto,stops:[],avisos:[]});closeModal('modalDia');orlSalvarRoteiro(_l);return;}if(editIndex!==null){roteiro[editIndex]={...roteiro[editIndex],titulo,resumo,detalhes,gasto};editIndex=null;}else roteiro.push({dia:roteiro.length+1,data:'',titulo,resumo,detalhes,gasto});renderRoteiro();renderDiaView();saveAll();closeModal('modalDia');}
 // PARADAS DO ROTEIRO (timeline rica)
 var stopCtx={dia:null,stop:null};
 function parseDetalhes(txt){var secs=[];var cur=null;String(txt||'').split('\n').forEach(function(ln){var l=ln.trim();if(!l)return;if(/[:：]$/.test(l)){cur={titulo:l.replace(/[:：]$/,'').trim(),itens:[]};secs.push(cur);}else{var item=l.replace(/^[-•*]\s*/,'');if(!cur){cur={titulo:'',itens:[]};secs.push(cur);}cur.itens.push(item);}});return secs.filter(function(s){return s.titulo||s.itens.length;});}
@@ -2311,7 +2342,7 @@ function restaurarPadrao(){if(!confirm('Isso vai APAGAR os dados salvos e voltar
    viagem_state, e a página é SÓ LEITURA (editar é no app). As globais do HUB são trocadas só durante
    o render e restauradas em seguida, então nenhum saveAll/cloudPush leva esses dados pro hub_state. */
 var ORLD=(function(){
-  var D={pronto:false,estado:'init',erro:'',roteiro:null,gastos:null,cl:null,docs:null,meta:null,cambio:null,voos:null};
+  var D={pronto:false,estado:'init',erro:'',listaId:null,roteiro:null,gastos:null,cl:null,docs:null,meta:null,cambio:null,voos:null};
   function load(cb){
     if(D.estado==='loading')return;
     if(!(window.sb&&window.cloudUser)){D.estado='nologin';if(cb)cb();return;}
@@ -2320,6 +2351,7 @@ var ORLD=(function(){
       if(lr.error)throw lr.error;
       var ls=lr.data||[], alvo=ls.filter(function(l){return /orlando/i.test(l.nome||'');})[0]||ls[0];
       if(!alvo){D.estado='empty';if(cb)cb();return;}
+      D.listaId=alvo.id; // guardado p/ gravar (lembretes, novo dia) na fonte certa
       return sb.from('viagem_state').select('key,value').eq('lista_id',alvo.id).then(function(r){
         if(r.error)throw r.error;
         var M={}; (r.data||[]).forEach(function(x){M[x.key]=x.value;});
@@ -2362,6 +2394,102 @@ function orlAviso(){
   else if(e==='error')txt='<i class="ti ti-alert-triangle"></i> Não consegui carregar os dados: '+(ORLD.d.erro||'');
   b.innerHTML=txt; b.style.display=txt?'flex':'none';
   pg.classList.toggle('orl-wait',!ORLD.d.pronto); // esconde as abas p/ nunca mostrar dado velho
+}
+/* ---- imprimir SÓ o dia aberto (folha limpa, sem o HUB em volta) ---- */
+function rotDiaPrintHTML(d){
+  var esc=(typeof escH==='function')?escH:function(x){return String(x==null?'':x);};
+  var semana=d.diaSemana?esc(d.diaSemana)+', ':'';
+  var h='<div class="pr-h"><div class="pr-num">Dia '+esc(d.dia)+'</div><h1>'+esc(d.titulo||'')+'</h1>'+
+        '<div class="pr-dt">'+semana+esc(d.dataLonga||d.data||'')+(d.gasto?' · previsto US$ '+esc(d.gasto):'')+'</div>'+
+        (d.resumo?'<div class="pr-res">'+esc(d.resumo)+'</div>':'')+'</div>';
+  if(d.avisos&&d.avisos.length)
+    h+='<div class="pr-av"><b>Lembretes do dia</b><ul>'+d.avisos.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul></div>';
+  if(d.stops&&d.stops.length){
+    h+='<ol class="pr-stops">'+d.stops.map(function(s){
+      var det='';
+      if(s.detalhes&&s.detalhes.length)det=s.detalhes.map(function(sec){
+        return '<div class="pr-sec">'+(sec.titulo?'<b>'+esc(sec.titulo)+'</b>':'')+
+               '<ul>'+(sec.itens||[]).map(function(it){return '<li>'+esc(it)+'</li>';}).join('')+'</ul></div>';
+      }).join('');
+      return '<li><div class="pr-st-h"><span class="pr-hr">'+esc(s.hora||'')+'</span> <b>'+esc((s.icone?s.icone+' ':'')+(s.titulo||''))+'</b></div>'+
+        (s.endereco?'<div class="pr-l">📍 '+esc(s.endereco)+'</div>':'')+
+        (s.horarioFunc?'<div class="pr-l">🕒 '+esc(s.horarioFunc)+'</div>':'')+
+        (s.fone?'<div class="pr-l">☎ '+esc(s.fone)+'</div>':'')+
+        (s.duracao?'<div class="pr-l">⏱ '+esc(s.duracao)+'</div>':'')+
+        (s.desloc?'<div class="pr-l">🚗 '+esc(s.desloc)+'</div>':'')+
+        (s.nota?'<div class="pr-l">'+esc(s.nota)+'</div>':'')+
+        (s.alerta?'<div class="pr-l"><b>⚠ '+esc(s.alerta)+'</b></div>':'')+det+'</li>';
+    }).join('')+'</ol>';
+  }else if(d.detalhes&&typeof d.detalhes==='string'){h+='<div class="pr-l">'+esc(d.detalhes)+'</div>';}
+  return h;
+}
+function rotPrintDia(){
+  var lista=(ORLD.d.pronto&&ORLD.d.roteiro)?ORLD.d.roteiro:roteiro;
+  var d=lista[ROT_DAY]||lista[0]; if(!d)return;
+  var area=document.getElementById('printArea');
+  if(!area){area=document.createElement('div');area.id='printArea';document.body.appendChild(area);}
+  area.innerHTML=rotDiaPrintHTML(d);
+  document.body.classList.add('printing');
+  var fim=function(){document.body.classList.remove('printing');window.removeEventListener('afterprint',fim);};
+  window.addEventListener('afterprint',fim);
+  setTimeout(function(){window.print();},30);
+}
+/* ---- Rota do dia: mostra o NOME da parada, não o endereço (casa pelo endereço) ---- */
+function rotLugarNome(p,dia){
+  var s=String(p||'').trim(), k=s.toLowerCase(), k1=k.split(',')[0].trim();
+  var achado='';
+  function varre(d){
+    (d&&d.stops||[]).forEach(function(st){
+      if(achado||!st.titulo)return;
+      var e=String(st.endereco||'').toLowerCase().trim(); if(!e)return;
+      var e1=e.split(',')[0].trim();
+      if(e===k||e1===k1||e.indexOf(k1)===0||k.indexOf(e1)===0)achado=st.titulo;
+    });
+  }
+  varre(dia); // primeiro no próprio dia
+  if(!achado){ var lista=(ORLD.d.pronto&&ORLD.d.roteiro)?ORLD.d.roteiro:roteiro; (lista||[]).forEach(varre); } // depois no roteiro todo
+  return achado||s.split(',')[0];
+}
+/* ---- lembretes do dia: editar / excluir / adicionar (grava no viagem_state) ---- */
+function orlRoteiroCopia(){
+  if(!(ORLD.d.pronto&&ORLD.d.roteiro&&ORLD.d.roteiro.length)){alert('Os dados da viagem ainda não carregaram — não vou salvar.');return null;}
+  return ORLD.d.roteiro.map(function(d){return Object.assign({},d);});
+}
+function orlAvisoEdit(di,ai){
+  var lista=(ORLD.d.pronto&&ORLD.d.roteiro)?ORLD.d.roteiro:roteiro;
+  var txt=(ai>=0)?(((lista[di]||{}).avisos||[])[ai]||''):'';
+  var alvo=(ai>=0)?document.getElementById('av-'+di+'-'+ai):document.getElementById('av-novo-'+di);
+  if(!alvo)return;
+  alvo.innerHTML='<textarea class="av-ta" id="avta-'+di+'-'+ai+'"></textarea>'+
+    '<div class="av-eacts"><button class="btn btn-primary btn-sm" onclick="orlAvisoSave('+di+','+ai+')">Salvar</button>'+
+    '<button class="btn btn-ghost btn-sm" onclick="orlPaint(\'roteiro\')">Cancelar</button></div>';
+  var ta=document.getElementById('avta-'+di+'-'+ai); if(ta){ta.value=txt;ta.focus();}
+}
+function orlAvisoSave(di,ai){
+  var ta=document.getElementById('avta-'+di+'-'+ai); if(!ta)return;
+  var v=(ta.value||'').trim();
+  var lista=orlRoteiroCopia(); if(!lista)return;
+  var av=((lista[di]||{}).avisos||[]).slice();
+  if(ai>=0){ if(v)av[ai]=v; else av.splice(ai,1); }
+  else { if(!v){orlPaint('roteiro');return;} av.push(v); }
+  lista[di]=Object.assign({},lista[di],{avisos:av});
+  orlSalvarRoteiro(lista);
+}
+function orlAvisoDel(di,ai){
+  if(!confirm('Excluir este lembrete?'))return;
+  var lista=orlRoteiroCopia(); if(!lista)return;
+  var av=((lista[di]||{}).avisos||[]).slice(); av.splice(ai,1);
+  lista[di]=Object.assign({},lista[di],{avisos:av});
+  orlSalvarRoteiro(lista);
+}
+/* ---- Novo Dia grava no viagem_state (mesma fonte do app), nunca no hub_state ---- */
+function orlSalvarRoteiro(lista){
+  if(!ORLD.d.pronto||!Array.isArray(lista)||!lista.length){alert('Sem os dados da viagem carregados — não vou salvar.');return;}
+  if(!(window.sb&&window.cloudUser&&ORLD.d.listaId)){alert('Entre na sua conta da nuvem (☁ no topo) para salvar.');return;}
+  sb.from('viagem_state').upsert({lista_id:ORLD.d.listaId,key:'roteiro',value:lista,updated_at:new Date().toISOString()}).then(function(r){
+    if(r.error){alert('Não consegui salvar: '+r.error.message);return;}
+    ORLD.d.roteiro=lista; orlPaint('roteiro');
+  }).catch(function(e){alert('Não consegui salvar: '+((e&&e.message)||'falha'));});
 }
 /* pinta uma aba da página web sempre a partir do viagem_state */
 function orlPaint(tab){
