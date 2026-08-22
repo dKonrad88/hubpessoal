@@ -1742,7 +1742,12 @@ var ROT_DAY=0;
 function rotCss(){if(document.getElementById('rotv-css'))return;var st=document.createElement('style');st.id='rotv-css';st.textContent=ROTV_CSS;document.head.appendChild(st);}
 function setRotView(v){ROT_VIEW=v;try{localStorage.setItem('hub_rot_view',v);}catch(e){}renderRoteiro();}
 function setRotDay(i){ROT_DAY=i;renderRoteiro();}
-function rotIsPark(r){return /parque|magic kingdom|epic universe|universal|hollywood studios|animal kingdom|epcot/i.test(String(r.titulo||'')+' '+String(r.resumo||''));}
+function rotIsPark(r){
+  var t=String((r&&r.tema)||'').trim();
+  if(t)return /^parque/i.test(t);                       // o tema do dia manda (evita marcar 'dia leve pós-Magic Kingdom')
+  if(/dia leve|descanso|pregui|folga/i.test(String(r.titulo||'')))return false;
+  return /parque|magic kingdom|epic universe|universal|hollywood studios|animal kingdom|epcot/i.test(String(r.titulo||'')+' '+String(r.resumo||''));
+}
 function rotDiasPra(){try{var ini=new Date('2026-09-30T00:00:00');var n=Math.ceil((ini-new Date())/86400000);return n>0?n:0;}catch(e){return null;}}
 function rotTotGasto(){var t=0;roteiro.forEach(function(r){var g=parseInt(String(r.gasto).replace(/[^0-9]/g,''),10);if(!isNaN(g))t+=g;});return t;}
 /* ---- visão Tópicos: um dia por linha (Dia 01 - (30/09) - tema) ---- */
