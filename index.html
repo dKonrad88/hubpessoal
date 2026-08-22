@@ -2502,6 +2502,10 @@ function rotLugarNome(p,dia){
   }
   varre(dia); // primeiro no próprio dia
   if(!achado){ var lista=(ORLD.d.pronto&&ORLD.d.roteiro)?ORLD.d.roteiro:roteiro; (lista||[]).forEach(varre); } // depois no roteiro todo
+  if(!achado){ // ponto de saída/volta do dia que não é parada = a base (o apartamento)
+    var rt=(dia&&dia.rota)||[];
+    if(rt.length>1 && (String(rt[0]).trim()===s || String(rt[rt.length-1]).trim()===s)) return 'Apto';
+  }
   return achado||s.split(',')[0];
 }
 /* ---- lembretes do dia: editar / excluir / adicionar (grava no viagem_state) ---- */
