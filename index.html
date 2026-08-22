@@ -45,6 +45,10 @@ body.dark{--bg:#141220;--surface:#1d1a2b;--surface2:#272338;--border:#332e48;--t
 .page[data-view="app"]>:not(.appseg):not(.app-embed-pane):not(.app-embed-hint){display:none}
 .page:not([data-view="app"])>.app-embed-pane,.page:not([data-view="app"])>.app-embed-hint{display:none}
 /* moldura de celular opcional p/ apps mobile-first */
+/* link do Maps ao lado do endereço da parada */
+.stop-map{display:inline-flex;align-items:center;margin-left:.35rem;color:#6d5efc;opacity:.75;text-decoration:none;font-size:.95em;vertical-align:middle}
+.stop-map:hover{opacity:1}
+@media print{.stop-map{display:none!important}}
 /* visão Tópicos do roteiro: um dia por linha */
 .rot-top{display:flex;flex-direction:column;gap:.4rem;margin-top:.2rem}
 .rtop{display:flex;align-items:baseline;gap:.6rem;width:100%;text-align:left;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.65rem .85rem;cursor:pointer;font-family:inherit;font-size:.95rem;color:var(--text);transition:border-color .12s,transform .12s}
@@ -1784,9 +1788,22 @@ function roteiroDiaRico(r,i){
   var dataL=r.dataLonga?escH(r.dataLonga):escH(r.data);
   return '<div class="dia-card dia-rico"><div class="dia-header dia-header-rico" onclick="openDiaView('+i+')"><div class="dia-num dia-num-rico">'+escH(r.dia)+'</div><div class="dia-info"><div class="dia-date">'+semana+dataL+'</div><div class="dia-title">'+escH(r.titulo)+'</div></div><span class="dia-gasto-badge">US$ '+escH(r.gasto)+'</span><button class="dia-edit-btn" onclick="event.stopPropagation();editDia('+i+')"><i class="ti ti-pencil"></i></button><i class="ti ti-chevron-down dia-chevron" id="chev-'+i+'"></i></div><div class="dia-body" id="body-'+i+'">'+avisosHtml+'<div class="rot-timeline">'+stopsHtml+'</div><button class="btn btn-ghost btn-sm rot-add-btn" onclick="addStop('+i+')"><i class="ti ti-plus"></i> Adicionar parada</button></div></div>';
 }
+/* ---- link do Google Maps por parada (ícone ao lado do endereço) ---- */
+function stopMapsUrl(s){
+  var end=String((s&&s.endereco)||'').replace(/\([^)]*\)/g,'').trim();   // tira observações entre parênteses
+  if(!end)return '';
+  var nome=String((s&&s.titulo)||'')
+    .replace(/^\s*(almo[çc]o|jantar|caf[ée]|brunch|lanche|mercado|beleza|tecnologia|pausa)\s*[—–-]\s*/i,'')
+    .replace(/\([^)]*\)/g,'').trim();
+  return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent((nome?nome+', ':'')+end);
+}
+function stopMapsLink(s){
+  var u=stopMapsUrl(s); if(!u)return '';
+  return '<a class="stop-map" href="'+u+'" target="_blank" rel="noopener" title="Abrir no Google Maps" onclick="event.stopPropagation()"><i class="ti ti-map-2"></i></a>';
+}
 function roteiroStop(s,diaIdx,stopIdx){
   var meta=[];
-  if(s.endereco)meta.push('<div class="rot-meta-row"><i class="ti ti-map-pin"></i><span>'+escH(s.endereco)+'</span></div>');
+  if(s.endereco)meta.push('<div class="rot-meta-row"><i class="ti ti-map-pin"></i><span>'+escH(s.endereco)+'</span>'+stopMapsLink(s)+'</div>');
   if(s.horarioFunc)meta.push('<div class="rot-meta-row"><i class="ti ti-clock"></i><span>'+escH(s.horarioFunc)+'</span></div>');
   if(s.fone)meta.push('<div class="rot-meta-row"><i class="ti ti-phone"></i><span>'+escH(s.fone)+'</span></div>');
   if(s.nota)meta.push('<div class="rot-meta-row"><i class="ti ti-star"></i><span>'+escH(s.nota)+'</span></div>');
