@@ -5,7 +5,7 @@
    - Supabase (dados do usuário): NUNCA passa pelo cache. Sempre rede.
    - Demais GET (CDNs: fontes, ícones, chart.js, supabase-js): stale-while-revalidate.
    Bump CACHE quando quiser forçar limpeza do cache antigo. */
-var CACHE = 'hub-v10';
+var CACHE = 'hub-v11';
 var SHELL = ['./', './index.html', './manifest.json',
              './apple-touch-icon.png', './icon-192.png', './icon-512.png'];
 

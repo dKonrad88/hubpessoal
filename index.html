@@ -3414,6 +3414,14 @@ var EMBED=(function(){
         .observe(document.body,{attributes:true,attributeFilter:['class']});}catch(e){}
   return {boot:boot,setView:setView,onShow:onShow,goSec:goSec,reg:REG};
 })();
+/* Toda função de render da Viagem Orlando lê o viagem_state — inclusive quando é chamada
+   direto (trocar Foco/Mural/Fita, trocar de dia, salvar, filtros), e não só pelos pontos de
+   entrada. Sem isso o Mural/Fita voltavam a mostrar o roteiro velho do hub_state. */
+['renderRoteiro','renderDiaView','renderDashboard','renderGastos','renderCL','renderDocs'].forEach(function(n){
+  var raw=window[n]; if(typeof raw!=='function'||raw.__orl)return;
+  var w=function(){var a=arguments,self=this;return ORLD.view(function(){return raw.apply(self,a);});};
+  w.__orl=1; window[n]=w;
+});
 try{EMBED.boot();}catch(e){console.warn('EMBED.boot',e);}
 /* Reabre a última tela no refresh (em vez de cair no welcome). Roda após EMBED.boot (segs/panes já existem). */
 function hubRestore(){
