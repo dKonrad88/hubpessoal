@@ -45,6 +45,16 @@ body.dark{--bg:#141220;--surface:#1d1a2b;--surface2:#272338;--border:#332e48;--t
 .page[data-view="app"]>:not(.appseg):not(.app-embed-pane):not(.app-embed-hint){display:none}
 .page:not([data-view="app"])>.app-embed-pane,.page:not([data-view="app"])>.app-embed-hint{display:none}
 /* moldura de celular opcional p/ apps mobile-first */
+/* visão Tópicos do roteiro: um dia por linha */
+.rot-top{display:flex;flex-direction:column;gap:.4rem;margin-top:.2rem}
+.rtop{display:flex;align-items:baseline;gap:.6rem;width:100%;text-align:left;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.65rem .85rem;cursor:pointer;font-family:inherit;font-size:.95rem;color:var(--text);transition:border-color .12s,transform .12s}
+.rtop:hover{border-color:#6d5efc;transform:translateX(2px)}
+.rtop.on{border-color:#6d5efc}
+.rtop.park{box-shadow:inset 3px 0 0 #6d5efc}
+.rtop-d{font-weight:700;flex:none}
+.rtop-dt{color:var(--muted);font-size:.85rem;flex:none;font-variant-numeric:tabular-nums}
+.rtop-t{flex:1;min-width:0;opacity:.92}
+.rtop-go{color:var(--muted);flex:none;font-size:1.1rem;line-height:1}
 /* Viagem Orlando (páginas web): só leitura, alimentadas pelo viagem_state — editar é no app */
 .orl-banner{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.6rem .85rem;margin-bottom:1rem}
 #page-orlando.orl-wait .tab-content{display:none}
@@ -1731,8 +1741,27 @@ function setRotDay(i){ROT_DAY=i;renderRoteiro();}
 function rotIsPark(r){return /parque|magic kingdom|epic universe|universal|hollywood studios|animal kingdom|epcot/i.test(String(r.titulo||'')+' '+String(r.resumo||''));}
 function rotDiasPra(){try{var ini=new Date('2026-09-30T00:00:00');var n=Math.ceil((ini-new Date())/86400000);return n>0?n:0;}catch(e){return null;}}
 function rotTotGasto(){var t=0;roteiro.forEach(function(r){var g=parseInt(String(r.gasto).replace(/[^0-9]/g,''),10);if(!isNaN(g))t+=g;});return t;}
-function rotSwitch(){function b(v,ic,lb){return '<button class="rotv-btn'+(ROT_VIEW===v?' on':'')+'" onclick="setRotView(\''+v+'\')">'+ic+' '+lb+'</button>';}return '<div class="rotv-bar"><div class="rotv-sw">'+b('foco','◧','Foco')+b('mural','▦','Mural')+b('fita','≡','Fita')+'</div></div>';}
-function renderRoteiro(){var list=document.getElementById('roteiro-list');if(!list)return;rotCss();if(ROT_DAY>=roteiro.length||ROT_DAY<0)ROT_DAY=0;var body=(ROT_VIEW==='mural')?rotMural():((ROT_VIEW==='fita')?rotFita():rotFoco());list.innerHTML=rotSwitch()+body;}
+/* ---- visão Tópicos: um dia por linha (Dia 01 - (30/09) - tema) ---- */
+var ROT_MESPT={jan:'01',fev:'02',mar:'03',abr:'04',mai:'05',jun:'06',jul:'07',ago:'08',set:'09',out:'10',nov:'11',dez:'12'};
+function rot2(n){n=String(n);return n.length<2?('0'+n):n;}
+function rotDataCurta(r){                       // "Qua 30/Set" -> "30/09"
+  var m=/(\d{1,2})\s*\/\s*([A-Za-zçÇáéíóúÁÉÍÓÚ]+)/.exec(String(r.data||''));
+  if(m){var mm=ROT_MESPT[m[2].slice(0,3).toLowerCase()]; if(mm)return rot2(m[1])+'/'+mm;}
+  return String(r.data||'');
+}
+function rotTopicos(){
+  var l=orlLista()||[];
+  if(!l.length)return '';
+  return '<div class="rot-top">'+l.map(function(r,i){
+    return '<button class="rtop'+(rotIsPark(r)?' park':'')+(i===ROT_DAY?' on':'')+'" onclick="setRotDay('+i+');setRotView(\'foco\')">'
+      +'<span class="rtop-d">Dia '+rot2(r.dia)+'</span>'
+      +'<span class="rtop-dt">('+escH(rotDataCurta(r))+')</span>'
+      +'<span class="rtop-t">'+escH(r.tema||r.titulo||'')+'</span>'
+      +'<span class="rtop-go">›</span></button>';
+  }).join('')+'</div>';
+}
+function rotSwitch(){function b(v,ic,lb){return '<button class="rotv-btn'+(ROT_VIEW===v?' on':'')+'" onclick="setRotView(\''+v+'\')">'+ic+' '+lb+'</button>';}return '<div class="rotv-bar"><div class="rotv-sw">'+b('foco','◧','Foco')+b('mural','▦','Mural')+b('fita','≡','Fita')+b('topicos','☰','Tópicos')+'</div></div>';}
+function renderRoteiro(){var list=document.getElementById('roteiro-list');if(!list)return;rotCss();if(ROT_DAY>=roteiro.length||ROT_DAY<0)ROT_DAY=0;var body=(ROT_VIEW==='mural')?rotMural():((ROT_VIEW==='fita')?rotFita():((ROT_VIEW==='topicos')?rotTopicos():rotFoco()));list.innerHTML=rotSwitch()+body;}
 function rotDayChip(r,i){return '<button class="rv-daychip'+(i===ROT_DAY?' on':'')+(rotIsPark(r)?' park':'')+'" onclick="setRotDay('+i+')"><span class="dn">'+escH(r.dia)+'</span><span class="dd">'+escH(r.data)+'</span></button>';}
 function rotFoco(){var d=roteiro[ROT_DAY]||roteiro[0];if(!d)return '';return '<div class="rv-daynav noscroll">'+roteiro.map(rotDayChip).join('')+'</div>'+rotDayDetail(d,ROT_DAY);}
 function rotDayDetail(d,i){var semana=d.diaSemana?escH(d.diaSemana)+', ':'';var dataL=d.dataLonga?escH(d.dataLonga):escH(d.data);var rb=diaMapsUrl(d)?'<a class="rota-btn" href="'+diaMapsUrl(d)+'" target="_blank" rel="noopener"><i class="ti ti-map-2"></i> Abrir rota</a>':'';var head='<div class="rdet-h"><span class="rdnum">'+escH(d.dia)+'</span><div class="rdet-ht"><h3>'+escH(d.titulo)+'</h3><span class="rdet-hd">'+semana+dataL+'</span></div>'+rb+'<button class="btn btn-ghost btn-sm" onclick="editDia('+i+')"><i class="ti ti-pencil"></i> Editar</button></div>';var _nav=(d.avisos&&d.avisos.length)||0;
