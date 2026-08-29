@@ -2093,7 +2093,7 @@ function loadAll(){
   }catch(e){console.warn('Erro ao carregar localStorage',e);}
 }
 function toggleSubpage(page,el){const sub=document.getElementById('subsub-'+page);const chev=document.getElementById('chev-'+page);const isOpen=sub.classList.contains('open');var grp=el&&el.closest?el.closest('.sb-group'):null;if(grp)grp.classList.remove('collapsed');if(!isOpen){document.querySelectorAll('.page').forEach(pg=>pg.classList.remove('active'));document.getElementById('page-'+page).classList.add('active');sub.classList.add('open');if(chev)chev.style.transform='rotate(90deg)';const first=sub.querySelector('.sb-subsubitem');if(first)first.click();}else{sub.classList.remove('open');if(chev)chev.style.transform='';}}
-function setTab2(t,el){document.querySelectorAll('.page').forEach(pg=>pg.classList.remove('active'));document.getElementById('page-orlando').classList.add('active');document.querySelectorAll('.sb-subsubitem,.sb-subitem').forEach(i=>i.classList.remove('active'));el.classList.add('active');document.querySelectorAll('.tab-pane').forEach(tp=>tp.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');orlPaint(t);}
+function setTab2(t,el){document.querySelectorAll('.page').forEach(pg=>pg.classList.remove('active'));document.getElementById('page-orlando').classList.add('active');document.querySelectorAll('.sb-subsubitem,.sb-subitem').forEach(i=>i.classList.remove('active'));el.classList.add('active');document.querySelectorAll('.tab-pane').forEach(tp=>tp.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');orlPaint(t);try{localStorage.setItem('hub_lastPage','orlando');localStorage.setItem('hub_orlando_tab',t);}catch(e){}}
 
 // ========== CASAMENTO ==========
 function escH(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
@@ -2577,7 +2577,7 @@ function setSimplePage(p,el){
   const pg=document.getElementById('page-'+p);if(pg)pg.classList.add('active');
   try{localStorage.setItem('hub_lastPage',p);}catch(e){} // lembra a tela p/ reabrir no refresh
   if(EMBED.reg[p]){try{EMBED.onShow(p);}catch(e){}} // apps embed: abre direto no app; Resumo busca dados só ao clicar
-  if(p==='orlando'){try{var _g=document.getElementById('nav-orlando-web');if(_g)_g.classList.add('open');document.querySelectorAll('#page-orlando .tab-pane').forEach(function(tp){tp.classList.remove('active');});var _tr=document.getElementById('tab-roteiro');if(_tr)_tr.classList.add('active');document.querySelectorAll('#nav-orlando-web .sb-subsubitem').forEach(function(x){x.classList.remove('active');});var _f=document.querySelector('#nav-orlando-web .sb-subsubitem');if(_f)_f.classList.add('active');orlPaint('roteiro');}catch(e){}}
+  if(p==='orlando'){try{var _g=document.getElementById('nav-orlando-web');if(_g)_g.classList.add('open');var _t='roteiro';try{_t=localStorage.getItem('hub_orlando_tab')||'roteiro';}catch(e){}if(!document.getElementById('tab-'+_t))_t='roteiro';document.querySelectorAll('#page-orlando .tab-pane').forEach(function(tp){tp.classList.remove('active');});var _tr=document.getElementById('tab-'+_t);if(_tr)_tr.classList.add('active');var _f=null;document.querySelectorAll('#nav-orlando-web .sb-subsubitem').forEach(function(x){x.classList.remove('active');if(!_f&&(x.getAttribute('onclick')||'').indexOf("setTab2('"+_t+"'")>=0)_f=x;});if(!_f)_f=document.querySelector('#nav-orlando-web .sb-subsubitem');if(_f)_f.classList.add('active');orlPaint(_t);}catch(e){}}
   if(p==='metas'){try{mvRender();}catch(e){}}
   if(p==='lixeira'){try{lixRender();}catch(e){}}
 }
@@ -3432,6 +3432,7 @@ var EMBED=(function(){
   }
   /* ---- app integrado: ele manda as seções, o HUB desenha no menu lateral e devolve os cliques ---- */
   var NAVST={}; // key -> {secs, view}
+  var SECDONE={}; // key -> ja restaurou a secao lembrada neste load
   function navRender(key){
     var cfg=REG[key]; if(!cfg||!cfg.embed)return;
     var host=document.getElementById(cfg.embed.nav); if(!host)return;
@@ -3449,6 +3450,7 @@ var EMBED=(function(){
       var navEl=document.querySelector('.sidebar [onclick*="setSimplePage(\''+key+'\'"]');
       try{setSimplePage(key,navEl);}catch(e){}
     }
+    try{localStorage.setItem('hub_sec_'+key,view);localStorage.setItem('hub_lastPage',key);}catch(e){}
     var w=frameOf(key); if(w)w.postMessage({type:'via:go',view:view},location.origin);
   }
   function pushTheme(key){
@@ -3462,6 +3464,16 @@ var EMBED=(function(){
       if(!REG[key].embed||frameOf(key)!==e.source)return;
       NAVST[key]={secs:d.secs||[],view:d.view||''};
       navRender(key); pushTheme(key);
+      // 1o estado depois do iframe carregar: volta pra secao onde ele estava; depois so acompanha
+      var want=null; try{want=localStorage.getItem('hub_sec_'+key);}catch(e2){}
+      if(!SECDONE[key]){
+        SECDONE[key]=1;
+        if(want&&want!==d.view&&(d.secs||[]).some(function(x){return x.id===want;})){
+          try{e.source.postMessage({type:'via:go',view:want},location.origin);}catch(e2){}
+          return;
+        }
+      }
+      if(d.view){try{localStorage.setItem('hub_sec_'+key,d.view);}catch(e2){}}
     });
   });
   // tema do HUB mudou (body.light/dark) → repassa pros apps integrados
