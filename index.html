@@ -3834,8 +3834,13 @@ var APTO=(function(){
       if(p.pago){pago+=(Number(p.valorPago)||pv);prevPagas+=pv;nPagas++;}else saldo+=pv;
     });
     var abertas=P.filter(function(p){return !p.pago;}).sort(function(a,b){return String(a.venc||'').localeCompare(String(b.venc||''));});
-    return {contrato:Number(im.valorTotal)||prevTotal,pago:pago,saldo:saldo,correcao:pago-prevPagas,
-      nPagas:nPagas,n:P.length,prox:abertas[0]||null,construtora:im.construtora||''};
+    // mesma regra do app: `pagoAnterior` é o que foi pago fora do cronograma; com o valor do
+    // imóvel informado, o que falta é contrato − pago (não depende do cronograma estar completo)
+    var anterior=Number(im.pagoAnterior)||0, pagoTot=anterior+pago;
+    var contrato=Number(im.valorTotal)||prevTotal;
+    return {contrato:contrato,pago:pagoTot,anterior:anterior,saldo:(contrato?Math.max(0,contrato-pagoTot):saldo),
+      correcao:pago-prevPagas,nPagas:nPagas,n:P.length,prox:abertas[0]||null,construtora:im.construtora||'',
+      temValor:!!contrato};
   }
   function acerto(L){ // mesmo algoritmo do app (greedy credor/devedor)
     var bal={};
@@ -3886,16 +3891,16 @@ var APTO=(function(){
     +'</div>';
     // parcelas do imóvel (compra direto com a construtora — parcela variável, corrigida por índice)
     var ir=imResumo();
-    if(ir.n){
+    if(ir.n||ir.temValor){   // mostra o imóvel mesmo sem cronograma cadastrado
       var pctQ=ir.contrato?Math.min(100,Math.round(ir.pago/ir.contrato*100)):0;
-      out+='<div class="etd-card" style="margin-top:.7rem"><div class="etd-top"><span class="etd-name">🔑 Parcelas do apê</span><span class="etd-lvl">'+ir.nPagas+' de '+ir.n+' pagas</span></div>'
+      out+='<div class="etd-card" style="margin-top:.7rem"><div class="etd-top"><span class="etd-name">🔑 O apê'+(ir.construtora?(' · '+_dashEsc(ir.construtora)):'')+'</span><span class="etd-lvl">'+(ir.n?(ir.nPagas+' de '+ir.n+' parcelas pagas'):'sem cronograma')+'</span></div>'
         +'<div class="etd-stats">'
-          +_dstat(_brl(ir.saldo),'saldo devedor')
+          +_dstat(_brl(ir.contrato),'valor do imóvel')
           +_dstat(_brl(ir.pago),'já pago')
-          +_dstat(ir.prox?_brl(ir.prox.previsto):'—','próxima')
-          +_dstat((ir.correcao>0.5?'+':'')+_brl(ir.correcao).replace('R$ ',''),'correção')
+          +_dstat(_brl(ir.saldo),'falta pagar')
+          +_dstat(pctQ+'%','quitado')
         +'</div>'
-        +'<div style="margin-top:.2rem"><div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>contrato '+_brl(ir.contrato)+(ir.construtora?(' · '+_dashEsc(ir.construtora)):'')+'</span><span>'+pctQ+'% quitado'+(ir.prox?(' · vence '+String(ir.prox.venc||'').slice(8)+'/'+String(ir.prox.venc||'').slice(5,7)):'')+'</span></div>'+_bar(pctQ,'#6d5efc')+'</div>'
+        +'<div style="margin-top:.2rem"><div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>só o apê — obra e mobília à parte</span><span>'+(ir.prox?('próxima '+_brl(ir.prox.previsto)+' em '+String(ir.prox.venc||'').slice(8)+'/'+String(ir.prox.venc||'').slice(5,7)):(ir.correcao>0.5?('+'+_brl(ir.correcao)+' de correção'):''))+'</span></div>'+_bar(pctQ,'#6d5efc')+'</div>'
       +'</div>';
     }
     // obra + mobília (mesma key `montagem`, separadas pelo campo `grupo`)
