@@ -2596,6 +2596,19 @@ function orlClEdit(panel,fn,deb){
   (deb?orlSalvarChecklistDeb:orlSalvarChecklist)();
 }
 function orlClAtiva(){var pg=document.getElementById('page-orlando');return !!(ORLD.d.pronto&&pg&&pg.classList.contains('active'));}
+/* Espelha o clSort do app (viagem): o painel "Por marca" e um indice de lojas e fica
+   sempre em ordem alfabetica, com "Sem marca definida" no fim. Os outros paineis
+   mantem a ordem que o usuario montou. */
+function orlClSort(d,panel){
+  if(panel!=='marcas'||!d||!Array.isArray(d.sections))return d;
+  var chave=function(x){return String((x&&x.name)||'').replace(/^[^0-9A-Za-zÀ-ÿ]+/,'');};
+  var fim=function(x){return /^sem marca/i.test(String((x&&x.name)||''))?1:0;};
+  d.sections.sort(function(a,b){
+    if(fim(a)!==fim(b))return fim(a)-fim(b);
+    return chave(a).localeCompare(chave(b),'pt',{sensitivity:'base'});
+  });
+  return d;
+}
 function orlSec(c,panel,sid){var d=c&&c[panel];if(!d||!Array.isArray(d.sections))return null;return d.sections.filter(function(x){return x.id===sid;})[0]||null;}
 /* pinta uma aba da página web sempre a partir do viagem_state */
 function orlPaint(tab){
@@ -3602,7 +3615,8 @@ var EMBED=(function(){
     if(!nome||!currentSectionPanel)return;
     var panel=currentSectionPanel;
     orlClEdit(panel,function(c){ if(!c[panel]||!Array.isArray(c[panel].sections))c[panel]={sections:[]};
-      c[panel].sections.push({id:'hs'+Date.now(),name:nome,open:true,items:[]});});
+      c[panel].sections.push({id:'hs'+Date.now(),name:nome,open:false,items:[]});
+      orlClSort(c[panel],panel);});
     closeModal('modalSection');
   });
 })();
