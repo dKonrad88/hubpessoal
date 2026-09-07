@@ -64,12 +64,9 @@ body.dark{--bg:#141220;--surface:#1d1a2b;--surface2:#272338;--border:#332e48;--t
 #page-orlando.orl-wait .tab-content{display:none}
 /* esconde o que ESCREVE (gravaria no hub_state, fonte errada). Notas ficam: são do HUB, não da viagem */
 #page-orlando [onclick^="abrirModalVoos"],
-#page-orlando [onclick^="openAddSection("],#page-orlando [onclick^="deleteItem("],
 #page-orlando [onclick^="abrirNovoGasto"],#page-orlando [onclick^="editGasto("],#page-orlando [onclick^="deleteGasto("],
 #page-orlando [onclick^="abrirNovaPrevisao"],#page-orlando [onclick^="comprarPrevisao("],#page-orlando [onclick^="editPrevisao("],#page-orlando [onclick^="deletePrevisao("],
-#page-orlando [onclick^="openAddDoc"],#page-orlando [onclick^="editDoc("],#page-orlando [onclick^="deleteDoc("],
-#page-orlando [onclick^="deleteSection("],#page-orlando .cl-addline{display:none!important}
-#page-orlando input[onchange^="toggleItem"]{pointer-events:none;opacity:.5}
+#page-orlando [onclick^="openAddDoc"],#page-orlando [onclick^="editDoc("],#page-orlando [onclick^="deleteDoc("]{display:none!important}
 /* lembretes do dia: editar / excluir / adicionar */
 .rot-aviso .av-acts{margin-left:auto;display:flex;gap:.1rem;flex:none;opacity:0;transition:opacity .12s}
 .rot-aviso:hover .av-acts,.rot-aviso:focus-within .av-acts{opacity:1}
@@ -2556,6 +2553,26 @@ function orlSalvarRoteiro(lista){
     ORLD.d.roteiro=lista; orlPaint('roteiro');
   }).catch(function(e){alert('Não consegui salvar: '+((e&&e.message)||'falha'));});
 }
+/* Grava a checklist na MESMA chave que o app usa (checklist:<uid>), nunca no hub_state.
+   O ORLD carrega de checklist:<uid> com fallback no checklist_base; quem so tinha o base
+   ganha a propria chave no primeiro save — igual ao comportamento do app. */
+function orlSalvarChecklist(){
+  if(!ORLD.d.pronto||!ORLD.d.cl){alert('Sem os dados da viagem carregados — não vou salvar.');return;}
+  if(!(window.sb&&window.cloudUser&&window.cloudUser.id&&ORLD.d.listaId)){alert('Entre na sua conta da nuvem (☁ no topo) para salvar.');return;}
+  sb.from('viagem_state').upsert({lista_id:ORLD.d.listaId,key:'checklist:'+cloudUser.id,value:ORLD.d.cl,updated_at:new Date().toISOString()})
+    .then(function(r){if(r.error)alert('Não consegui salvar: '+r.error.message);})
+    .catch(function(e){alert('Não consegui salvar: '+((e&&e.message)||'falha'));});
+}
+var _orlClT=null;
+function orlSalvarChecklistDeb(){clearTimeout(_orlClT);_orlClT=setTimeout(orlSalvarChecklist,700);} // digitacao: nao grava a cada tecla
+/* roda a alteracao no objeto do viagem_state (o mesmo que esta na tela), redesenha e grava */
+function orlClEdit(panel,fn,deb){
+  ORLD.view(function(){try{fn(clData);}catch(e){}});
+  try{renderCL(panel);}catch(e){}
+  (deb?orlSalvarChecklistDeb:orlSalvarChecklist)();
+}
+function orlClAtiva(){var pg=document.getElementById('page-orlando');return !!(ORLD.d.pronto&&pg&&pg.classList.contains('active'));}
+function orlSec(c,panel,sid){var d=c&&c[panel];if(!d||!Array.isArray(d.sections))return null;return d.sections.filter(function(x){return x.id===sid;})[0]||null;}
 /* pinta uma aba da página web sempre a partir do viagem_state */
 function orlPaint(tab){
   var run=function(){
@@ -3508,6 +3525,55 @@ var EMBED=(function(){
     renderCL(panel); // ja embrulhado: redesenha lendo o viagem_state
   };
   w.__orl=1; window.toggleSection=w;
+})();
+/* Checklist da Viagem Orlando editavel NA PAGINA do HUB. Os originais mexiam no clData
+   do HUB e chamavam saveAll() -> hub_state (o snapshot morto de julho): a edicao sumia da
+   tela e ia pro lugar errado. Aqui cada mutacao roda dentro do ORLD.view (objeto que esta
+   na tela) e grava em viagem_state/checklist:<uid>, a mesma chave do app. Fora da
+   page-orlando, o comportamento original continua valendo. */
+(function(){
+  function wrap(nome,fn){
+    var raw=window[nome]; if(typeof raw!=='function'||raw.__orlcl)return;
+    var w=function(){ if(!orlClAtiva())return raw.apply(this,arguments); return fn.apply(this,arguments); };
+    w.__orlcl=1; window[nome]=w;
+  }
+  wrap('toggleItem',function(panel,sid,iid,val){
+    orlClEdit(panel,function(c){var sec=orlSec(c,panel,sid);if(!sec)return;
+      var it=sec.items.filter(function(x){return x.id===iid;})[0]; if(it)it.done=!!val;});
+  });
+  wrap('deleteItem',function(panel,sid,iid){
+    orlClEdit(panel,function(c){var sec=orlSec(c,panel,sid);if(!sec)return;
+      sec.items=sec.items.filter(function(x){return x.id!==iid;});});
+  });
+  wrap('editItem',function(panel,sid,iid,value){
+    if(!(value&&value.trim()))return; // textarea vazia: nao apaga o texto salvo
+    orlClEdit(panel,function(c){var sec=orlSec(c,panel,sid);if(!sec)return;
+      var it=sec.items.filter(function(x){return x.id===iid;})[0]; if(it)it.text=value;},true);
+  });
+  wrap('clAddKey',function(e,panel,sid){
+    if(e.key==='Escape'){e.target.value='';e.target.blur();return;}
+    if(e.key!=='Enter')return; e.preventDefault();
+    var inp=document.getElementById('ni-'+panel+'-'+sid), texto=inp?inp.value.trim():'';
+    if(!texto)return;
+    orlClEdit(panel,function(c){var sec=orlSec(c,panel,sid);if(!sec)return;
+      sec.items.push({id:'h'+Date.now(),text:texto,done:false}); sec.open=true;});
+    var ni=document.getElementById('ni-'+panel+'-'+sid); if(ni){ni.value='';ni.focus();}
+  });
+  wrap('deleteSection',function(panel,sid){
+    var sec=null; ORLD.view(function(){sec=orlSec(clData,panel,sid);});
+    var n=sec&&sec.items?sec.items.length:0;
+    if(!confirm('Apagar o grupo "'+((sec&&sec.name)||sid)+'"'+(n?' e os '+n+' itens dentro dele':'')+'?'))return;
+    orlClEdit(panel,function(c){var d=c[panel]; if(d&&Array.isArray(d.sections))
+      d.sections=d.sections.filter(function(x){return x.id!==sid;});});
+  });
+  wrap('saveSection',function(){
+    var el=document.getElementById('inputSectionName'), nome=el?el.value.trim():'';
+    if(!nome||!currentSectionPanel)return;
+    var panel=currentSectionPanel;
+    orlClEdit(panel,function(c){ if(!c[panel]||!Array.isArray(c[panel].sections))c[panel]={sections:[]};
+      c[panel].sections.push({id:'hs'+Date.now(),name:nome,open:true,items:[]});});
+    closeModal('modalSection');
+  });
 })();
 try{EMBED.boot();}catch(e){console.warn('EMBED.boot',e);}
 /* Reabre a última tela no refresh (em vez de cair no welcome). Roda após EMBED.boot (segs/panes já existem). */
