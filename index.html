@@ -1926,15 +1926,9 @@ function renderCL(panel){
     const addLine='<div class="cl-addline"><i class="ti ti-plus"></i><input type="text" placeholder="Adicionar item..." id="ni-'+panel+'-'+sec.id+'" data-panel="'+panel+'" data-sid="'+sec.id+'" onkeydown="clAddKey(event,this.dataset.panel,this.dataset.sid)"></div>';
     return '<div class="cl-section">'+hdr+'<div class="cl-section-body">'+addBox+items+addLine+'</div></div>';
   });
-  if(panel==='marcas'){
-    // Por Marca e um indice alfabetico: em 2 colunas a leitura desce pela esquerda e
-    // pula letras (Adidas, Amazon, BOSS...), parecendo fora de ordem. Coluna unica.
-    container.innerHTML=secArr.join('');
-  }else{
-    let colA='',colB='';
-    secArr.forEach((h,i)=>{if(i%2===0)colA+=h;else colB+=h;});
-    container.innerHTML='<div class="cl-2col"><div class="cl-2col-a">'+colA+'</div><div class="cl-2col-b">'+colB+'</div></div>';
-  }
+  // Coluna unica em todos os paineis: em 2 colunas o render distribuia alternado (i%2),
+  // entao a leitura descia pela esquerda pulando secoes e a ordem parecia quebrada.
+  container.innerHTML=secArr.join('');
   container.querySelectorAll('.cl-item-edit').forEach(clAutoGrow);
   const pct=total?Math.round(done/total*100):0;
   const prog=document.getElementById('prog-'+panel),label=document.getElementById('prog-'+panel+'-label');
