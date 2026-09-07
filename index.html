@@ -67,7 +67,8 @@ body.dark{--bg:#141220;--surface:#1d1a2b;--surface2:#272338;--border:#332e48;--t
 #page-orlando [onclick^="openAddSection("],#page-orlando [onclick^="deleteItem("],
 #page-orlando [onclick^="abrirNovoGasto"],#page-orlando [onclick^="editGasto("],#page-orlando [onclick^="deleteGasto("],
 #page-orlando [onclick^="abrirNovaPrevisao"],#page-orlando [onclick^="comprarPrevisao("],#page-orlando [onclick^="editPrevisao("],#page-orlando [onclick^="deletePrevisao("],
-#page-orlando [onclick^="openAddDoc"],#page-orlando [onclick^="editDoc("],#page-orlando [onclick^="deleteDoc("]{display:none!important}
+#page-orlando [onclick^="openAddDoc"],#page-orlando [onclick^="editDoc("],#page-orlando [onclick^="deleteDoc("],
+#page-orlando [onclick^="deleteSection("],#page-orlando .cl-addline{display:none!important}
 #page-orlando input[onchange^="toggleItem"]{pointer-events:none;opacity:.5}
 /* lembretes do dia: editar / excluir / adicionar */
 .rot-aviso .av-acts{margin-left:auto;display:flex;gap:.1rem;flex:none;opacity:0;transition:opacity .12s}
@@ -3488,6 +3489,24 @@ var EMBED=(function(){
   var w=function(){var a=arguments,self=this;return ORLD.view(function(){return raw.apply(self,a);});};
   w.__orl=1; window[n]=w;
 });
+/* Abrir/fechar grupo do checklist na pagina da Viagem Orlando. O toggleSection mexia no
+   clData do HUB, mas o renderCL (embrulhado pelo ORLD) desenha o do viagem_state — o clique
+   trocava um objeto e a tela mostrava outro, entao nada acontecia. Aqui o open/close roda
+   dentro do ORLD.view, no mesmo objeto que esta na tela. E so estado de UI: nao grava nada. */
+(function(){
+  var raw=window.toggleSection; if(typeof raw!=='function'||raw.__orl)return;
+  var w=function(panel,sid){
+    var pg=document.getElementById('page-orlando');
+    if(!(ORLD.d.pronto&&pg&&pg.classList.contains('active')))return raw.apply(this,arguments);
+    ORLD.view(function(){
+      var d=clData&&clData[panel]; if(!d||!Array.isArray(d.sections))return;
+      var sec=d.sections.filter(function(x){return x.id===sid;})[0];
+      if(sec)sec.open=!sec.open;
+    });
+    renderCL(panel); // ja embrulhado: redesenha lendo o viagem_state
+  };
+  w.__orl=1; window.toggleSection=w;
+})();
 try{EMBED.boot();}catch(e){console.warn('EMBED.boot',e);}
 /* Reabre a última tela no refresh (em vez de cair no welcome). Roda após EMBED.boot (segs/panes já existem). */
 function hubRestore(){
