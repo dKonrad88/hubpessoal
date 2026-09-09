@@ -64,7 +64,6 @@ body.dark{--bg:#141220;--surface:#1d1a2b;--surface2:#272338;--border:#332e48;--t
 #page-orlando.orl-wait .tab-content{display:none}
 /* esconde o que ESCREVE (gravaria no hub_state, fonte errada). Notas ficam: são do HUB, não da viagem */
 #page-orlando [onclick^="abrirModalVoos"],
-#page-orlando [onclick^="abrirNovoGasto"],#page-orlando [onclick^="editGasto("],#page-orlando [onclick^="deleteGasto("],
 #page-orlando [onclick^="abrirNovaPrevisao"],#page-orlando [onclick^="comprarPrevisao("],#page-orlando [onclick^="editPrevisao("],#page-orlando [onclick^="deletePrevisao("],
 #page-orlando [onclick^="openAddDoc"],#page-orlando [onclick^="editDoc("],#page-orlando [onclick^="deleteDoc("]{display:none!important}
 /* lembretes do dia: editar / excluir / adicionar */
@@ -2613,6 +2612,25 @@ function orlClSort(d,panel){
   return d;
 }
 function orlSec(c,panel,sid){var d=c&&c[panel];if(!d||!Array.isArray(d.sections))return null;return d.sections.filter(function(x){return x.id===sid;})[0]||null;}
+/* Gastos gravam na chave 'gastos' do viagem_state — a mesma que o app usa. */
+function orlSalvarGastos(){
+  if(!ORLD.d.pronto||!Array.isArray(ORLD.d.gastos)){alert('Sem os dados da viagem carregados — não vou salvar.');return;}
+  if(!(window.sb&&window.cloudUser&&ORLD.d.listaId)){alert('Entre na sua conta da nuvem (☁ no topo) para salvar.');return;}
+  sb.from('viagem_state').upsert({lista_id:ORLD.d.listaId,key:'gastos',value:ORLD.d.gastos,updated_at:new Date().toISOString()})
+    .then(function(r){
+      if(r.error){alert('Não consegui salvar: '+r.error.message);return;}
+      ORLD.d.at=Date.now();
+      try{var f=document.querySelector('#embed-vorlando iframe');
+          if(f&&f.contentWindow)f.contentWindow.postMessage({type:'via:reload'},location.origin);}catch(e){}
+    }).catch(function(e){alert('Não consegui salvar: '+((e&&e.message)||'falha'));});
+}
+/* Roda a funcao original com as globais do viagem_state e o saveAll neutralizado — senao ela
+   levaria os gastos da viagem pro hub_state (o snapshot morto). Depois grava na fonte certa. */
+function orlComGastos(fn,gravar){
+  var _sa=window.saveAll; window.saveAll=function(){};
+  try{ ORLD.view(fn); } finally { window.saveAll=_sa; }
+  if(gravar)orlSalvarGastos();
+}
 /* pinta uma aba da página web sempre a partir do viagem_state */
 function orlPaint(tab){
   var run=function(){
@@ -3621,6 +3639,26 @@ var EMBED=(function(){
       c[panel].sections.push({id:'hs'+Date.now(),name:nome,open:false,items:[]});
       orlClSort(c[panel],panel);});
     closeModal('modalSection');
+  });
+})();
+/* Gastos da Viagem Orlando editaveis na pagina do HUB, gravando no viagem_state.
+   Os originais mexiam no array `gastos` do HUB e chamavam saveAll() -> hub_state. */
+(function(){
+  function wrap(nome,fn){
+    var raw=window[nome]; if(typeof raw!=='function'||raw.__orlg)return;
+    var w=function(){
+      var pg=document.getElementById('page-orlando');
+      if(!(ORLD.d.pronto&&pg&&pg.classList.contains('active')))return raw.apply(this,arguments);
+      return fn.call(this,raw,arguments);
+    };
+    w.__orlg=1; window[nome]=w;
+  }
+  wrap('editGasto',function(raw,a){ orlComGastos(function(){raw.apply(null,a);},false); });
+  wrap('deleteGasto',function(raw,a){ orlComGastos(function(){raw.apply(null,a);},true); });
+  wrap('saveGasto',function(raw,a){
+    // ids novos: o contador do HUB comeca em 1 e colidiria com os gastos que ja existem
+    if(!window.gastoEditId)window.gIdCounter=Date.now();
+    orlComGastos(function(){raw.apply(null,a);},true);
   });
 })();
 try{EMBED.boot();}catch(e){console.warn('EMBED.boot',e);}
