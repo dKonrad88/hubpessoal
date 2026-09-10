@@ -94,6 +94,17 @@ body.dark{--bg:#141220;--surface:#1d1a2b;--surface2:#272338;--border:#332e48;--t
   #printArea .rot-sec:first-child{margin-top:0}
   #printArea .rot-stop{margin-bottom:.55rem;break-inside:avoid;page-break-inside:avoid}
   #printArea .rot-aviso{break-inside:avoid;page-break-inside:avoid}
+  /* PDF das lojas: um bloco por parada que tem lista de lojas, com quadradinho p/ marcar a mao */
+  #printArea .pl-h1{font-size:15pt;margin:0 0 4pt;border-bottom:1.5px solid #000;padding-bottom:5pt}
+  #printArea .pl-sub{font-size:9pt;color:#444;margin:0 0 12pt}
+  #printArea .pl-bloco{margin:0 0 13pt;break-inside:avoid;page-break-inside:avoid}
+  #printArea .pl-dia{font-size:9pt;letter-spacing:.09em;color:#333;font-weight:700}
+  #printArea .pl-tit{font-size:13pt;margin:1pt 0 2pt}
+  #printArea .pl-meta{font-size:9pt;color:#333;margin-bottom:2pt}
+  #printArea .pl-leg{font-size:8.5pt;color:#555;font-style:italic;margin-bottom:4pt}
+  #printArea .pl-lojas{list-style:none;margin:0;padding:0;columns:3;column-gap:12pt}
+  #printArea .pl-lojas li{font-size:10pt;line-height:1.55;break-inside:avoid;page-break-inside:avoid}
+  #printArea .pl-lojas li::before{content:'';display:inline-block;width:8pt;height:8pt;border:1pt solid #000;margin-right:5pt}
   @page{margin:12mm}
 }
 .app-embed-pane.full iframe{height:calc(100vh - 128px);min-height:560px}
@@ -891,6 +902,7 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 <div class="page-title"><i class="ti ti-map" style="color:#6d5efc"></i> Roteiro — Orlando 2026</div>
 <div class="page-actions">
 <button class="btn btn-ghost btn-sm" onclick="rotPrintDia()" title="Imprimir só o dia aberto"><i class="ti ti-printer"></i> Imprimir o dia</button>
+<button class="btn btn-ghost btn-sm" onclick="rotPrintLojas()" title="PDF com as lojas de cada outlet, para marcar à mão"><i class="ti ti-building-store"></i> Imprimir lojas</button>
 <button class="btn btn-primary btn-sm" onclick="openModal('modalDia')"><i class="ti ti-plus"></i> Novo Dia</button>
 </div>
 </div>
@@ -1831,11 +1843,15 @@ function roteiroStop(s,diaIdx,stopIdx){
   if(s.endereco)meta.push('<div class="rot-meta-row"><i class="ti ti-map-pin"></i><span>'+escH(s.endereco)+'</span>'+stopMapsLink(s)+'</div>');
   if(s.horarioFunc)meta.push('<div class="rot-meta-row"><i class="ti ti-clock"></i><span>'+escH(s.horarioFunc)+'</span></div>');
   if(s.fone)meta.push('<div class="rot-meta-row"><i class="ti ti-phone"></i><span>'+escH(s.fone)+'</span></div>');
-  if(s.nota)meta.push('<div class="rot-meta-row"><i class="ti ti-star"></i><span>'+escH(s.nota)+'</span></div>');
+  // parada com lojas: a lista (e a descricao das lojas) vive no PDF; aqui fica so quantas sao
+  var _nLoja=rotLojasDe(s).length;
+  if(_nLoja)meta.push('<div class="rot-meta-row"><i class="ti ti-building-store"></i><span>'+_nLoja+(_nLoja===1?' loja':' lojas')+' — lista no PDF</span></div>');
+  if(s.nota&&!_nLoja)meta.push('<div class="rot-meta-row"><i class="ti ti-star"></i><span>'+escH(s.nota)+'</span></div>');
   if(s.duracao)meta.push('<div class="rot-meta-row"><i class="ti ti-hourglass"></i><span>'+escH(s.duracao)+'</span></div>');
   var _lk=stopLinks(s); if(_lk)meta.push(_lk);
   var metaHtml=meta.length?'<div class="rot-meta">'+meta.join('')+'</div>':'';
-  var detHtml=(Array.isArray(s.detalhes)&&s.detalhes.length)?'<div class="rot-detalhes">'+s.detalhes.map(function(sec){return '<div class="rot-sec"><div class="rot-sec-title">'+escH(sec.titulo)+'</div><ul class="rot-sec-list">'+(sec.itens||[]).map(function(it){return '<li>'+escH(it)+'</li>';}).join('')+'</ul></div>';}).join('')+'</div>':'';
+  var _secs=(Array.isArray(s.detalhes)?s.detalhes:[]).filter(function(sec){return !rotIsLojaSec(sec);});
+  var detHtml=_secs.length?'<div class="rot-detalhes">'+_secs.map(function(sec){return '<div class="rot-sec"><div class="rot-sec-title">'+escH(sec.titulo)+'</div><ul class="rot-sec-list">'+(sec.itens||[]).map(function(it){return '<li>'+escH(it)+'</li>';}).join('')+'</ul></div>';}).join('')+'</div>':'';
   var alerta=s.alerta?'<span class="rot-alerta">'+escH(s.alerta)+'</span>':'';
   var desloc=s.desloc?'<div class="rot-desloc"><i class="ti ti-car"></i> '+escH(s.desloc)+'</div>':'';
   return '<div class="rot-stop"><div class="rot-stop-time">'+escH(s.hora)+'</div><div class="rot-stop-line"><div class="rot-stop-dot">'+(s.icone||'📍')+'</div></div><div class="rot-stop-content"><div class="rot-stop-head"><span class="rot-stop-title">'+escH(s.titulo)+'</span>'+alerta+'<button class="rot-stop-edit" onclick="editStop('+diaIdx+','+stopIdx+')"><i class="ti ti-pencil"></i></button><button class="rot-stop-del" onclick="delStop('+diaIdx+','+stopIdx+')"><i class="ti ti-trash"></i></button></div>'+metaHtml+detHtml+desloc+'</div></div>';
@@ -1852,7 +1868,9 @@ function focoNav(delta){var d=roteiro[focoState.diaIdx];if(!d)return;var ni=foco
 function focoRender(){var d=roteiro[focoState.diaIdx];if(!d)return;var stops=d.stops||[];var i=focoState.stopIdx;var s=stops[i];if(!s)return;var body=document.getElementById('focoBody');if(!body)return;
 var hoje=focoDiaDeHoje()===focoState.diaIdx;var atual=hoje&&i===focoStopAtual(focoState.diaIdx);
 var dots=stops.map(function(_,k){return '<span class="foco-dot'+(k===i?' on':(k<i?' done':''))+'"></span>';}).join('');
-var det=(s.detalhes||[]).map(function(sec){return '<div class="foco-sec"><div class="foco-sec-t">'+escH(sec.titulo)+'</div><ul>'+(sec.itens||[]).map(function(it){return '<li>'+escH(it)+'</li>';}).join('')+'</ul></div>';}).join('');
+var _nLojaF=rotLojasDe(s).length;
+var det=(s.detalhes||[]).filter(function(sec){return !rotIsLojaSec(sec);}).map(function(sec){return '<div class="foco-sec"><div class="foco-sec-t">'+escH(sec.titulo)+'</div><ul>'+(sec.itens||[]).map(function(it){return '<li>'+escH(it)+'</li>';}).join('')+'</ul></div>';}).join('');
+if(_nLojaF)det='<div class="foco-sec"><div class="foco-sec-t">🏬 '+_nLojaF+(_nLojaF===1?' loja':' lojas')+'</div><ul><li>lista completa no PDF de lojas</li></ul></div>'+det;
 var maps=s.endereco?'<a class="foco-maps" href="'+focoMapsUrl(s.endereco)+'" target="_blank" rel="noopener"><i class="ti ti-map-pin"></i> Abrir no Google Maps</a>':'';
 var prox=stops[i+1];
 var proxH=prox?'<div class="foco-next"><span class="foco-next-l">Depois</span>'+escH(prox.icone||'')+' '+escH(prox.titulo)+(s.desloc?'<div class="foco-desloc"><i class="ti ti-car"></i> '+escH(s.desloc)+'</div>':'')+'</div>':'<div class="foco-next"><span class="foco-next-l">Fim do dia</span>\U0001F3C1</div>';
@@ -2497,6 +2515,40 @@ function rotPrintDia(){
        .forEach(function(n){ n.parentNode&&n.parentNode.removeChild(n); });
   clone.querySelectorAll('button').forEach(function(b){ b.parentNode&&b.parentNode.removeChild(b); });
   area.innerHTML=''; area.appendChild(clone);
+  document.body.classList.add('printing');
+  var fim=function(){ document.body.classList.remove('printing'); window.removeEventListener('afterprint',fim); };
+  window.addEventListener('afterprint',fim);
+  setTimeout(function(){ window.print(); },30);
+}
+/* ---- lojas: a lista completa vive no papel; na tela o detalhamento mostra so a contagem ---- */
+function rotIsLojaSec(sec){ return /\blojas?\b/i.test((sec&&sec.titulo)||''); }
+function rotLojasDe(s){
+  var secs=(Array.isArray(s&&s.detalhes)?s.detalhes:[]).filter(rotIsLojaSec), itens=[];
+  secs.forEach(function(sec){ (sec.itens||[]).forEach(function(it){ if(it)itens.push(it); }); });
+  return itens;
+}
+function rotPrintLojas(){
+  var blocos=[];
+  (orlLista()||[]).forEach(function(r){
+    (r.stops||[]).forEach(function(s){
+      var itens=rotLojasDe(s); if(!itens.length)return;
+      var meta=[];
+      if(s.endereco)meta.push(escH(s.endereco));
+      if(s.horarioFunc)meta.push(escH(s.horarioFunc));
+      blocos.push('<section class="pl-bloco">'
+        +'<div class="pl-dia">'+escH(String(r.data||'').toUpperCase())+'</div>'
+        +'<h2 class="pl-tit">'+escH(s.titulo||'')+'</h2>'
+        +(meta.length?'<div class="pl-meta">'+meta.join(' &middot; ')+'</div>':'')
+        +'<div class="pl-leg">'+itens.length+(itens.length===1?' loja':' lojas')+' &middot; marque o quadrado ao visitar</div>'
+        +'<ul class="pl-lojas">'+itens.map(function(it){return '<li>'+escH(it)+'</li>';}).join('')+'</ul>'
+        +'</section>');
+    });
+  });
+  if(!blocos.length){ alert('Nenhuma parada do roteiro tem lista de lojas.'); return; }
+  var area=document.getElementById('printArea');
+  if(!area){ area=document.createElement('div'); area.id='printArea'; document.body.appendChild(area); }
+  area.innerHTML='<h1 class="pl-h1">Lojas por dia — Orlando 2026</h1>'
+    +'<p class="pl-sub">'+blocos.length+' paradas com lojas, na ordem do roteiro.</p>'+blocos.join('');
   document.body.classList.add('printing');
   var fim=function(){ document.body.classList.remove('printing'); window.removeEventListener('afterprint',fim); };
   window.addEventListener('afterprint',fim);
