@@ -801,7 +801,6 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 <div class="sb-subsubitem" onclick="setTab2('dashboard',this)"><i class="ti ti-layout-dashboard"></i> Painel</div>
 <div class="sb-subsubitem" onclick="setSimplePage('vorlando',this)" style="color:var(--accent);font-weight:600"><i class="ti ti-device-mobile"></i> Trabalhar no App</div>
 </div>
-<div class="sb-subsubgroup" id="nav-orlando-secs"></div>
 <div class="sb-subitem" id="nav-casamento" onclick="setSimplePage('casa',this)"><i class="ti ti-heart"></i> Casamento</div>
 <div class="sb-subitem" id="nav-apartamento" onclick="setSimplePage('apartamento',this)"><i class="ti ti-building"></i> Apartamento</div>
 <div class="sb-subitem" id="nav-gastosmes" onclick="setSimplePage('gastosmes',this)"><i class="ti ti-wallet"></i> Gastos do mês</div>
@@ -3454,8 +3453,8 @@ var EMBED=(function(){
     habits:{url:BASE+'Foco/',            phone:true},
     ingles:{url:BASE+'english-trainer/', phone:true},
     supercoffee:{url:BASE+'supercoffee/',phone:true},
-    // embed: o app vira uma página do HUB — sem abas, sem moldura, e as seções dele viram submenu daqui
-    vorlando:{url:BASE+'viagem/',        wide:true, embed:{trip:'orlando', nav:'nav-orlando-secs'}},
+    // moldura de celular como os outros: a navegação é a do próprio app, dentro da tela
+    vorlando:{url:BASE+'viagem/',        phone:true, params:'?trip=orlando'},
     casa:  {url:BASE+'casamento/',       phone:true},
     apartamento:{url:BASE+'apartamento/',phone:true}
   };
@@ -3487,8 +3486,9 @@ var EMBED=(function(){
     if(mode==='app'||mode==='full'){
       var pane=document.getElementById('embed-'+key);
       if(pane){
+        var qp=cfg.params||''; // params fixos do app (ex.: ?trip=orlando, p/ não cair na lista de viagens)
         var src=cfg.embed?(cfg.url+'?wide=1&embed=1&trip='+encodeURIComponent(cfg.embed.trip))
-                        :((mode==='full')?(cfg.url+'?wide=1'):cfg.url);
+                        :((mode==='full')?(cfg.url+'?wide=1'+qp.replace(/^\?/,'&')):(cfg.url+qp));
         pane.classList.toggle('phone',mode==='app'&&!!cfg.phone);
         pane.classList.toggle('full',mode==='full'&&!cfg.embed);
         pane.classList.toggle('flush',!!cfg.embed);
