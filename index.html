@@ -1845,7 +1845,7 @@ function roteiroStop(s,diaIdx,stopIdx){
   if(s.fone)meta.push('<div class="rot-meta-row"><i class="ti ti-phone"></i><span>'+escH(s.fone)+'</span></div>');
   // parada com lojas: a lista (e a descricao das lojas) vive no PDF; aqui fica so quantas sao
   var _nLoja=rotLojasDe(s).length;
-  if(_nLoja)meta.push('<div class="rot-meta-row"><i class="ti ti-building-store"></i><span>'+_nLoja+(_nLoja===1?' loja':' lojas')+' — lista no PDF</span></div>');
+  if(_nLoja)meta.push('<div class="rot-meta-row"><i class="ti ti-star"></i><span>'+_nLoja+(_nLoja===1?' marca':' marcas')+' na sua lista — no PDF de lojas</span></div>');
   if(s.nota&&!_nLoja)meta.push('<div class="rot-meta-row"><i class="ti ti-star"></i><span>'+escH(s.nota)+'</span></div>');
   if(s.duracao)meta.push('<div class="rot-meta-row"><i class="ti ti-hourglass"></i><span>'+escH(s.duracao)+'</span></div>');
   var _lk=stopLinks(s); if(_lk)meta.push(_lk);
@@ -1870,7 +1870,7 @@ var hoje=focoDiaDeHoje()===focoState.diaIdx;var atual=hoje&&i===focoStopAtual(fo
 var dots=stops.map(function(_,k){return '<span class="foco-dot'+(k===i?' on':(k<i?' done':''))+'"></span>';}).join('');
 var _nLojaF=rotLojasDe(s).length;
 var det=(s.detalhes||[]).filter(function(sec){return !rotIsLojaSec(sec);}).map(function(sec){return '<div class="foco-sec"><div class="foco-sec-t">'+escH(sec.titulo)+'</div><ul>'+(sec.itens||[]).map(function(it){return '<li>'+escH(it)+'</li>';}).join('')+'</ul></div>';}).join('');
-if(_nLojaF)det='<div class="foco-sec"><div class="foco-sec-t">🏬 '+_nLojaF+(_nLojaF===1?' loja':' lojas')+'</div><ul><li>lista completa no PDF de lojas</li></ul></div>'+det;
+if(_nLojaF)det='<div class="foco-sec"><div class="foco-sec-t">⭐ '+_nLojaF+(_nLojaF===1?' marca':' marcas')+' na sua lista</div><ul><li>lista completa no PDF de lojas</li></ul></div>'+det;
 var maps=s.endereco?'<a class="foco-maps" href="'+focoMapsUrl(s.endereco)+'" target="_blank" rel="noopener"><i class="ti ti-map-pin"></i> Abrir no Google Maps</a>':'';
 var prox=stops[i+1];
 var proxH=prox?'<div class="foco-next"><span class="foco-next-l">Depois</span>'+escH(prox.icone||'')+' '+escH(prox.titulo)+(s.desloc?'<div class="foco-desloc"><i class="ti ti-car"></i> '+escH(s.desloc)+'</div>':'')+'</div>':'<div class="foco-next"><span class="foco-next-l">Fim do dia</span>\U0001F3C1</div>';
@@ -2539,7 +2539,7 @@ function rotPrintLojas(){
         +'<div class="pl-dia">'+escH(String(r.data||'').toUpperCase())+'</div>'
         +'<h2 class="pl-tit">'+escH(s.titulo||'')+'</h2>'
         +(meta.length?'<div class="pl-meta">'+meta.join(' &middot; ')+'</div>':'')
-        +'<div class="pl-leg">'+itens.length+(itens.length===1?' loja':' lojas')+' &middot; marque o quadrado ao visitar</div>'
+        +'<div class="pl-leg">'+itens.length+(itens.length===1?' marca':' marcas')+' na sua lista &middot; marque o quadrado ao visitar</div>'
         +'<ul class="pl-lojas">'+itens.map(function(it){return '<li>'+escH(it)+'</li>';}).join('')+'</ul>'
         +'</section>');
     });
