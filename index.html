@@ -3506,7 +3506,7 @@ var EMBED=(function(){
     ingles:{url:BASE+'english-trainer/', phone:true},
     supercoffee:{url:BASE+'supercoffee/',phone:true},
     // moldura de celular como os outros: a navegação é a do próprio app, dentro da tela
-    vorlando:{url:BASE+'viagem/',        phone:true, params:'?trip=orlando'},
+    vorlando:{url:BASE+'viagem/',        phone:true, params:'?trip=orlando', noseg:true},
     casa:  {url:BASE+'casamento/',       phone:true},
     apartamento:{url:BASE+'apartamento/',phone:true}
   };
@@ -3515,6 +3515,7 @@ var EMBED=(function(){
   function dashOpen(key){var n=DASHMOD[key];if(n&&window[n]&&window[n].open){try{window[n].open();}catch(e){}}}
   function seg(key){
     if(REG[key].embed)return ''; // integrado ao HUB: quem navega é o menu lateral, sem seletor
+    if(REG[key].noseg)return ''; // o item já está marcado no menu lateral: o seletor só repetia isso
     if(REG[key].wide) // app com modo largo: página inteira (padrão no desktop) ou moldura de celular
       return '<div class="appseg">'
         +'<button data-m="full" class="on" onclick="EMBED.setView(\''+key+'\',\'full\')"><i class="ti ti-layout-sidebar"></i> Tela cheia</button>'
@@ -3529,6 +3530,7 @@ var EMBED=(function(){
     var pg=document.getElementById('page-'+key); if(!pg)return;
     var cfg=REG[key];
     if(cfg.embed)mode='full'; // integrado: só existe a página inteira
+    else if(cfg.noseg)mode='app'; // sem seletor: só existe o app (ignora 'resumo' salvo de antes)
     else if(cfg.wide&&mode==='resumo')mode='full'; // app largo não tem mini-dash: cai na página inteira
     // 'full' e 'app' são o mesmo slot (o iframe) — muda só a URL e a moldura
     pg.dataset.view=(mode==='full')?'app':mode;
@@ -3583,6 +3585,7 @@ var EMBED=(function(){
       var def=cfg.wide?'full':'app';
       var sv=def; try{sv=localStorage.getItem('hub_view_'+key)||def;}catch(e){} // padrão: app (ou tela cheia); lembra a última escolha
       if(cfg.wide&&sv==='resumo')sv='full'; // preferência antiga ("Resumo") vira a página inteira
+      if(cfg.noseg)sv='app';                // sem seletor: descarta o 'resumo' que ficou salvo antes
       pg.dataset.view=sv;
       var s=pg.querySelector('.appseg'); if(s)s.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',b.dataset.m===sv);});
     });
