@@ -46,7 +46,7 @@ body.dark{--bg:#141220;--surface:#1d1a2b;--surface2:#272338;--border:#332e48;--t
 .page:not([data-view="app"])>.app-embed-pane,.page:not([data-view="app"])>.app-embed-hint{display:none}
 /* moldura de celular opcional p/ apps mobile-first */
 /* link do Maps ao lado do endereço da parada */
-.stop-map{display:inline-flex;align-items:center;margin-left:.35rem;color:#6d5efc;opacity:.75;text-decoration:none;font-size:.95em;vertical-align:middle}
+.stop-links{flex-wrap:wrap;gap:.4rem}.stop-link{display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;font-weight:700;color:var(--accent);background:rgba(109,94,252,.12);border:1px solid rgba(109,94,252,.3);border-radius:999px;padding:.24rem .6rem;text-decoration:none}.stop-link:hover{background:rgba(109,94,252,.22)}#printArea .stop-link{background:none!important;color:#000!important;border-color:#000}.stop-map{display:inline-flex;align-items:center;margin-left:.35rem;color:#6d5efc;opacity:.75;text-decoration:none;font-size:.95em;vertical-align:middle}
 .stop-map:hover{opacity:1}
 @media print{.stop-map{display:none!important}}
 /* visão Tópicos do roteiro: um dia por linha */
@@ -1817,6 +1817,16 @@ function stopMapsLink(s){
   var u=stopMapsUrl(s); if(!u)return '';
   return '<a class="stop-map" href="'+u+'" target="_blank" rel="noopener" title="Abrir no Google Maps" onclick="event.stopPropagation()"><i class="ti ti-map-2"></i></a>';
 }
+/* Links nomeados de uma parada: s.links = [{t:"Ingressos", u:"https://..."}].
+   So http/https — nao renderiza javascript: nem data:. */
+function stopLinks(s){
+  var L=Array.isArray(s&&s.links)?s.links:[];
+  var out=L.filter(function(x){return x&&x.u&&/^https?:\/\//i.test(x.u);}).map(function(x){
+    return '<a class="stop-link" href="'+escH(x.u)+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'
+      +'<i class="ti ti-external-link"></i> '+escH(x.t||'Link')+'</a>';
+  });
+  return out.length?'<div class="rot-meta-row stop-links">'+out.join('')+'</div>':'';
+}
 function roteiroStop(s,diaIdx,stopIdx){
   var meta=[];
   if(s.endereco)meta.push('<div class="rot-meta-row"><i class="ti ti-map-pin"></i><span>'+escH(s.endereco)+'</span>'+stopMapsLink(s)+'</div>');
@@ -1824,6 +1834,7 @@ function roteiroStop(s,diaIdx,stopIdx){
   if(s.fone)meta.push('<div class="rot-meta-row"><i class="ti ti-phone"></i><span>'+escH(s.fone)+'</span></div>');
   if(s.nota)meta.push('<div class="rot-meta-row"><i class="ti ti-star"></i><span>'+escH(s.nota)+'</span></div>');
   if(s.duracao)meta.push('<div class="rot-meta-row"><i class="ti ti-hourglass"></i><span>'+escH(s.duracao)+'</span></div>');
+  var _lk=stopLinks(s); if(_lk)meta.push(_lk);
   var metaHtml=meta.length?'<div class="rot-meta">'+meta.join('')+'</div>':'';
   var detHtml=(Array.isArray(s.detalhes)&&s.detalhes.length)?'<div class="rot-detalhes">'+s.detalhes.map(function(sec){return '<div class="rot-sec"><div class="rot-sec-title">'+escH(sec.titulo)+'</div><ul class="rot-sec-list">'+(sec.itens||[]).map(function(it){return '<li>'+escH(it)+'</li>';}).join('')+'</ul></div>';}).join('')+'</div>':'';
   var alerta=s.alerta?'<span class="rot-alerta">'+escH(s.alerta)+'</span>':'';
