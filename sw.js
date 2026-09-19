@@ -3,9 +3,10 @@
    - Navegação (abrir o app): network-first -> sempre pega o index.html mais novo quando online;
      se estiver offline, cai no cache (app abre mesmo sem internet).
    - Supabase (dados do usuário): NUNCA passa pelo cache. Sempre rede.
+   - equilibrio.js do Foco (mesma origem): network-first, cache só como fallback offline.
    - Demais GET (CDNs: fontes, ícones, chart.js, supabase-js): stale-while-revalidate.
    Bump CACHE quando quiser forçar limpeza do cache antigo. */
-var CACHE = 'hub-v35';
+var CACHE = 'hub-v36';
 var SHELL = ['./', './index.html', './manifest.json',
              './apple-touch-icon.png', './icon-192.png', './icon-512.png'];
 
@@ -25,7 +26,8 @@ self.addEventListener('install', function (e) {
 self.addEventListener('activate', function (e) {
   e.waitUntil(
     caches.keys().then(function (keys) {
-      return Promise.all(keys.map(function (k) { if (k !== CACHE) return caches.delete(k); }));
+      // a origem dkonrad88.github.io é compartilhada com os outros apps da suíte: só limpa caches do HUB
+      return Promise.all(keys.map(function (k) { if (k !== CACHE && k.indexOf('hub-') === 0) return caches.delete(k); }));
     }).then(function () { return self.clients.claim(); })
   );
 });
@@ -47,6 +49,23 @@ self.addEventListener('fetch', function (e) {
         return res;
       }).catch(function () {
         return caches.match('./index.html').then(function (m) { return m || caches.match('./'); });
+      })
+    );
+    return;
+  }
+
+  // Domínio do Foco (https://dkonrad88.github.io/Foco/equilibrio.js, mesma origem): network-first com
+  // fallback pro cache, para o HUB calcular com a mesma versão do app. Sem cache-busting por query.
+  if (url.origin === self.location.origin && /\/equilibrio\.js$/.test(url.pathname)) {
+    e.respondWith(
+      fetch(req).then(function (res) {
+        if (res && res.status === 200) {
+          var copy = res.clone();
+          caches.open(CACHE).then(function (c) { c.put(req, copy); });
+        }
+        return res;
+      }).catch(function () {
+        return caches.match(req);
       })
     );
     return;
