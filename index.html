@@ -814,8 +814,6 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 </div>
 <div class="sb-subitem" id="nav-casamento" onclick="setSimplePage('casa',this)"><i class="ti ti-heart"></i> Casamento</div>
 <div class="sb-subitem" id="nav-apartamento" onclick="setSimplePage('apartamento',this)"><i class="ti ti-building"></i> Apartamento</div>
-<div class="sb-subitem" id="nav-gastosmes" onclick="setSimplePage('gastosmes',this)"><i class="ti ti-wallet"></i> Gastos do mês</div>
-<div class="sb-subitem" id="nav-investimentos" onclick="setSimplePage('investimentos',this)"><i class="ti ti-chart-pie"></i> Investimentos</div>
 
 </div></div>
 <!-- ROTINA -->
@@ -823,25 +821,6 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 <div class="sb-area-label" onclick="sbToggleGroup(this)">Rotina<i class="ti ti-chevron-down sb-grp-chev"></i></div>
 <div class="sb-group-body">
 <div class="sb-subitem" id="nav-habits" onclick="setSimplePage('habits',this)"><i class="ti ti-flame"></i> Habit Tracker</div>
-<div class="sb-subitem" id="nav-metas" onclick="setSimplePage('metas',this)"><i class="ti ti-target"></i> Metas</div>
-<div class="sb-subitem" id="nav-supercoffee" onclick="setSimplePage('supercoffee',this)"><i class="ti ti-coffee"></i> Supercoffee <span style="font-size:.62rem;background:rgba(184,136,74,.18);color:#b8884a;padding:.05rem .35rem;border-radius:6px;margin-left:.3rem">preços</span></div>
-
-</div></div>
-<!-- CONHECIMENTO -->
-<div class="sb-group collapsed">
-<div class="sb-area-label" onclick="sbToggleGroup(this)">Conhecimento<i class="ti ti-chevron-down sb-grp-chev"></i></div>
-<div class="sb-group-body">
-<div class="sb-subitem" id="nav-leitura" onclick="setSimplePage('leitura',this)"><i class="ti ti-book"></i> Leitura</div>
-<div class="sb-subitem" id="nav-insights" onclick="setSimplePage('insights',this)"><i class="ti ti-bulb"></i> Insights &amp; Frases</div>
-<div class="sb-subitem" id="nav-ingles" onclick="setSimplePage('ingles',this)"><i class="ti ti-language"></i> Estudar Inglês</div>
-
-</div></div>
-<!-- PESSOAL -->
-<div class="sb-group collapsed">
-<div class="sb-area-label" onclick="sbToggleGroup(this)">Pessoal<i class="ti ti-chevron-down sb-grp-chev"></i></div>
-<div class="sb-group-body">
-<div class="sb-subitem" id="nav-presentes" onclick="setSimplePage('presentes',this)"><i class="ti ti-gift"></i> Presentes &amp; Datas</div>
-<div class="sb-subitem" id="nav-contas" onclick="setSimplePage('contas',this)"><i class="ti ti-lock"></i> Contas &amp; Assinaturas</div>
 
 </div></div>
 <!-- SISTEMA -->
@@ -888,8 +867,6 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 <a class="home-card" onclick="setSimplePage('casa',document.getElementById('nav-casamento'))"><div class="hc-ic">💍</div><div class="hc-body"><div class="hc-t">Casamento</div><div class="hc-s">Gastos, convidados e tarefas</div></div><div class="hc-go">›</div></a>
 <a class="home-card" onclick="setSimplePage('apartamento',document.getElementById('nav-apartamento'))"><div class="hc-ic">🏠</div><div class="hc-body"><div class="hc-t">Apartamento</div><div class="hc-s">Obra, mobília e contas</div></div><div class="hc-go">›</div></a>
 <a class="home-card" onclick="setSimplePage('habits',document.getElementById('nav-habits'))"><div class="hc-ic">🔥</div><div class="hc-body"><div class="hc-t">Hábitos</div><div class="hc-s">Sua rotina e sequências</div></div><div class="hc-go">›</div></a>
-<a class="home-card" onclick="setSimplePage('metas',document.getElementById('nav-metas'))"><div class="hc-ic">🎯</div><div class="hc-body"><div class="hc-t">Metas</div><div class="hc-s">Objetivos de vida</div></div><div class="hc-go">›</div></a>
-
 </div>
 </div>
 <script>(function(){try{var h=new Date().getHours();var g=h<12?'Bom dia':(h<18?'Boa tarde':'Boa noite');var ge=document.getElementById('homeGreet');if(ge)ge.textContent=g;var ini=new Date('2026-09-30T00:00:00');var n=Math.ceil((ini-new Date())/86400000);var ce=document.getElementById('homeCountdown');if(ce)ce.textContent=(n>0?n:0);}catch(e){}})();</script>
@@ -3745,6 +3722,7 @@ function hubRestore(){
   if(!last)return;
   var pageEl=document.getElementById('page-'+last); if(!pageEl)return;
   var navEl=document.querySelector('.sidebar [onclick*="setSimplePage(\''+last+'\'"]');
+  if(!navEl)return; // página sem item no menu (removida) → fica no Início
   try{setSimplePage(last,navEl);}catch(e){return;}
   if(navEl&&navEl.closest){var grp=navEl.closest('.sb-group'); if(grp)grp.classList.remove('collapsed');
     var ss=navEl.closest('.sb-subsubgroup'); if(ss)ss.classList.add('open');}
