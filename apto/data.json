@@ -1,10 +1,10 @@
 {
- "geradoEm": "2026-10-31T09:27-03:00",
+ "geradoEm": "2026-10-31T17:21-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
   "total": 1751888.15,
-  "pago": 1327248.67,
-  "restante": 580052.45
+  "pago": 1338400.47,
+  "restante": 568900.65
  },
  "categorias": [
   {
@@ -40,8 +40,8 @@
   {
    "nome": "Imóvel",
    "total": 1510000.0,
-   "pago": 1164456.67,
-   "restante": 500956.3
+   "pago": 1175608.47,
+   "restante": 489804.5
   }
  ],
  "comodos": [
@@ -144,8 +144,8 @@
   {
    "nome": "Imóvel",
    "total": 1510000.0,
-   "pago": 1164456.67,
-   "restante": 500956.3
+   "pago": 1175608.47,
+   "restante": 489804.5
   }
  ],
  "gastos": [
@@ -461,6 +461,15 @@
    "tipo": "Tarefa"
   },
   {
+   "data": "2026-11-09",
+   "resp": "Diego / Cherrut",
+   "tarefa": "Avisar Cherrut para instalar os 4 ares que faltam",
+   "comodo": "Suíte Master, Closet Master, Quarto Visita, Sala Gamer",
+   "obs": "Depois que o mestre de obra confirmar a data do piso laminado. 04 und: Master, Closet, Quarto Visita e Sala Gamer",
+   "status": "Aguardando",
+   "tipo": "Tarefa"
+  },
+  {
    "data": "2026-11-16",
    "resp": "CR Mármores",
    "tarefa": "Instalar mármore da escada (pisante e espelho)",
@@ -477,18 +486,27 @@
    "obs": "Semana de 23 ou 30/11. Box do banho de visita e da master",
    "status": "A confirmar",
    "tipo": "Tarefa"
+  },
+  {
+   "data": "2026-11-03",
+   "resp": "Diego",
+   "tarefa": "Avisar o Márcio (mestre de obra) sobre o vidro da janela quebrado no quarto",
+   "comodo": "Nosso quarto",
+   "obs": "Mandar mensagem ao Márcio avisando que há um vidro/janela quebrada no nosso quarto. Início e vencimento: terça 03/11. Solicitante e executor: Diego",
+   "status": "Pendente",
+   "tipo": "Tarefa"
   }
  ],
  "imovel": {
   "resumo": {
    "Valor do imóvel (Diamond)": "1510000",
-   "Já pago": "1164456.67",
-   "Falta (corrigido)": "500956.3",
-   "Falta (sem correção)": "408750",
-   "Juros/correção pagos": "63206.67",
-   "Parcelas pagas": "49 de 80",
-   "Parcelas restantes": "31",
-   "Quitado": "0.77"
+   "Já pago": "1175608.47",
+   "Falta (corrigido)": "489804.5",
+   "Falta (sem correção)": "399750",
+   "Juros/correção pagos": "65358.47",
+   "Parcelas pagas": "50 de 80",
+   "Parcelas restantes": "30",
+   "Quitado": "0.78"
   },
   "parcelas": [
    {
@@ -928,9 +946,9 @@
     "venc": "2026-10-10",
     "tipo": "Mensal",
     "previsto": 9000.0,
-    "pago": 0.0,
-    "correcao": 0.0,
-    "status": "Atrasada"
+    "pago": 11151.8,
+    "correcao": 2151.8,
+    "status": "Pago"
    },
    {
     "n": 50,
@@ -1738,8 +1756,8 @@
    "data": "2026-10-10",
    "fornecedor": "Construtora Diamond",
    "desc": "Parcela 49/80 · Mensal",
-   "valor": 9000.0,
-   "status": "atrasada",
+   "valor": 11151.8,
+   "status": "pago",
    "cat": "Imóvel"
   },
   {
