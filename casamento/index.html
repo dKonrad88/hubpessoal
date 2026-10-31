@@ -12,8 +12,10 @@
 h3{font-size:11px;text-transform:uppercase;letter-spacing:.25em;color:#9a8a70;font-weight:600;margin-bottom:10px}
 .kick{font-size:11px;text-transform:uppercase;letter-spacing:.25em;color:#9a8a70;font-weight:600}.ttl{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;font-style:italic}
 .hd{position:relative}
+.hd.cas{min-height:130px}
 .hd .kick,.hd .ttl,.hd .orn{position:relative;z-index:1}
-.torre{position:absolute;top:0;right:0;height:118px;width:auto;pointer-events:none;opacity:.22;z-index:0}
+.torre{position:absolute;top:0;right:0;width:52px;height:130px;pointer-events:none;opacity:.28;z-index:0}
+.torre-bg{position:absolute;left:50%;top:50%;width:148px;height:370px;transform:translate(-50%,-50%);opacity:.08;pointer-events:none;z-index:0}
 @media(max-width:400px){.hd .orn{letter-spacing:.32em}}
 .big{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;letter-spacing:-.01em}.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .bar{height:6px;border-radius:9px;background:rgba(176,141,87,.15);overflow:hidden;display:flex}.bar i{display:block;height:100%}
@@ -48,17 +50,33 @@ html,body{overscroll-behavior-y:contain}
 .cvside{display:flex;align-items:center;gap:8px;flex:none}
 .cvic{width:18px;height:18px;color:#9a8a70;display:block;flex:none}
 .cd .cvic{margin:4px auto 0}
-.chlog{display:flex;flex-direction:column;gap:10px}
-.chb{max-width:88%;padding:10px 12px;border-radius:18px;border:1px solid rgba(201,169,106,.35);background:rgba(255,253,248,.72)}
-.chb.user{margin-left:auto;background:rgba(176,141,87,.14)}
-.chb.asst{margin-right:auto}
+.chlog{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+.chrow{display:flex;align-items:flex-end;gap:8px;width:100%}
+.chrow.user{flex-direction:row-reverse}
+.chav{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:16px;color:#fff;line-height:1}
+.chav.diego{background:#B08D57}
+.chav.debora{background:#C98984}
+.chav.asst{background:#3b342c;color:#F7F1E6;font-size:14px;border:1px solid rgba(217,194,154,.4)}
+.chav.other{background:rgba(176,141,87,.28);color:#6e5834}
+.chb{max-width:calc(100% - 40px);padding:10px 12px;border-radius:18px;border:1px solid rgba(201,169,106,.35)}
+.chb.user{background:rgba(255,253,248,.78);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.chb.asst{background:#3b342c;border-color:rgba(217,194,154,.28);color:#F7F1E6}
+.chb.asst .chmeta,.chb.asst .sub{color:#D9C29A}
+.chb.asst .chtxt,.chb.asst .chask{color:#F7F1E6}
 .chmeta{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:#9a8a70;margin-bottom:3px}
+.chseal{font-size:10px;letter-spacing:.03em;color:#8a6a35;margin-top:6px}
+.chhold{font-size:10px;color:#b5a48c;margin-top:3px}
+.chaudio{display:flex;align-items:center;gap:8px;margin-top:6px}
+.chaudio audio{display:none}
+.chplay{width:28px;height:28px;border-radius:50%;border:1px solid rgba(176,141,87,.55);background:transparent;color:#B08D57;display:grid;place-items:center;padding:0;cursor:pointer;flex:none}
+.chb.asst .chplay{color:#D9C29A;border-color:rgba(217,194,154,.5)}
+.chplay svg{width:11px;height:11px;display:block}
+.chaudio .chwave{flex:1;min-width:72px;height:18px}
 .chdel{border:0;background:transparent;color:#9a8a70;padding:0;cursor:pointer;flex:none}
 .chdel svg{width:14px;height:14px;display:block}
 .chask{margin-top:8px;font-size:13px;color:#3b3124}
 .chwait{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#9a8a70;margin-top:4px}
 .chtxt{font-size:14px;line-height:1.35;white-space:pre-wrap;word-break:break-word}
-.chb audio{width:100%;margin-top:6px;height:32px}
 .chcompose{display:flex;gap:8px;align-items:flex-end;position:relative}
 .chcompose textarea{flex:1;min-height:46px;max-height:120px;resize:none}
 .chmic{position:relative;width:46px;height:46px;border-radius:50%;border:1px solid rgba(176,141,87,.45);background:rgba(255,253,248,.9);color:#8a6a35;display:grid;place-items:center;cursor:pointer;flex:none;padding:0;touch-action:none}
@@ -74,7 +92,7 @@ html,body{overscroll-behavior-y:contain}
 .chwave i{width:3px;height:4px;border-radius:2px;background:#B08D57;display:block}
 .chhint{font-size:12px;color:#9a8a70;white-space:nowrap}
 .card.chopen{overflow:visible}
-@media(max-width:400px){.tabs div{font-size:9px;gap:1px}.chb{max-width:92%}.chhint{font-size:11px}}
+@media(max-width:400px){.tabs div{font-size:9px;gap:1px}.chhint{font-size:11px}}
 .fld{width:100%;border:1px solid rgba(176,141,87,.35);background:#fff;border-radius:14px;padding:12px 14px;font:15px Inter,sans-serif;color:#3b3124;outline:none}
 .flab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9a8a70;font-weight:600;margin:14px 0 6px}
 .step{display:flex;align-items:center;gap:12px}.step button{width:36px;height:36px;border-radius:50%;border:1px solid rgba(176,141,87,.45);background:#fff;color:#3b3124;font-size:20px;line-height:1;cursor:pointer}
@@ -111,8 +129,8 @@ function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return 
 function q(s){return e(JSON.stringify(String(s)))}
 var hoje=function(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)};
 function dl(iso){return new Date(iso+'T12:00')}
-function torreSvg(){return '<svg class="torre" viewBox="0 0 80 150" fill="none" stroke="#B08D57" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M40 3v16M33 19h14M33 19 36 40h8l3-21M29 40h22M29 40 23 66h34l-6-26M18 66h44M23 66 8 142M57 66 72 142M16 142c8-40 40-40 48 0M4 142h16M60 142h16M36 30h8M26 53h28M22 84h36"/></svg>'}
-function head(t){var d=dl(hoje());var w=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'][d.getDay()];var cas=t==='Casamento';return '<div class="full hd">'+(cas?torreSvg():'')+'<div class="kick">'+w+', '+d.getDate()+' de '+MNL[d.getMonth()].toLowerCase()+'</div><div class="ttl">'+t+'</div>'+(cas?'<div class="orn" style="text-align:left;margin-top:4px">❦ Débora &amp; Diego ❦</div>':'')+'</div>'+(D.exemplo?'<div class="full banner">DADOS DE EXEMPLO</div>':'')}
+function torreSvg(cls){var p='M50 4V17M46.5 14H53.5M44 17H56M44 17L47 26H53L56 17M47.2 21.5H52.8M47 26L40 64M53 26L60 64M47 26L56.5 45M53 26L43.5 45M43.5 45L60 64M56.5 45L40 64M43.5 45H56.5M32 64H68V74H32ZM34 69H66M38 64V74M46 64V74M54 64V74M62 64V74M37 74L28 122M63 74L72 122M45 74L38 122M55 74L62 122M37 74L42.7 90M45 74L34 90M34 90L40.3 106M42.7 90L31 106M31 106L38 122M40.3 106L28 122M34 90H42.7M31 106H40.3M63 74L57.3 90M55 74L66 90M66 90L59.7 106M57.3 90L69 106M69 106L62 122M59.7 106L72 122M66 90H57.3M69 106H59.7M45 74L57.3 90M55 74L42.7 90M42.7 90L59.7 106M57.3 90L40.3 106M40.3 106L62 122M59.7 106L38 122M42.7 90H57.3M40.3 106H59.7M18 122H82V140H18ZM20 131H80M26 122V140M38 122V140M50 122V140M62 122V140M74 122V140M24 140C16 175 10 205 6 236M40 140C36 178 32 208 27 236M60 140C64 178 68 208 73 236M76 140C84 175 90 205 94 236M24 140L35.9 176.2M40 140L16.5 174.2M16.5 174.2L31.7 207.4M35.9 176.2L10.6 205.4M10.6 205.4L27 236M31.7 207.4L6 236M16.5 174.2L35.9 176.2M10.6 205.4L31.7 207.4M60 140L83.5 174.2M76 140L64.1 176.2M64.1 176.2L89.4 205.4M83.5 174.2L68.3 207.4M68.3 207.4L94 236M89.4 205.4L73 236M64.1 176.2L83.5 174.2M68.3 207.4L89.4 205.4M40 140L64.1 176.2M60 140L35.9 176.2M35.9 176.2L68.3 207.4M64.1 176.2L31.7 207.4M35.9 176.2L64.1 176.2M31.7 207.4C40 128 60 128 68.3 207.4M34 203C44 140 56 140 66 203M2 236H10M23 236H31M69 236H77M90 236H98M4 240H8M25 240H29M71 240H75M92 240H96';return '<svg class="'+(cls||'torre')+'" viewBox="0 0 100 250" preserveAspectRatio="xMidYMax meet" fill="none" stroke="#B08D57" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+p+'"/></svg>'}
+function head(t){var d=dl(hoje());var w=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'][d.getDay()];var cas=t==='Casamento';return '<div class="full hd'+(cas?' cas':'')+'">'+(cas?torreSvg():'')+'<div class="kick">'+w+', '+d.getDate()+' de '+MNL[d.getMonth()].toLowerCase()+'</div><div class="ttl">'+t+'</div>'+(cas?'<div class="orn" style="text-align:left;margin-top:4px">❦ Débora &amp; Diego ❦</div>':'')+'</div>'+(D.exemplo?'<div class="full banner">DADOS DE EXEMPLO</div>':'')}
 var STC={'Pendente':'#D9822B','Concluído':'#4C9A6A','previsto':MU,'atrasada':'#C0392B','pago':'#4C9A6A'},STL={previsto:'Previsto',atrasada:'Atrasado',pago:'Pago'};
 function st(s){var c=STC[s]||AC;return '<span class="pill" style="background:'+c+'22;color:'+c+'">'+e(STL[s]||s)+'</span>'}
 function dstack(iso){if(!iso)return '<div style="width:44px;text-align:center;font-size:10px;font-weight:700;color:'+MU+'">S/<br>DATA</div>';var d=dl(iso);return '<div style="width:44px;text-align:center;font-size:11px;font-weight:700;color:'+AC+'">'+('0'+d.getDate()).slice(-2)+'<br>'+MN[d.getMonth()]+'</div>'}
@@ -562,16 +580,45 @@ function chDel(id){
     CH.askId='';if(m.audio_path)delete CH.urls[m.audio_path];chLoad(true);
   }).catch(function(){CH.note='Não foi possível apagar';CH.askId='';render()});
 }
+function chFold(s){return String(s||'').toLowerCase().replace(/á|à|â|ã/g,'a').replace(/é|ê/g,'e').replace(/í/g,'i').replace(/ó|ô|õ/g,'o').replace(/ú/g,'u')}
+function chAvatar(m){
+  if(m.papel==='assistant')return '<div class="chav asst" aria-hidden="true">✦</div>';
+  var n=chFold(m.autor_nome);
+  var kind=n.indexOf('diego')>=0?'diego':(n.indexOf('debora')>=0?'debora':'other');
+  var letter=kind==='other'?e((String(m.autor_nome||'?').trim().charAt(0)||'?').toUpperCase()):'D';
+  return '<div class="chav '+kind+'" aria-hidden="true">'+letter+'</div>';
+}
+function chPendingN(){var n=0;CH.msgs.forEach(function(m){if(m.papel!=='assistant'&&!m.processado)n++});return n}
+function chPlaySvg(){return '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 7.2v9.6l8.2-4.8z"/></svg>'}
+function chPauseSvg(){return '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 6h3.4v12H7zM13.6 6H17v12h-3.4z"/></svg>'}
+function chWaveGold(){var hs=[5,11,7,15,9,17,8,13,6,14,10,7],s='';for(var i=0;i<hs.length;i++)s+='<i style="height:'+hs[i]+'px"></i>';return s}
+function chAudioBox(src){return '<div class="chaudio"><button type="button" class="chplay" aria-label="Reproduzir" onclick="chToggleAudio(this)">'+chPlaySvg()+'</button><span class="chwave" aria-hidden="true">'+chWaveGold()+'</span><audio preload="none" src="'+e(src)+'" onended="chAudioEnd(this)" onpause="chAudioEnd(this)"></audio></div>'}
+function chToggleAudio(btn){
+  var a=btn.parentNode&&btn.parentNode.querySelector('audio');if(!a)return;
+  if(a.paused){
+    var all=document.querySelectorAll('.chaudio audio');
+    for(var i=0;i<all.length;i++)if(all[i]!==a)all[i].pause();
+    btn.innerHTML=chPauseSvg();btn.setAttribute('aria-label','Pausar');
+    var p=a.play();if(p&&p.catch)p.catch(function(){chAudioEnd(a)});
+  }else a.pause();
+}
+function chAudioEnd(a){
+  if(a&&!a.paused&&!a.ended)return;
+  var btn=a&&a.parentNode&&a.parentNode.querySelector('.chplay');
+  if(!btn)return;
+  btn.innerHTML=chPlaySvg();btn.setAttribute('aria-label','Reproduzir');
+}
 function chBubble(m){
   var mine=chMine(m);
   var user=m.papel!=='assistant';
   var who=user?(m.autor_nome||'Você'):'Assistente';
-  var audio=m.audio_path&&CH.urls[m.audio_path]?'<audio controls preload="none" src="'+e(CH.urls[m.audio_path])+'"></audio>':(m.audio_path?'<div class="sub">Áudio</div>':'');
-  var wait=user&&!m.processado?'<div class="chwait">aguardando</div>':'';
+  var audio=m.audio_path&&CH.urls[m.audio_path]?chAudioBox(CH.urls[m.audio_path]):(m.audio_path?'<div class="sub">Áudio</div>':'');
+  var seal=user?'<div class="chseal">'+(m.processado?'✓ processado':'⏳ pendente')+'</div>':'';
+  var hint=mine?'<div class="chhold">segure para apagar</div>':'';
   var del=mine?'<button type="button" class="chdel" aria-label="Apagar" onclick="chAskDel('+q(String(m.id))+')">'+chTrashSvg()+'</button>':'';
   var ask=mine&&CH.askId===String(m.id)?'<div class="chask">Apagar mensagem?<div style="display:flex;gap:8px;margin-top:8px"><button type="button" class="btn-cancel" onclick="chAskCancel()">Cancelar</button><button type="button" class="btn-gold" style="margin:0" onclick="chDel('+q(String(m.id))+')">Apagar</button></div></div>':'';
   var hold=mine?' onpointerdown="chHoldStart('+q(String(m.id))+',event)" onpointermove="chHoldMove(event)" onpointerup="chHoldEnd()" onpointercancel="chHoldEnd()" onpointerleave="chHoldEnd()"':'';
-  return '<div class="chb '+(user?'user':'asst')+'"'+hold+'><div class="chmeta"><span>'+e(who)+' · '+e(chWhen(m.created_at))+'</span>'+del+'</div>'+(m.texto?'<div class="chtxt">'+e(m.texto)+'</div>':'')+audio+wait+ask+'</div>';
+  return '<div class="chrow '+(user?'user':'asst')+'">'+chAvatar(m)+'<div class="chb '+(user?'user':'asst')+'"'+hold+'><div class="chmeta"><span>'+e(who)+' · '+e(chWhen(m.created_at))+'</span>'+del+'</div>'+(m.texto?'<div class="chtxt">'+e(m.texto)+'</div>':'')+audio+seal+hint+ask+'</div></div>';
 }
 function vChat(){
   if(CH.state==='loading'||CH.state==='init')return head('Chat')+'<div class="card full sub">Carregando a conversa…</div>';
@@ -579,9 +626,10 @@ function vChat(){
   if(CH.state==='empty')return head('Chat')+'<div class="card full"><h3>Nenhum casamento</h3><div class="sub">Entre no espaço pelo app de casamento para conversar.</div></div>';
   if(CH.state==='nologin')return head('Chat')+'<div class="card full"><h3>Entrar para conversar</h3><p class="sub">Use a mesma conta do HUB.</p><div class="flab">E-mail</div><input class="fld" id="chEmail" type="email" autocomplete="username"><div class="flab">Senha</div><input class="fld" id="chPass" type="password" autocomplete="current-password">'+(CH.err?'<div class="sub" style="color:#C0392B;margin-top:8px">'+e(CH.err)+'</div>':'')+'<button class="btn-gold" type="button" onclick="chLogin()">Entrar</button></div>';
   var log=CH.msgs.length?CH.msgs.map(chBubble).join(''):'<div class="sub empty">Nenhuma mensagem ainda.</div>';
+  var pend=chPendingN();
   return head('Chat')+(CH.note?'<div class="full banner">'+e(CH.note)+'</div>':'')
-    +'<div class="card full"><div class="chlog">'+log+'</div></div>'
-    +'<div class="card full chopen">'+chCompose()+'<button type="button" class="btn-gold" id="chPingBtn" onclick="chPing()"'+(CH.pinging?' disabled':'')+'>Enviar ao assistente</button></div>';
+    +'<div class="card full chstage">'+torreSvg('torre-bg')+'<div class="chlog">'+log+'</div></div>'
+    +'<div class="card full chopen">'+chCompose()+'<button type="button" class="btn-gold" id="chPingBtn" onclick="chPing()"'+(CH.pinging?' disabled':'')+'>Enviar ao assistente ('+pend+')</button></div>';
 }
 function chBars(){var s='';for(var i=0;i<12;i++)s+='<i></i>';return s}
 function chCompose(){
