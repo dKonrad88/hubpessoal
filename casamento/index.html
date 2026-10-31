@@ -52,7 +52,10 @@ html,body{overscroll-behavior-y:contain}
 .chb{max-width:88%;padding:10px 12px;border-radius:18px;border:1px solid rgba(201,169,106,.35);background:rgba(255,253,248,.72)}
 .chb.user{margin-left:auto;background:rgba(176,141,87,.14)}
 .chb.asst{margin-right:auto}
-.chmeta{font-size:11px;color:#9a8a70;margin-bottom:3px}
+.chmeta{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:#9a8a70;margin-bottom:3px}
+.chdel{border:0;background:transparent;color:#9a8a70;padding:0;cursor:pointer;flex:none}
+.chdel svg{width:14px;height:14px;display:block}
+.chask{margin-top:8px;font-size:13px;color:#3b3124}
 .chwait{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#9a8a70;margin-top:4px}
 .chtxt{font-size:14px;line-height:1.35;white-space:pre-wrap;word-break:break-word}
 .chb audio{width:100%;margin-top:6px;height:32px}
@@ -486,7 +489,7 @@ function cvSave(){
 }
 function cvDoDel(){if(!CV.draft||!CV.draft.id)return;cvCommit({type:'del',id:CV.draft.id})}
 /* ---------- CHAT (casamento_chat; mesma sessão e lista dos convidados) ---------- */
-var CH={state:'init',err:'',note:'',msgs:[],urls:{},listaId:'',email:'',draft:'',busy:false,rec:null,recAt:0,transcript:'',rt:null};
+var CH={state:'init',err:'',note:'',msgs:[],urls:{},listaId:'',email:'',uid:'',draft:'',busy:false,rec:null,recAt:0,transcript:'',rt:null,askId:''};
 function chNome(email){var em=String(email||'').toLowerCase();if(em==='konraddiego@gmail.com')return 'Diego';if(em==='debiandrade8@gmail.com')return 'Débora';return email||''}
 function chWhen(iso){var d=new Date(iso);if(isNaN(d.getTime()))return '';return d.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}
 function chExt(mime){mime=String(mime||'');if(mime.indexOf('mp4')>=0||mime.indexOf('aac')>=0||mime.indexOf('m4a')>=0)return 'mp4';if(mime.indexOf('ogg')>=0)return 'ogg';return 'webm'}
@@ -502,6 +505,7 @@ function chLoad(quiet){
     var sess=r&&r.data&&r.data.session;
     if(!sess){CH.state='nologin';if(TAB==='chat')render();return}
     CH.email=(sess.user&&sess.user.email)||'';
+    CH.uid=(sess.user&&sess.user.id)||'';
     if(!quiet){CH.state='loading';if(TAB==='chat')render()}
     var listaP=CH.listaId?Promise.resolve(CH.listaId):sb.from('listas').select('id').eq('tipo','casamento').then(function(lr){
       if(lr.error)throw new Error(lr.error.message);
@@ -512,7 +516,7 @@ function chLoad(quiet){
     return listaP.then(function(id){
       if(!id)return;
       CH.listaId=id;
-      return sb.from('casamento_chat').select('id,autor_nome,papel,texto,audio_path,created_at,processado').eq('lista_id',id).order('created_at',{ascending:true}).then(function(q){
+      return sb.from('casamento_chat').select('id,autor_id,autor_nome,papel,texto,audio_path,created_at,processado').eq('lista_id',id).order('created_at',{ascending:true}).then(function(q){
         if(q.error)throw new Error(q.error.message);
         CH.msgs=q.data||[];
         var paths=CH.msgs.map(function(m){return m.audio_path}).filter(Boolean);
@@ -540,12 +544,34 @@ function chLogin(){
     CH.email=em;chLoad(false);
   }).catch(function(err){CH.state='nologin';CH.err=(err&&err.message)||'falha';render()});
 }
+function chMine(m){return !!(m&&m.papel==='user'&&!m.processado&&CH.uid&&String(m.autor_id)===String(CH.uid))}
+function chHoldStart(id,ev){if(ev&&ev.target&&ev.target.closest&&ev.target.closest('button,audio'))return;CH.hx=ev.clientX;CH.hy=ev.clientY;clearTimeout(CH.holdT);CH.holdT=setTimeout(function(){CH.holdT=0;chAskDel(id)},520)}
+function chHoldMove(ev){if(!CH.holdT)return;if(Math.abs(ev.clientX-CH.hx)>8||Math.abs(ev.clientY-CH.hy)>8)chHoldEnd()}
+function chHoldEnd(){clearTimeout(CH.holdT);CH.holdT=0}
+function chAskDel(id){chHoldEnd();CH.askId=String(id);render()}
+function chAskCancel(){CH.askId='';render()}
+function chDel(id){
+  var m=null;CH.msgs.forEach(function(x){if(String(x.id)===String(id))m=x});
+  if(!chMine(m)){CH.note='Não foi possível apagar';CH.askId='';render();return}
+  var gone=m.audio_path?sb.storage.from('casamento-audio').remove([m.audio_path]):Promise.resolve({error:null});
+  return gone.then(function(rm){
+    if(rm&&rm.error)throw rm.error;
+    return sb.from('casamento_chat').delete().eq('id',id).select('id');
+  }).then(function(r){
+    if(r.error||!r.data||!r.data.length)throw r.error||new Error('perm');
+    CH.askId='';if(m.audio_path)delete CH.urls[m.audio_path];chLoad(true);
+  }).catch(function(){CH.note='Não foi possível apagar';CH.askId='';render()});
+}
 function chBubble(m){
+  var mine=chMine(m);
   var user=m.papel!=='assistant';
   var who=user?(m.autor_nome||'Você'):'Assistente';
   var audio=m.audio_path&&CH.urls[m.audio_path]?'<audio controls preload="none" src="'+e(CH.urls[m.audio_path])+'"></audio>':(m.audio_path?'<div class="sub">Áudio</div>':'');
   var wait=user&&!m.processado?'<div class="chwait">aguardando</div>':'';
-  return '<div class="chb '+(user?'user':'asst')+'"><div class="chmeta">'+e(who)+' · '+e(chWhen(m.created_at))+'</div>'+(m.texto?'<div class="chtxt">'+e(m.texto)+'</div>':'')+audio+wait+'</div>';
+  var del=mine?'<button type="button" class="chdel" aria-label="Apagar" onclick="chAskDel('+q(String(m.id))+')">'+chTrashSvg()+'</button>':'';
+  var ask=mine&&CH.askId===String(m.id)?'<div class="chask">Apagar mensagem?<div style="display:flex;gap:8px;margin-top:8px"><button type="button" class="btn-cancel" onclick="chAskCancel()">Cancelar</button><button type="button" class="btn-gold" style="margin:0" onclick="chDel('+q(String(m.id))+')">Apagar</button></div></div>':'';
+  var hold=mine?' onpointerdown="chHoldStart('+q(String(m.id))+',event)" onpointermove="chHoldMove(event)" onpointerup="chHoldEnd()" onpointercancel="chHoldEnd()" onpointerleave="chHoldEnd()"':'';
+  return '<div class="chb '+(user?'user':'asst')+'"'+hold+'><div class="chmeta"><span>'+e(who)+' · '+e(chWhen(m.created_at))+'</span>'+del+'</div>'+(m.texto?'<div class="chtxt">'+e(m.texto)+'</div>':'')+audio+wait+ask+'</div>';
 }
 function vChat(){
   if(CH.state==='loading'||CH.state==='init')return head('Chat')+'<div class="card full sub">Carregando a conversa…</div>';
