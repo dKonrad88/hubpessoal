@@ -1,0 +1,1994 @@
+{
+ "geradoEm": "2026-10-31T09:27-03:00",
+ "fonte": "Google Sheets \"Apto\"",
+ "total": {
+  "total": 1751888.15,
+  "pago": 1327248.67,
+  "restante": 580052.45
+ },
+ "categorias": [
+  {
+   "nome": "Mobília",
+   "total": 101600.0,
+   "pago": 76200.0,
+   "restante": 25400.0
+  },
+  {
+   "nome": "Obra",
+   "total": 84580.15,
+   "pago": 42984.0,
+   "restante": 41596.149999999994
+  },
+  {
+   "nome": "Climatização",
+   "total": 26118.0,
+   "pago": 26118.0,
+   "restante": 0.0
+  },
+  {
+   "nome": "Mão de obra",
+   "total": 17590.0,
+   "pago": 5490.0,
+   "restante": 12100.0
+  },
+  {
+   "nome": "Projeto",
+   "total": 12000.0,
+   "pago": 12000.0,
+   "restante": 0.0
+  },
+  {
+   "nome": "Imóvel",
+   "total": 1510000.0,
+   "pago": 1164456.67,
+   "restante": 500956.3
+  }
+ ],
+ "comodos": [
+  {
+   "nome": "Apartamento",
+   "total": 64838.0,
+   "pago": 64838.0,
+   "restante": 0.0
+  },
+  {
+   "nome": "Sala de Estar",
+   "total": 58133.14,
+   "pago": 43599.850000000006,
+   "restante": 14533.289999999994
+  },
+  {
+   "nome": "Sala de Jantar",
+   "total": 26938.11,
+   "pago": 20203.58,
+   "restante": 6734.529999999999
+  },
+  {
+   "nome": "Cozinha",
+   "total": 12664.78,
+   "pago": 9498.59,
+   "restante": 3166.1900000000005
+  },
+  {
+   "nome": "Área de Serviço",
+   "total": 0.0,
+   "pago": 0.0,
+   "restante": 0.0
+  },
+  {
+   "nome": "Lavabo",
+   "total": 0.0,
+   "pago": 0.0,
+   "restante": 0.0
+  },
+  {
+   "nome": "Hall de Entrada",
+   "total": 0.0,
+   "pago": 0.0,
+   "restante": 0.0
+  },
+  {
+   "nome": "Escada",
+   "total": 59852.0,
+   "pago": 21754.0,
+   "restante": 38098.0
+  },
+  {
+   "nome": "Mezanino",
+   "total": 1709.21,
+   "pago": 0.0,
+   "restante": 1709.21
+  },
+  {
+   "nome": "Suíte Master",
+   "total": 3863.97,
+   "pago": 2897.98,
+   "restante": 965.9899999999998
+  },
+  {
+   "nome": "Banho Master",
+   "total": 2373.76,
+   "pago": 0.0,
+   "restante": 2373.76
+  },
+  {
+   "nome": "Closet Master",
+   "total": 0.0,
+   "pago": 0.0,
+   "restante": 0.0
+  },
+  {
+   "nome": "Sala Gamer",
+   "total": 9900.0,
+   "pago": 0.0,
+   "restante": 9900.0
+  },
+  {
+   "nome": "Quarto Visita",
+   "total": 0.0,
+   "pago": 0.0,
+   "restante": 0.0
+  },
+  {
+   "nome": "Banho Visita",
+   "total": 1615.18,
+   "pago": 0.0,
+   "restante": 1615.18
+  },
+  {
+   "nome": "Adega",
+   "total": 0.0,
+   "pago": 0.0,
+   "restante": 0.0
+  },
+  {
+   "nome": "Imóvel",
+   "total": 1510000.0,
+   "pago": 1164456.67,
+   "restante": 500956.3
+  }
+ ],
+ "gastos": [
+  {
+   "data": "2026-10-23",
+   "fornecedor": "Pedras Rossler",
+   "desc": "Pedra parede escada - Moledo Champagne",
+   "qtd": "28 M + Cola + Impermeabilizante",
+   "total": 7908.0,
+   "pago": 3408.0,
+   "entrega": "2026-10-30",
+   "obs": "Irão me chamar no dia da entrega para ver onde descarregar, lado caminhão ou lado do elevador. Se for do lado do elevador, terá um acréscimo de R$300",
+   "comodo": "Escada",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-10-23",
+   "fornecedor": "Ronaldo Luís",
+   "desc": "Instalador - Pedras parede",
+   "qtd": "20 M",
+   "total": 5600.0,
+   "pago": 0.0,
+   "entrega": "2026-11-02",
+   "obs": "Pagamento na sexta da semana que trabalha, em cima do que colocou",
+   "comodo": "Escada",
+   "cat": "Mão de obra"
+  },
+  {
+   "data": "2026-10-23",
+   "fornecedor": "Marmoraria Estrelense",
+   "desc": "Pedra escada - Pisante + Espelho + Tabeira - Branco Paraná",
+   "qtd": "",
+   "total": 15846.0,
+   "pago": 15846.0,
+   "entrega": "2026-11-05",
+   "obs": "Junto no valor acertado, irão instalar a tabeira, e com isso, libera para o pessoal da obra, instalar o laminado",
+   "comodo": "Escada",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-03-17",
+   "fornecedor": "Charles Marceneiro",
+   "desc": "Forro madeira Tauari + M.O.",
+   "qtd": "Completo",
+   "total": 23730.0,
+   "pago": 23730.0,
+   "entrega": "2026-08-19",
+   "obs": "Pago 500 reais a mais, na MO pela demora de liberar a isntalação, aumento de custo, já está no valor total",
+   "comodo": "Apartamento",
+   "cat": "Obra"
+  },
+  {
+   "data": "2024-01-01",
+   "fornecedor": "Arquiteto",
+   "desc": "Projeto",
+   "qtd": "-",
+   "total": 12000.0,
+   "pago": 12000.0,
+   "entrega": "2024-01-01",
+   "obs": "",
+   "comodo": "Apartamento",
+   "cat": "Projeto"
+  },
+  {
+   "data": "2026-02-25",
+   "fornecedor": "Dentek",
+   "desc": "Ar Kassete",
+   "qtd": "02 und - 36.000 btus",
+   "total": 18800.0,
+   "pago": 18800.0,
+   "entrega": "2026-02-25",
+   "obs": "",
+   "comodo": "Apartamento",
+   "cat": "Climatização"
+  },
+  {
+   "data": "2026-08-10",
+   "fornecedor": "Cherrut",
+   "desc": "Instalação dos 02 Kassete",
+   "qtd": "02 und - 36.000 btus",
+   "total": 2990.0,
+   "pago": 2990.0,
+   "entrega": "2026-08-10",
+   "obs": "",
+   "comodo": "Apartamento",
+   "cat": "Mão de obra"
+  },
+  {
+   "data": "2026-08-12",
+   "fornecedor": "Dentek",
+   "desc": "Ar condicionado",
+   "qtd": "04 und - 12.000 btus",
+   "total": 7318.0,
+   "pago": 7318.0,
+   "entrega": "2026-08-12",
+   "obs": "",
+   "comodo": "Apartamento",
+   "cat": "Climatização"
+  },
+  {
+   "data": "2026-08-31",
+   "fornecedor": "Estofare",
+   "desc": "Poltrona Vereda",
+   "qtd": "2 und",
+   "total": 12509.98,
+   "pago": 9382.49,
+   "entrega": null,
+   "obs": "Tabela R$14.870. Desconto proporcional 15,87% (pedido total R$101.600). Pago 75%: entrada R$50.800 + R$25.400 em 30/10/26",
+   "comodo": "Sala de Estar",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-08-31",
+   "fornecedor": "Estofare",
+   "desc": "Mesa lateral Surf Apoio",
+   "qtd": "1 und",
+   "total": 1736.42,
+   "pago": 1302.32,
+   "entrega": null,
+   "obs": "Tabela R$2.064. Desconto proporcional 15,87%",
+   "comodo": "Sala de Estar",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-08-31",
+   "fornecedor": "Estofare",
+   "desc": "Poltrona Cocco giratória",
+   "qtd": "2 und",
+   "total": 11749.45,
+   "pago": 8812.09,
+   "entrega": null,
+   "obs": "Tabela R$13.966. Desconto proporcional 15,87%. Estar 2 - Chimarrão",
+   "comodo": "Sala de Estar",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-08-31",
+   "fornecedor": "Estofare",
+   "desc": "Sofá Soft retrátil elétrico",
+   "qtd": "1 und",
+   "total": 32137.29,
+   "pago": 24102.95,
+   "entrega": null,
+   "obs": "Tabela R$38.200. Desconto proporcional 15,87%",
+   "comodo": "Sala de Estar",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-08-31",
+   "fornecedor": "Estofare",
+   "desc": "Mesa de jantar Fungi 240x120",
+   "qtd": "1 und",
+   "total": 12198.71,
+   "pago": 9149.03,
+   "entrega": null,
+   "obs": "Tabela R$14.500. Desconto proporcional 15,87%",
+   "comodo": "Sala de Jantar",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-08-31",
+   "fornecedor": "Estofare",
+   "desc": "Cadeira Bia 03",
+   "qtd": "8 und",
+   "total": 14739.4,
+   "pago": 11054.55,
+   "entrega": null,
+   "obs": "Tabela R$17.520. Desconto proporcional 15,87%",
+   "comodo": "Sala de Jantar",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-08-31",
+   "fornecedor": "Estofare",
+   "desc": "Cadeira Delta (café da manhã)",
+   "qtd": "6 und",
+   "total": 12664.78,
+   "pago": 9498.59,
+   "entrega": null,
+   "obs": "Tabela R$15.054. Desconto proporcional 15,87%",
+   "comodo": "Cozinha",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-08-31",
+   "fornecedor": "Estofare",
+   "desc": "Poltrona Lizz giratória",
+   "qtd": "1 und",
+   "total": 3863.97,
+   "pago": 2897.98,
+   "entrega": null,
+   "obs": "Tabela R$4.593. Desconto proporcional 15,87%",
+   "comodo": "Suíte Master",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "CR Mármores",
+   "desc": "Instalação pedras de mármore - Escada",
+   "qtd": "-",
+   "total": 9000.0,
+   "pago": 2500.0,
+   "entrega": null,
+   "obs": "Pago R$2.500 via PIX. Restante R$6.500 em 5x sem juros no cartão, no dia do início da obra",
+   "comodo": "Escada",
+   "cat": "Mão de obra"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "Box Company",
+   "desc": "Guarda-corpo de vidro + Mezanino - Escada",
+   "qtd": "-",
+   "total": 21498.0,
+   "pago": 0.0,
+   "entrega": "2026-11-23",
+   "obs": "Contato: Fábio. Instalação prevista semana de 23 ou 30/11",
+   "comodo": "Escada",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "Box Company",
+   "desc": "Box banheiro - Master",
+   "qtd": "01 und + película de segurança",
+   "total": 2373.76,
+   "pago": 0.0,
+   "entrega": "2026-11-23",
+   "obs": "Contato: Fábio. R$2.023,76 do box + R$350 de película",
+   "comodo": "Banho Master",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "Box Company",
+   "desc": "Box banheiro - Visita",
+   "qtd": "01 und + película de segurança",
+   "total": 1615.18,
+   "pago": 0.0,
+   "entrega": "2026-11-23",
+   "obs": "Contato: Fábio. R$1.265,18 do box + R$350 de película",
+   "comodo": "Banho Visita",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "Box Company",
+   "desc": "Guarda-corpo de vidro - Mezanino",
+   "qtd": "-",
+   "total": 1709.21,
+   "pago": 0.0,
+   "entrega": "2026-11-23",
+   "obs": "Contato: Fábio",
+   "comodo": "Mezanino",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "Box Company",
+   "desc": "Esquadrias - Sala Gamer",
+   "qtd": "-",
+   "total": 9900.0,
+   "pago": 0.0,
+   "entrega": "2026-11-23",
+   "obs": "Contato: Fábio",
+   "comodo": "Sala Gamer",
+   "cat": "Obra"
+  }
+ ],
+ "cronograma": [
+  {
+   "data": "2026-11-03",
+   "resp": "Ronaldo Luís",
+   "tarefa": "Instalar pedras na parede",
+   "comodo": "Escada",
+   "obs": "Estar no apto das 07h00 às 08h00",
+   "status": "Agendado",
+   "tipo": "Reunião"
+  },
+  {
+   "data": "2026-11-03",
+   "resp": "Pedras Rossler",
+   "tarefa": "Entregar R$4.500 em dinheiro",
+   "comodo": "Escada",
+   "obs": "Das 08h00 às 08h30",
+   "status": "Agendado",
+   "tipo": "Reunião"
+  },
+  {
+   "data": "2026-11-03",
+   "resp": "Diego / Construtora",
+   "tarefa": "Pedir relatório atualizado dos pagamentos do apto",
+   "comodo": "Apartamento",
+   "obs": "Trazer o relatório para lançar na planilha",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2026-11-09",
+   "resp": "Marmoraria Estrelense",
+   "tarefa": "Entregar mármore e instalar as tabeiras",
+   "comodo": "Escada",
+   "obs": "Semana de 09/11. Ao terminar as tabeiras, avisar o mestre de obra",
+   "status": "Agendado",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2026-11-09",
+   "resp": "Mestre de obra",
+   "tarefa": "Instalar piso laminado",
+   "comodo": "Apartamento",
+   "obs": "Logo após as tabeiras da Estrelense",
+   "status": "Aguardando",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2026-11-16",
+   "resp": "CR Mármores",
+   "tarefa": "Instalar mármore da escada (pisante e espelho)",
+   "comodo": "Escada",
+   "obs": "Semana de 16/11. Pagar restante R$6.500 em 5x no cartão no início",
+   "status": "Agendado",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2026-11-23",
+   "resp": "Box Company (Fábio)",
+   "tarefa": "Instalar guarda-corpo de vidro, esquadrias e box",
+   "comodo": "Escada, Mezanino, Sala Gamer, Banheiros",
+   "obs": "Semana de 23 ou 30/11. Box do banho de visita e da master",
+   "status": "A confirmar",
+   "tipo": "Tarefa"
+  }
+ ],
+ "imovel": {
+  "resumo": {
+   "Valor do imóvel (Diamond)": "1510000",
+   "Já pago": "1164456.67",
+   "Falta (corrigido)": "500956.3",
+   "Falta (sem correção)": "408750",
+   "Juros/correção pagos": "63206.67",
+   "Parcelas pagas": "49 de 80",
+   "Parcelas restantes": "31",
+   "Quitado": "0.77"
+  },
+  "parcelas": [
+   {
+    "n": 1,
+    "venc": "2022-11-30",
+    "tipo": "Entrada",
+    "previsto": 80000.0,
+    "pago": 80000.0,
+    "correcao": 0.0,
+    "status": "Pago"
+   },
+   {
+    "n": 2,
+    "venc": "2023-01-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9036.93,
+    "correcao": 36.93,
+    "status": "Pago"
+   },
+   {
+    "n": 3,
+    "venc": "2023-02-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9065.85,
+    "correcao": 65.85,
+    "status": "Pago"
+   },
+   {
+    "n": 4,
+    "venc": "2023-03-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9084.89,
+    "correcao": 84.89,
+    "status": "Pago"
+   },
+   {
+    "n": 5,
+    "venc": "2023-04-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9101.24,
+    "correcao": 101.24,
+    "status": "Pago"
+   },
+   {
+    "n": 6,
+    "venc": "2023-05-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9122.18,
+    "correcao": 122.18,
+    "status": "Pago"
+   },
+   {
+    "n": 7,
+    "venc": "2023-06-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9158.66,
+    "correcao": 158.66,
+    "status": "Pago"
+   },
+   {
+    "n": 8,
+    "venc": "2023-07-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9236.51,
+    "correcao": 236.51,
+    "status": "Pago"
+   },
+   {
+    "n": 9,
+    "venc": "2023-08-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9429.67,
+    "correcao": 429.67,
+    "status": "Pago"
+   },
+   {
+    "n": 10,
+    "venc": "2023-09-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9264.24,
+    "correcao": 264.24,
+    "status": "Pago"
+   },
+   {
+    "n": 11,
+    "venc": "2023-10-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9286.48,
+    "correcao": 286.48,
+    "status": "Pago"
+   },
+   {
+    "n": 12,
+    "venc": "2023-11-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9305.05,
+    "correcao": 305.05,
+    "status": "Pago"
+   },
+   {
+    "n": 13,
+    "venc": "2023-12-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9314.36,
+    "correcao": 314.36,
+    "status": "Pago"
+   },
+   {
+    "n": 14,
+    "venc": "2024-01-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9338.58,
+    "correcao": 338.58,
+    "status": "Pago"
+   },
+   {
+    "n": 15,
+    "venc": "2024-02-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9360.05,
+    "correcao": 360.05,
+    "status": "Pago"
+   },
+   {
+    "n": 16,
+    "venc": "2024-03-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9378.77,
+    "correcao": 378.77,
+    "status": "Pago"
+   },
+   {
+    "n": 17,
+    "venc": "2024-04-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9401.28,
+    "correcao": 401.28,
+    "status": "Pago"
+   },
+   {
+    "n": 18,
+    "venc": "2024-05-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9439.83,
+    "correcao": 439.83,
+    "status": "Pago"
+   },
+   {
+    "n": 19,
+    "venc": "2024-06-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9495.52,
+    "correcao": 495.52,
+    "status": "Pago"
+   },
+   {
+    "n": 20,
+    "venc": "2024-07-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9583.83,
+    "correcao": 583.83,
+    "status": "Pago"
+   },
+   {
+    "n": 21,
+    "venc": "2024-08-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9649.96,
+    "correcao": 649.96,
+    "status": "Pago"
+   },
+   {
+    "n": 22,
+    "venc": "2024-09-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9711.72,
+    "correcao": 711.72,
+    "status": "Pago"
+   },
+   {
+    "n": 23,
+    "venc": "2024-10-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9770.96,
+    "correcao": 770.96,
+    "status": "Pago"
+   },
+   {
+    "n": 24,
+    "venc": "2024-11-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9836.43,
+    "correcao": 836.43,
+    "status": "Pago"
+   },
+   {
+    "n": 25,
+    "venc": "2024-12-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9879.71,
+    "correcao": 879.71,
+    "status": "Pago"
+   },
+   {
+    "n": 26,
+    "venc": "2024-12-20",
+    "tipo": "Anual",
+    "previsto": 138750.0,
+    "pago": 138750.0,
+    "correcao": 0.0,
+    "status": "Pago"
+   },
+   {
+    "n": 27,
+    "venc": "2025-01-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 9930.09,
+    "correcao": 930.09,
+    "status": "Pago"
+   },
+   {
+    "n": 28,
+    "venc": "2025-02-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10000.6,
+    "correcao": 1000.6,
+    "status": "Pago"
+   },
+   {
+    "n": 29,
+    "venc": "2025-03-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10051.6,
+    "correcao": 1051.6,
+    "status": "Pago"
+   },
+   {
+    "n": 30,
+    "venc": "2025-04-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10089.8,
+    "correcao": 1089.8,
+    "status": "Pago"
+   },
+   {
+    "n": 31,
+    "venc": "2025-05-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10149.33,
+    "correcao": 1149.33,
+    "status": "Pago"
+   },
+   {
+    "n": 32,
+    "venc": "2025-06-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10175.71,
+    "correcao": 1175.71,
+    "status": "Pago"
+   },
+   {
+    "n": 33,
+    "venc": "2025-07-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10273.4,
+    "correcao": 1273.4,
+    "status": "Pago"
+   },
+   {
+    "n": 34,
+    "venc": "2025-08-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10366.89,
+    "correcao": 1366.89,
+    "status": "Pago"
+   },
+   {
+    "n": 35,
+    "venc": "2025-09-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10439.46,
+    "correcao": 1439.46,
+    "status": "Pago"
+   },
+   {
+    "n": 36,
+    "venc": "2025-10-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10461.38,
+    "correcao": 1461.38,
+    "status": "Pago"
+   },
+   {
+    "n": 37,
+    "venc": "2025-11-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10483.35,
+    "correcao": 1483.35,
+    "status": "Pago"
+   },
+   {
+    "n": 38,
+    "venc": "2025-12-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10512.7,
+    "correcao": 1512.7,
+    "status": "Pago"
+   },
+   {
+    "n": 39,
+    "venc": "2025-12-20",
+    "tipo": "Anual",
+    "previsto": 138750.0,
+    "pago": 138750.0,
+    "correcao": 0.0,
+    "status": "Pago"
+   },
+   {
+    "n": 40,
+    "venc": "2026-01-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10534.8,
+    "correcao": 1534.8,
+    "status": "Pago"
+   },
+   {
+    "n": 41,
+    "venc": "2026-02-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10601.19,
+    "correcao": 1601.19,
+    "status": "Pago"
+   },
+   {
+    "n": 42,
+    "venc": "2026-03-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10637.24,
+    "correcao": 1637.24,
+    "status": "Pago"
+   },
+   {
+    "n": 43,
+    "venc": "2026-04-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10675.76,
+    "correcao": 1675.76,
+    "status": "Pago"
+   },
+   {
+    "n": 44,
+    "venc": "2026-05-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10786.81,
+    "correcao": 1786.81,
+    "status": "Pago"
+   },
+   {
+    "n": 45,
+    "venc": "2026-06-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10869.87,
+    "correcao": 1869.87,
+    "status": "Pago"
+   },
+   {
+    "n": 46,
+    "venc": "2026-07-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 10962.27,
+    "correcao": 1962.27,
+    "status": "Pago"
+   },
+   {
+    "n": 47,
+    "venc": "2026-08-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 11030.23,
+    "correcao": 2030.23,
+    "status": "Pago"
+   },
+   {
+    "n": 48,
+    "venc": "2026-09-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 11123.99,
+    "correcao": 2123.99,
+    "status": "Pago"
+   },
+   {
+    "n": 49,
+    "venc": "2026-10-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "Atrasada"
+   },
+   {
+    "n": 50,
+    "venc": "2026-11-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 51,
+    "venc": "2026-12-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 52,
+    "venc": "2026-12-20",
+    "tipo": "Anual",
+    "previsto": 138750.0,
+    "pago": 161547.5,
+    "correcao": 22797.5,
+    "status": "Pago (antecipado)"
+   },
+   {
+    "n": 53,
+    "venc": "2027-01-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 54,
+    "venc": "2027-02-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 55,
+    "venc": "2027-03-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 56,
+    "venc": "2027-04-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 57,
+    "venc": "2027-05-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 58,
+    "venc": "2027-06-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 59,
+    "venc": "2027-07-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 60,
+    "venc": "2027-08-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 61,
+    "venc": "2027-09-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 62,
+    "venc": "2027-10-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 63,
+    "venc": "2027-11-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 64,
+    "venc": "2027-12-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 65,
+    "venc": "2027-12-20",
+    "tipo": "Anual",
+    "previsto": 138750.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 66,
+    "venc": "2028-01-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 67,
+    "venc": "2028-02-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 68,
+    "venc": "2028-03-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 69,
+    "venc": "2028-04-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 70,
+    "venc": "2028-05-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 71,
+    "venc": "2028-06-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 72,
+    "venc": "2028-07-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 73,
+    "venc": "2028-08-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 74,
+    "venc": "2028-09-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 75,
+    "venc": "2028-10-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 76,
+    "venc": "2028-11-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 77,
+    "venc": "2028-12-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 78,
+    "venc": "2029-01-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 79,
+    "venc": "2029-02-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   },
+   {
+    "n": 80,
+    "venc": "2029-03-10",
+    "tipo": "Mensal",
+    "previsto": 9000.0,
+    "pago": 0.0,
+    "correcao": 0.0,
+    "status": "A pagar"
+   }
+  ]
+ },
+ "movimentos": [
+  {
+   "data": "2026-10-23",
+   "fornecedor": "Pedras Rossler",
+   "desc": "Pedra parede escada - Moledo Champagne",
+   "valor": 3408.0,
+   "status": "pago",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-10-23",
+   "fornecedor": "Marmoraria Estrelense",
+   "desc": "Pedra escada - Pisante + Espelho + Tabeira - Branco Paraná",
+   "valor": 15846.0,
+   "status": "pago",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-03-17",
+   "fornecedor": "Charles Marceneiro",
+   "desc": "Forro madeira Tauari + M.O.",
+   "valor": 23730.0,
+   "status": "pago",
+   "cat": "Obra"
+  },
+  {
+   "data": "2024-01-01",
+   "fornecedor": "Arquiteto",
+   "desc": "Projeto",
+   "valor": 12000.0,
+   "status": "pago",
+   "cat": "Projeto"
+  },
+  {
+   "data": "2026-02-25",
+   "fornecedor": "Dentek",
+   "desc": "Ar Kassete",
+   "valor": 18800.0,
+   "status": "pago",
+   "cat": "Climatização"
+  },
+  {
+   "data": "2026-08-10",
+   "fornecedor": "Cherrut",
+   "desc": "Instalação dos 02 Kassete",
+   "valor": 2990.0,
+   "status": "pago",
+   "cat": "Mão de obra"
+  },
+  {
+   "data": "2026-08-12",
+   "fornecedor": "Dentek",
+   "desc": "Ar condicionado",
+   "valor": 7318.0,
+   "status": "pago",
+   "cat": "Climatização"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "CR Mármores",
+   "desc": "Instalação pedras de mármore - Escada",
+   "valor": 2500.0,
+   "status": "pago",
+   "cat": "Mão de obra"
+  },
+  {
+   "data": "2026-08-31",
+   "fornecedor": "Estofare",
+   "desc": "Entrada (50%) · pedido de mobília",
+   "valor": 50799.99,
+   "status": "pago",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "Estofare",
+   "desc": "2ª parcela (25%) · pedido de mobília",
+   "valor": 25400.01,
+   "status": "pago",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-11-03",
+   "fornecedor": "Pedras Rossler",
+   "desc": "Restante em dinheiro (Cronograma 03/11)",
+   "valor": 4500,
+   "status": "previsto",
+   "cat": ""
+  },
+  {
+   "data": "2026-11-06",
+   "fornecedor": "Ronaldo Luís",
+   "desc": "Instalador · pago na sexta da semana trabalhada",
+   "valor": 5600,
+   "status": "previsto",
+   "cat": ""
+  },
+  {
+   "data": "2026-11-16",
+   "fornecedor": "CR Mármores",
+   "desc": "Cartão 1/5 (restante R$ 6.500)",
+   "valor": 1300,
+   "status": "previsto",
+   "cat": ""
+  },
+  {
+   "data": "2026-12-16",
+   "fornecedor": "CR Mármores",
+   "desc": "Cartão 2/5 (restante R$ 6.500)",
+   "valor": 1300,
+   "status": "previsto",
+   "cat": ""
+  },
+  {
+   "data": "2027-01-16",
+   "fornecedor": "CR Mármores",
+   "desc": "Cartão 3/5 (restante R$ 6.500)",
+   "valor": 1300,
+   "status": "previsto",
+   "cat": ""
+  },
+  {
+   "data": "2027-02-16",
+   "fornecedor": "CR Mármores",
+   "desc": "Cartão 4/5 (restante R$ 6.500)",
+   "valor": 1300,
+   "status": "previsto",
+   "cat": ""
+  },
+  {
+   "data": "2027-03-16",
+   "fornecedor": "CR Mármores",
+   "desc": "Cartão 5/5 (restante R$ 6.500)",
+   "valor": 1300,
+   "status": "previsto",
+   "cat": ""
+  },
+  {
+   "data": "2022-11-30",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 1/80 · Entrada",
+   "valor": 80000.0,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2023-01-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 2/80 · Mensal",
+   "valor": 9036.93,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2023-02-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 3/80 · Mensal",
+   "valor": 9065.85,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2023-03-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 4/80 · Mensal",
+   "valor": 9084.89,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2023-04-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 5/80 · Mensal",
+   "valor": 9101.24,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2023-05-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 6/80 · Mensal",
+   "valor": 9122.18,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2023-06-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 7/80 · Mensal",
+   "valor": 9158.66,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2023-07-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 8/80 · Mensal",
+   "valor": 9236.51,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2023-08-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 9/80 · Mensal",
+   "valor": 9429.67,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2023-09-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 10/80 · Mensal",
+   "valor": 9264.24,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2023-10-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 11/80 · Mensal",
+   "valor": 9286.48,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2023-11-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 12/80 · Mensal",
+   "valor": 9305.05,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2023-12-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 13/80 · Mensal",
+   "valor": 9314.36,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-01-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 14/80 · Mensal",
+   "valor": 9338.58,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-02-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 15/80 · Mensal",
+   "valor": 9360.05,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-03-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 16/80 · Mensal",
+   "valor": 9378.77,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-04-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 17/80 · Mensal",
+   "valor": 9401.28,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-05-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 18/80 · Mensal",
+   "valor": 9439.83,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-06-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 19/80 · Mensal",
+   "valor": 9495.52,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-07-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 20/80 · Mensal",
+   "valor": 9583.83,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-08-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 21/80 · Mensal",
+   "valor": 9649.96,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-09-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 22/80 · Mensal",
+   "valor": 9711.72,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-10-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 23/80 · Mensal",
+   "valor": 9770.96,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-11-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 24/80 · Mensal",
+   "valor": 9836.43,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-12-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 25/80 · Mensal",
+   "valor": 9879.71,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2024-12-20",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 26/80 · Anual",
+   "valor": 138750.0,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-01-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 27/80 · Mensal",
+   "valor": 9930.09,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-02-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 28/80 · Mensal",
+   "valor": 10000.6,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-03-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 29/80 · Mensal",
+   "valor": 10051.6,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-04-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 30/80 · Mensal",
+   "valor": 10089.8,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-05-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 31/80 · Mensal",
+   "valor": 10149.33,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-06-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 32/80 · Mensal",
+   "valor": 10175.71,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-07-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 33/80 · Mensal",
+   "valor": 10273.4,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-08-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 34/80 · Mensal",
+   "valor": 10366.89,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-09-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 35/80 · Mensal",
+   "valor": 10439.46,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-10-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 36/80 · Mensal",
+   "valor": 10461.38,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-11-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 37/80 · Mensal",
+   "valor": 10483.35,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-12-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 38/80 · Mensal",
+   "valor": 10512.7,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2025-12-20",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 39/80 · Anual",
+   "valor": 138750.0,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-01-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 40/80 · Mensal",
+   "valor": 10534.8,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-02-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 41/80 · Mensal",
+   "valor": 10601.19,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-03-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 42/80 · Mensal",
+   "valor": 10637.24,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-04-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 43/80 · Mensal",
+   "valor": 10675.76,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-05-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 44/80 · Mensal",
+   "valor": 10786.81,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-06-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 45/80 · Mensal",
+   "valor": 10869.87,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-07-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 46/80 · Mensal",
+   "valor": 10962.27,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-08-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 47/80 · Mensal",
+   "valor": 11030.23,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-09-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 48/80 · Mensal",
+   "valor": 11123.99,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-10-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 49/80 · Mensal",
+   "valor": 9000.0,
+   "status": "atrasada",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 50/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-12-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 51/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2026-12-20",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 52/80 · Anual (antecipada)",
+   "valor": 161547.5,
+   "status": "pago",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-01-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 53/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-02-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 54/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-03-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 55/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-04-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 56/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-05-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 57/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-06-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 58/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-07-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 59/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-08-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 60/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-09-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 61/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-10-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 62/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-11-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 63/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-12-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 64/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2027-12-20",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 65/80 · Anual",
+   "valor": 138750.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2028-01-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 66/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2028-02-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 67/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2028-03-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 68/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2028-04-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 69/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2028-05-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 70/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2028-06-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 71/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2028-07-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 72/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2028-08-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 73/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2028-09-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 74/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2028-10-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 75/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2028-11-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 76/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2028-12-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 77/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2029-01-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 78/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2029-02-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 79/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  },
+  {
+   "data": "2029-03-10",
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 80/80 · Mensal",
+   "valor": 9000.0,
+   "status": "previsto",
+   "cat": "Imóvel"
+  }
+ ]
+}
