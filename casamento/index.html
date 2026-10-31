@@ -11,6 +11,10 @@
 .card{background:rgba(255,253,248,.66);backdrop-filter:blur(30px);border:1px solid rgba(201,169,106,.35);border-radius:26px;box-shadow:0 10px 30px rgba(150,120,60,.10);padding:20px;position:relative;overflow:hidden}.h{font-family:'Cormorant Garamond',serif}
 h3{font-size:11px;text-transform:uppercase;letter-spacing:.25em;color:#9a8a70;font-weight:600;margin-bottom:10px}
 .kick{font-size:11px;text-transform:uppercase;letter-spacing:.25em;color:#9a8a70;font-weight:600}.ttl{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:500;font-style:italic}
+.hd{position:relative}
+.hd .kick,.hd .ttl,.hd .orn{position:relative;z-index:1}
+.torre{position:absolute;top:0;right:0;height:118px;width:auto;pointer-events:none;opacity:.22;z-index:0}
+@media(max-width:400px){.hd .orn{letter-spacing:.32em}}
 .big{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:600;letter-spacing:-.01em}.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .bar{height:6px;border-radius:9px;background:rgba(176,141,87,.15);overflow:hidden;display:flex}.bar i{display:block;height:100%}
 .sub{font-size:12px;color:#9a8a70}.b{font-size:14px;font-weight:600}.li{padding:11px 0;border-top:1px solid rgba(176,141,87,.15)}
@@ -80,7 +84,8 @@ function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return 
 function q(s){return e(JSON.stringify(String(s)))}
 var hoje=function(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)};
 function dl(iso){return new Date(iso+'T12:00')}
-function head(t){var d=dl(hoje());var w=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'][d.getDay()];return '<div class="full"><div class="kick">'+w+', '+d.getDate()+' de '+MNL[d.getMonth()].toLowerCase()+'</div><div class="ttl">'+t+'</div>'+(t==='Casamento'?'<div class="orn" style="text-align:left;margin-top:4px">❦ Débora &amp; Diego ❦</div>':'')+'</div>'+(D.exemplo?'<div class="full banner">DADOS DE EXEMPLO</div>':'')}
+function torreSvg(){return '<svg class="torre" viewBox="0 0 80 150" fill="none" stroke="#B08D57" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M40 3v16M33 19h14M33 19 36 40h8l3-21M29 40h22M29 40 23 66h34l-6-26M18 66h44M23 66 8 142M57 66 72 142M16 142c8-40 40-40 48 0M4 142h16M60 142h16M36 30h8M26 53h28M22 84h36"/></svg>'}
+function head(t){var d=dl(hoje());var w=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'][d.getDay()];var cas=t==='Casamento';return '<div class="full hd">'+(cas?torreSvg():'')+'<div class="kick">'+w+', '+d.getDate()+' de '+MNL[d.getMonth()].toLowerCase()+'</div><div class="ttl">'+t+'</div>'+(cas?'<div class="orn" style="text-align:left;margin-top:4px">❦ Débora &amp; Diego ❦</div>':'')+'</div>'+(D.exemplo?'<div class="full banner">DADOS DE EXEMPLO</div>':'')}
 var STC={'Pendente':'#D9822B','Concluído':'#4C9A6A','previsto':MU,'atrasada':'#C0392B','pago':'#4C9A6A'},STL={previsto:'Previsto',atrasada:'Atrasado',pago:'Pago'};
 function st(s){var c=STC[s]||AC;return '<span class="pill" style="background:'+c+'22;color:'+c+'">'+e(STL[s]||s)+'</span>'}
 function dstack(iso){if(!iso)return '<div style="width:44px;text-align:center;font-size:10px;font-weight:700;color:'+MU+'">S/<br>DATA</div>';var d=dl(iso);return '<div style="width:44px;text-align:center;font-size:11px;font-weight:700;color:'+AC+'">'+('0'+d.getDate()).slice(-2)+'<br>'+MN[d.getMonth()]+'</div>'}
