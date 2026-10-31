@@ -1,6 +1,7 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#F7F1E6">
+<meta http-equiv="Cache-Control" content="no-cache">
 <title>Casamento</title>
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
@@ -14,6 +15,11 @@ h3{font-size:11px;text-transform:uppercase;letter-spacing:.25em;color:#9a8a70;fo
 .hd{position:relative}
 .hd.cas{min-height:130px}
 .hd .kick,.hd .ttl,.hd .orn{position:relative;z-index:1}
+.hd .kick,.gv-body .kick{padding-right:34px}
+.ver-btn{position:absolute;top:0;right:0;z-index:2;width:30px;height:30px;border:0;background:transparent;color:#9a8a70;padding:0;cursor:pointer;display:grid;place-items:center}
+.ver-btn svg{width:18px;height:18px;display:block}
+#ver-toast{position:fixed;z-index:9;left:18px;right:18px;bottom:calc(env(safe-area-inset-bottom) + 96px);max-width:520px;margin:auto;padding:12px 16px;border:1px solid rgba(201,169,106,.5);border-radius:16px;background:rgba(255,248,236,.82);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 10px 26px rgba(150,120,60,.14);color:#3b3124;font:600 13px Inter,sans-serif;text-align:center;cursor:pointer;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .25s}
+#ver-toast.show{opacity:1;pointer-events:auto;transform:none}
 .torre{position:absolute;top:0;right:0;width:52px;height:130px;pointer-events:none;opacity:.28;z-index:0}
 .torre-bg{position:absolute;left:50%;top:50%;width:148px;height:370px;transform:translate(-50%,-50%);opacity:.08;pointer-events:none;z-index:0}
 .gvpage{position:relative;overflow:hidden}
@@ -161,10 +167,13 @@ html,body{overscroll-behavior-y:contain}
 <div id="ptr" aria-hidden="true"><div class="bubble"><div class="spin"></div></div></div>
 <div id="ptr-note"></div>
 <div id="gv-toast" role="status"></div>
+<button type="button" id="ver-toast" onclick="verReload()">Nova versão disponível · Atualizar</button>
 <div class="wrap" id="app"><div class="full sub">Carregando…</div></div>
 <div id="tb"></div><div id="ov" onclick="closeSheet()"></div><div id="sh"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+/* Publicação: manter igual a casamento/version.json */
+var APP_VERSION='20261031-1819';
 var D=null,TAB='resumo',MES=null,CRF='todos',F={q:'',cat:'',fornecedor:'',tipo:''};
 var AC='#B08D57',AC2='#D9C29A',MU='#9a8a70',TRK='rgba(176,141,87,.15)',PAL=['#B08D57','#C9A96A','#8E7550','#D8BF8E','#A3865E','#E3D1AE'];
 var MN=['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'],MNL=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
@@ -175,7 +184,8 @@ function q(s){return e(JSON.stringify(String(s)))}
 var hoje=function(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)};
 function dl(iso){return new Date(iso+'T12:00')}
 function torreSvg(cls){var p='M50 4V17M46.5 14H53.5M44 17H56M44 17L47 26H53L56 17M47.2 21.5H52.8M47 26L40 64M53 26L60 64M47 26L56.5 45M53 26L43.5 45M43.5 45L60 64M56.5 45L40 64M43.5 45H56.5M32 64H68V74H32ZM34 69H66M38 64V74M46 64V74M54 64V74M62 64V74M37 74L28 122M63 74L72 122M45 74L38 122M55 74L62 122M37 74L42.7 90M45 74L34 90M34 90L40.3 106M42.7 90L31 106M31 106L38 122M40.3 106L28 122M34 90H42.7M31 106H40.3M63 74L57.3 90M55 74L66 90M66 90L59.7 106M57.3 90L69 106M69 106L62 122M59.7 106L72 122M66 90H57.3M69 106H59.7M45 74L57.3 90M55 74L42.7 90M42.7 90L59.7 106M57.3 90L40.3 106M40.3 106L62 122M59.7 106L38 122M42.7 90H57.3M40.3 106H59.7M18 122H82V140H18ZM20 131H80M26 122V140M38 122V140M50 122V140M62 122V140M74 122V140M24 140C16 175 10 205 6 236M40 140C36 178 32 208 27 236M60 140C64 178 68 208 73 236M76 140C84 175 90 205 94 236M24 140L35.9 176.2M40 140L16.5 174.2M16.5 174.2L31.7 207.4M35.9 176.2L10.6 205.4M10.6 205.4L27 236M31.7 207.4L6 236M16.5 174.2L35.9 176.2M10.6 205.4L31.7 207.4M60 140L83.5 174.2M76 140L64.1 176.2M64.1 176.2L89.4 205.4M83.5 174.2L68.3 207.4M68.3 207.4L94 236M89.4 205.4L73 236M64.1 176.2L83.5 174.2M68.3 207.4L89.4 205.4M40 140L64.1 176.2M60 140L35.9 176.2M35.9 176.2L68.3 207.4M64.1 176.2L31.7 207.4M35.9 176.2L64.1 176.2M31.7 207.4C40 128 60 128 68.3 207.4M34 203C44 140 56 140 66 203M2 236H10M23 236H31M69 236H77M90 236H98M4 240H8M25 240H29M71 240H75M92 240H96';return '<svg class="'+(cls||'torre')+'" viewBox="0 0 100 250" preserveAspectRatio="xMidYMax meet" fill="none" stroke="#B08D57" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+p+'"/></svg>'}
-function head(t){var d=dl(hoje());var w=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'][d.getDay()];var cas=t==='Casamento';return '<div class="full hd'+(cas?' cas':'')+'">'+(cas?torreSvg():'')+'<div class="kick">'+w+', '+d.getDate()+' de '+MNL[d.getMonth()].toLowerCase()+'</div><div class="ttl">'+t+'</div>'+(cas?'<div class="orn" style="text-align:left;margin-top:4px">❦ Débora &amp; Diego ❦</div>':'')+'</div>'+(D.exemplo?'<div class="full banner">DADOS DE EXEMPLO</div>':'')}
+function verBtn(){return '<button type="button" class="ver-btn" onclick="verReload()" aria-label="Atualizar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg></button>'}
+function head(t){var d=dl(hoje());var w=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'][d.getDay()];var cas=t==='Casamento';return '<div class="full hd'+(cas?' cas':'')+'">'+(cas?torreSvg():'')+verBtn()+'<div class="kick">'+w+', '+d.getDate()+' de '+MNL[d.getMonth()].toLowerCase()+'</div><div class="ttl">'+t+'</div>'+(cas?'<div class="orn" style="text-align:left;margin-top:4px">❦ Débora &amp; Diego ❦</div>':'')+'</div>'+(D.exemplo?'<div class="full banner">DADOS DE EXEMPLO</div>':'')}
 var STC={'Pendente':'#D9822B','Concluído':'#4C9A6A','previsto':MU,'atrasada':'#C0392B','pago':'#4C9A6A'},STL={previsto:'Previsto',atrasada:'Atrasado',pago:'Pago'};
 function st(s){var c=STC[s]||AC;return '<span class="pill" style="background:'+c+'22;color:'+c+'">'+e(STL[s]||s)+'</span>'}
 function dstack(iso){if(!iso)return '<div style="width:44px;text-align:center;font-size:10px;font-weight:700;color:'+MU+'">S/<br>DATA</div>';var d=dl(iso);return '<div style="width:44px;text-align:center;font-size:11px;font-weight:700;color:'+AC+'">'+('0'+d.getDate()).slice(-2)+'<br>'+MN[d.getMonth()]+'</div>'}
@@ -668,7 +678,7 @@ function chBubble(m){
   return '<div class="chrow '+(user?'user':'asst')+'">'+chAvatar(m)+'<div class="chb '+(user?'user':'asst')+'"'+hold+'><div class="chmeta"><span>'+e(who)+' · '+e(chWhen(m.created_at))+'</span>'+del+'</div>'+(m.texto?'<div class="chtxt">'+e(m.texto)+'</div>':'')+audio+seal+hint+ask+'</div></div>';
 }
 function gvNome(id){for(var i=0;i<GV_TIPOS.length;i++)if(GV_TIPOS[i][0]===id)return GV_TIPOS[i][1];return 'Automático'}
-function gvHead(){return '<div class="full gvpage">'+torreSvg('torre-gv')+'<div class="gv-body"><div class="kick">Débora &amp; Diego · Paris</div><div class="ttl">Gravador</div></div></div>'}
+function gvHead(){return '<div class="full gvpage">'+torreSvg('torre-gv')+'<div class="gv-body">'+verBtn()+'<div class="kick">Débora &amp; Diego · Paris</div><div class="ttl">Gravador</div></div></div>'}
 function chMetaMap(){try{return JSON.parse(localStorage.getItem('cas_grav_meta')||'{}')}catch(err){return {}}}
 function chMetaPut(id,o){try{var m=chMetaMap();m[String(id)]=o;localStorage.setItem('cas_grav_meta',JSON.stringify(m))}catch(err){}}
 function gvTexto(tipo,dur){return '[tipo:'+(tipo||'automatico')+'|dur:'+(Math.max(0,dur|0))+']'}
@@ -748,7 +758,7 @@ function gvStage(){
   var clock=rec?'<div class="gv-clock rec"><span class="gv-dot"></span><span id="chTimer">'+chClock()+'</span></div><div class="chwave gv-wave" id="chWave">'+chBars(16,1)+'</div>':'<div class="gv-clock">0:00</div>';
   var hint=rec?'Gravando como '+gvNome(cur)+' · toque para parar e enviar':'Toque para gravar · tipo é opcional';
   var btn=rec?'<button type="button" class="gv-btn on" id="gvRec" onclick="gvToggle()" aria-label="Parar e enviar">'+gvSqSvg()+'<span class="gv-lab">Parar</span></button>':'<button type="button" class="gv-btn" id="gvRec" onclick="gvToggle()" aria-label="Gravar"'+(CH.busy?' disabled':'')+'>'+chMicSvg()+'<span class="gv-lab">Gravar</span></button>';
-  return '<div class="full gvpage">'+torreSvg('torre-gv')+'<div class="gv-body"><div class="kick">Débora &amp; Diego · Paris</div><div class="ttl">Gravador</div>'+gvChips(cur,rec)+btn+clock+'<div class="gv-hint">'+e(hint)+'</div><button type="button" class="gv-send" id="chPingBtn" onclick="chPing(true)"'+(CH.pinging?' disabled':'')+'>'+e(gvPendLabel(pend))+'</button></div></div>';
+  return '<div class="full gvpage">'+torreSvg('torre-gv')+'<div class="gv-body">'+verBtn()+'<div class="kick">Débora &amp; Diego · Paris</div><div class="ttl">Gravador</div>'+gvChips(cur,rec)+btn+clock+'<div class="gv-hint">'+e(hint)+'</div><button type="button" class="gv-send" id="chPingBtn" onclick="chPing(true)"'+(CH.pinging?' disabled':'')+'>'+e(gvPendLabel(pend))+'</button></div></div>';
 }
 function gvList(){
   var bits=[];
@@ -968,8 +978,30 @@ function ptrRefresh(){
   if(PTR.busy)return;
   PTR.busy=1;PTR.on=0;
   ptrShow(72,1);
+  verCheck();
   var job=TAB==='conv'?cvReload():TAB==='chat'?chReload():loadData().then(function(d){D=d;render()});
   job.then(function(){ptrNote()}).catch(function(){}).then(function(){PTR.busy=0;ptrHide()});
+}
+function verShow(){var el=document.getElementById('ver-toast');if(el)el.classList.add('show')}
+function verCheck(){
+  return fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)return null;return r.json()}).then(function(j){
+    if(j&&j.v!=null&&String(j.v)!==String(APP_VERSION))verShow();
+  }).catch(function(){});
+}
+function verReload(){
+  var go=function(){location.replace(location.pathname+'?v='+Date.now()+location.hash)};
+  var jobs=[];
+  if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations){
+    jobs.push(navigator.serviceWorker.getRegistrations().then(function(regs){
+      return Promise.all(regs.map(function(r){if((r.scope||'').indexOf('/casamento')>=0)return r.unregister()}));
+    }).catch(function(){}));
+  }
+  if(window.caches){
+    jobs.push(caches.keys().then(function(keys){
+      return Promise.all(keys.map(function(k){if(k.indexOf('casamento')>=0)return caches.delete(k)}));
+    }).catch(function(){}));
+  }
+  Promise.all(jobs).then(go,go);
 }
 document.addEventListener('touchstart',function(ev){
   if(PTR.busy||ev.touches.length!==1||!ptrTop()||ptrIgnore(ev.target)){PTR.on=0;return}
@@ -991,6 +1023,10 @@ document.addEventListener('touchend',function(){
 document.addEventListener('touchcancel',function(){PTR.on=0;if(!PTR.busy)ptrHide()});
 document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closeSheet()});
 (function(){var u=new URLSearchParams(location.search);if(u.get('embed')==='1')document.body.classList.add('embed');if(u.get('tab'))TAB=u.get('tab');if(u.get('mes'))MES=u.get('mes');if(u.get('hoje')){var H=u.get('hoje');hoje=function(){return H}}
+  verCheck();
+  setInterval(verCheck,300000);
+  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')verCheck()});
+  if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(function(){});
   loadData().then(function(d){D=d;render();if(TAB==='conv')cvBoot();if(TAB==='chat')chOpen();if(u.get('sheet'))openSheet(u.get('sheet'))})
   .catch(function(err){document.getElementById('app').innerHTML='<div class="full card">Não consegui carregar data.json<br><span class="sub">'+e(err.message)+'</span></div>'})})();
 </script></body></html>
