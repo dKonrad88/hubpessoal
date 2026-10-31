@@ -40,6 +40,10 @@ select.chip{appearance:none;-webkit-appearance:none;padding-right:22px}
 html,body{overscroll-behavior-y:contain}
 .tabs div{font-size:10px;white-space:nowrap;line-height:1.05}
 .tabs svg{width:17px;height:17px;display:block}
+.cvn{font-variant-numeric:tabular-nums;font-weight:600;color:#B08D57;min-width:1.7em;text-align:right;font-size:15px;letter-spacing:.02em;flex:none}
+.cvside{display:flex;align-items:center;gap:8px;flex:none}
+.cvic{width:18px;height:18px;color:#9a8a70;display:block;flex:none}
+.cd .cvic{margin:4px auto 0}
 .fld{width:100%;border:1px solid rgba(176,141,87,.35);background:#fff;border-radius:14px;padding:12px 14px;font:15px Inter,sans-serif;color:#3b3124;outline:none}
 .flab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9a8a70;font-weight:600;margin:14px 0 6px}
 .step{display:flex;align-items:center;gap:12px}.step button{width:36px;height:36px;border-radius:50%;border:1px solid rgba(176,141,87,.45);background:#fff;color:#3b3124;font-size:20px;line-height:1;cursor:pointer}
@@ -230,12 +234,15 @@ function cvPill(ui){
   var m=map[ui]||map.aenviar;
   return '<span class="pill" style="background:'+m[1]+';color:'+m[0]+'">'+e(cvLab(CV_UI,ui))+'</span>';
 }
-function cvSub(c){
-  var bits=[];if(c.conjuge)bits.push(e(c.conjuge));
-  var n=cvQtd(c);bits.push(n===1?'1 pessoa':n+' pessoas');
-  if(c.via==='fisico')bits.push('Pessoalmente');else if(c.via==='online')bits.push('WhatsApp');
-  return bits.join(' · ');
+function cvNum(n){return (n<10?'0':'')+n}
+function cvSvg(inner,label){return '<svg class="cvic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="'+e(label)+'"><title>'+e(label)+'</title>'+inner+'</svg>'}
+function cvViaIcon(v){
+  if(v==='fisico')return cvSvg('<rect x="3.2" y="6" width="17.6" height="12" rx="1.8"/><path d="M3.6 7.2 12 13.2 20.4 7.2"/>','Pessoalmente');
+  if(v==='online')return cvSvg('<path d="M12 18.2c4.2 0 7.4-2.6 7.4-6S16.2 6.2 12 6.2 4.6 8.8 4.6 12.2c0 1.8.8 3.4 2.2 4.6L6 19.4l2.6-1.2"/>','WhatsApp');
+  return '';
 }
+function cvPadIcon(){return cvSvg('<path d="M4 16.4 6.6 8.4 10.4 13 12 6.2l1.6 6.8 3.8-4.6L20 16.4"/><path d="M5 16.4h14V19H5z"/>','Padrinho')}
+function cvSub(c){return c.conjuge?e(c.conjuge):''}
 function sbClient(){
   if(sb)return sb;
   if(!(window.supabase&&window.supabase.createClient))return null;
@@ -379,7 +386,8 @@ function vConv(){
     var hidden=g.slice(shown.length);
     var hp=hidden.reduce(function(s,c){return s+cvQtd(c)},0);
     var body=shown.map(function(c){
-      return '<div class="li tap" onclick="cvEdit('+q(String(c.id))+')"><div class="row"><div><div class="b">'+e(c.nome||'Sem nome')+'</div><div class="sub">'+cvSub(c)+'</div></div>'+cvPill(cvUi(c))+'</div></div>';
+      var sub=cvSub(c);
+      return '<div class="li tap" onclick="cvEdit('+q(String(c.id))+')"><div class="row" style="align-items:center"><div style="display:flex;gap:10px;align-items:center;min-width:0"><div class="cvn">'+cvNum(cvQtd(c))+'</div><div style="min-width:0"><div class="b">'+e(c.nome||'Sem nome')+'</div>'+(sub?'<div class="sub">'+sub+'</div>':'')+'</div></div><div class="cvside">'+cvViaIcon(c.via)+(c.padrinho?cvPadIcon():'')+cvPill(cvUi(c))+'</div></div></div>';
     }).join('');
     var more=hidden.length?'<div class="sub tap" style="margin-top:8px;color:'+AC+';font-weight:600" onclick="cvMore('+q(n[0])+')">Ver mais '+hp+(hp===1?' pessoa':' pessoas')+' ›</div>':'';
     return '<div class="card"><h3>'+e(n[1])+' · '+pess+(pess===1?' pessoa':' pessoas')+'</h3>'+body+more+'</div>';
@@ -389,7 +397,7 @@ function vConv(){
     +(CV.note?'<div class="full banner">'+e(CV.note)+'</div>':'')
     +'<div class="card"><h3>Pessoas</h3><div class="row" style="align-items:flex-end"><div><div class="big">'+S.certeza+'</div><div class="sub">com certeza · '+S.by.obrigatorio.conv+' convites</div></div><div style="text-align:right"><div class="sub">Se todos vierem</div><div class="h" style="font-size:28px;font-weight:600;color:'+AC+'">'+S.todos+'</div></div></div>'+rows+'</div>'
     +'<div class="card"><h3>Convite</h3><div class="big">'+S.n+'</div><div class="sub">convites · '+S.padrinhos+(S.padrinhos===1?' padrinho':' padrinhos')+'</div>'
-    +'<div class="cd"><div><b>'+S.via.fisico+'</b><span>Pessoalmente</span></div><div><b>'+S.via.online+'</b><span>WhatsApp</span></div><div><b>'+S.ui.aenviar+'</b><span>A enviar</span></div></div></div>'
+    +'<div class="cd"><div><b>'+S.via.fisico+'</b><span>'+cvViaIcon('fisico')+'</span></div><div><b>'+S.via.online+'</b><span>'+cvViaIcon('online')+'</span></div><div><b>'+S.ui.aenviar+'</b><span>A enviar</span></div></div></div>'
     +'<div class="full" style="display:flex;gap:8px;align-items:center"><div class="search" style="flex:1"><input id="cvq" placeholder="Buscar nome ou cônjuge" value="'+e(CV.q)+'" oninput="cvFind(this.value)"></div><button class="addb" onclick="cvNew()" aria-label="Adicionar convite">+</button></div>'
     +'<div class="full" style="display:flex;gap:8px;flex-wrap:wrap">'+chips+'</div>'
     +'<div class="full" style="display:flex;gap:8px;flex-wrap:wrap">'+viaSel+stSel+'</div>'
