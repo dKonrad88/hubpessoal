@@ -36,7 +36,18 @@ h3{font-size:13px;text-transform:uppercase;letter-spacing:.04em;opacity:.5;margi
 .tl{display:grid;grid-template-columns:52px 18px 1fr;gap:10px}.tl .d{text-align:right;font-size:12px;font-weight:700;padding-top:2px}
 .tl .dot{display:flex;flex-direction:column;align-items:center}.tl .dot span{width:12px;height:12px;border-radius:50%;margin-top:4px}.tl .dot i{flex:1;width:1.5px;background:rgba(0,0,0,.1)}
 .empty{text-align:center;padding:30px 0;opacity:.5;font-size:14px}
+html,body{overscroll-behavior-y:contain}
+#ptr{position:fixed;z-index:8;left:0;right:0;top:calc(env(safe-area-inset-top) + 8px);display:flex;justify-content:center;pointer-events:none;opacity:0;transform:translateY(-40px);transition:transform .28s cubic-bezier(.2,.9,.3,1),opacity .28s}
+#ptr.drag{transition:none}
+#ptr .bubble{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.58);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.92);box-shadow:inset 0 1px 0 #fff,0 10px 26px rgba(11,42,107,.16)}
+#ptr .spin{width:18px;height:18px;border-radius:50%;border:2.5px solid rgba(10,132,255,.22);border-top-color:#0A84FF;border-right-color:rgba(10,132,255,.55)}
+#ptr.busy .spin{animation:ptrrot .65s linear infinite}
+@keyframes ptrrot{to{transform:rotate(360deg)}}
+#ptr-note{position:fixed;z-index:8;left:0;right:0;top:calc(env(safe-area-inset-top) + 18px);text-align:center;font-size:12px;font-weight:600;letter-spacing:.01em;color:#3a3a3c;opacity:0;pointer-events:none;transition:opacity .35s}
+#ptr-note.show{opacity:.72}
 </style></head><body>
+<div id="ptr" aria-hidden="true"><div class="bubble"><div class="spin"></div></div></div>
+<div id="ptr-note"></div>
 <div class="wrap" id="app"><div class="full empty">Carregando…</div></div>
 <div id="tabs" class="glass"></div>
 <div id="ov" onclick="closeSheet()"></div><div id="sh"></div>
@@ -158,7 +169,63 @@ function render(keepFocus){
   document.getElementById('tabs').innerHTML=TABS.map(function(t){return '<div class="'+(TAB===t[0]?'on':'')+'" onclick="go(\''+t[0]+'\')">'+ICON[t[0]]+t[1]+'</div>'}).join('');
   if(keepFocus){var q=document.getElementById('q');if(q){q.focus();q.setSelectionRange(q.value.length,q.value.length)}}
 }
+function loadData(){return fetch('data.json?t='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(String(r.status));return r.json()})}
+/* Pull-to-refresh (iOS / PWA standalone / iframe embed=1). Só no topo, gesto para baixo. */
+var PTR={on:0,y0:0,x0:0,dy:0,busy:0,noteT:0};
+function ptrTop(){return (window.scrollY||document.documentElement.scrollTop||document.body.scrollTop||0)<=0}
+function ptrIgnore(t){
+  if(document.getElementById('sh').classList.contains('open'))return 1;
+  if(!t||!t.closest)return 0;
+  return t.closest('#sh,#ov,#tabs,select,input,textarea,button,a')?1:0;
+}
+function ptrShow(px,busy){
+  var el=document.getElementById('ptr');
+  el.classList.toggle('drag',!busy);
+  el.classList.toggle('busy',!!busy);
+  el.style.transform='translateY('+(Math.min(16,px*0.42-34))+'px)';
+  el.style.opacity=String(Math.max(0,Math.min(1,(px-4)/36)));
+  var s=el.querySelector('.spin');
+  if(busy)s.style.transform='';else s.style.transform='rotate('+(px*3)+'deg)';
+}
+function ptrHide(){
+  var el=document.getElementById('ptr');
+  el.classList.remove('drag','busy');
+  el.style.transform='';el.style.opacity='';
+  var s=el.querySelector('.spin');if(s)s.style.transform='';
+  PTR.dy=0;
+}
+function ptrNote(){
+  var d=new Date(),n=document.getElementById('ptr-note');
+  n.textContent='Atualizado às '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
+  n.classList.add('show');
+  clearTimeout(PTR.noteT);
+  PTR.noteT=setTimeout(function(){n.classList.remove('show')},2400);
+}
+function ptrRefresh(){
+  if(PTR.busy)return;
+  PTR.busy=1;PTR.on=0;
+  ptrShow(72,1);
+  loadData().then(function(d){D=d;render();ptrNote()}).catch(function(){}).then(function(){PTR.busy=0;ptrHide()});
+}
+document.addEventListener('touchstart',function(ev){
+  if(PTR.busy||ev.touches.length!==1||!ptrTop()||ptrIgnore(ev.target)){PTR.on=0;return}
+  PTR.on=1;PTR.y0=ev.touches[0].clientY;PTR.x0=ev.touches[0].clientX;PTR.dy=0;
+},{passive:true});
+document.addEventListener('touchmove',function(ev){
+  if(!PTR.on||PTR.busy)return;
+  var t=ev.touches[0],raw=t.clientY-PTR.y0,dx=t.clientX-PTR.x0;
+  if(!ptrTop()||raw<8||Math.abs(dx)>Math.abs(raw)){if(raw<0||Math.abs(dx)>12){PTR.on=0;ptrHide()}return}
+  PTR.dy=Math.min(110,(raw-8)*0.55);
+  if(ev.cancelable)ev.preventDefault();
+  ptrShow(PTR.dy,0);
+},{passive:false});
+document.addEventListener('touchend',function(){
+  if(!PTR.on)return;
+  PTR.on=0;
+  if(PTR.dy>=58)ptrRefresh();else ptrHide();
+});
+document.addEventListener('touchcancel',function(){PTR.on=0;if(!PTR.busy)ptrHide()});
 (function(){var u=new URLSearchParams(location.search);if(u.get('tab'))TAB=u.get('tab');if(u.get('mes'))MES=u.get('mes');if(u.get('hoje'))hoje=function(){return u.get('hoje')};
-  fetch('data.json?v='+Date.now(),{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){D=d;render();if(u.get('sheet')){var s=u.get('sheet');s.indexOf('cat:')===0?sheetCat(s.slice(4)):sheetForn(s)}})
+  loadData().then(function(d){D=d;render();if(u.get('sheet')){var s=u.get('sheet');s.indexOf('cat:')===0?sheetCat(s.slice(4)):sheetForn(s)}})
   .catch(function(){document.getElementById('app').innerHTML='<div class="full empty">Não consegui carregar os dados.</div>'})})();
 </script></body></html>
