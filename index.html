@@ -813,6 +813,7 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 <div class="sb-subsubitem" onclick="setSimplePage('vorlando',this)" style="color:var(--accent);font-weight:600"><i class="ti ti-device-mobile"></i> Trabalhar no App</div>
 </div>
 <div class="sb-subitem" id="nav-casamento" onclick="setSimplePage('casa',this)"><i class="ti ti-heart"></i> Casamento</div>
+<div class="sb-subitem" id="nav-casgastos" onclick="setSimplePage('casgastos',this)" style="padding-left:2.2rem"><i class="ti ti-receipt"></i> Gastos do casamento</div>
 <div class="sb-subitem" id="nav-apartamento" onclick="setSimplePage('apartamento',this)"><i class="ti ti-building"></i> Apartamento</div>
 
 </div></div>
@@ -1037,6 +1038,7 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 </div>
 </div>
 <div class="page" id="page-apartamento"><div class="etd-head"><div class="etd-h-title">🏠 Apartamento <span class="etd-h-sub">painel somente leitura · imóvel, obra, mobília e cronograma</span></div><div class="etd-h-actions"><button class="etd-refresh" onclick="try{APTO.open(true)}catch(e){}" title="Atualizar"><i class="ti ti-refresh"></i></button><a class="etd-openapp" href="apto/" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> Abrir app</a></div></div><div id="apartamentoDash"></div></div>
+<div class="page" id="page-casgastos"><div class="etd-head"><div class="etd-h-title">💍 Gastos do casamento <span class="etd-h-sub">painel somente leitura · planilha "Casamento"</span></div><div class="etd-h-actions"><button class="etd-refresh" onclick="try{CASBI.open(true)}catch(e){}" title="Atualizar"><i class="ti ti-refresh"></i></button><a class="etd-openapp" href="casamento/" target="_blank" rel="noopener"><i class="ti ti-external-link"></i> Abrir app</a></div></div><div id="casgastosDash"></div></div>
 <div class="page" id="page-casamento">
 <!-- CAS DASHBOARD -->
 <div class="tab-pane" id="tabcas-dashboard">
@@ -2715,6 +2717,7 @@ function setSimplePage(p,el){
   if(p==='metas'){try{mvRender();}catch(e){}}
   if(p==='leitura'){try{LEITURA.open();}catch(e){}}
   if(p==='apartamento'){try{APTO.open();}catch(e){}}
+  if(p==='casgastos'){try{CASBI.open();}catch(e){}}
   if(p==='lixeira'){try{lixRender();}catch(e){}}
 }
 /* ===================== HABIT TRACKER ===================== */
@@ -3930,8 +3933,10 @@ var LEITURA=(function(){
 })();
 
 var CASA=(function(){
-  var M={},state='init',errMsg='';
+  var M={},state='init',errMsg='',GJ=null;
   function open(){state='loading';render();
+    // gastos/meta/data vêm do painel read-only (casamento/data.json ← planilha); casamento_state segue p/ convidados, checklist e tarefas
+    fetch('casamento/data.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){GJ=j;if(state!=='loading'&&state!=='init')render();}).catch(function(){GJ=null;});
     if(!(window.sb&&cloudUser)){state='nologin';return render();}
     // resolve o espaço do casamento dinamicamente (o espaço já foi recriado antes → não hardcodar id)
     sb.from('listas').select('id').eq('tipo','casamento').then(function(lr){
@@ -3957,6 +3962,7 @@ var CASA=(function(){
     var fechado=ativos.filter(function(g){return g.tipo==='fechado';}).reduce(function(a,g){return a+(Number(g.valor)||0);},0);
     var planejado=ativos.filter(function(g){return g.tipo!=='fechado';}).reduce(function(a,g){return a+(Number(g.valorIni)||Number(g.valor)||0);},0);
     var projecao=fechado+planejado;
+    if(GJ&&GJ.totais){meta=Number(GJ.totais.meta)||meta;fechado=Number(GJ.totais.fechado)||0;projecao=Number(GJ.totais.projecao)||0;ativos={length:Number(GJ.totais.itens)||0};if(GJ.dataCasamento)M.data=GJ.dataCasamento;}
     var conv=Array.isArray(M.convidados)?M.convidados:[];
     var pessoas=conv.reduce(function(a,c){return a+(Number(c.qtd)||1);},0);
     var padrinhos=conv.filter(function(c){return c.padrinho;}).length;
@@ -3975,7 +3981,7 @@ var CASA=(function(){
       +'</div>'
       +'<div style="margin-top:.2rem"><div style="display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted)"><span>contratado '+pctFech+'% · projeção '+pctProj+'%</span></div>'
         +'<div style="height:7px;background:var(--border);border-radius:5px;overflow:hidden;margin-top:.35rem;position:relative"><div style="position:absolute;height:100%;width:'+pctProj+'%;background:rgba(24,95,165,.35)"></div><div style="position:absolute;height:100%;width:'+pctFech+'%;background:#6d5efc"></div></div></div>'
-      +'<div class="etd-foot"><span>'+ativos.length+' itens de custo</span><span>'+(pctProj>100?'⚠️ acima da meta':'dentro da meta')+'</span></div>'
+      +'<div class="etd-foot"><span>'+ativos.length+' itens de custo'+(GJ&&GJ.totais?' · <a href="#" onclick="setSimplePage(\'casgastos\',document.getElementById(\'nav-casgastos\'));return false" style="color:inherit;text-decoration:underline">ver gastos</a>':'')+'</span><span>'+(pctProj>100?'⚠️ acima da meta':'dentro da meta')+'</span></div>'
     +'</div>'
     +'<div class="etd-card" style="margin-top:.7rem"><div class="etd-top"><span class="etd-name">👥 Lista & tarefas</span></div>'
       +'<div class="etd-stats">'
@@ -4002,6 +4008,19 @@ var APTO=(function(){
     var f=box.querySelector('iframe');
     if(f&&!reload)return;
     box.innerHTML='<div style="max-width:430px;margin:.6rem auto 0;height:calc(100vh - 150px);min-height:640px;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)"><iframe src="apto/?embed=1&t='+Date.now()+'" title="Apartamento" style="width:100%;height:100%;border:0;display:block" loading="lazy"></iframe></div>';
+  }
+  return {open:open};
+})();
+
+/* ===================== CASAMENTO — gastos, painel BI somente leitura (2026-10-31) =====================
+   App read-only em ./casamento/ (casamento/index.html + casamento/data.json, gerado da planilha Google Sheets
+   "Casamento" por casamento/build_data.py). Convidados, tarefas e checklist seguem no app/casamento_state. */
+var CASBI=(function(){
+  function open(reload){
+    var box=document.getElementById('casgastosDash');if(!box)return;
+    var f=box.querySelector('iframe');
+    if(f&&!reload)return;
+    box.innerHTML='<div style="max-width:430px;margin:.6rem auto 0;height:calc(100vh - 150px);min-height:640px;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)"><iframe src="casamento/?embed=1&t='+Date.now()+'" title="Gastos do casamento" style="width:100%;height:100%;border:0;display:block" loading="lazy"></iframe></div>';
   }
   return {open:open};
 })();

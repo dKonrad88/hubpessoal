@@ -6,7 +6,7 @@
    - equilibrio.js do Foco (mesma origem): network-first, cache só como fallback offline.
    - Demais GET (CDNs: fontes, ícones, chart.js, supabase-js): stale-while-revalidate.
    Bump CACHE quando quiser forçar limpeza do cache antigo. */
-var CACHE = 'hub-v38';
+var CACHE = 'hub-v39';
 var SHELL = ['./', './index.html', './manifest.json',
              './apple-touch-icon.png', './icon-192.png', './icon-512.png'];
 
@@ -43,6 +43,8 @@ self.addEventListener('fetch', function (e) {
   // Painel do apartamento (./apto/, read-only, dados em apto/data.json): sempre rede, sem cache do HUB
   // (senão a navegação do iframe gravaria a página do apto no lugar do index.html do HUB).
   if (url.origin === self.location.origin && /\/hubpessoal\/apto\//.test(url.pathname)) return;
+  // Painel de gastos do casamento (./casamento/, read-only, dados em casamento/data.json): mesma regra do apto
+  if (url.origin === self.location.origin && /\/hubpessoal\/casamento\//.test(url.pathname)) return;
 
   // Abrir o app: network-first com fallback pro cache (offline).
   if (req.mode === 'navigate') {
