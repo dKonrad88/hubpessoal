@@ -83,7 +83,7 @@ html,body{overscroll-behavior-y:contain}
 .swi i{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .18s;display:block}
 .swi.on{background:#B08D57}.swi.on i{left:23px}
 .addb{width:46px;height:46px;border-radius:50%;border:1px solid rgba(176,141,87,.45);background:rgba(255,253,248,.9);color:#B08D57;font-size:26px;line-height:1;cursor:pointer;flex:none}
-.btn-gold{width:100%;border:0;background:#B08D57;color:#fff;border-radius:16px;padding:14px;font-weight:700;font-size:16px;margin-top:16px;cursor:pointer}
+.btn-gold:disabled{opacity:.55;cursor:default}
 .btn-del{width:100%;background:transparent;color:#C0392B;border:1px solid rgba(192,57,43,.4);border-radius:16px;padding:12px;font-weight:700;margin-top:10px;cursor:pointer}
 .btn-cancel{flex:1;border:0;background:#F3E6D0;color:#3b3124;border-radius:14px;padding:12px;font-weight:700;cursor:pointer}
 .btn-excl{flex:1;border:0;background:#C0392B;color:#fff;border-radius:14px;padding:12px;font-weight:700;cursor:pointer}
@@ -581,7 +581,7 @@ function vChat(){
   var log=CH.msgs.length?CH.msgs.map(chBubble).join(''):'<div class="sub empty">Nenhuma mensagem ainda.</div>';
   return head('Chat')+(CH.note?'<div class="full banner">'+e(CH.note)+'</div>':'')
     +'<div class="card full"><div class="chlog">'+log+'</div></div>'
-    +'<div class="card full chopen">'+chCompose()+'<button type="button" class="btn-gold" onclick="chPing()">Enviar ao assistente</button></div>';
+    +'<div class="card full chopen">'+chCompose()+'<button type="button" class="btn-gold" id="chPingBtn" onclick="chPing()"'+(CH.pinging?' disabled':'')+'>Enviar ao assistente</button></div>';
 }
 function chBars(){var s='';for(var i=0;i<12;i++)s+='<i></i>';return s}
 function chCompose(){
@@ -714,16 +714,19 @@ function chMicAbort(){
 function chPreviewDrop(){chBuzz();if(CH.preview&&CH.preview.url)try{URL.revokeObjectURL(CH.preview.url)}catch(err){}CH.preview=null;CH.phase='';CH.transcript='';render()}
 function chPreviewSend(){if(!CH.preview||CH.busy)return;var p=CH.preview;chUpload(p.blob,p.mime,p.texto||'')}
 function chPing(){
+  if(CH.pinging)return;
   if(!CH.listaId)return;
   var client=sbClient();if(!client){CH.note='Não carregou o conector.';render();return}
+  CH.pinging=true;render();
   client.auth.getSession().then(function(r){
     var token=r&&r.data&&r.data.session&&r.data.session.access_token;
-    if(!token){CH.state='nologin';render();return}
+    if(!token){CH.state='nologin';return null}
     return fetch(SB_URL+'/functions/v1/casamento-chat-ping',{method:'POST',headers:{'Authorization':'Bearer '+token,'apikey':SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({lista_id:CH.listaId})});
   }).then(function(res){
     if(!res)return;
-    CH.note=chPingMsg(res.status);render();
-  }).catch(function(){CH.note='Sem conexão com o assistente.';render()});
+    if(res.status===200||res.status===503){CH.note=chPingMsg(res.status);return}
+    return res.json().then(function(j){CH.note=(j&&j.erro)?String(j.erro):String(res.status)}).catch(function(){CH.note=String(res.status)});
+  }).catch(function(){CH.note='Sem conexão com o assistente.'}).finally(function(){CH.pinging=false;render()});
 }
 /* Pull-to-refresh: mesma lógica do apto (só no topo, puxão além do limite, spinner de vidro). */
 function loadData(){return fetch('data.json?t='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})}
