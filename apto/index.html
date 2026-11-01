@@ -52,11 +52,36 @@ html,body{overscroll-behavior-y:contain}
 .btn{flex:1;border:0;border-radius:16px;padding:12px;font:600 15px -apple-system,Inter,sans-serif;cursor:pointer}.btn:disabled{opacity:.5}
 .btn.ok{background:#34C759;color:#fff;box-shadow:0 6px 18px rgba(52,199,89,.3)}.btn.no{background:rgba(255,59,48,.12);color:#FF3B30}.btn.soft{background:rgba(10,132,255,.14);color:#0A84FF}
 .badge{min-width:18px;height:18px;border-radius:9px;background:#FF3B30;color:#fff;font-size:11px;font-weight:700;display:inline-grid;place-items:center;padding:0 5px;margin-left:4px}
+#gsubbar{position:fixed;left:30px;right:30px;bottom:calc(env(safe-area-inset-bottom) + 94px);max-width:420px;margin:auto;z-index:5;border-radius:999px;padding:4px;gap:2px;display:none;background:rgba(250,250,252,.7)}
+#gsubbar div{flex:1;text-align:center;padding:9px 0;border-radius:999px;font-size:13px;font-weight:600;color:#3a3a3c;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#gsubbar div.on{background:#0A84FF;color:#fff;box-shadow:0 4px 14px rgba(10,132,255,.35)}#gsubbar div.on .badge{background:#fff;color:#0A84FF}
+body.withsub .wrap{padding-bottom:190px}
+.gvtop{text-align:left}.gdd{display:flex;align-items:center;gap:10px;margin:12px auto 0;width:250px;padding:10px 16px;border-radius:20px;cursor:pointer;color:#0A84FF}.gdd.lock{opacity:.6;cursor:default}
+.gdd .gl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;opacity:.5;color:#1c1c1e}.gdd .gv{font-size:18px;font-weight:700;color:#1c1c1e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gic{width:22px;height:22px;flex:none}
+.gdim{position:fixed;inset:0;z-index:8;background:rgba(242,242,247,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.gmenu{position:fixed;z-index:9;left:50%;top:calc(env(safe-area-inset-top) + 170px);transform:translateX(-50%);width:280px;padding:8px;border-radius:22px;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%);border:1px solid rgba(255,255,255,.9);box-shadow:0 24px 50px rgba(0,0,0,.18)}
+.gmenu .o{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;cursor:pointer;color:#0A84FF}.gmenu .o.on{background:rgba(10,132,255,.1)}
+.gmenu .on1{font-size:16px;font-weight:600;color:#1c1c1e}.gmenu small{display:block;font-size:11px;opacity:.5;color:#1c1c1e}.gmenu .ck{margin-left:auto;font-weight:700}
+.gstage{text-align:center;padding-top:7vh}
+.gbtn{width:184px;height:184px;border-radius:50%;border:0;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#fff;cursor:pointer;background:radial-gradient(circle at 35% 28%,#5AB0FF,#0A84FF 55%,#3d5bd9);box-shadow:0 0 0 20px rgba(10,132,255,.1),0 0 0 40px rgba(10,132,255,.05),0 20px 40px rgba(10,132,255,.35);font:600 18px -apple-system,Inter,sans-serif;-webkit-tap-highlight-color:transparent}
+.gbtn:disabled{opacity:.55}.gbtn.on{background:radial-gradient(circle at 35% 28%,#ff8a80,#FF3B30 55%,#d52b22);box-shadow:0 0 0 20px rgba(255,59,48,.12),0 0 0 40px rgba(255,59,48,.06),0 20px 40px rgba(255,59,48,.35);animation:gpulse 1.6s ease-in-out infinite}
+@keyframes gpulse{50%{box-shadow:0 0 0 28px rgba(255,59,48,.08),0 0 0 52px rgba(255,59,48,.03),0 20px 40px rgba(255,59,48,.35)}}
+.gclock{font-size:44px;font-weight:700;margin-top:52px;letter-spacing:-.02em}.gclock.rec{color:#FF3B30}
+.glast{display:inline-flex;align-items:center;gap:8px;margin:26px auto 0;padding:7px 14px;border-radius:999px;font-size:12px;color:#3a3a3c;box-shadow:0 4px 14px rgba(0,0,0,.06)}.glast i{width:7px;height:7px;border-radius:50%}
+.prc{padding:16px 18px}.prt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#0A84FF}.ped{font-size:13px;font-weight:600;color:#0A84FF}
+.prr{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:6px 0;border-bottom:.5px solid rgba(0,0,0,.07)}.prr b{font-weight:500;opacity:.5;flex:none}.prr span{text-align:right;font-weight:600}
+.prd{font-size:13px;opacity:.75;margin-top:8px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.gopen .prd{-webkit-line-clamp:unset}
+.gall{font-size:13px;font-weight:700;color:#0A84FF;background:rgba(10,132,255,.12);padding:6px 12px;border-radius:999px}
+.gi{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:.5px solid rgba(0,0,0,.07);font-size:14px}.gi:first-child{border-top:0}.gm{flex:1;min-width:0}.ell{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gav{width:32px;height:32px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font-weight:700;font-size:14px;background:linear-gradient(135deg,#0A84FF,#5E5CE6)}.gav.d{background:linear-gradient(135deg,#FF6482,#BF5AF2)}
+.gopen{padding:4px 0 12px 42px}
+.gsub2{display:flex;gap:8px}.gsub2 div{flex:1;text-align:center;font-size:13px;font-weight:600;padding:8px 0;border-radius:14px;border:1px solid rgba(10,132,255,.25);color:#0A84FF;cursor:pointer;background:rgba(255,255,255,.5)}.gsub2 .on{background:#1c1c1e;color:#fff;border-color:#1c1c1e}
 </style></head><body>
 <div id="ptr" aria-hidden="true"><div class="bubble"><div class="spin"></div></div></div>
 <div id="ptr-note"></div>
 <div class="wrap" id="app"><div class="full empty">Carregando…</div></div>
-<div id="tabs" class="glass"></div>
+<div id="gsubbar" class="glass"></div><div id="tabs" class="glass"></div>
 <div id="ov" onclick="closeSheet()"></div><div id="sh"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
@@ -191,7 +216,7 @@ function grInit(){
   }).catch(function(e){GR.note='Erro: '+(e&&e.message||e)}).then(function(){GR.loading=0;GR.ready=1;grRedraw()});
 }
 function grLoad(){
-  return GR.sb.from('apto_gravador').select('id,autor_id,autor_nome,audio_path,duracao,status,transcricao,resposta,created_at,processado,processado_em').eq('lista_id',GR.lista).order('created_at',{ascending:false}).limit(100)
+  return GR.sb.from('apto_gravador').select('id,autor_id,autor_nome,tipo,audio_path,duracao,status,transcricao,resposta,created_at,processado,processado_em').eq('lista_id',GR.lista).order('created_at',{ascending:false}).limit(100)
   .then(function(q){if(q.error){GR.note='Erro ao listar: '+q.error.message;return}GR.rows=q.data||[]});
 }
 function grWatch(){if(GR.rt||!GR.sb.channel)return;GR.rt=GR.sb.channel('apto-grav-'+GR.lista).on('postgres_changes',{event:'*',schema:'public',table:'apto_gravador',filter:'lista_id=eq.'+GR.lista},function(){grLoad().then(function(){if(!GR.rec)grRedraw()})}).subscribe()}
@@ -207,7 +232,7 @@ function grStart(){
   GR.busy=1;
   navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
     var m=grMime(),rec;try{rec=m?new MediaRecorder(stream,{mimeType:m}):new MediaRecorder(stream)}catch(e){stream.getTracks().forEach(function(t){t.stop()});throw e}
-    GR.stream=stream;GR.rec=rec;GR.mime=rec.mimeType||m||'audio/webm';GR.chunks=[];GR.t0=Date.now();GR.note='';
+    GR.stream=stream;GR.rec=rec;GR.tipoAt=GT;GR.mime=rec.mimeType||m||'audio/webm';GR.chunks=[];GR.t0=Date.now();GR.note='';
     rec.ondataavailable=function(ev){if(ev.data&&ev.data.size)GR.chunks.push(ev.data)};
     rec.onstop=grSave;rec.start(1000);GR.busy=0;grRedraw();
     GR.timer=setInterval(function(){var el=document.getElementById('gr-t');if(el)el.textContent=grFmt((Date.now()-GR.t0)/1000)},500);
@@ -223,17 +248,17 @@ function grSave(){
   GR.busy=1;GR.note='Enviando áudio…';grRedraw();
   GR.sb.storage.from('apto-audio').upload(path,blob,{contentType:mime,upsert:false}).then(function(u){
     if(u.error)throw u.error;
-    return GR.sb.from('apto_gravador').insert({lista_id:GR.lista,autor_nome:grNome(),audio_path:path,duracao:dur});
-  }).then(function(r){if(r.error)throw r.error;GR.note='Gravação salva como pendente.';return grLoad()})
-  .catch(function(e){GR.note='Falha ao salvar: '+(e&&e.message||e)}).then(function(){GR.busy=0;grRedraw()});
+    return GR.sb.from('apto_gravador').insert({lista_id:GR.lista,autor_nome:grNome(),audio_path:path,duracao:dur,tipo:GR.tipoAt||'auto'});
+  }).then(function(r){if(r.error)throw r.error;GR.note='';return grLoad()})
+  .then(function(){GR.busy=0;grSend(1)},function(e){GR.note='Falha ao salvar: '+(e&&e.message||e);GR.busy=0;grRedraw()});
 }
-function grSend(){
-  if(GR.busy)return;GR.busy=1;GR.note='Enviando…';grRedraw();
+function grSend(auto){
+  if(GR.busy)return;GR.busy=1;if(!auto){GR.note='Enviando…';grRedraw()}
   GR.sb.auth.getSession().then(function(r){
     var tk=r&&r.data&&r.data.session&&r.data.session.access_token;if(!tk)throw new Error('faça login de novo');
     return fetch(SB_URL+'/functions/v1/apto-gravador-ping',{method:'POST',headers:{'Authorization':'Bearer '+tk,'apikey':SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({lista_id:GR.lista})});
   }).then(function(r){return r.json().catch(function(){return {}})}).then(function(j){
-    GR.note=j.ok?(j.skipped?'Já enviado há pouco; tente em '+j.wait_s+'s.':'Enviado! '+(j.pending||0)+' pendente(s).'):(j.erro||'Falha ao enviar.');
+    GR.note=j.ok?(auto?'Enviado ao assistente.':(j.skipped?'Já enviado há pouco; o assistente pega junto.':'Enviado! '+(j.pending||0)+' pendente(s).')):(j.erro||'Falha ao avisar o assistente; a gravação ficou salva.');
   }).catch(function(e){GR.note='Falha: '+(e&&e.message||e)}).then(function(){GR.busy=0;grRedraw()});
 }
 function grDel(id){
@@ -245,34 +270,85 @@ function grPlay(id,path){
   if(GR.url[id]){var a=document.getElementById('gra-'+id);if(a)a.play();return}
   GR.sb.storage.from('apto-audio').createSignedUrl(path,3600).then(function(r){if(r.error){GR.note=r.error.message;grRedraw();return}GR.url[id]=r.data.signedUrl;grRedraw()});
 }
+/* ---------- GRAVADOR v3 (padrão Gravador 2 do casamento, cores do apto) ---------- */
+var PRST={pendente:'#FF9F0A',aprovado:'#0A84FF',recusado:'#FF3B30',criado:'#34C759',erro:'#FF3B30',processado:'#34C759',processando:'#5E5CE6'};
+var PRTI={gasto:['💸','Gasto · Pagamento'],tarefa:['🗓️','Tarefa']};
+function gic(p){return '<svg class="gic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>'}
+var GTIPOS=[['auto','Automático','o assistente decide',gic('<path d="M12 3l1.8 4.6L18.5 9l-4.7 1.6L12 15l-1.8-4.4L5.5 9l4.7-1.4z"/><path d="M18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/>')],
+ ['gasto','Gasto · Pagamento','valor e fornecedor',gic('<rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18M7 15h3"/>')],
+ ['tarefa','Tarefa','com executor e prazo',gic('<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8.5 12.5l2.5 2.5 5-6"/>')],
+ ['compra','Compra','item ou modelo para a casa',gic('<path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/>')],
+ ['nota','Nota','só registrar',gic('<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/>')]];
+var GT='auto',GDD=0;PR.open=null;var HOPEN=null;
+function gTipo(k){for(var i=0;i<GTIPOS.length;i++)if(GTIPOS[i][0]===k)return GTIPOS[i];return GTIPOS[0]}
+function grvGo(t){if(GR.rec&&t!=='gravar'&&!confirm('Parar e salvar a gravação?'))return;if(GR.rec&&t!=='gravar')grStop();GRV=t;GDD=0;render();window.scrollTo(0,0)}
+function grSubBar(){if(TAB!=='grav'||!GR.user||!GR.lista)return '';var n=PR.rows.filter(function(p){return p.status==='pendente'}).length;
+  return [['gravar','Gravar'],['aprovar','Aprovar'],['hist','Histórico']].map(function(t){return '<div class="'+(GRV===t[0]?'on':'')+'" onclick="grvGo(\''+t[0]+'\')">'+t[1]+(t[0]==='aprovar'&&n?'<span class="badge">'+n+'</span>':'')+'</div>'}).join('')}
+function grHead(t){return '<div class="full"><div class="kick">Apartamento</div><div class="ttl">'+(t||'Gravador')+'</div></div>'}
+function gStatus(x){if(x.status==='erro')return 'erro';if(x.processado||x.status==='processado')return 'processado';return Date.now()-new Date(x.created_at).getTime()<180000?'processando':'pendente'}
+function gPill(s,lab){var c=PRST[s]||'#8E8E93';return '<span class="pill" style="background:'+c+'1f;color:'+c+'">'+e(lab||s)+'</span>'}
+function grLogin2(){var note=GR.note?'<div class="full sub" style="text-align:center;opacity:.7">'+e(GR.note)+'</div>':'';return grHead()+cpLogin()+note}
 function vGravar(){
-  var h=grHead();
-  if(!GR.ready){if(!GR.loading)setTimeout(grInit,0);return h+'<div class="full empty">Carregando…</div>'}
-  var note=GR.note?'<div class="full sub" style="text-align:center;opacity:.7">'+e(GR.note)+'</div>':'';
-  if(!GR.user)return h+'<div class="card full"><h3>Entrar</h3><div class="sub" style="margin-bottom:10px">Mesma conta do Hub/Casamento.</div><input id="gr-em" type="email" autocomplete="username" placeholder="E-mail" style="width:100%;font:16px -apple-system,Inter,sans-serif;padding:12px;border-radius:14px;border:1px solid rgba(0,0,0,.1);margin-bottom:8px;background:rgba(255,255,255,.8)"><input id="gr-pw" type="password" autocomplete="current-password" placeholder="Senha" style="width:100%;font:16px -apple-system,Inter,sans-serif;padding:12px;border-radius:14px;border:1px solid rgba(0,0,0,.1);margin-bottom:12px;background:rgba(255,255,255,.8)"><button onclick="grLogin()" style="width:100%;border:0;border-radius:16px;padding:13px;background:#0A84FF;color:#fff;font:600 16px -apple-system,Inter,sans-serif">Entrar</button></div>'+note;
-  if(!GR.lista)return h+note;
-  var on=!!GR.rec,pend=GR.rows.filter(function(x){return !x.processado&&x.status==='pendente'}).length;
-  h+='<div class="card full" style="text-align:center"><button onclick="'+(on?'grStop()':'grStart()')+'"'+(GR.busy?' disabled':'')+' style="width:96px;height:96px;border-radius:50%;border:0;margin:6px auto 10px;display:grid;place-items:center;color:#fff;background:'+(on?'#FF3B30':'#0A84FF')+';box-shadow:0 10px 30px '+(on?'rgba(255,59,48,.35)':'rgba(10,132,255,.35)')+';opacity:'+(GR.busy?.5:1)+'">'+(on?'<svg width="34" height="34" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>':ICON.grav.replace('<svg','<svg width="38" height="38"'))+'</button>'
-   +'<div class="num" style="font-size:28px;font-weight:700" id="gr-t">'+(on?grFmt((Date.now()-GR.t0)/1000):'0:00')+'</div><div class="sub">'+(on?'Gravando… toque para parar':'Toque para gravar')+'</div>'
-   +'<button onclick="grSend()"'+(GR.busy||on?' disabled':'')+' style="margin-top:14px;border:0;border-radius:18px;padding:11px 20px;font:600 15px -apple-system,Inter,sans-serif;background:rgba(10,132,255,.14);color:#0A84FF">Enviar agora'+(pend?' ('+pend+')':'')+'</button></div>'+note;
-  var SCG={pendente:'#FF9F0A',processado:'#34C759',erro:'#FF3B30'};
-  h+='<div class="card full"><h3>Gravações</h3>'+(GR.rows.length?GR.rows.map(function(x){
-    var d=new Date(x.created_at),st=x.status||'pendente',c=SCG[st]||'#8E8E93',mine=GR.user&&x.autor_id===GR.user.id;
-    return '<div class="li"><div class="row"><div><div class="b">'+e(x.autor_nome||'—')+' · '+grFmt(x.duracao)+'</div><div class="sub">'+('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)+'</div></div><div class="row" style="gap:6px"><span class="pill" style="background:'+c+'22;color:'+c+'">'+e(st)+'</span>'
-     +(x.audio_path?'<span class="x" onclick="grPlay(\''+x.id+'\',\''+e(x.audio_path)+'\')">▶</span>':'')
-     +(mine&&st==='pendente'&&!x.processado?'<span class="x" onclick="grDel(\''+x.id+'\')">✕</span>':'')+'</div></div>'
-     +(GR.url[x.id]?'<audio id="gra-'+x.id+'" controls autoplay playsinline src="'+GR.url[x.id]+'" style="width:100%;margin-top:8px"></audio>':'')
-     +(x.transcricao?'<div class="sub" style="margin-top:6px;opacity:.7">“'+e(x.transcricao)+'”</div>':'')
-     +(x.resposta?'<div style="margin-top:6px;font-size:14px;white-space:pre-wrap">'+e(x.resposta)+'</div>':'')+'</div>'}).join(''):'<div class="empty">Nenhuma gravação ainda.</div>')+'</div>';
-  return h;
-}
-/* ---------- GRAVADOR · submenu Gravar / Aprovar / Histórico · Supabase: apto_propostas ---------- */
-var PRST={pendente:'#FF9F0A',aprovado:'#0A84FF',recusado:'#8E8E93',criado:'#34C759',erro:'#FF3B30'};
-var PRTI={gasto:['💸','Gasto'],tarefa:['🗓️','Tarefa']};
-function grHead(){var n=PR.rows.filter(function(p){return p.status==='pendente'}).length;
-  return '<div class="full"><div class="kick">Apartamento</div><div class="ttl">Gravador</div></div>'
-  +'<div class="full seg glass">'+[['gravar','Gravar'],['aprovar','Aprovar'],['hist','Histórico']].map(function(t){return '<div class="'+(GRV===t[0]?'on':'')+'" onclick="grvGo(\''+t[0]+'\')">'+t[1]+(t[0]==='aprovar'&&n?'<span class="badge">'+n+'</span>':'')+'</div>'}).join('')+'</div>'}
-function grvGo(t){if(GR.rec&&t!=='gravar'&&!confirm('Parar e salvar a gravação?'))return;if(GR.rec&&t!=='gravar')grStop();GRV=t;render();window.scrollTo(0,0)}
+  var on=!!GR.rec,t=gTipo(on?(GR.tipoAt||GT):GT),last=GR.rows[0];
+  var h='<div class="full gvtop"><div class="kick">Apartamento</div><div class="ttl">Gravador</div>'
+   +'<div class="gdd glass'+(on?' lock':'')+'" onclick="'+(on?'':'GDD=!GDD;render()')+'">'+t[3]+'<div style="flex:1;min-width:0"><div class="gl">Tipo</div><div class="gv">'+e(t[1])+'</div></div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div></div>';
+  if(GDD&&!on)h+='<div class="gdim" onclick="GDD=0;render()"></div><div class="gmenu">'+GTIPOS.map(function(x){return '<div class="o'+(x[0]===GT?' on':'')+'" onclick="GT=\''+x[0]+'\';GDD=0;render()">'+x[3]+'<div><div class="on1">'+e(x[1])+'</div><small>'+e(x[2])+'</small></div>'+(x[0]===GT?'<span class="ck">✓</span>':'')+'</div>'}).join('')+'</div>';
+  h+='<div class="full gstage"><button class="gbtn'+(on?' on':'')+'" onclick="'+(on?'grStop()':'grStart()')+'"'+(GR.busy?' disabled':'')+'>'+(on?'<svg width="34" height="34" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="6" width="12" height="12" rx="2.5"/></svg><span>Parar</span>':ICON.grav.replace('<svg','<svg width="40" height="40"').replace('stroke-width="2"','stroke-width="1.6"')+'<span>Gravar</span>')+'</button>'
+   +'<div class="gclock num'+(on?' rec':'')+'" id="gr-t">'+(on?grFmt((Date.now()-GR.t0)/1000):'0:00')+'</div>'
+   +'<div class="sub" style="font-size:13px">'+(GR.busy?'Enviando…':on?'Gravando como '+e(t[1])+' · toque para parar e enviar':'Toque para gravar · o assistente monta a proposta')+'</div>'
+   +(GR.note?'<div class="sub" style="margin-top:8px;opacity:.75">'+e(GR.note)+'</div>':'')
+   +(last?'<div class="glast glass tap" onclick="grvGo(\'hist\');GHV=\'grav\';HOPEN=\''+last.id+'\';render()"><i style="background:'+(PRST[gStatus(last)]||'#8E8E93')+'"></i>Última: '+e(gTipo(last.tipo||'auto')[1])+' · '+e(dt(last.created_at))+' · '+e(gStatus(last))+'</div>':'')+'</div>';
+  return h}
+function prRow(k,v){return v==null||v===''?'':'<div class="prr"><b>'+k+'</b><span>'+e(v)+'</span></div>'}
+function prSolic(p){var g=p.gravacao_id&&GR.rows.filter(function(x){return x.id===p.gravacao_id})[0];return (p.extra&&p.extra.solicitante)||(g&&g.autor_nome)||''}
+function prCard(p){var tp=prVal(p,'tipo')||'gasto',ti=PRTI[tp]||['🎙️',tp],busy=PR.busy[p.id],ed=PR.open===p.id;
+  var h='<div class="card full prc"><div class="row" style="margin-bottom:6px"><span class="prt">'+e(ti[1])+'</span><span class="tap ped" onclick="PR.open='+(ed?'null':'\''+p.id+'\'')+';render()">'+(ed?'✓ Fechar edição':'✎ Editar')+'</span></div>';
+  if(!ed){h+=prRow('Tipo',ti[1])+prRow('Título',prVal(p,'titulo'))+prRow('Solicitante',prSolic(p))+(tp==='tarefa'?prRow('Executor',prVal(p,'responsavel')):'')
+    +prRow(tp==='tarefa'?'Data':'Data',prVal(p,'data')?dfull(prVal(p,'data')):'')+(tp==='tarefa'?prRow('Prazo',prVal(p,'prazo')?dfull(prVal(p,'prazo')):''):'')
+    +(tp==='gasto'?prRow('Valor',brl(prVal(p,'valor')))+prRow('Fornecedor',prVal(p,'responsavel')):'')+prRow('Cômodo',prVal(p,'ambiente'))
+    +(prVal(p,'descricao')?'<div class="prd">'+e(prVal(p,'descricao'))+'</div>':'')}
+  else{h+='<div class="pf"><label class="w">Tipo<select onchange="prSet(\''+p.id+'\',\'tipo\',this.value)"><option value="gasto"'+(tp==='gasto'?' selected':'')+'>Gasto · Pagamento</option><option value="tarefa"'+(tp==='tarefa'?' selected':'')+'>Tarefa (Cronograma)</option></select></label>'
+    +prField(p,'titulo','Título','text',1)
+    +(tp==='gasto'?prField(p,'valor','Valor (R$)','number')+prField(p,'responsavel','Fornecedor','text')+prField(p,'data','Data','date')+prField(p,'ambiente','Cômodo','text')
+      :prField(p,'responsavel','Executor','text')+prField(p,'ambiente','Cômodo','text')+prField(p,'data','Data','date')+prField(p,'prazo','Prazo','date'))
+    +prField(p,'descricao','Descrição','area',1)+'</div>'}
+  h+='<div class="row" style="margin-top:12px"><button class="btn no"'+(busy?' disabled':'')+' onclick="prDecide(\''+p.id+'\',\'recusado\')">Recusar</button><button class="btn ok"'+(busy?' disabled':'')+' onclick="prDecide(\''+p.id+'\',\'aprovado\')">Aprovar</button></div></div>';
+  return h}
+function prSet(id,k,v){(PR.edit[id]=PR.edit[id]||{})[k]=v;if(k==='tipo')render()}
+function prAll(){var L=PR.rows.filter(function(p){return p.status==='pendente'});if(!L.length||!confirm('Aprovar as '+L.length+' propostas?'))return;
+  L.reduce(function(pr,p){return pr.then(function(){return new Promise(function(ok){prDecide(p.id,'aprovado');var t=setInterval(function(){if(!PR.busy[p.id]){clearInterval(t);ok()}},150)})})},Promise.resolve())}
+function grRetry(id){var x=GR.rows.filter(function(r){return r.id===id})[0];if(!x)return;GR.note='Reenviando ao assistente…';grRedraw();grSend(1)}
+function vAprovar(){
+  var L=PR.rows.filter(function(p){return p.status==='pendente'}),W=GR.rows.filter(function(x){var s=gStatus(x);return s==='processando'||s==='pendente'||s==='erro'});
+  var h=grHead()+'<div class="full row"><span class="sub" style="font-size:13px">'+(L.length?L.length+' proposta'+(L.length>1?'s':'')+' pendente'+(L.length>1?'s':''):'Nenhuma proposta pendente')+'</span>'+(L.length>1?'<span class="tap gall" onclick="prAll()">✓ Aprovar todas</span>':'')+'</div>';
+  if(GR.note)h+='<div class="full sub" style="text-align:center;opacity:.7">'+e(GR.note)+'</div>';
+  h+=L.map(prCard).join('');
+  if(W.length)h+='<div class="card full">'+W.map(function(x){var s=gStatus(x);return '<div class="gi'+(s==='erro'?' tap':'')+'"'+(s==='erro'?' onclick="grRetry(\''+x.id+'\')"':'')+'>'+gAv(x)+'<div class="gm"><div class="b">'+e(gTipo(x.tipo||'auto')[1])+' · '+grFmt(x.duracao)+'</div><div class="sub">'+(s==='erro'?'erro · toque para tentar de novo':s==='processando'?'transcrevendo…':'aguardando o assistente')+'</div></div>'+gPill(s)+'</div>'}).join('')+'</div>';
+  if(!L.length&&!W.length)h+='<div class="full empty">Tudo em dia ✓</div>';
+  return h}
+function gAv(x){var n=(x.autor_nome||'?').trim();return '<div class="gav'+(/^d[eé]bora/i.test(n)?' d':'')+'">'+e(n.charAt(0).toUpperCase())+'</div>'}
+function vHist(){
+  var h=grHead()+'<div class="full gsub2"><div class="'+(GHV==='prop'?'on':'')+'" onclick="GHV=\'prop\';HOPEN=null;render()">Propostas</div><div class="'+(GHV==='grav'?'on':'')+'" onclick="GHV=\'grav\';HOPEN=null;render()">Gravações</div></div>';
+  if(GHV==='prop'){var L=PR.rows.filter(function(p){return p.status!=='pendente'});
+    return h+'<div class="card full" style="padding:6px 16px">'+(L.length?L.map(function(p){var ti=PRTI[p.tipo]||['🎙️',p.tipo],op=HOPEN===p.id,g=p.gravacao_id&&GR.rows.filter(function(x){return x.id===p.gravacao_id})[0];
+      var lab=p.status==='criado'&&p.ref?'criado':p.status;
+      return '<div class="gi tap" onclick="HOPEN='+(op?'null':'\''+p.id+'\'')+';render()">'+gAv(g||{autor_nome:prSolic(p)})+'<div class="gm"><div><b>'+e(ti[1])+'</b> · <span class="sub" style="opacity:.6">'+e(dt(p.decidido_em||p.created_at))+'</span></div><div class="sub ell">'+e(p.titulo)+(p.valor!=null?' · '+brl(p.valor):'')+'</div></div>'+gPill(p.status,lab)+'</div>'
+       +(op?'<div class="gopen">'+prRow('Título',p.titulo)+prRow('Solicitante',prSolic(p))+(p.tipo==='tarefa'?prRow('Executor',p.responsavel):prRow('Fornecedor',p.responsavel))+prRow('Valor',brl(p.valor))+prRow('Data',p.data?dfull(p.data):'')+prRow('Prazo',p.prazo?dfull(p.prazo):'')+prRow('Cômodo',p.ambiente)+prRow('Decidida',p.decidido_em?dt(p.decidido_em):'')+prRow('Resultado',p.ref||(p.extra&&p.extra.erro)||'')
+         +(p.descricao?'<div class="prd">'+e(p.descricao)+'</div>':'')+(p.extra&&p.extra.original?'<div class="sub" style="margin-top:6px">Editada antes de aprovar</div>':'')+(p.transcricao?'<div class="prd" style="font-style:italic">“'+e(p.transcricao)+'”</div>':'')
+         +(g&&g.audio_path?'<div id="ha-'+p.id+'" style="margin-top:8px"><button class="btn soft" style="width:100%" onclick="hPlay(\'ha-'+p.id+'\',\''+g.id+'\',\''+e(g.audio_path)+'\')">▶ Ouvir gravação</button></div>':'')+'</div>':'')}).join(''):'<div class="empty">Nenhuma proposta decidida ainda.</div>')+'</div>'}
+  return h+'<div class="card full" style="padding:6px 16px">'+(GR.rows.length?GR.rows.map(function(x){var s=gStatus(x),op=HOPEN===x.id,P=PR.rows.filter(function(p){return p.gravacao_id===x.id});
+    return '<div class="gi tap" onclick="HOPEN='+(op?'null':'\''+x.id+'\'')+';render()">'+gAv(x)+'<div class="gm"><div><b>'+e(gTipo(x.tipo||'auto')[1])+'</b> · <span class="sub" style="opacity:.6">'+e(dt(x.created_at))+' · '+grFmt(x.duracao)+'</span></div><div class="sub ell">'+(x.transcricao?'“'+e(x.transcricao)+'”':s==='erro'?'erro · '+e(x.resposta||''):'sem transcrição ainda')+'</div></div>'+gPill(s)+'</div>'
+     +(op?'<div class="gopen">'+(x.transcricao?'<div class="prd" style="font-style:italic">“'+e(x.transcricao)+'”</div>':'')
+       +(x.audio_path?'<div id="hg-'+x.id+'" style="margin-top:8px"><button class="btn soft" style="width:100%" onclick="hPlay(\'hg-'+x.id+'\',\''+x.id+'\',\''+e(x.audio_path)+'\')">▶ Ouvir '+grFmt(x.duracao)+'</button></div>':'')
+       +(x.resposta?'<div class="prd">'+e(x.resposta)+'</div>':'')
+       +P.map(function(p){return prRow('Proposta',(PRTI[p.tipo]||['',p.tipo])[1]+' · '+p.titulo+' · '+p.status+(p.ref?' ('+p.ref+')':''))}).join('')
+       +(GR.user&&x.autor_id===GR.user.id&&s==='pendente'?'<div class="row" style="margin-top:8px"><button class="btn no" onclick="grDel(\''+x.id+'\')">Apagar gravação</button></div>':'')+'</div>':'')}).join(''):'<div class="empty">Nenhuma gravação ainda.</div>')+'</div>'}
+function hPlay(box,id,path){var b=document.getElementById(box);var put=function(u){if(b)b.innerHTML='<audio controls autoplay playsinline src="'+u+'" style="width:100%"></audio>'};
+  if(GR.url[id])return put(GR.url[id]);GR.sb.storage.from('apto-audio').createSignedUrl(path,3600).then(function(r){if(r.error){if(b)b.innerHTML='<div class="sub">'+e(r.error.message)+'</div>';return}GR.url[id]=r.data.signedUrl;put(r.data.signedUrl)})}
+function vGrav(){
+  if(!GR.ready){if(!GR.loading)setTimeout(grInit,0);return grHead()+'<div class="full empty">Carregando…</div>'}
+  if(!GR.user)return grLogin2();if(!GR.lista)return grHead()+'<div class="full empty">'+e(GR.note||'Sem acesso.')+'</div>';
+  return GRV==='aprovar'?vAprovar():GRV==='hist'?vHist():vGravar()}
 function prLoad(){
   return GR.sb.from('apto_propostas').select('id,gravacao_id,tipo,titulo,descricao,valor,data,ambiente,responsavel,prazo,extra,transcricao,status,ref,decidido_em,created_at').eq('lista_id',GR.lista).order('created_at',{ascending:false}).limit(200)
   .then(function(q){if(q.error){GR.note='Erro ao listar propostas: '+q.error.message;return}PR.rows=q.data||[]});
@@ -283,21 +359,10 @@ function dt(s){var d=new Date(s);return ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.
 function brl(v){return v==null||v===''?'':'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
 function prPill(s){var c=PRST[s]||'#8E8E93';return '<span class="pill" style="background:'+c+'22;color:'+c+'">'+e(s)+'</span>'}
 function prVal(p,k){var ed=PR.edit[p.id];return ed&&k in ed?ed[k]:p[k]}
-function prSet(id,k,v){(PR.edit[id]=PR.edit[id]||{})[k]=v;if(k==='tipo')render()}
 function prField(p,k,lab,type,w){var v=prVal(p,k);v=v==null?'':v;
   var on='oninput="prSet(\''+p.id+'\',\''+k+'\',this.value)"';
   if(type==='area')return '<label class="'+(w?'w':'')+'">'+lab+'<textarea '+on+'>'+e(v)+'</textarea></label>';
   return '<label class="'+(w?'w':'')+'">'+lab+'<input type="'+type+'"'+(type==='number'?' step="0.01" inputmode="decimal"':'')+' value="'+e(v)+'" '+on+'></label>'}
-function prCard(p){var tp=prVal(p,'tipo')||'gasto',ti=PRTI[tp]||['🎙️',tp],busy=PR.busy[p.id];
-  var h='<div class="card full"><div class="row"><div><div style="font-size:13px;font-weight:700;color:#0A84FF">'+ti[0]+' '+ti[1].toUpperCase()+'</div><div class="sub">'+dt(p.created_at)+'</div></div>'+prPill(p.status)+'</div>';
-  h+='<div class="pf"><label class="w">Tipo<select onchange="prSet(\''+p.id+'\',\'tipo\',this.value)"><option value="gasto"'+(tp==='gasto'?' selected':'')+'>Gasto</option><option value="tarefa"'+(tp==='tarefa'?' selected':'')+'>Tarefa (Cronograma)</option></select></label>';
-  h+=prField(p,'titulo',tp==='gasto'?'Fornecedor / item':'Tarefa','text',1);
-  if(tp==='gasto')h+=prField(p,'valor','Valor (R$)','number')+prField(p,'data','Data','date')+prField(p,'ambiente','Cômodo','text')+prField(p,'responsavel','Fornecedor / quem','text');
-  else h+=prField(p,'data','Data','date')+prField(p,'prazo','Prazo','date')+prField(p,'ambiente','Cômodo','text')+prField(p,'responsavel','Responsável','text');
-  h+=prField(p,'descricao','Descrição','area',1)+'</div>';
-  if(p.transcricao)h+='<div class="sub" style="margin-top:10px;opacity:.7">“'+e(p.transcricao)+'”</div>';
-  h+='<div class="row" style="margin-top:14px"><button class="btn no"'+(busy?' disabled':'')+' onclick="prDecide(\''+p.id+'\',\'recusado\')">Recusar</button><button class="btn ok"'+(busy?' disabled':'')+' onclick="prDecide(\''+p.id+'\',\'aprovado\')">Aprovar</button></div></div>';
-  return h}
 function prDecide(id,st){
   var p=PR.rows.filter(function(x){return x.id===id})[0];if(!p||PR.busy[id])return;
   var ed=PR.edit[id]||{},up={status:st};
@@ -308,50 +373,11 @@ function prDecide(id,st){
   PR.busy[id]=1;grRedraw();
   GR.sb.from('apto_propostas').update(up).eq('id',id).eq('status','pendente').select('id').then(function(q){
     if(q.error)throw q.error;if(!q.data||!q.data.length)throw new Error('a proposta já foi decidida');
-    delete PR.edit[id];GR.note=st==='aprovado'?'Aprovada. O assistente vai lançar.':'Recusada.';return prLoad();
+    delete PR.edit[id];PR.open=null;GR.note=st==='aprovado'?'Aprovada. O assistente vai lançar.':'Recusada.';return prLoad();
   }).catch(function(err){GR.note='Falha: '+(err&&err.message||err)}).then(function(){delete PR.busy[id];grRedraw()});
 }
-function prAll(){var L=PR.rows.filter(function(p){return p.status==='pendente'});if(!L.length||!confirm('Aprovar as '+L.length+' propostas?'))return;
-  L.reduce(function(pr,p){return pr.then(function(){return new Promise(function(ok){prDecide(p.id,'aprovado');var t=setInterval(function(){if(!PR.busy[p.id]){clearInterval(t);ok()}},150)})})},Promise.resolve())}
-function vAprovar(){
-  var L=PR.rows.filter(function(p){return p.status==='pendente'});
-  var proc=GR.rows.filter(function(x){return !x.processado&&x.status==='pendente'}).length,err=GR.rows.filter(function(x){return x.status==='erro'});
-  var h='';
-  if(proc)h+='<div class="card full"><div class="row"><div class="b">⏳ '+proc+' gravação(ões) aguardando o assistente</div><button class="btn soft" style="flex:none;padding:9px 14px" onclick="grSend()"'+(GR.busy?' disabled':'')+'>Enviar</button></div></div>';
-  err.forEach(function(x){h+='<div class="card full"><div class="row"><div><div class="b" style="color:#FF3B30">Erro ao processar</div><div class="sub">'+e(x.autor_nome||'')+' · '+dt(x.created_at)+'</div></div>'+prPill('erro')+'</div>'+(x.resposta?'<div class="sub" style="margin-top:6px">'+e(x.resposta)+'</div>':'')+'</div>'});
-  if(!L.length)return h+'<div class="full empty">Nenhuma proposta pendente.</div>';
-  if(L.length>1)h+='<div class="full row"><span class="sub">'+L.length+' pendentes</span><span class="tap" style="font-size:13px;color:#34C759;font-weight:700" onclick="prAll()">Aprovar todas</span></div>';
-  return h+L.map(prCard).join('');
-}
-function vHist(){
-  var h='<div class="full seg glass sm"><div class="'+(GHV==='prop'?'on':'')+'" onclick="GHV=\'prop\';render()">Propostas · '+PR.rows.filter(function(p){return p.status!=='pendente'}).length+'</div><div class="'+(GHV==='grav'?'on':'')+'" onclick="GHV=\'grav\';render()">Gravações · '+GR.rows.length+'</div></div>';
-  if(GHV==='prop'){var L=PR.rows.filter(function(p){return p.status!=='pendente'});
-    return h+'<div class="card full">'+(L.length?L.map(function(p){var ti=PRTI[p.tipo]||['🎙️',p.tipo];return '<div class="row li tap" onclick="shProp(\''+p.id+'\')"><div style="min-width:0"><div class="b">'+ti[0]+' '+e(p.titulo)+'</div><div class="sub">'+ti[1]+(p.valor!=null?' · '+brl(p.valor):'')+' · '+dt(p.decidido_em||p.created_at)+'</div></div><div style="flex:none">'+prPill(p.status)+' <span style="opacity:.3">›</span></div></div>'}).join(''):'<div class="empty">Nenhuma proposta decidida ainda.</div>')+'</div>'}
-  return h+'<div class="card full">'+(GR.rows.length?GR.rows.map(function(x){var st=x.status||'pendente',n=PR.rows.filter(function(p){return p.gravacao_id===x.id}).length;return '<div class="row li tap" onclick="shGrav(\''+x.id+'\')"><div><div class="b">'+e(x.autor_nome||'—')+' · '+grFmt(x.duracao)+'</div><div class="sub">'+dt(x.created_at)+(n?' · '+n+' proposta'+(n>1?'s':''):'')+'</div></div><div style="flex:none">'+prPill(st)+' <span style="opacity:.3">›</span></div></div>'}).join(''):'<div class="empty">Nenhuma gravação ainda.</div>')+'</div>';
-}
-function shProp(id){var p=PR.rows.filter(function(x){return x.id===id})[0];if(!p)return;var ti=PRTI[p.tipo]||['🎙️',p.tipo],o=(p.extra&&p.extra.original)||null;
-  var L=[['Status',p.status],['Tipo',ti[1]]];if(p.valor!=null)L.push(['Valor',brl(p.valor)]);if(p.data)L.push(['Data',dfull(p.data)]);if(p.prazo)L.push(['Prazo',dfull(p.prazo)]);if(p.ambiente)L.push(['Cômodo',p.ambiente]);if(p.responsavel)L.push(['Responsável',p.responsavel]);
-  L.push(['Criada',dt(p.created_at)]);if(p.decidido_em)L.push(['Decidida',dt(p.decidido_em)]);if(p.ref)L.push(['Lançado em',p.ref]);if(p.extra&&p.extra.erro)L.push(['Erro',p.extra.erro]);
-  var g=p.gravacao_id&&GR.rows.filter(function(x){return x.id===p.gravacao_id})[0];
-  openSheet('<div class="row"><div><div style="font-size:13px;color:'+(PRST[p.status]||'#8E8E93')+';font-weight:700">'+ti[0]+' PROPOSTA</div><div style="font-size:24px;font-weight:800">'+e(p.titulo)+'</div></div><span class="x" onclick="closeSheet()">✕</span></div>'+kv(L)
-   +(p.descricao?'<h3 style="margin-top:16px">Descrição</h3><div style="font-size:14px;white-space:pre-wrap">'+e(p.descricao)+'</div>':'')
-   +(o?'<h3 style="margin-top:16px">Antes da edição</h3>'+kv(Object.keys(o).filter(function(k){return o[k]!=null&&String(o[k])!==String(p[k]==null?'':p[k])}).map(function(k){return [k,String(o[k])]})):'')
-   +(p.transcricao?'<h3 style="margin-top:16px">Transcrição</h3><div class="sub" style="font-size:13px;opacity:.75">“'+e(p.transcricao)+'”</div>':'')
-   +(g?'<div class="tap" style="font-size:13px;color:#0A84FF;font-weight:600;padding-top:14px" onclick="shGrav(\''+g.id+'\')">Ver gravação ›</div>':''))}
-function shGrav(id){var x=GR.rows.filter(function(r){return r.id===id})[0];if(!x)return;var P=PR.rows.filter(function(p){return p.gravacao_id===id});
-  openSheet('<div class="row"><div><div style="font-size:13px;color:#0A84FF;font-weight:700">🎙️ GRAVAÇÃO</div><div style="font-size:24px;font-weight:800">'+e(x.autor_nome||'—')+' · '+grFmt(x.duracao)+'</div></div><span class="x" onclick="closeSheet()">✕</span></div>'
-   +kv([['Status',x.status||'pendente'],['Gravada',dt(x.created_at)],['Processada',x.processado_em?dt(x.processado_em):'—']])
-   +(x.audio_path?'<div id="shaud" style="margin-top:12px"><button class="btn soft" style="width:100%" onclick="shPlay(\''+x.id+'\',\''+e(x.audio_path)+'\')">▶ Ouvir</button></div>':'')
-   +(x.transcricao?'<h3 style="margin-top:16px">Transcrição</h3><div class="sub" style="font-size:13px;opacity:.75">“'+e(x.transcricao)+'”</div>':'')
-   +(x.resposta?'<h3 style="margin-top:16px">Resposta</h3><div style="font-size:14px;white-space:pre-wrap">'+e(x.resposta)+'</div>':'')
-   +(P.length?'<h3 style="margin-top:16px">Propostas</h3>'+P.map(function(p){return '<div class="row li tap" onclick="shProp(\''+p.id+'\')"><span class="b">'+(PRTI[p.tipo]||['🎙️'])[0]+' '+e(p.titulo)+'</span>'+prPill(p.status)+'</div>'}).join(''):''))}
 function shPlay(id,path){var box=document.getElementById('shaud');var put=function(u){if(box)box.innerHTML='<audio controls autoplay playsinline src="'+u+'" style="width:100%"></audio>'};
   if(GR.url[id])return put(GR.url[id]);GR.sb.storage.from('apto-audio').createSignedUrl(path,3600).then(function(r){if(r.error){if(box)box.innerHTML='<div class="sub">'+e(r.error.message)+'</div>';return}GR.url[id]=r.data.signedUrl;put(r.data.signedUrl)})}
-function vGrav(){
-  if(GRV==='gravar'||!GR.ready||!GR.user||!GR.lista)return vGravar();
-  var note=GR.note?'<div class="full sub" style="text-align:center;opacity:.7">'+e(GR.note)+'</div>':'';
-  return grHead()+note+(GRV==='aprovar'?vAprovar():vHist());
-}
 /* ---------- GASTOS: submenu Lançamentos | Mês ---------- */
 function gsHead(){return head('Gastos')+'<div class="full seg glass">'+[['lanc','Lançamentos'],['mes','Mês']].map(function(t){return '<div class="'+(GSV===t[0]?'on':'')+'" onclick="GSV=\''+t[0]+'\';render();window.scrollTo(0,0)">'+t[1]+'</div>'}).join('')+'</div>'}
 function vGastos(){return GSV==='mes'?vMes():vLanc()}
@@ -428,7 +454,7 @@ function go(t){if(GR.rec&&t!=='grav'&&!confirm('Parar e salvar a gravação?'))r
 function render(keepFocus){
   var a=document.getElementById('app');
   a.innerHTML=TAB==='resumo'?vResumo():TAB==='gastos'?vGastos():TAB==='compras'?vCompras():TAB==='grav'?vGrav():vCrono();
-  document.getElementById('tabs').innerHTML=TABS.map(function(t){return '<div class="'+(TAB===t[0]?'on':'')+'" onclick="go(\''+t[0]+'\')">'+ICON[t[0]]+t[1]+'</div>'}).join('');
+  var gb=document.getElementById('gsubbar'),gsb=grSubBar();gb.innerHTML=gsb;gb.style.display=gsb?'flex':'none';document.body.classList.toggle('withsub',!!gsb);document.getElementById('tabs').innerHTML=TABS.map(function(t){return '<div class="'+(TAB===t[0]?'on':'')+'" onclick="go(\''+t[0]+'\')">'+ICON[t[0]]+t[1]+'</div>'}).join('');
   if(keepFocus){var q=document.getElementById('q');if(q){q.focus();q.setSelectionRange(q.value.length,q.value.length)}}
 }
 function loadData(){return fetch('data.json?t='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(String(r.status));return r.json()})}
@@ -439,7 +465,7 @@ function ptrIgnore(t){
   if(document.getElementById('sh').classList.contains('open'))return 1;
   if(!t||!t.closest)return 0;
   if(GR.rec)return 1;
-  return t.closest('#sh,#ov,#tabs,select,input,textarea,button,a')?1:0;
+  return t.closest('#sh,#ov,#tabs,#gsubbar,.gmenu,select,input,textarea,button,a')?1:0;
 }
 function ptrShow(px,busy){
   var el=document.getElementById('ptr');
