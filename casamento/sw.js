@@ -1,5 +1,5 @@
 /* Casamento — só esta pasta. index.html e version.json em network-first. */
-var CACHE='casamento-v1';
+var CACHE='casamento-v2';
 self.addEventListener('install',function(){self.skipWaiting()});
 self.addEventListener('activate',function(e){e.waitUntil(self.clients.claim())});
 self.addEventListener('fetch',function(e){
