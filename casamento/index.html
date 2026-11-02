@@ -105,6 +105,17 @@ body.hassub .wrap{padding-bottom:calc(env(safe-area-inset-bottom) + 196px)}
 .g2-last{margin:36px auto 0;max-width:340px;display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(255,253,248,.66);border:1px solid rgba(201,169,106,.35);font-size:12px;color:#3b3124}
 .g2-dot{width:8px;height:8px;border-radius:50%;flex:none}
 .g2-dot.ok{background:#34C759}.g2-dot.wait{background:#C4A46A}.g2-dot.err{background:#C0392B}.g2-dot.run{background:#46628a}
+.g2-modo{display:flex;width:220px;margin:14px auto 0;padding:4px;border-radius:999px;background:rgba(255,252,245,.72);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(201,169,106,.45);box-shadow:0 8px 20px rgba(150,120,60,.10)}
+.g2-modo button{flex:1;border:0;background:transparent;border-radius:999px;padding:8px 0;font:600 13px Inter,sans-serif;color:#6d6254;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.g2-modo button svg{width:15px;height:15px;display:block}
+.g2-modo button.on{background:#8d6e45;color:#fff}
+.g2-modo~.g2-ddwrap~.g2-mic:not(.on){margin-top:84px}
+.g2-txt{display:block;box-sizing:border-box;width:100%;min-height:160px;margin:18px 0 0;padding:16px;border-radius:22px;border:1px solid rgba(201,169,106,.45);background:rgba(255,252,245,.72);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 10px 26px rgba(150,120,60,.12);font:400 16px/1.45 Inter,sans-serif;color:#3b3124;resize:none;outline:none}
+.g2-txt:focus{border-color:#B08D57}
+.g2-txt::placeholder{color:#b3a48a}
+.g2-sendtxt{display:block;width:100%;margin-top:14px;border:0;border-radius:999px;padding:14px;background:linear-gradient(135deg,#d8bb84,#a8814b);color:#fff;font:600 14px Inter,sans-serif;cursor:pointer;box-shadow:0 8px 20px rgba(154,115,64,.25)}
+.g2-sendtxt:disabled{opacity:.5;cursor:default}
+.dark .g2-modo,.dark .g2-txt{background:rgba(40,34,26,.7);color:#f1e6d2}
 .g2-discard{display:block;margin:12px auto 0;border:0;background:transparent;color:#9a8a70;font:600 13px Inter,sans-serif;cursor:pointer}
 .g2-dim{position:fixed;inset:0;z-index:1;background:rgba(247,241,230,.45);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
 .g2-menu{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:3;width:auto;background:rgba(255,253,248,.82);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);border:1px solid rgba(201,169,106,.35);border-radius:22px;box-shadow:0 16px 40px rgba(150,120,60,.18);padding:8px}
@@ -238,7 +249,7 @@ html,body{overscroll-behavior-y:contain}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* Publicação: manter igual a casamento/version.json */
-var APP_VERSION='20261102-2025';
+var APP_VERSION='20261102-2045';
 var D=null,TAB='resumo',MES=null,CRF='todos',F={q:'',cat:'',fornecedor:'',tipo:''};
 var AC='#B08D57',AC2='#D9C29A',MU='#9a8a70',TRK='rgba(176,141,87,.15)',PAL=['#B08D57','#C9A96A','#8E7550','#D8BF8E','#A3865E','#E3D1AE'];
 var MN=['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'],MNL=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
@@ -649,7 +660,8 @@ function cvSave(){
 }
 function cvDoDel(){if(!CV.draft||!CV.draft.id)return;cvCommit({type:'del',id:CV.draft.id})}
 /* ---------- CHAT (casamento_chat; mesma sessão e lista dos convidados) ---------- */
-var CH={state:'init',err:'',note:'',msgs:[],urls:{},listaId:'',email:'',uid:'',draft:'',busy:false,rec:null,recAt:0,transcript:'',rt:null,askId:'',tipo:'automatico',tipoAt:'automatico',durSec:0,mode:'',fails:[],sending:null,pend:[],histP:[],exigir:true,hist:'propostas',dd:false};
+var CH={state:'init',err:'',note:'',msgs:[],urls:{},listaId:'',email:'',uid:'',draft:'',busy:false,rec:null,recAt:0,transcript:'',rt:null,askId:'',tipo:'automatico',tipoAt:'automatico',durSec:0,mode:'',fails:[],sending:null,pend:[],histP:[],exigir:true,hist:'propostas',dd:false,inModo:'voz',txt:''};
+try{if(localStorage.getItem('cas_grav_modo')==='texto')CH.inModo='texto'}catch(err){}
 var GV_TIPOS=[['automatico','Automático','Automático','o assistente decide'],['gasto','Gasto','Gasto · Pagamento','valor e fornecedor'],['tarefa','Tarefa','Tarefa','com executor e prazo'],['compromisso','Compromisso','Compromisso','data e hora'],['nota','Nota','Nota','só registrar'],['outro','Outro','Outro','']];
 function chNome(email){var em=String(email||'').toLowerCase();if(em==='konraddiego@gmail.com')return 'Diego';if(em==='debiandrade8@gmail.com')return 'Débora';return email||''}
 function chWhen(iso){var d=new Date(iso);if(isNaN(d.getTime()))return '';return d.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}
@@ -659,7 +671,7 @@ function chMime(){return pickMime()}
 function chUuid(){if(window.crypto&&crypto.randomUUID)return crypto.randomUUID();return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){var r=Math.random()*16|0;return (c==='x'?r:(r&0x3|0x8)).toString(16)})}
 function chPingMsg(status){if(status===200)return 'Enviado, respondo em instantes';if(status===503)return 'Mensagem salva; será lida às 20h';return 'Não consegui chamar o assistente.'}
 function chMicSvg(){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v3M9 20h6"/></svg>'}
-function chWatch(){if(!sb||!CH.listaId||CH.rt||!sb.channel)return;var bump=function(){if(TAB==='chat'&&!CH.rec)chLoad(true)};CH.rt=sb.channel('cas-chat-'+CH.listaId).on('postgres_changes',{event:'*',schema:'public',table:'casamento_chat',filter:'lista_id=eq.'+CH.listaId},bump).on('postgres_changes',{event:'*',schema:'public',table:'casamento_proposals',filter:'lista_id=eq.'+CH.listaId},bump).subscribe()}
+function chWatch(){if(!sb||!CH.listaId||CH.rt||!sb.channel)return;var bump=function(){var ae=document.activeElement;if(TAB==='chat'&&!CH.rec&&!(ae&&ae.id==='g2Txt'))chLoad(true)};CH.rt=sb.channel('cas-chat-'+CH.listaId).on('postgres_changes',{event:'*',schema:'public',table:'casamento_chat',filter:'lista_id=eq.'+CH.listaId},bump).on('postgres_changes',{event:'*',schema:'public',table:'casamento_proposals',filter:'lista_id=eq.'+CH.listaId},bump).subscribe()}
 function chLoad(quiet){
   var client=sbClient();
   if(!client){CH.state='error';CH.err='Não carregou o conector.';if(TAB==='chat')render();return Promise.reject(new Error('sem conector'))}
@@ -678,7 +690,7 @@ function chLoad(quiet){
     return listaP.then(function(id){
       if(!id)return;
       CH.listaId=id;
-      var chatQ=sb.from('casamento_chat').select('id,autor_id,autor_nome,papel,texto,audio_path,created_at,processado,processado_em,tipo,status,transcricao,erro,duracao_s').eq('lista_id',id).eq('papel','user').not('audio_path','is',null).order('created_at',{ascending:false}).limit(100);
+      var chatQ=sb.from('casamento_chat').select('id,autor_id,autor_nome,papel,texto,audio_path,created_at,processado,processado_em,tipo,status,transcricao,erro,duracao_s').eq('lista_id',id).eq('papel','user').or('audio_path.not.is.null,texto.like."[tipo:*"').order('created_at',{ascending:false}).limit(100);
         var pendQ=sb.from('casamento_proposals').select('*').eq('lista_id',id).eq('status','pendente').order('created_at',{ascending:false});
         var histQ=sb.from('casamento_proposals').select('*').eq('lista_id',id).neq('status','pendente').order('created_at',{ascending:false}).limit(100);
         var prefQ=sb.from('casamento_voice_prefs').select('exigir_aprovacao').eq('user_id',CH.uid).limit(1);
@@ -774,6 +786,20 @@ function gvHead(){return '<div class="full gvpage">'+''+'<div class="gv-body">'+
 function chMetaMap(){try{return JSON.parse(localStorage.getItem('cas_grav_meta')||'{}')}catch(err){return {}}}
 function chMetaPut(id,o){try{var m=chMetaMap();m[String(id)]=o;localStorage.setItem('cas_grav_meta',JSON.stringify(m))}catch(err){}}
 function gvTexto(tipo,dur){return '[tipo:'+(tipo||'automatico')+'|dur:'+(Math.max(0,dur|0))+']'}
+function gvTyped(m){if(!m||m.audio_path)return '';return String(m.texto||'').replace(/^\[tipo:[a-z]+\|dur:\d+\]\s*/,'')}
+function gvRecTx(m){return (m&&m.transcricao)||gvTyped(m)}
+function gvSetModo(md){if(CH.phase==='rec'||CH.rec)return;CH.inModo=md==='texto'?'texto':'voz';try{localStorage.setItem('cas_grav_modo',CH.inModo)}catch(err){}CH.dd=false;render();if(CH.inModo==='texto')setTimeout(function(){var t=document.getElementById('g2Txt');if(t)t.focus()},30)}
+function gvTxtInput(el){CH.txt=el.value;var b=document.getElementById('g2SendTxt');if(b)b.disabled=CH.busy||!CH.txt.trim()}
+function gvSendTyped(){
+  var el=document.getElementById('g2Txt');var txt=String(el?el.value:CH.txt||'').trim();
+  if(!txt||CH.busy||!CH.listaId)return;
+  var tipo=CH.tipo||'automatico';CH.tipoAt=tipo;CH.busy=true;CH.txt=txt;render();
+  chInsert({texto:gvTexto(tipo,0)+' '+txt,audio_path:null,tipo:tipo,duracao_s:0}).then(function(r){
+    if(r.error)throw new Error(r.error.message);
+    CH.busy=false;CH.txt='';gvToast('✓ Texto enviado · vira proposta em Aprovar','ok');
+    return chLoad(true).then(function(){return chPing(false)});
+  }).catch(function(err){CH.busy=false;gvToast((err&&err.message)||'Não enviei o texto.','err');render()});
+}
 function gvParseTag(texto){var m=String(texto||'').match(/^\[tipo:([a-z]+)\|dur:(\d+)\]/);if(!m)return null;return {tipo:m[1],dur:parseInt(m[2],10)}}
 function gvPingStamp(){if(CH.pingAt)return CH.pingAt;try{var s=sessionStorage.getItem('cas_grav_ping');if(s)CH.pingAt=+s}catch(err){}return CH.pingAt||0}
 function gvMarkPing(){CH.pingAt=Date.now();try{sessionStorage.setItem('cas_grav_ping',String(CH.pingAt))}catch(err){}clearTimeout(CH.pingTimer);CH.pingTimer=setTimeout(function(){if(TAB==='chat')render()},180000)}
@@ -857,13 +883,18 @@ function g2WhenShort(iso){var d=new Date(iso);if(isNaN(d.getTime()))return '';re
 function g2Date(iso){if(!iso)return '';var p=String(iso).slice(0,10).split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:''}
 function g2Brl(v){if(v==null||v==='')return '';var n=Number(v);if(isNaN(n))return '';return n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
 function g2TipoHead(t){t=String(t||'').toLowerCase();if(t==='gasto')return 'GASTO · PAGAMENTO';if(t==='tarefa')return 'TAREFA';if(t==='compromisso')return 'COMPROMISSO';if(t==='nota')return 'NOTA';if(t==='automatico')return 'AUTOMÁTICO';return t?t.toUpperCase():'NOTA'}
-function g2Last(){var m=null;(CH.msgs||[]).forEach(function(x){if(x.audio_path&&(!m||x.created_at>m.created_at))m=x});if(!m)return '';var st=g2RecStatus(m);var tipo=gvNome(m.tipo||'automatico');return '<div class="g2-last"><i class="g2-dot '+g2Dot(st)+'"></i><span>Última: '+e(tipo)+' · '+e(g2WhenShort(m.created_at))+' · '+e(st)+'</span></div>'}
+function g2Last(){var m=null;(CH.msgs||[]).forEach(function(x){if((x.audio_path||gvTyped(x))&&(!m||x.created_at>m.created_at))m=x});if(!m)return '';var st=g2RecStatus(m);var tipo=gvNome(m.tipo||'automatico');return '<div class="g2-last"><i class="g2-dot '+g2Dot(st)+'"></i><span>Última: '+e(tipo)+' · '+e(g2WhenShort(m.created_at))+' · '+e(st)+'</span></div>'}
 function g2Gravar(){var rec=CH.phase==='rec'||!!CH.rec;var cur=rec?(CH.tipoAt||CH.tipo||'automatico'):(CH.tipo||'automatico');var meta=g2TipoMeta(cur);
   var dd='<div class="g2-ddwrap"><button type="button" class="g2-dd" onclick="'+(rec?'':'CH.dd=!CH.dd;render()')+'">'+g2Icon(g2TipoKind(cur))+'<div style="flex:1;min-width:0;text-align:left"><div class="g2-k">Tipo</div><div class="g2-v">'+e(meta[2]||meta[1])+'</div></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg></button>'+(CH.dd&&!rec?g2Menu(cur):'')+'</div>';
   var mic=rec?'<button type="button" class="g2-mic on" onclick="gvToggle()" aria-label="Parar">'+gvSqSvg()+'<span>Parar</span></button><button type="button" class="g2-discard" onclick="chMicAbort()">Descartar</button>':'<button type="button" class="g2-mic" onclick="gvToggle()" aria-label="Gravar"'+(CH.busy?' disabled':'')+'>'+g2Icon('mic')+'<span>Gravar</span></button>';
   var clock=rec?'<div class="g2-clock rec"><span class="gv-dot"></span><span id="chTimer">'+chClock()+'</span></div><div class="chwave gv-wave" id="chWave">'+chBars(16,1)+'</div>':'<div class="g2-clock">0:00</div>';
   var cap=rec?'Gravando como '+meta[1]+' · toque para parar':'Toque para gravar · o assistente monta a proposta';
-  return g2Page(g2Head()+dd+mic+clock+'<div class="g2-cap">'+e(cap)+'</div>'+g2Last());
+  var kb='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h1M10 10h1M14 10h1M18 10h0M7 14h10"/></svg>';
+  var mi='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v3"/></svg>';
+  var tx=CH.inModo==='texto'&&!rec;
+  var modo='<div class="g2-modo" role="tablist"><button type="button" class="'+(tx?'':'on')+'" onclick="gvSetModo(\'voz\')">'+mi+'Voz</button><button type="button" class="'+(tx?'on':'')+'"'+(rec?' disabled':'')+' onclick="gvSetModo(\'texto\')">'+kb+'Texto</button></div>';
+  if(tx){var v=CH.txt||'';return g2Page(g2Head()+modo+dd+'<textarea id="g2Txt" class="g2-txt" rows="5" placeholder="Ex.: Paguei 1.300 ao Marcos hoje, sinal do fotógrafo" oninput="gvTxtInput(this)"'+(CH.busy?' disabled':'')+'>'+e(v)+'</textarea><button type="button" id="g2SendTxt" class="g2-sendtxt" onclick="gvSendTyped()"'+(CH.busy||!v.trim()?' disabled':'')+'>'+(CH.busy?'Enviando…':'Enviar para aprovar')+'</button><div class="g2-cap">Mesmo fluxo da gravação · o assistente monta a proposta</div>'+g2Last())}
+  return g2Page(g2Head()+modo+dd+mic+clock+'<div class="g2-cap">'+e(cap)+'</div>'+g2Last());
 }
 function g2Line(k,v){if(v==null||String(v).trim()==='')return '';return '<div class="g2-line"><span>'+e(k)+'</span><b>'+e(v)+'</b></div>'}
 function g2PropCard(p){var tipo=String(p.tipo||'').toLowerCase();var when=tipo==='tarefa'?g2Line('Prazo',g2Date(p.prazo)):(tipo==='gasto'||tipo==='compromisso'?g2Line('Data',g2Date(p.data)):'');
@@ -884,7 +915,7 @@ function g2Historico(){var mode=CH.hist==='gravacoes'?'gravacoes':'propostas';
   var tog='<div class="g2-toggle"><button type="button" class="'+(mode==='propostas'?'on':'')+'" onclick="CH.hist=\'propostas\';render()">Propostas</button><button type="button" class="'+(mode==='gravacoes'?'on':'')+'" onclick="CH.hist=\'gravacoes\';render()">Gravações</button></div>';
   var body='';
   if(mode==='propostas')body=(CH.histP||[]).map(function(p){var w=g2Who(p.solicitante);return '<div class="g2-card full tap" onclick="g2OpenProp('+q(p.id)+')"><div class="row" style="align-items:center"><div class="g2-av" style="background:'+w[1]+'">'+e(w[0])+'</div><div style="flex:1;min-width:0"><div class="b">'+e(g2TipoHead(p.tipo).toLowerCase())+' · '+e(g2WhenShort(p.created_at))+'</div><div class="sub">'+e(p.titulo||p.descricao||'')+'</div></div>'+g2Pill(p.status,p.destino_ref)+'</div></div>'}).join('')||'<div class="g2-empty">Nenhuma proposta ainda.</div>';
-  else body=(CH.msgs||[]).map(function(m){var dur=m.duracao_s!=null?gvDur(m.duracao_s):'';var tx=m.transcricao||'';return '<div class="g2-card full tap" onclick="g2OpenRec('+q(m.id)+')"><div class="row"><div style="flex:1;min-width:0"><div class="b">'+e(gvNome(m.tipo||'automatico'))+' · '+e(g2WhenShort(m.created_at))+(dur?' · '+e(dur):'')+'</div>'+(tx?'<div class="sub">“'+e(tx)+'”</div>':'')+'</div>'+g2Pill(g2RecStatus(m))+'</div></div>'}).join('')||'<div class="g2-empty">Nenhuma gravação ainda.</div>';
+  else body=(CH.msgs||[]).map(function(m){var dur=m.duracao_s!=null?gvDur(m.duracao_s):'';var tx=gvRecTx(m);return '<div class="g2-card full tap" onclick="g2OpenRec('+q(m.id)+')"><div class="row"><div style="flex:1;min-width:0"><div class="b">'+e(gvNome(m.tipo||'automatico'))+' · '+e(g2WhenShort(m.created_at))+(m.audio_path?(dur?' · '+e(dur):''):' · ⌨ digitado')+'</div>'+(tx?'<div class="sub">“'+e(tx)+'”</div>':'')+'</div>'+g2Pill(g2RecStatus(m))+'</div></div>'}).join('')||'<div class="g2-empty">Nenhuma gravação ainda.</div>';
   return g2Page(g2Head()+'<div class="full">'+tog+body+'</div>');
 }
 function g2One(id,decision){g2Decide([id],decision)}
@@ -905,7 +936,7 @@ function g2OpenProp(id){var p=null;(CH.pend||[]).concat(CH.histP||[]).forEach(fu
   openSheet('<div class="row"><div><div class="g2-kicker">'+e(g2TipoHead(p.tipo))+'</div><div class="h" style="font-size:28px;font-style:italic">'+e(p.titulo||'Proposta')+'</div></div><div class="x" onclick="closeSheet()">✕</div></div>'+g2Line('Solicitante',p.solicitante)+g2Line('Executor',p.executor)+g2Line('Data',g2Date(p.data))+g2Line('Prazo',g2Date(p.prazo))+g2Line('Valor',g2Brl(p.valor))+g2Line('Fornecedor',p.fornecedor)+(p.descricao?'<div class="sub" style="margin-top:8px">'+e(p.descricao)+'</div>':'')+(p.transcricao?'<div class="sub" style="margin-top:8px">“'+e(p.transcricao)+'”</div>':'')+audio+'<div style="margin-top:12px">'+g2Pill(p.status,p.destino_ref)+'</div>');
 }
 function g2OpenRec(id){var m=null;(CH.msgs||[]).forEach(function(x){if(x.id===id)m=x});if(!m)return;var prop=null;(CH.pend||[]).concat(CH.histP||[]).forEach(function(p){if(p.chat_id===m.id)prop=p});var audio=m.audio_path&&CH.urls[m.audio_path]?'<audio controls preload="none" src="'+e(CH.urls[m.audio_path])+'" style="width:100%;margin-top:12px"></audio>':'';
-  openSheet('<div class="row"><div><div class="kick">Gravação</div><div class="h" style="font-size:28px;font-style:italic">'+e(gvNome(m.tipo||'automatico'))+'</div></div><div class="x" onclick="closeSheet()">✕</div></div><div class="sub">'+e(g2WhenShort(m.created_at))+(m.duracao_s!=null?' · '+e(gvDur(m.duracao_s)):'')+'</div>'+(m.transcricao?'<div style="margin-top:10px">“'+e(m.transcricao)+'”</div>':'')+audio+(prop?'<div style="margin-top:12px" class="tap" onclick="g2OpenProp('+q(prop.id)+')"><div class="b">'+e(prop.titulo||'Proposta')+'</div><div class="sub">'+e(g2TipoHead(prop.tipo))+'</div></div>':'')+'<div style="margin-top:12px">'+g2Pill(g2RecStatus(m))+'</div>');
+  openSheet('<div class="row"><div><div class="kick">'+(m.audio_path?'Gravação':'Texto')+'</div><div class="h" style="font-size:28px;font-style:italic">'+e(gvNome(m.tipo||'automatico'))+'</div></div><div class="x" onclick="closeSheet()">✕</div></div><div class="sub">'+e(g2WhenShort(m.created_at))+(m.audio_path?(m.duracao_s!=null?' · '+e(gvDur(m.duracao_s)):''):' · ⌨ digitado')+'</div>'+(gvRecTx(m)?'<div style="margin-top:10px">“'+e(gvRecTx(m))+'”</div>':'')+audio+(prop?'<div style="margin-top:12px" class="tap" onclick="g2OpenProp('+q(prop.id)+')"><div class="b">'+e(prop.titulo||'Proposta')+'</div><div class="sub">'+e(g2TipoHead(prop.tipo))+'</div></div>':'')+'<div style="margin-top:12px">'+g2Pill(g2RecStatus(m))+'</div>');
 }
 function g2Prefs(){var on=CH.exigir!==false;openSheet('<div class="row"><div class="h" style="font-size:28px;font-style:italic">Ajustes</div><div class="x" onclick="closeSheet()">✕</div></div><div class="row" style="margin-top:16px;align-items:flex-start"><div style="flex:1"><div class="b">Exigir aprovação</div><div class="sub" style="margin-top:6px">O assistente propõe e só envia ao Gastos/Hub depois do seu ok. Desligado: envia direto.</div></div><button type="button" class="swi'+(on?' on':'')+'" style="background:'+(on?'#34C759':'#8E8E93')+'" onclick="g2TogglePref()" aria-pressed="'+(on?'true':'false')+'"><i></i></button></div>');}
 function g2TogglePref(){var on=!(CH.exigir!==false);CH.exigir=on;sb.from('casamento_voice_prefs').upsert({user_id:CH.uid,exigir_aprovacao:on,updated_at:new Date().toISOString()}).then(function(r){if(r.error)throw new Error(r.error.message);g2Prefs()}).catch(function(err){CH.exigir=!on;gvToast((err&&err.message)||'Não salvei.','err')});}
