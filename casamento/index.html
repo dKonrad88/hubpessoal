@@ -128,6 +128,11 @@ body.hassub .wrap{padding-bottom:calc(env(safe-area-inset-bottom) + 196px)}
 .g2-toggle button{flex:1;border:0;border-radius:999px;padding:8px;background:transparent;font:600 13px Inter,sans-serif;cursor:pointer;color:#3b3124}
 .g2-toggle button.on{background:#3b3124;color:#F7F1E6}
 .g2-past{text-decoration:line-through;opacity:.55}
+.glb-seg{display:flex;gap:4px;background:rgba(255,253,248,.6);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(201,169,106,.35);border-radius:999px;padding:4px}
+.glb-seg button{flex:1;border:0;background:transparent;border-radius:999px;padding:8px 6px;font:600 13px Inter,sans-serif;color:#3b3124;cursor:pointer}
+.glb-seg button.on{background:linear-gradient(180deg,#C9A96A,#B08D57);color:#fff}
+.gla-row{padding:12px 0;border-top:1px solid rgba(176,141,87,.15)}
+.gla-chip{font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;white-space:nowrap}
 body.embed .wrap{padding-top:22px}
 @media(min-width:900px){.wrap{max-width:1100px;grid-template-columns:1fr 1fr;padding-top:40px}.wrap>.full{grid-column:1/-1}}
 #tb{position:fixed;left:18px;right:18px;bottom:calc(env(safe-area-inset-bottom) + 16px);max-width:520px;margin:auto;z-index:5}
@@ -224,7 +229,7 @@ html,body{overscroll-behavior-y:contain}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* Publicação: manter igual a casamento/version.json */
-var APP_VERSION='20261101-2156';
+var APP_VERSION='20261101-2206';
 var D=null,TAB='resumo',MES=null,CRF='todos',F={q:'',cat:'',fornecedor:'',tipo:''};
 var AC='#B08D57',AC2='#D9C29A',MU='#9a8a70',TRK='rgba(176,141,87,.15)',PAL=['#B08D57','#C9A96A','#8E7550','#D8BF8E','#A3865E','#E3D1AE'];
 var MN=['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'],MNL=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
@@ -281,13 +286,16 @@ function vMes(){if(!MES)MES=ym(hoje());var M={};D.movimentos.forEach(function(m)
 /* ---------- GASTOS ---------- */
 function uniq(k){var s={};D.gastos.forEach(function(g){if(g[k])s[g[k]]=1});return Object.keys(s).sort()}
 function sel(k,lab,vals,labs){return '<select class="chip'+(F[k]?' on':'')+'" onchange="F.'+k+'=this.value;render()"><option value="">'+lab+' ▾</option>'+vals.map(function(v,i){return '<option value="'+e(v)+'"'+(F[k]===v?' selected':'')+'>'+e(labs?labs[i]:v)+'</option>'}).join('')+'</select>'}
-function vGastos(){var L=D.gastos.filter(function(g){var t=(g.desc+' '+g.fornecedor+' '+g.obs+' '+g.cat).toLowerCase();return (!F.q||t.indexOf(F.q.toLowerCase())>=0)&&(!F.cat||g.cat===F.cat)&&(!F.fornecedor||g.fornecedor===F.fornecedor)&&(!F.tipo||g.tipo===F.tipo)});
-  var fo={};L.forEach(function(g){(fo[g.fornecedor||'Sem fornecedor']=fo[g.fornecedor||'Sem fornecedor']||[]).push(g)});
-  var val=function(g){return g.tipo==='fechado'?g.fechado:g.tipo==='cancelado'?0:g.orcado};
-  var rows=Object.keys(fo).map(function(f){var gs=fo[f],tot=0,pg=0;gs.forEach(function(g){tot+=val(g);pg+=g.pago});return [f,gs,tot,pg]}).sort(function(a,c){return c[2]-a[2]});
+var GLB='todos';
+function glVal(g){return g.tipo==='fechado'?(g.fechado||0):(g.tipo==='cancelado'?0:(g.orcado||0))}
+function glChip(g){var v=glVal(g);if(g.pago>0&&v>0&&g.pago+0.009>=v)return ['Pago','#2E7D4F','rgba(46,125,79,.14)'];if(g.tipo==='fechado')return ['Fechado','#8a6a35','rgba(176,141,87,.18)'];return ['Planejado','#9a8a70','rgba(154,138,112,.12)']}
+function glbSet(v){GLB=v;render()}
+function vGastos(){var L=D.gastos.filter(function(g){var t=((g.desc||'')+' '+(g.fornecedor||'')+' '+(g.obs||'')+' '+(g.cat||'')).toLowerCase();if(F.q&&t.indexOf(F.q.toLowerCase())<0)return false;if(F.cat&&g.cat!==F.cat)return false;if(F.fornecedor&&g.fornecedor!==F.fornecedor)return false;if(F.tipo&&g.tipo!==F.tipo)return false;if(GLB==='fechados')return g.tipo==='fechado';if(GLB==='planejados')return g.tipo==='planejado';return true}).sort(function(a,c){return glVal(c)-glVal(a)});
+  var seg='<div class="full glb-seg">'+[['fechados','Fechados'],['planejados','Planejados'],['todos','Todos']].map(function(t){return '<button type="button" class="'+(GLB===t[0]?'on':'')+'" onclick="glbSet('+q(t[0])+')">'+t[1]+'</button>'}).join('')+'</div>';
+  var rows=L.map(function(g){var v=glVal(g),ch=glChip(g),p=v?Math.max(0,Math.min(100,(g.pago||0)/v*100)):0,name=g.fornecedor||g.desc||'Item';return '<div class="gla-row tap" onclick="openSheet('+q(g.desc||g.fornecedor||'')+')"><div class="row" style="align-items:flex-start"><div style="min-width:0"><div class="b">'+e(name)+'</div>'+(g.fornecedor?'<div class="sub">'+e(g.desc)+'</div>':'')+'</div><div style="text-align:right"><span class="gla-chip" style="background:'+ch[2]+';color:'+ch[1]+'">'+ch[0]+'</span><div class="b" style="margin-top:4px">'+b(v)+'</div></div></div><div class="bar" style="margin-top:8px;height:4px"><i style="width:'+p.toFixed(1)+'%;background:'+AC+'"></i></div></div>'}).join('');
   return head('Gastos')+'<div class="full search"><input placeholder="⌕ Buscar fornecedor ou item" value="'+e(F.q)+'" onchange="F.q=this.value;render()"></div>'
   +'<div class="full" style="display:flex;gap:8px;flex-wrap:wrap">'+sel('cat','Categoria',uniq('cat'))+sel('fornecedor','Fornecedor',uniq('fornecedor'))+sel('tipo','Situação',['fechado','planejado','cancelado'],['Fechado','Planejado','Cancelado'])+'</div>'
-  +'<div class="card full">'+(rows.length?rows.map(function(r){var cs={};r[1].forEach(function(g){cs[g.cat]=1});return '<div class="li tap" onclick="openSheet('+q(r[0])+')"><div class="row"><div><div class="b">'+e(r[0])+'</div><div class="sub">'+r[1].length+(r[1].length===1?' item':' itens')+' · '+e(Object.keys(cs).slice(0,2).join(', '))+'</div></div><div class="b">'+b(r[2])+'</div></div><div class="bar" style="margin-top:6px;height:4px"><i style="width:'+(r[2]?r[3]/r[2]*100:0).toFixed(0)+'%;background:'+AC+'"></i></div></div>'}).join(''):'<div class="sub empty">Nenhum item</div>')+'</div>'}
+  +seg+'<div class="card full">'+(rows||'<div class="sub empty">Nenhum item</div>')+'</div>'}
 /* ---------- CRONOGRAMA ---------- */
 function cronoProx(c){return c.status!=='Concluído'&&(!c.data||c.data>=hoje())}
 function vCrono(mode){mode=mode||SUB.crono||'proximos';var A=(D.cronograma||[]).slice();
