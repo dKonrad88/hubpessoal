@@ -68,6 +68,14 @@ body.withsub .wrap{padding-bottom:190px}
 .gbtn:disabled{opacity:.55}.gbtn.on{background:radial-gradient(circle at 35% 28%,#ff8a80,#FF3B30 55%,#d52b22);box-shadow:0 0 0 20px rgba(255,59,48,.12),0 0 0 40px rgba(255,59,48,.06),0 20px 40px rgba(255,59,48,.35);animation:gpulse 1.6s ease-in-out infinite}
 @keyframes gpulse{50%{box-shadow:0 0 0 28px rgba(255,59,48,.08),0 0 0 52px rgba(255,59,48,.03),0 20px 40px rgba(255,59,48,.35)}}
 .gclock{font-size:44px;font-weight:700;margin-top:52px;letter-spacing:-.02em}.gclock.rec{color:#FF3B30}
+.gmodo{display:flex;width:220px;margin:14px auto 0;padding:4px;border-radius:999px}
+.gmodo button{flex:1;border:0;background:transparent;border-radius:999px;padding:8px 0;font:600 13px -apple-system,Inter,sans-serif;color:#3a3a3c;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.gmodo button svg{width:15px;height:15px;display:block}.gmodo button.on{background:#0A84FF;color:#fff;box-shadow:0 4px 14px rgba(10,132,255,.35)}.gmodo button:disabled{opacity:.5}
+.gtxtwrap{max-width:420px;margin:0 auto;text-align:center}
+.gtxt{display:block;box-sizing:border-box;width:100%;min-height:160px;margin:18px 0 0;padding:16px;border-radius:22px;border:1px solid rgba(255,255,255,.9);background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);box-shadow:0 10px 26px rgba(0,0,0,.08);font:400 16px/1.45 -apple-system,Inter,sans-serif;color:#1c1c1e;resize:none;outline:none}
+.gtxt:focus{border-color:#0A84FF}.gtxt::placeholder{color:#8E8E93}
+.gsendtxt{display:block;width:100%;margin-top:14px;border:0;border-radius:999px;padding:14px;background:radial-gradient(circle at 35% 28%,#5AB0FF,#0A84FF 55%,#3d5bd9);color:#fff;font:600 15px -apple-system,Inter,sans-serif;cursor:pointer;box-shadow:0 8px 20px rgba(10,132,255,.3)}
+.gsendtxt:disabled{opacity:.5;cursor:default}
 .glast{display:inline-flex;align-items:center;gap:8px;margin:26px auto 0;padding:7px 14px;border-radius:999px;font-size:12px;color:#3a3a3c;box-shadow:0 4px 14px rgba(0,0,0,.06)}.glast i{width:7px;height:7px;border-radius:50%}
 .prc{padding:16px 18px}.prt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#0A84FF}.ped{font-size:13px;font-weight:600;color:#0A84FF}
 .prr{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:6px 0;border-bottom:.5px solid rgba(0,0,0,.07)}.prr b{font-weight:500;opacity:.5;flex:none}.prr span{text-align:right;font-weight:600}
@@ -216,10 +224,12 @@ function grInit(){
   }).catch(function(e){GR.note='Erro: '+(e&&e.message||e)}).then(function(){GR.loading=0;GR.ready=1;grRedraw()});
 }
 function grLoad(){
-  return GR.sb.from('apto_gravador').select('id,autor_id,autor_nome,tipo,audio_path,duracao,status,transcricao,resposta,created_at,processado,processado_em').eq('lista_id',GR.lista).order('created_at',{ascending:false}).limit(100)
+  var cols='id,autor_id,autor_nome,tipo,audio_path,duracao,status,transcricao,resposta,created_at,processado,processado_em';
+  var sel=function(c){return GR.sb.from('apto_gravador').select(c).eq('lista_id',GR.lista).order('created_at',{ascending:false}).limit(100)};
+  return sel(cols+',texto').then(function(q){return q.error&&/texto/.test(q.error.message||'')?sel(cols):q})
   .then(function(q){if(q.error){GR.note='Erro ao listar: '+q.error.message;return}GR.rows=q.data||[]});
 }
-function grWatch(){if(GR.rt||!GR.sb.channel)return;GR.rt=GR.sb.channel('apto-grav-'+GR.lista).on('postgres_changes',{event:'*',schema:'public',table:'apto_gravador',filter:'lista_id=eq.'+GR.lista},function(){grLoad().then(function(){if(!GR.rec)grRedraw()})}).subscribe()}
+function grWatch(){if(GR.rt||!GR.sb.channel)return;GR.rt=GR.sb.channel('apto-grav-'+GR.lista).on('postgres_changes',{event:'*',schema:'public',table:'apto_gravador',filter:'lista_id=eq.'+GR.lista},function(){var ae=document.activeElement;if(ae&&ae.id==='gr-txt')return;grLoad().then(function(){var a2=document.activeElement;if(!GR.rec&&!(a2&&a2.id==='gr-txt'))grRedraw()})}).subscribe()}
 function grLogin(){
   var em=document.getElementById('gr-em').value.trim(),pw=document.getElementById('gr-pw').value;if(!em||!pw)return;
   GR.note='Entrando…';grRedraw();
@@ -261,6 +271,20 @@ function grSend(auto){
     GR.note=j.ok?(auto?'Enviado ao assistente.':(j.skipped?'Já enviado há pouco; o assistente pega junto.':'Enviado! '+(j.pending||0)+' pendente(s).')):(j.erro||'Falha ao avisar o assistente; a gravação ficou salva.');
   }).catch(function(e){GR.note='Falha: '+(e&&e.message||e)}).then(function(){GR.busy=0;grRedraw()});
 }
+function gTyped(x){if(!x||x.audio_path)return '';return String(x.texto||'').replace(/^\[tipo:[a-z]+\|dur:\d+\]\s*/,'')}
+function gRecTx(x){return (x&&x.transcricao)||gTyped(x)}
+function gDurLab(x){return x.audio_path?grFmt(x.duracao):'⌨ digitado'}
+function grSetModo(md){if(GR.rec)return;GMODO=md==='texto'?'texto':'voz';try{localStorage.setItem('apto_grav_modo',GMODO)}catch(err){}GDD=0;render();if(GMODO==='texto')setTimeout(function(){var t=document.getElementById('gr-txt');if(t)t.focus()},30)}
+function grTxtInput(el){GTXT=el.value;var b=document.getElementById('gr-sendtxt');if(b)b.disabled=!!GR.busy||!GTXT.trim()}
+function grSendTyped(){
+  var el=document.getElementById('gr-txt');var txt=String(el?el.value:GTXT||'').trim();
+  if(!txt||GR.busy||!GR.lista)return;
+  var tipo=GT||'auto';GR.tipoAt=tipo;GR.busy=1;GTXT=txt;GR.note='';render();
+  GR.sb.from('apto_gravador').insert({lista_id:GR.lista,autor_nome:grNome(),texto:'[tipo:'+tipo+'|dur:0] '+txt,audio_path:null,duracao:0,tipo:tipo}).then(function(r){
+    if(r.error)throw r.error;
+    GTXT='';return grLoad();
+  }).then(function(){GR.busy=0;grSend(1)},function(err){GR.busy=0;GR.note='Não enviei o texto: '+((err&&err.message)||err);render()});
+}
 function grDel(id){
   var r=GR.rows.filter(function(x){return x.id===id})[0];if(!r||!confirm('Apagar esta gravação pendente?'))return;
   GR.sb.from('apto_gravador').delete().eq('id',id).then(function(q){if(q.error){GR.note=q.error.message;grRedraw();return}
@@ -279,7 +303,8 @@ var GTIPOS=[['auto','Automático','o assistente decide',gic('<path d="M12 3l1.8 
  ['tarefa','Tarefa','com executor e prazo',gic('<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8.5 12.5l2.5 2.5 5-6"/>')],
  ['compra','Compra','item ou modelo para a casa',gic('<path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/>')],
  ['nota','Nota','só registrar',gic('<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/>')]];
-var GT='auto',GDD=0;PR.open=null;var HOPEN=null;
+var GT='auto',GDD=0,GMODO='voz',GTXT='';try{if(localStorage.getItem('apto_grav_modo')==='texto')GMODO='texto'}catch(err){}
+PR.open=null;var HOPEN=null;
 function gTipo(k){for(var i=0;i<GTIPOS.length;i++)if(GTIPOS[i][0]===k)return GTIPOS[i];return GTIPOS[0]}
 function grvGo(t){if(GR.rec&&t!=='gravar'&&!confirm('Parar e salvar a gravação?'))return;if(GR.rec&&t!=='gravar')grStop();GRV=t;GDD=0;render();window.scrollTo(0,0)}
 function grSubBar(){if(TAB!=='grav'||!GR.user||!GR.lista)return '';var n=PR.rows.filter(function(p){return p.status==='pendente'}).length;
@@ -289,15 +314,20 @@ function gStatus(x){if(x.status==='erro')return 'erro';if(x.processado||x.status
 function gPill(s,lab){var c=PRST[s]||'#8E8E93';return '<span class="pill" style="background:'+c+'1f;color:'+c+'">'+e(lab||s)+'</span>'}
 function grLogin2(){var note=GR.note?'<div class="full sub" style="text-align:center;opacity:.7">'+e(GR.note)+'</div>':'';return grHead()+cpLogin()+note}
 function vGravar(){
-  var on=!!GR.rec,t=gTipo(on?(GR.tipoAt||GT):GT),last=GR.rows[0];
+  var on=!!GR.rec,t=gTipo(on?(GR.tipoAt||GT):GT),last=GR.rows[0],tx=GMODO==='texto'&&!on;
+  var gKb='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h1M10 10h1M14 10h1M18 10h0M7 14h10"/></svg>';
+  var gMi='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v3"/></svg>';
   var h='<div class="full gvtop"><div class="kick">Apartamento</div><div class="ttl">Gravador</div>'
+   +'<div class="gmodo glass" role="tablist"><button type="button" class="'+(tx?'':'on')+'" onclick="grSetModo(\'voz\')">'+gMi+'Voz</button><button type="button" class="'+(tx?'on':'')+'"'+(on?' disabled':'')+' onclick="grSetModo(\'texto\')">'+gKb+'Texto</button></div>'
    +'<div class="gdd glass'+(on?' lock':'')+'" onclick="'+(on?'':'GDD=!GDD;render()')+'">'+t[3]+'<div style="flex:1;min-width:0"><div class="gl">Tipo</div><div class="gv">'+e(t[1])+'</div></div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></div></div>';
   if(GDD&&!on)h+='<div class="gdim" onclick="GDD=0;render()"></div><div class="gmenu">'+GTIPOS.map(function(x){return '<div class="o'+(x[0]===GT?' on':'')+'" onclick="GT=\''+x[0]+'\';GDD=0;render()">'+x[3]+'<div><div class="on1">'+e(x[1])+'</div><small>'+e(x[2])+'</small></div>'+(x[0]===GT?'<span class="ck">✓</span>':'')+'</div>'}).join('')+'</div>';
+  var lastH=last?'<div class="glast glass tap" onclick="grvGo(\'hist\');GHV=\'grav\';HOPEN=\''+last.id+'\';render()"><i style="background:'+(PRST[gStatus(last)]||'#8E8E93')+'"></i>Última: '+e(gTipo(last.tipo||'auto')[1])+' · '+e(dt(last.created_at))+(last.audio_path?'':' · ⌨ digitado')+' · '+e(gStatus(last))+'</div>':'';
+  if(tx){return h+'<div class="full gtxtwrap"><textarea id="gr-txt" class="gtxt" rows="5" placeholder="Ex.: Paguei 1.300 ao marceneiro hoje, sinal da cozinha" oninput="grTxtInput(this)"'+(GR.busy?' disabled':'')+'>'+e(GTXT)+'</textarea><button type="button" id="gr-sendtxt" class="gsendtxt" onclick="grSendTyped()"'+(GR.busy||!GTXT.trim()?' disabled':'')+'>'+(GR.busy?'Enviando…':'Enviar para aprovar')+'</button><div class="sub" style="font-size:13px;margin-top:10px">Mesmo fluxo da gravação · o assistente monta a proposta</div>'+(GR.note?'<div class="sub" style="margin-top:8px;opacity:.75">'+e(GR.note)+'</div>':'')+lastH+'</div>'}
   h+='<div class="full gstage"><button class="gbtn'+(on?' on':'')+'" onclick="'+(on?'grStop()':'grStart()')+'"'+(GR.busy?' disabled':'')+'>'+(on?'<svg width="34" height="34" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="6" width="12" height="12" rx="2.5"/></svg><span>Parar</span>':ICON.grav.replace('<svg','<svg width="40" height="40"').replace('stroke-width="2"','stroke-width="1.6"')+'<span>Gravar</span>')+'</button>'
    +'<div class="gclock num'+(on?' rec':'')+'" id="gr-t">'+(on?grFmt((Date.now()-GR.t0)/1000):'0:00')+'</div>'
    +'<div class="sub" style="font-size:13px">'+(GR.busy?'Enviando…':on?'Gravando como '+e(t[1])+' · toque para parar e enviar':'Toque para gravar · o assistente monta a proposta')+'</div>'
    +(GR.note?'<div class="sub" style="margin-top:8px;opacity:.75">'+e(GR.note)+'</div>':'')
-   +(last?'<div class="glast glass tap" onclick="grvGo(\'hist\');GHV=\'grav\';HOPEN=\''+last.id+'\';render()"><i style="background:'+(PRST[gStatus(last)]||'#8E8E93')+'"></i>Última: '+e(gTipo(last.tipo||'auto')[1])+' · '+e(dt(last.created_at))+' · '+e(gStatus(last))+'</div>':'')+'</div>';
+   +lastH+'</div>';
   return h}
 function prRow(k,v){return v==null||v===''?'':'<div class="prr"><b>'+k+'</b><span>'+e(v)+'</span></div>'}
 function prSolic(p){var g=p.gravacao_id&&GR.rows.filter(function(x){return x.id===p.gravacao_id})[0];return (p.extra&&p.extra.solicitante)||(g&&g.autor_nome)||''}
@@ -323,7 +353,7 @@ function vAprovar(){
   var h=grHead()+'<div class="full row"><span class="sub" style="font-size:13px">'+(L.length?L.length+' proposta'+(L.length>1?'s':'')+' pendente'+(L.length>1?'s':''):'Nenhuma proposta pendente')+'</span>'+(L.length>1?'<span class="tap gall" onclick="prAll()">✓ Aprovar todas</span>':'')+'</div>';
   if(GR.note)h+='<div class="full sub" style="text-align:center;opacity:.7">'+e(GR.note)+'</div>';
   h+=L.map(prCard).join('');
-  if(W.length)h+='<div class="card full">'+W.map(function(x){var s=gStatus(x);return '<div class="gi'+(s==='erro'?' tap':'')+'"'+(s==='erro'?' onclick="grRetry(\''+x.id+'\')"':'')+'>'+gAv(x)+'<div class="gm"><div class="b">'+e(gTipo(x.tipo||'auto')[1])+' · '+grFmt(x.duracao)+'</div><div class="sub">'+(s==='erro'?'erro · toque para tentar de novo':s==='processando'?'transcrevendo…':'aguardando o assistente')+'</div></div>'+gPill(s)+'</div>'}).join('')+'</div>';
+  if(W.length)h+='<div class="card full">'+W.map(function(x){var s=gStatus(x);return '<div class="gi'+(s==='erro'?' tap':'')+'"'+(s==='erro'?' onclick="grRetry(\''+x.id+'\')"':'')+'>'+gAv(x)+'<div class="gm"><div class="b">'+e(gTipo(x.tipo||'auto')[1])+' · '+gDurLab(x)+'</div><div class="sub">'+(s==='erro'?'erro · toque para tentar de novo':s==='processando'?'transcrevendo…':'aguardando o assistente')+'</div></div>'+gPill(s)+'</div>'}).join('')+'</div>';
   if(!L.length&&!W.length)h+='<div class="full empty">Tudo em dia ✓</div>';
   return h}
 function gAv(x){var n=(x.autor_nome||'?').trim();return '<div class="gav'+(/^d[eé]bora/i.test(n)?' d':'')+'">'+e(n.charAt(0).toUpperCase())+'</div>'}
@@ -337,8 +367,8 @@ function vHist(){
          +(p.descricao?'<div class="prd">'+e(p.descricao)+'</div>':'')+(p.extra&&p.extra.original?'<div class="sub" style="margin-top:6px">Editada antes de aprovar</div>':'')+(p.transcricao?'<div class="prd" style="font-style:italic">“'+e(p.transcricao)+'”</div>':'')
          +(g&&g.audio_path?'<div id="ha-'+p.id+'" style="margin-top:8px"><button class="btn soft" style="width:100%" onclick="hPlay(\'ha-'+p.id+'\',\''+g.id+'\',\''+e(g.audio_path)+'\')">▶ Ouvir gravação</button></div>':'')+'</div>':'')}).join(''):'<div class="empty">Nenhuma proposta decidida ainda.</div>')+'</div>'}
   return h+'<div class="card full" style="padding:6px 16px">'+(GR.rows.length?GR.rows.map(function(x){var s=gStatus(x),op=HOPEN===x.id,P=PR.rows.filter(function(p){return p.gravacao_id===x.id});
-    return '<div class="gi tap" onclick="HOPEN='+(op?'null':'\''+x.id+'\'')+';render()">'+gAv(x)+'<div class="gm"><div><b>'+e(gTipo(x.tipo||'auto')[1])+'</b> · <span class="sub" style="opacity:.6">'+e(dt(x.created_at))+' · '+grFmt(x.duracao)+'</span></div><div class="sub ell">'+(x.transcricao?'“'+e(x.transcricao)+'”':s==='erro'?'erro · '+e(x.resposta||''):'sem transcrição ainda')+'</div></div>'+gPill(s)+'</div>'
-     +(op?'<div class="gopen">'+(x.transcricao?'<div class="prd" style="font-style:italic">“'+e(x.transcricao)+'”</div>':'')
+    return '<div class="gi tap" onclick="HOPEN='+(op?'null':'\''+x.id+'\'')+';render()">'+gAv(x)+'<div class="gm"><div><b>'+e(gTipo(x.tipo||'auto')[1])+'</b> · <span class="sub" style="opacity:.6">'+e(dt(x.created_at))+' · '+gDurLab(x)+'</span></div><div class="sub ell">'+(gRecTx(x)?'“'+e(gRecTx(x))+'”':s==='erro'?'erro · '+e(x.resposta||''):'sem transcrição ainda')+'</div></div>'+gPill(s)+'</div>'
+     +(op?'<div class="gopen">'+(gRecTx(x)?'<div class="prd" style="font-style:italic">“'+e(gRecTx(x))+'”</div>':'')
        +(x.audio_path?'<div id="hg-'+x.id+'" style="margin-top:8px"><button class="btn soft" style="width:100%" onclick="hPlay(\'hg-'+x.id+'\',\''+x.id+'\',\''+e(x.audio_path)+'\')">▶ Ouvir '+grFmt(x.duracao)+'</button></div>':'')
        +(x.resposta?'<div class="prd">'+e(x.resposta)+'</div>':'')
        +P.map(function(p){return prRow('Proposta',(PRTI[p.tipo]||['',p.tipo])[1]+' · '+p.titulo+' · '+p.status+(p.ref?' ('+p.ref+')':''))}).join('')
@@ -353,7 +383,7 @@ function prLoad(){
   return GR.sb.from('apto_propostas').select('id,gravacao_id,tipo,titulo,descricao,valor,data,ambiente,responsavel,prazo,extra,transcricao,status,ref,decidido_em,created_at').eq('lista_id',GR.lista).order('created_at',{ascending:false}).limit(200)
   .then(function(q){if(q.error){GR.note='Erro ao listar propostas: '+q.error.message;return}PR.rows=q.data||[]});
 }
-function prWatch(){if(PR.rt||!GR.sb.channel)return;PR.rt=GR.sb.channel('apto-prop-'+GR.lista).on('postgres_changes',{event:'*',schema:'public',table:'apto_propostas',filter:'lista_id=eq.'+GR.lista},function(){prLoad().then(function(){if(!GR.rec&&!prEditing())grRedraw()})}).subscribe()}
+function prWatch(){if(PR.rt||!GR.sb.channel)return;PR.rt=GR.sb.channel('apto-prop-'+GR.lista).on('postgres_changes',{event:'*',schema:'public',table:'apto_propostas',filter:'lista_id=eq.'+GR.lista},function(){prLoad().then(function(){var ae=document.activeElement;if(!GR.rec&&!prEditing()&&!(ae&&ae.id==='gr-txt'))grRedraw()})}).subscribe()}
 function prEditing(){var a=document.activeElement;return GRV==='aprovar'&&a&&a.closest&&a.closest('.pf')?1:0}
 function dt(s){var d=new Date(s);return ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
 function brl(v){return v==null||v===''?'':'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}
