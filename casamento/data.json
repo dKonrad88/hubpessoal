@@ -1,16 +1,16 @@
 {
  "exemplo": false,
- "geradoEm": "2026-11-01T21:26-03:00",
+ "geradoEm": "2026-11-01T21:55-03:00",
  "fonte": "Google Sheets \"Casamento\"",
  "dataCasamento": "2027-10-16",
  "totais": {
   "meta": 300000.0,
-  "fechado": 88145.33,
-  "planejado": 152100.0,
+  "fechado": 90745.33,
+  "planejado": 149500.0,
   "projecao": 240245.33,
   "saldo": 59754.67,
-  "pago": 32277.33,
-  "aPagar": 55868.0,
+  "pago": 33577.33,
+  "aPagar": 57168.0,
   "economia": 6900.0,
   "itens": 37
  },
@@ -151,10 +151,10 @@
    "nome": "Cerimônia",
    "orcamento": 0.0,
    "orcado": 2900.0,
-   "fechado": 0,
-   "pago": 0.0,
-   "restante": 0,
-   "planejado": 2900.0,
+   "fechado": 2600.0,
+   "pago": 1300.0,
+   "restante": 1300.0,
+   "planejado": 300.0,
    "itens": 2,
    "cancelados": 0,
    "projecao": 2900.0
@@ -296,14 +296,14 @@
   {
    "nome": "—",
    "orcamento": 0,
-   "orcado": 154400.0,
+   "orcado": 151800.0,
    "fechado": 13650.0,
    "pago": 450.0,
    "restante": 13200.0,
-   "planejado": 140100.0,
-   "itens": 29,
+   "planejado": 137500.0,
+   "itens": 28,
    "cancelados": 0,
-   "projecao": 153750.0
+   "projecao": 151150.0
   },
   {
    "nome": "Giuseppe Toniolo",
@@ -388,6 +388,18 @@
    "itens": 1,
    "cancelados": 0,
    "projecao": 4185.33
+  },
+  {
+   "nome": "Marcos",
+   "orcamento": 0,
+   "orcado": 2600.0,
+   "fechado": 2600.0,
+   "pago": 1300.0,
+   "restante": 1300.0,
+   "planejado": 0,
+   "itens": 1,
+   "cancelados": 0,
+   "projecao": 2600.0
   },
   {
    "nome": "Laura",
@@ -694,17 +706,17 @@
   },
   {
    "data": "2026-06-14",
-   "fornecedor": "",
+   "fornecedor": "Marcos",
    "desc": "Celebrante",
    "cat": "Cerimônia",
-   "status": "Não iniciado",
-   "tipo": "planejado",
+   "status": "Contratado",
+   "tipo": "fechado",
    "orcado": 2600.0,
-   "fechado": 0.0,
-   "pago": 0.0,
-   "restante": 0,
-   "parcelas": "",
-   "proxVenc": null,
+   "fechado": 2600.0,
+   "pago": 1300.0,
+   "restante": 1300.0,
+   "parcelas": "2",
+   "proxVenc": "2027-10-06",
    "evento": null,
    "contato": "",
    "obs": "categoria sugerida"
@@ -1125,6 +1137,16 @@
    "cat": "Local/Espaço"
   },
   {
+   "data": "2026-07-31",
+   "fornecedor": "Marcos",
+   "desc": "Celebrante",
+   "parcela": "Parcela 1",
+   "valor": 1300.0,
+   "status": "pago",
+   "forma": "",
+   "cat": "Cerimônia"
+  },
+  {
    "data": "2026-11-05",
    "fornecedor": "",
    "desc": "Banda",
@@ -1173,6 +1195,16 @@
    "status": "previsto",
    "forma": "",
    "cat": "Outros/Imprevistos"
+  },
+  {
+   "data": "2027-10-06",
+   "fornecedor": "Marcos",
+   "desc": "Celebrante",
+   "parcela": "Parcela 2",
+   "valor": 1300.0,
+   "status": "previsto",
+   "forma": "",
+   "cat": "Cerimônia"
   },
   {
    "data": "2027-10-11",
@@ -1405,6 +1437,15 @@
    "tarefa": "Pagar Banda - Parcela 2 (R$ 8.400,00)",
    "cat": "Música/DJ/Banda",
    "obs": "PIX (CPF) 82175365034",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-10-06",
+   "resp": "Diego",
+   "tarefa": "Pagar Celebrante Marcos - Parcela 2 (R$ 1.300,00)",
+   "cat": "Cerimônia",
+   "obs": "",
    "status": "Pendente",
    "tipo": "Tarefa"
   }
