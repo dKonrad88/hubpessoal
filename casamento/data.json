@@ -1,18 +1,18 @@
 {
  "exemplo": false,
- "geradoEm": "2026-10-31T09:53-03:00",
+ "geradoEm": "2026-11-01T21:26-03:00",
  "fonte": "Google Sheets \"Casamento\"",
  "dataCasamento": "2027-10-16",
  "totais": {
   "meta": 300000.0,
-  "fechado": 65985.33,
-  "planejado": 171620.0,
-  "projecao": 237605.33,
-  "saldo": 62394.67,
-  "pago": 14635.33,
-  "aPagar": 51350.0,
-  "economia": 21540.0,
-  "itens": 38
+  "fechado": 88145.33,
+  "planejado": 152100.0,
+  "projecao": 240245.33,
+  "saldo": 59754.67,
+  "pago": 32277.33,
+  "aPagar": 55868.0,
+  "economia": 6900.0,
+  "itens": 37
  },
  "categorias": [
   {
@@ -40,6 +40,18 @@
    "projecao": 32900.0
   },
   {
+   "nome": "Música/DJ/Banda",
+   "orcamento": 0.0,
+   "orcado": 35620.0,
+   "fechado": 30820.0,
+   "pago": 2850.0,
+   "restante": 27970.0,
+   "planejado": 0,
+   "itens": 3,
+   "cancelados": 0,
+   "projecao": 30820.0
+  },
+  {
    "nome": "Decoração/Flores",
    "orcamento": 0.0,
    "orcado": 30000.0,
@@ -52,52 +64,40 @@
    "projecao": 30000.0
   },
   {
-   "nome": "Local/Espaço",
-   "orcamento": 0.0,
-   "orcado": 27020.0,
-   "fechado": 19500.0,
-   "pago": 0.0,
-   "restante": 19500.0,
-   "planejado": 7520.0,
-   "itens": 2,
-   "cancelados": 0,
-   "projecao": 27020.0
-  },
-  {
    "nome": "Vestido da noiva",
    "orcamento": 0.0,
-   "orcado": 25100.0,
-   "fechado": 1750.0,
-   "pago": 450.0,
-   "restante": 1300.0,
-   "planejado": 23300.0,
-   "itens": 5,
-   "cancelados": 0,
-   "projecao": 25050.0
-  },
-  {
-   "nome": "Música/DJ/Banda",
-   "orcamento": 0.0,
-   "orcado": 28100.0,
-   "fechado": 23300.0,
+   "orcado": 23300.0,
+   "fechado": 0,
    "pago": 0.0,
-   "restante": 23300.0,
-   "planejado": 0,
-   "itens": 2,
+   "restante": 0,
+   "planejado": 23300.0,
+   "itens": 4,
    "cancelados": 0,
    "projecao": 23300.0
   },
   {
-   "nome": "Bebidas/Bar",
+   "nome": "Local/Espaço",
    "orcamento": 0.0,
-   "orcado": 19000.0,
-   "fechado": 0,
-   "pago": 0.0,
-   "restante": 0,
-   "planejado": 19000.0,
+   "orcado": 19500.0,
+   "fechado": 19500.0,
+   "pago": 10000.0,
+   "restante": 9500.0,
+   "planejado": 0,
+   "itens": 1,
+   "cancelados": 0,
+   "projecao": 19500.0
+  },
+  {
+   "nome": "Assessoria/Cerimonial",
+   "orcamento": 0.0,
+   "orcado": 18825.33,
+   "fechado": 18825.33,
+   "pago": 8577.33,
+   "restante": 10248.0,
+   "planejado": 0,
    "itens": 2,
    "cancelados": 0,
-   "projecao": 19000.0
+   "projecao": 18825.33
   },
   {
    "nome": "Foto",
@@ -124,16 +124,28 @@
    "projecao": 12000.0
   },
   {
-   "nome": "Assessoria/Cerimonial",
+   "nome": "Bebidas/Bar",
    "orcamento": 0.0,
-   "orcado": 18825.33,
-   "fechado": 4185.33,
-   "pago": 4185.33,
-   "restante": 0.0,
-   "planejado": 0,
-   "itens": 2,
+   "orcado": 7000.0,
+   "fechado": 0,
+   "pago": 0.0,
+   "restante": 0,
+   "planejado": 7000.0,
+   "itens": 1,
    "cancelados": 0,
-   "projecao": 4185.33
+   "projecao": 7000.0
+  },
+  {
+   "nome": "Beleza",
+   "orcamento": 0.0,
+   "orcado": 4600.0,
+   "fechado": 2550.0,
+   "pago": 850.0,
+   "restante": 1700.0,
+   "planejado": 2000.0,
+   "itens": 3,
+   "cancelados": 0,
+   "projecao": 4550.0
   },
   {
    "nome": "Cerimônia",
@@ -146,18 +158,6 @@
    "itens": 2,
    "cancelados": 0,
    "projecao": 2900.0
-  },
-  {
-   "nome": "Beleza",
-   "orcamento": 0.0,
-   "orcado": 2800.0,
-   "fechado": 800.0,
-   "pago": 0.0,
-   "restante": 800.0,
-   "planejado": 2000.0,
-   "itens": 2,
-   "cancelados": 0,
-   "projecao": 2800.0
   },
   {
    "nome": "Convites/Papelaria",
@@ -306,12 +306,12 @@
    "projecao": 153750.0
   },
   {
-   "nome": "Giuseppe Antoniolo",
+   "nome": "Giuseppe Toniolo",
    "orcamento": 0,
    "orcado": 19500.0,
    "fechado": 19500.0,
-   "pago": 0.0,
-   "restante": 19500.0,
+   "pago": 10000.0,
+   "restante": 9500.0,
    "planejado": 0,
    "itens": 1,
    "cancelados": 0,
@@ -330,19 +330,19 @@
    "projecao": 16450.0
   },
   {
-   "nome": "Excelência",
+   "nome": "Paula Cellin",
    "orcamento": 0,
-   "orcado": 12000.0,
-   "fechado": 0,
-   "pago": 0.0,
-   "restante": 0,
-   "planejado": 12000.0,
+   "orcado": 14640.0,
+   "fechado": 14640.0,
+   "pago": 4392.0,
+   "restante": 10248.0,
+   "planejado": 0,
    "itens": 1,
    "cancelados": 0,
-   "projecao": 12000.0
+   "projecao": 14640.0
   },
   {
-   "nome": "Luigi",
+   "nome": "Excelência",
    "orcamento": 0,
    "orcado": 12000.0,
    "fechado": 0,
@@ -358,8 +358,8 @@
    "orcamento": 0,
    "orcado": 15600.0,
    "fechado": 11400.0,
-   "pago": 0.0,
-   "restante": 11400.0,
+   "pago": 2850.0,
+   "restante": 8550.0,
    "planejado": 0,
    "itens": 1,
    "cancelados": 0,
@@ -369,10 +369,10 @@
    "nome": "Bruno Esperon",
    "orcamento": 0,
    "orcado": 7520.0,
-   "fechado": 0,
+   "fechado": 7520.0,
    "pago": 0.0,
-   "restante": 0,
-   "planejado": 7520.0,
+   "restante": 7520.0,
+   "planejado": 0,
    "itens": 1,
    "cancelados": 0,
    "projecao": 7520.0
@@ -394,24 +394,12 @@
    "orcamento": 0,
    "orcado": 800.0,
    "fechado": 800.0,
-   "pago": 0.0,
-   "restante": 800.0,
+   "pago": 400.0,
+   "restante": 400.0,
    "planejado": 0,
    "itens": 1,
    "cancelados": 0,
    "projecao": 800.0
-  },
-  {
-   "nome": "Paula Cellin",
-   "orcamento": 0,
-   "orcado": 14640.0,
-   "fechado": 0.0,
-   "pago": 0.0,
-   "restante": 0.0,
-   "planejado": 0,
-   "itens": 1,
-   "cancelados": 0,
-   "projecao": 0.0
   }
  ],
  "gastos": [
@@ -448,23 +436,6 @@
    "evento": null,
    "contato": "",
    "obs": "Contrato encerrado. O valor já pago não foi restituído — fica como prejuízo. As 11 parcelas em aberto (R$ 7.494,67) foram removidas. | categoria sugerida"
-  },
-  {
-   "data": "2026-06-14",
-   "fornecedor": "Luigi",
-   "desc": "Bebidas",
-   "cat": "Bebidas/Bar",
-   "status": "Não iniciado",
-   "tipo": "planejado",
-   "orcado": 12000.0,
-   "fechado": 0.0,
-   "pago": 0.0,
-   "restante": 0,
-   "parcelas": "",
-   "proxVenc": null,
-   "evento": null,
-   "contato": "",
-   "obs": "categoria sugerida"
   },
   {
    "data": "2026-06-14",
@@ -555,7 +526,7 @@
    "data": "2026-06-14",
    "fornecedor": "",
    "desc": "Maquiagem da Noiva",
-   "cat": "Vestido da noiva",
+   "cat": "Beleza",
    "status": "Finalizado",
    "tipo": "fechado",
    "orcado": 1800.0,
@@ -645,9 +616,9 @@
    "tipo": "fechado",
    "orcado": 800.0,
    "fechado": 800.0,
-   "pago": 0.0,
-   "restante": 800.0,
-   "parcelas": "1",
+   "pago": 400.0,
+   "restante": 400.0,
+   "parcelas": "2",
    "proxVenc": null,
    "evento": null,
    "contato": "",
@@ -681,11 +652,11 @@
    "fechado": 11900.0,
    "pago": 0.0,
    "restante": 11900.0,
-   "parcelas": "1",
-   "proxVenc": null,
+   "parcelas": "2",
+   "proxVenc": "2026-11-05",
    "evento": null,
    "contato": "",
-   "obs": "categoria sugerida"
+   "obs": "categoria sugerida | PIX (CPF) 82175365034"
   },
   {
    "data": "2026-06-14",
@@ -995,15 +966,15 @@
   },
   {
    "data": "2026-07-27",
-   "fornecedor": "Giuseppe Antoniolo",
+   "fornecedor": "Giuseppe Toniolo",
    "desc": "Espaço da festa",
    "cat": "Local/Espaço",
    "status": "Finalizado",
    "tipo": "fechado",
    "orcado": 19500.0,
    "fechado": 19500.0,
-   "pago": 0.0,
-   "restante": 19500.0,
+   "pago": 10000.0,
+   "restante": 9500.0,
    "parcelas": "2",
    "proxVenc": "2026-07-31",
    "evento": null,
@@ -1018,9 +989,9 @@
    "status": "Contratado",
    "tipo": "fechado",
    "orcado": 14640.0,
-   "fechado": 0.0,
-   "pago": 0.0,
-   "restante": 0.0,
+   "fechado": 14640.0,
+   "pago": 4392.0,
+   "restante": 10248.0,
    "parcelas": "5",
    "proxVenc": "2027-01-15",
    "evento": null,
@@ -1031,18 +1002,18 @@
    "data": "2026-09-12",
    "fornecedor": "Bruno Esperon",
    "desc": "Música cerimônia",
-   "cat": "Local/Espaço",
-   "status": "Orçamento recebido",
-   "tipo": "planejado",
+   "cat": "Música/DJ/Banda",
+   "status": "Contratado",
+   "tipo": "fechado",
    "orcado": 7520.0,
-   "fechado": 0.0,
+   "fechado": 7520.0,
    "pago": 0.0,
-   "restante": 0,
+   "restante": 7520.0,
    "parcelas": "",
-   "proxVenc": null,
+   "proxVenc": "2027-10-13",
    "evento": null,
    "contato": "",
-   "obs": "Bruno vai tocar em 3 momentos, recepção dos convidados antes dos noivos chegarem, cerimônia dos noivos e recepção da entrada dos convidados no salão de festas. Quarteto vai tocar junto com o Bruno na recepção da festa. | categoria sugerida"
+   "obs": "Bruno vai tocar em 3 momentos, recepção dos convidados antes dos noivos chegarem, cerimônia dos noivos e recepção da entrada dos convidados no salão de festas. Quarteto vai tocar junto com o Bruno na recepção da festa. | categoria sugerida | Pagamento integral em dinheiro na semana do casamento"
   },
   {
    "data": "2026-09-12",
@@ -1053,10 +1024,10 @@
    "tipo": "fechado",
    "orcado": 15600.0,
    "fechado": 11400.0,
-   "pago": 0.0,
-   "restante": 11400.0,
-   "parcelas": "1",
-   "proxVenc": null,
+   "pago": 2850.0,
+   "restante": 8550.0,
+   "parcelas": "2",
+   "proxVenc": "2027-10-13",
    "evento": null,
    "contato": "",
    "obs": "categoria sugerida"
@@ -1068,20 +1039,10 @@
    "fornecedor": "Laura",
    "desc": "Cabeleleira",
    "parcela": "Parcela 1",
-   "valor": 800.0,
-   "status": "previsto",
+   "valor": 400.0,
+   "status": "pago",
    "forma": "",
    "cat": "Beleza"
-  },
-  {
-   "data": null,
-   "fornecedor": "",
-   "desc": "Banda",
-   "parcela": "Parcela 1",
-   "valor": 11900.0,
-   "status": "previsto",
-   "forma": "",
-   "cat": "Outros/Imprevistos"
   },
   {
    "data": null,
@@ -1089,7 +1050,7 @@
    "desc": "Cerimonialista",
    "parcela": "Entrada",
    "valor": 4392.0,
-   "status": "previsto",
+   "status": "pago",
    "forma": "",
    "cat": "Assessoria/Cerimonial"
   },
@@ -1097,11 +1058,21 @@
    "data": null,
    "fornecedor": "Dj Polver",
    "desc": "DJ",
-   "parcela": "Parcela 1",
-   "valor": 11400.0,
-   "status": "previsto",
+   "parcela": "Entrada",
+   "valor": 2850.0,
+   "status": "pago",
    "forma": "",
    "cat": "Música/DJ/Banda"
+  },
+  {
+   "data": null,
+   "fornecedor": "Laura",
+   "desc": "Cabeleleira",
+   "parcela": "Parcela 2",
+   "valor": 400.0,
+   "status": "previsto",
+   "forma": "",
+   "cat": "Beleza"
   },
   {
    "data": "2026-05-15",
@@ -1145,13 +1116,23 @@
   },
   {
    "data": "2026-07-31",
-   "fornecedor": "Giuseppe Antoniolo",
+   "fornecedor": "Giuseppe Toniolo",
    "desc": "Espaço da festa",
    "parcela": "Parcela 1",
    "valor": 10000.0,
-   "status": "atrasada",
+   "status": "pago",
    "forma": "",
    "cat": "Local/Espaço"
+  },
+  {
+   "data": "2026-11-05",
+   "fornecedor": "",
+   "desc": "Banda",
+   "parcela": "Parcela 1",
+   "valor": 3500.0,
+   "status": "previsto",
+   "forma": "",
+   "cat": "Outros/Imprevistos"
   },
   {
    "data": "2027-01-15",
@@ -1204,6 +1185,36 @@
    "cat": "Assessoria/Cerimonial"
   },
   {
+   "data": "2027-10-11",
+   "fornecedor": "",
+   "desc": "Banda",
+   "parcela": "Parcela 2",
+   "valor": 8400.0,
+   "status": "previsto",
+   "forma": "",
+   "cat": "Outros/Imprevistos"
+  },
+  {
+   "data": "2027-10-13",
+   "fornecedor": "Dj Polver",
+   "desc": "Restante, até 72h antes do casamento",
+   "parcela": "Parcela 2",
+   "valor": 8550.0,
+   "status": "previsto",
+   "forma": "",
+   "cat": "Música/DJ/Banda"
+  },
+  {
+   "data": "2027-10-13",
+   "fornecedor": "Bruno Esperon",
+   "desc": "Música cerimônia",
+   "parcela": "Única",
+   "valor": 7520.0,
+   "status": "previsto",
+   "forma": "Dinheiro",
+   "cat": "Música/DJ/Banda"
+  },
+  {
    "data": "2027-10-15",
    "fornecedor": "Perin",
    "desc": "Fotos e Vídeos",
@@ -1215,7 +1226,7 @@
   },
   {
    "data": "2027-10-15",
-   "fornecedor": "Giuseppe Antoniolo",
+   "fornecedor": "Giuseppe Toniolo",
    "desc": "Espaço da festa",
    "parcela": "Parcela 2",
    "valor": 9500.0,
@@ -1250,7 +1261,7 @@
    "tarefa": "Entrar em contato com a Banda EletroRadio",
    "cat": "",
    "obs": "",
-   "status": "Pendente",
+   "status": "Concluído",
    "tipo": "Tarefa"
   },
   {
@@ -1264,11 +1275,11 @@
   },
   {
    "data": null,
-   "resp": "Débpra",
+   "resp": "Débora",
    "tarefa": "Passar o briefing para o Samuel (paris)",
    "cat": "",
    "obs": "",
-   "status": "Pendente",
+   "status": "Concluído",
    "tipo": "Tarefa"
   },
   {
@@ -1277,6 +1288,123 @@
    "tarefa": "Fechar com o DJ Polver",
    "cat": "",
    "obs": "",
+   "status": "Concluído",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-10-13",
+   "resp": "Diego",
+   "tarefa": "Pagar o Bruno (violonista) em dinheiro",
+   "cat": "Música/DJ/Banda",
+   "obs": "",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-01-15",
+   "resp": "Diego",
+   "tarefa": "Pagar Paula Cellin - Parcela 1 (R$ 2.562,00)",
+   "cat": "Assessoria/Cerimonial",
+   "obs": "",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-04-15",
+   "resp": "Diego",
+   "tarefa": "Pagar Paula Cellin - Parcela 2 (R$ 2.562,00)",
+   "cat": "Assessoria/Cerimonial",
+   "obs": "",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-08-15",
+   "resp": "Diego",
+   "tarefa": "Pagar Paula Cellin - Parcela 3 (R$ 2.562,00)",
+   "cat": "Assessoria/Cerimonial",
+   "obs": "",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-10-11",
+   "resp": "Diego",
+   "tarefa": "Pagar Paula Cellin - Parcela 4 (R$ 2.562,00)",
+   "cat": "Assessoria/Cerimonial",
+   "obs": "",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-10-13",
+   "resp": "Diego",
+   "tarefa": "Pagar Dj Polver - Parcela 2 (R$ 8.550,00)",
+   "cat": "Música/DJ/Banda",
+   "obs": "",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2026-11-04",
+   "resp": "Diego",
+   "tarefa": "Pagar Banda - Parcela 1 (R$ 3.500,00)",
+   "cat": "Música/DJ/Banda",
+   "obs": "PIX (CPF) 82175365034",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-10-15",
+   "resp": "Diego",
+   "tarefa": "Pagar Perin - Parcela 2 (R$ 6.450,00)",
+   "cat": "Foto",
+   "obs": "",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-09-30",
+   "resp": "Diego",
+   "tarefa": "Pagar Maquiagem da Noiva - Parcela 1 (R$ 525,00)",
+   "cat": "Beleza",
+   "obs": "",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-10-30",
+   "resp": "Diego",
+   "tarefa": "Pagar Maquiagem da Noiva - Parcela 2 (R$ 525,00)",
+   "cat": "Beleza",
+   "obs": "",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": null,
+   "resp": "Diego",
+   "tarefa": "Pagar Laura - Parcela 2 (R$ 400,00)",
+   "cat": "Beleza",
+   "obs": "",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-10-15",
+   "resp": "Diego",
+   "tarefa": "Pagar Giuseppe Toniolo - Parcela 2 (R$ 9.500,00)",
+   "cat": "Local/Espaço",
+   "obs": "",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-10-11",
+   "resp": "Diego",
+   "tarefa": "Pagar Banda - Parcela 2 (R$ 8.400,00)",
+   "cat": "Música/DJ/Banda",
+   "obs": "PIX (CPF) 82175365034",
    "status": "Pendente",
    "tipo": "Tarefa"
   }
