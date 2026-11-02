@@ -4037,18 +4037,19 @@ var FOCO=(function(){
 /* Sem menu lateral em página nenhuma (desktop e celular): a navegação fica no Spotlight e no dock. */
 .sidebar,.sb-reopen,.sb-backdrop,.mnav-btn,.sb-tools{display:none!important}
 .layout{display:block!important;height:calc(100vh - 52px)!important}
-main.content{width:100%!important;max-width:1120px;margin:0 auto!important;height:100%!important;flex:none!important;box-sizing:border-box}
+main.content{width:100%!important;max-width:none!important;margin:0!important;height:100%!important;flex:none!important;box-sizing:border-box}
+body:not(.sp-full) .page.active{width:min(1120px,100%);margin-left:auto;margin-right:auto}
 body.sp-home #page-welcome>*:not(#sp-home){display:none!important}
-/* App que era só um embed: a própria página, de ponta a ponta, sem moldura nem título. */
+/* App que era só um embed: ocupa o viewport inteiro. O trilho flutua por cima e não empurra o miolo. */
 body.sp-full .topbar{display:none!important}
 body.sp-full .layout{height:100vh!important}
-body.sp-full main.content{max-width:none!important;width:100%!important;margin:0!important;padding:0!important;height:100%!important}
-body.sp-full .page.active{height:100%}
-.sp-stage{height:calc(100vh - 108px)}
+body.sp-full main.content{padding:0!important;height:100%!important}
+body.sp-full .page.active{width:100%;max-width:none;margin:0;height:100%}
+.sp-stage{position:fixed;inset:0;width:100vw;height:100vh;z-index:1}
 .sp-fill{width:100%;height:100%;border:0;display:block;background:var(--bg)}
 #page-habits>.appseg,#page-habits>.app-embed-pane,#page-habits>.app-embed-hint{display:none!important}
 #page-habits #focoDash{display:block!important}
-#sp-home{min-height:calc(100vh - 140px);display:flex;flex-direction:column;align-items:center;padding:12vh 0 130px}
+#sp-home{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 24px 6vh;box-sizing:border-box}
 #sp-home .sp-g{font-size:15px;color:var(--muted);margin:0 0 18px}
 .sp-box{width:100%;max-width:640px;background:var(--surface);color:var(--text);border-radius:18px;box-shadow:0 30px 60px -20px rgba(15,23,42,.3),0 0 0 1px var(--border);overflow:hidden;text-align:left}
 .sp-in{display:flex;align-items:center;gap:14px;padding:18px 22px;border-bottom:1px solid var(--border)}
@@ -4066,28 +4067,21 @@ body.dark .sp-r.on{background:#6d5efc}
 .sp-empty{padding:18px 10px;color:var(--muted);font-size:14px}
 #sp-modal{position:fixed;inset:0;z-index:400;background:rgba(15,23,42,.35);backdrop-filter:blur(3px);display:none;justify-content:center;align-items:flex-start;padding:12vh 16px 0}
 #sp-modal.open{display:flex}
-#sp-dock{position:fixed;left:50%;transform:translateX(-50%);bottom:max(18px,env(safe-area-inset-bottom));z-index:300;display:flex;gap:8px;align-items:center;background:rgba(255,255,255,.82);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid rgba(255,255,255,.7);box-shadow:0 10px 36px rgba(15,23,42,.14),0 0 0 1px rgba(15,23,42,.05);padding:8px;border-radius:22px;max-width:calc(100vw - 20px);overflow-x:auto;scrollbar-width:none}
-#sp-dock::-webkit-scrollbar{display:none}
-.sp-d{position:relative;width:52px;height:52px;border-radius:16px;background:transparent;color:#1e293b;display:grid;place-items:center;font-size:24px;cursor:pointer;flex:none;border:0;transition:transform .15s,background .15s}
-.sp-d:hover{transform:translateY(-3px);background:rgba(15,23,42,.06)}
-.sp-d.on{background:rgba(109,94,252,.14);box-shadow:inset 0 -3px 0 #6d5efc}
-.sp-d .tip{position:absolute;bottom:62px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.96);color:#0f172a;border:1px solid rgba(15,23,42,.08);font-size:12px;padding:4px 8px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;box-shadow:0 8px 20px rgba(15,23,42,.12)}
-.sp-d:hover .tip{opacity:1}
-.sp-sep{width:1px;align-self:stretch;background:rgba(15,23,42,.12);margin:6px 2px;flex:none}
-.sp-d.plus{background:#fff;color:#0f172a;font-size:28px;font-weight:300;box-shadow:0 4px 14px rgba(15,23,42,.12),0 0 0 1.5px #6d5efc inset}
-.sp-d.plus:hover{background:#fff}
-body.dark #sp-dock{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.22);box-shadow:0 12px 40px rgba(0,0,0,.35)}
-body.dark .sp-d:hover{background:rgba(255,255,255,.1)}
-body.dark .sp-d.on{background:rgba(255,255,255,.16)}
-body.dark .sp-sep{background:rgba(255,255,255,.22)}
-body.dark .sp-d.plus{background:#fff;color:#0f172a}
-body.dark .sp-d .tip{background:#1d1a2b;color:#ece9f5;border-color:rgba(255,255,255,.12)}
-body:not(.sp-home):not(.sp-full) .content{padding-bottom:110px!important}
-@media(max-width:600px){#sp-home{padding:7vh 0 120px}.sp-in{padding:14px 16px}.sp-in input{font-size:17px}.sp-k{display:none}
- .sp-d{width:44px;height:44px;font-size:21px;border-radius:13px}#sp-dock{gap:6px;padding:8px;border-radius:19px}.sp-d .tip{display:none}.sp-sep{margin:4px 2px}}
+#sp-rail{position:fixed;left:12px;top:68px;z-index:320;display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:18px;width:56px;overflow:hidden;background:rgba(255,255,255,.18);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,.45);box-shadow:0 4px 20px rgba(0,0,0,.06);transition:width .25s ease,background .25s ease}
+body.sp-full #sp-rail{top:16px}
+#sp-rail:hover,#sp-rail.sp-open{width:212px;background:rgba(255,255,255,.55)}
+.sp-it{display:flex;align-items:center;gap:12px;height:40px;padding:0 9px;border:0;border-radius:12px;background:transparent;color:#2b2b33;font:500 14px/1.2 inherit;white-space:nowrap;cursor:pointer;text-align:left;width:100%}
+.sp-it .i{font-size:20px;width:22px;text-align:center;flex:none}
+.sp-it .t{opacity:0;transition:opacity .2s}
+#sp-rail:hover .t,#sp-rail.sp-open .t{opacity:1}
+.sp-it:hover{background:rgba(255,255,255,.5)}
+.sp-it.on{background:rgba(255,255,255,.65);box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
+.sp-sep{height:1px;background:rgba(0,0,0,.08);margin:4px 6px;flex:none}
+.sp-it.plus .i{color:#888}
+@media(max-width:600px){#sp-home{padding:8vh 16px 4vh}.sp-in{padding:14px 16px}.sp-in input{font-size:17px}.sp-k{display:none}}
 </style>
 <div id="sp-modal" onclick="if(event.target===this)SP.close()"></div>
-<nav id="sp-dock" aria-label="Apps"></nav>
+<nav id="sp-rail" aria-label="Apps"></nav>
 <script>
 var SP=(function(){
   var APPS=[ // key = id da página existente; nav = id do item no menu. full = o app ocupa a tela (era só um embed).
@@ -4154,10 +4148,15 @@ var SP=(function(){
     var m=document.getElementById('sp-modal'); m.innerHTML=html(); wire(m); m.classList.add('open'); m.querySelector('.sp-q').focus();
   }
   function dock(){
-    var d=document.getElementById('sp-dock'),h='<button class="sp-d'+(cur==='welcome'?' on':'')+'" data-k="welcome" title="Início">🔎<span class="tip">Início</span></button>';
-    apps().filter(function(a){return a.dock;}).forEach(function(a){h+='<button class="sp-d'+(a.k===cur?' on':'')+'" data-k="'+a.k+'" title="'+a.n+'">'+a.e+'<span class="tip">'+a.n+'</span></button>';});
-    h+='<span class="sp-sep"></span><button class="sp-d plus" data-k="+" title="Mais apps e ações (Ctrl+K)" aria-label="Mais apps">＋</button>';
+    var d=document.getElementById('sp-rail'); if(!d)return;
+    var open=d.classList.contains('sp-open');
+    var h='<button class="sp-it'+(cur==='welcome'?' on':'')+'" data-k="welcome"><span class="i">🔎</span><span class="t">Início</span></button>';
+    apps().filter(function(a){return a.dock;}).forEach(function(a){
+      h+='<button class="sp-it'+(a.k===cur?' on':'')+'" data-k="'+a.k+'"><span class="i">'+a.e+'</span><span class="t">'+a.n+'</span></button>';
+    });
+    h+='<div class="sp-sep"></div><button class="sp-it plus" data-k="+" aria-label="Adicionar app"><span class="i">＋</span><span class="t">Adicionar app</span></button>';
     d.innerHTML=h;
+    if(open)d.classList.add('sp-open');
   }
   var busy=0;
   function sync(){
@@ -4177,7 +4176,10 @@ var SP=(function(){
   function init(){
     var w=document.getElementById('page-welcome'); if(!w)return;
     var hm=document.createElement('div'); hm.id='sp-home'; hm.innerHTML='<p class="sp-g">'+greet()+'</p>'+html(); w.insertBefore(hm,w.firstChild); wire(hm);
-    document.getElementById('sp-dock').addEventListener('click',function(ev){var b=ev.target.closest('.sp-d');if(!b)return;var k=b.dataset.k;
+    var rail=document.getElementById('sp-rail');
+    rail.addEventListener('click',function(ev){var b=ev.target.closest('.sp-it');
+      if(!b){rail.classList.toggle('sp-open');return;}
+      var k=b.dataset.k;
       if(k==='+'){show();}else if(k==='welcome'){open('welcome');}else open(k);});
     document.addEventListener('keydown',function(ev){
       if((ev.metaKey||ev.ctrlKey)&&(ev.key==='k'||ev.key==='K')){ev.preventDefault();show();}
