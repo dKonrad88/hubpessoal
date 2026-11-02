@@ -770,7 +770,7 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 <div class="topbar">
 <div class="topbar-title" onclick="setSimplePage('welcome')" style="cursor:pointer" title="Início">HUB <span>Pessoal</span></div>
 <div class="topbar-right">
-<button class="hdr-btn mnav-btn" onclick="mnavToggle()" title="Menu" aria-label="Abrir menu"><i class="ti ti-menu-2"></i></button>
+<button class="hdr-btn mnav-btn" onclick="mnavToggle()" title="Menu" aria-label="Abrir menu" hidden><i class="ti ti-menu-2"></i></button>
 <button class="hdr-btn cloud-badge" id="cloudBadge" onclick="openCloud()" title="Conta &amp; sincronização"><i class="ti ti-cloud-check cb-ok" id="cloudBadgeIc"></i></button>
 <div style="position:relative">
 <button class="hdr-btn" onclick="toggleConfig(event)"><i class="ti ti-settings"></i></button>
@@ -792,7 +792,7 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 <div class="navbar" style="display:none"></div>
 <div class="layout">
 <div class="sb-backdrop" onclick="mnavClose()"></div>
-<aside class="sidebar">
+<aside class="sidebar" aria-hidden="true">
 <div class="sb-tools">
 <button class="sb-tool" id="sbToolGroups" onclick="sbToggleGroups()" title="Recolher / expandir grupos"><i class="ti ti-fold-up"></i></button>
 <button class="sb-tool" id="sbToolBar" onclick="sbToggleBar()" title="Recolher menu"><i class="ti ti-layout-sidebar-left-collapse"></i></button>
@@ -3671,26 +3671,44 @@ var CASA=(function(){
    (apto/index.html + apto/data.json, gerado da planilha Google Sheets "Apto" por apto/build_data.py).
    Versão anterior deste arquivo: branch `backup/pre-apto-bi-2026-10-31` e cópia `backup/index.pre-apto-bi-2026-10-31.html`. */
 var APTO=(function(){
+  var tab='resumo';
+  function src(){return 'apto/?embed=1&tab='+encodeURIComponent(tab)+'&t='+Date.now();}
+  function frame(){return '<div style="max-width:430px;margin:.6rem auto 0;height:calc(100vh - 320px);min-height:520px;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)"><iframe src="'+src()+'" title="Apartamento" style="width:100%;height:100%;border:0;display:block" loading="lazy"></iframe></div>';}
   function open(reload){
     var box=document.getElementById('apartamentoDash');if(!box)return;
     var f=box.querySelector('iframe');
     if(f&&!reload)return;
-    box.innerHTML='<div style="max-width:430px;margin:.6rem auto 0;height:calc(100vh - 150px);min-height:640px;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)"><iframe src="apto/?embed=1&t='+Date.now()+'" title="Apartamento" style="width:100%;height:100%;border:0;display:block" loading="lazy"></iframe></div>';
+    box.innerHTML=frame();
   }
-  return {open:open};
+  function setTab(t){
+    tab=t||'resumo';
+    var f=document.querySelector('#apartamentoDash iframe');
+    if(!f){open(true);return;}
+    if((f.getAttribute('src')||'').indexOf('tab='+encodeURIComponent(tab))<0)f.src=src();
+  }
+  return {open:open,setTab:setTab,tab:function(){return tab;}};
 })();
 
 /* ===================== CASAMENTO — gastos, painel BI somente leitura (2026-10-31) =====================
    App read-only em ./casamento/ (casamento/index.html + casamento/data.json, gerado da planilha Google Sheets
    "Casamento" por casamento/build_data.py). Convidados, tarefas e checklist seguem no app/casamento_state. */
 var CASBI=(function(){
+  var tab='resumo';
+  function src(){return 'casamento/?embed=1&tab='+encodeURIComponent(tab)+'&t='+Date.now();}
+  function frame(){return '<div style="max-width:430px;margin:.6rem auto 0;height:calc(100vh - 320px);min-height:520px;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)"><iframe src="'+src()+'" title="Gastos do casamento" style="width:100%;height:100%;border:0;display:block" loading="lazy"></iframe></div>';}
   function open(reload){
     var box=document.getElementById('casgastosDash');if(!box)return;
     var f=box.querySelector('iframe');
     if(f&&!reload)return;
-    box.innerHTML='<div style="max-width:430px;margin:.6rem auto 0;height:calc(100vh - 150px);min-height:640px;border-radius:28px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)"><iframe src="casamento/?embed=1&t='+Date.now()+'" title="Gastos do casamento" style="width:100%;height:100%;border:0;display:block" loading="lazy"></iframe></div>';
+    box.innerHTML=frame();
   }
-  return {open:open};
+  function setTab(t){
+    tab=t||'resumo';
+    var f=document.querySelector('#casgastosDash iframe');
+    if(!f){open(true);return;}
+    if((f.getAttribute('src')||'').indexOf('tab='+encodeURIComponent(tab))<0)f.src=src();
+  }
+  return {open:open,setTab:setTab,tab:function(){return tab;}};
 })();
 
 var ING=(function(){
@@ -4034,8 +4052,17 @@ var FOCO=(function(){
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(e){console.warn('SW reg falhou',e);});});}</script>
 <!-- ===== Conceito 05 — Spotlight + Dock (camada visual; navega via setSimplePage/openPanel existentes) ===== -->
 <style id="sp-style">
-body.sp-home .sidebar,body.sp-home .sb-reopen,body.sp-home .sb-backdrop{display:none!important}
+/* Sem menu lateral em página nenhuma (desktop e celular): a navegação fica no Spotlight e no dock. */
+.sidebar,.sb-reopen,.sb-backdrop,.mnav-btn,.sb-tools{display:none!important}
+.layout{display:block!important;height:calc(100vh - 52px)!important}
+main.content{width:100%!important;max-width:1120px;margin:0 auto!important;height:100%!important;flex:none!important;box-sizing:border-box}
 body.sp-home #page-welcome>*:not(#sp-home){display:none!important}
+.sp-ptabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 0 14px;padding:2px 0}
+.sp-ptabs::-webkit-scrollbar{display:none}
+.sp-ptab{flex:none;border:0;background:var(--surface2);color:var(--muted);border-radius:999px;padding:7px 14px;font:600 13px/1.2 inherit;cursor:pointer}
+.sp-ptab.on{background:#6d5efc;color:#fff}
+#page-habits>.appseg{display:none!important}
+.page[data-view="app"]>.sp-ptabs{display:flex!important}
 #sp-home{min-height:calc(100vh - 140px);display:flex;flex-direction:column;align-items:center;padding:12vh 0 130px}
 #sp-home .sp-g{font-size:15px;color:var(--muted);margin:0 0 18px}
 .sp-box{width:100%;max-width:640px;background:var(--surface);color:var(--text);border-radius:18px;box-shadow:0 30px 60px -20px rgba(15,23,42,.3),0 0 0 1px var(--border);overflow:hidden;text-align:left}
@@ -4072,14 +4099,14 @@ body:not(.sp-home) .content{padding-bottom:110px!important}
 <nav id="sp-dock" aria-label="Apps"></nav>
 <script>
 var SP=(function(){
-  var APPS=[ // key = id da página existente; nav = id do item no menu
+  var APPS=[ // key = id da página existente; nav = id do item no menu; secs = abas no topo da página
     {k:'welcome',n:'Início',e:'🔎',nav:'nav-inicio',dock:0},
-    {k:'casgastos',n:'Gastos do casamento',e:'💍',nav:'nav-casgastos',dock:1,kw:'casamento gastos finanças'},
-    {k:'apartamento',n:'Apartamento',e:'🏠',nav:'nav-apartamento',dock:1,kw:'apto imóvel obra'},
-    {k:'habits',n:'Habit Tracker',e:'✅',nav:'nav-habits',dock:1,kw:'hábitos rotina'},
-    {k:'notasglobal',n:'Notas',e:'📝',nav:'nav-notas-global',dock:1},
-    {k:'etiquetas',n:'Etiquetas',e:'🏷️',nav:'nav-etiquetas-global',panel:1,kw:'tags'},
-    {k:'lixeira',n:'Lixeira',e:'🗑️',nav:'nav-lixeira',kw:'excluídos'}
+    {k:'casgastos',n:'Gastos do casamento',e:'💍',nav:'nav-casgastos',dock:1,kw:'casamento gastos finanças',secs:[{id:'resumo',n:'Resumo'},{id:'gastos',n:'Gastos'},{id:'crono',n:'Cronograma'},{id:'conv',n:'Convidados'},{id:'chat',n:'Gravador'}]},
+    {k:'apartamento',n:'Apartamento',e:'🏠',nav:'nav-apartamento',dock:1,kw:'apto imóvel obra',secs:[{id:'resumo',n:'Resumo'},{id:'gastos',n:'Gastos'},{id:'crono',n:'Cronograma'},{id:'compras',n:'Compras'},{id:'grav',n:'Gravador'}]},
+    {k:'habits',n:'Habit Tracker',e:'✅',nav:'nav-habits',dock:1,kw:'hábitos rotina equilíbrio foco',secs:[{id:'resumo',n:'Equilíbrio'},{id:'app',n:'No app'}]},
+    {k:'notasglobal',n:'Notas',e:'📝',nav:'nav-notas-global',dock:1,kw:'anotações',secs:[{id:'lista',n:'Notas'},{id:'etiquetas',n:'Etiquetas'}]},
+    {k:'etiquetas',n:'Etiquetas',e:'🏷️',nav:'nav-etiquetas-global',panel:1,kw:'tags etiquetas'},
+    {k:'lixeira',n:'Lixeira',e:'🗑️',nav:'nav-lixeira',kw:'excluídos lixo restaurar'}
   ];
   /* futuros apps: troque soon:1 por k/nav quando a página existir */
   var SOON=[{n:'Viagens',e:'✈️'},{n:'Saúde',e:'🩺'},{n:'Finanças',e:'💰'}];
@@ -4089,11 +4116,59 @@ var SP=(function(){
   function open(k){
     var a=APPS.filter(function(x){return x.k===k;})[0]; if(!a)return;
     var el=document.getElementById(a.nav);
-    if(a.panel){try{openPanel(k);}catch(e){} close();return;}
+    if(a.panel){try{openPanel(k);}catch(e){} close();paintTabs();return;}
     var grp=el&&el.closest&&el.closest('.sb-group'); if(grp)grp.classList.remove('collapsed');
     try{setSimplePage(k,el);}catch(e){console.warn(e);}
     close(); window.scrollTo(0,0);
   }
+  function goSec(a,s){
+    if(!a||!s)return;
+    close();
+    if(a.k==='notasglobal'){
+      if(cur!=='notasglobal')open('notasglobal');
+      try{ if(s.id==='etiquetas')openPanel('etiquetas'); else closePanel('etiquetas'); }catch(e){}
+      paintTabs(); return;
+    }
+    if(a.k==='apartamento'){try{APTO.setTab(s.id);}catch(e){}}
+    else if(a.k==='casgastos'){try{CASBI.setTab(s.id);}catch(e){}}
+    if(cur!==a.k)open(a.k);
+    if(a.k==='habits'){try{EMBED.setView('habits',s.id);}catch(e){}}
+    paintTabs();
+  }
+  function secNow(a){
+    if(a.k==='apartamento'&&window.APTO&&APTO.tab)return APTO.tab();
+    if(a.k==='casgastos'&&window.CASBI&&CASBI.tab)return CASBI.tab();
+    if(a.k==='habits'){var pg=document.getElementById('page-habits');return (pg&&pg.dataset.view==='resumo')?'resumo':'app';}
+    if(a.k==='notasglobal'){var p=document.getElementById('panel-etiquetas');return (p&&p.classList.contains('open'))?'etiquetas':'lista';}
+    return a.secs&&a.secs[0]?a.secs[0].id:'';
+  }
+  function paintTabs(){
+    document.querySelectorAll('.sp-ptabs').forEach(function(bar){
+      var a=APPS.filter(function(x){return x.k===bar.dataset.app;})[0]; if(!a||!a.secs)return;
+      var now=secNow(a);
+      if(bar.dataset.now===now && bar.children.length===a.secs.length)return;
+      bar.dataset.now=now;
+      bar.innerHTML=a.secs.map(function(s){
+        return '<button type="button" class="sp-ptab'+(s.id===now?' on':'')+'" data-s="'+s.id+'" role="tab" aria-selected="'+(s.id===now?'true':'false')+'">'+s.n+'</button>';
+      }).join('');
+    });
+  }
+  function mountTabs(){
+    apps().forEach(function(a){
+      if(!a.secs||!a.secs.length)return;
+      var pg=document.getElementById('page-'+a.k); if(!pg||pg.querySelector('.sp-ptabs'))return;
+      var bar=document.createElement('div'); bar.className='sp-ptabs'; bar.dataset.app=a.k; bar.setAttribute('role','tablist');
+      var head=pg.querySelector(':scope > .etd-head, :scope > .page-header');
+      if(head)head.insertAdjacentElement('afterend',bar); else pg.insertBefore(bar,pg.firstChild);
+      bar.addEventListener('click',function(ev){
+        var b=ev.target.closest('.sp-ptab'); if(!b)return;
+        var s=(a.secs||[]).filter(function(x){return x.id===b.dataset.s;})[0];
+        if(s)goSec(a,s);
+      });
+    });
+    paintTabs();
+  }
+  function fold(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
   function habitsInfo(){try{var t=htToday(),act=htHabits.filter(function(h){return !h.arquivado&&!h.archived;});
     var d=act.filter(function(h){return htLogs.some(function(l){return l.habitId===h.id&&l.data===t;});}).length;
     return act.length?d+'/'+act.length:'';}catch(e){return '';}}
@@ -4103,10 +4178,14 @@ var SP=(function(){
             {s:'Ações',n:'Nova nota',e:'📝',x:'N',f:function(){open('notasglobal');setTimeout(function(){try{openNoteModal();}catch(e){}},60);}},
             {s:'Ações',n:'Alternar tema claro/escuro',e:'🌓',f:function(){try{toggleTheme();}catch(e){}}}];
     var ap=apps().map(function(a){return {s:'Apps',n:a.n,e:a.e,kw:a.kw,x:a.k===cur?'aberto':'↵',f:function(){open(a.k);}};});
+    var sc=[];
+    apps().forEach(function(a){(a.secs||[]).forEach(function(s){
+      sc.push({s:a.k===cur?'Nesta página':'Seções',n:a.n+' · '+s.n,e:a.e,kw:(a.kw||'')+' '+a.n+' '+s.n,app:a.k,f:function(){goSec(a,s);}});
+    });});
     var so=SOON.map(function(a){return {s:'Em breve',n:a.n,e:a.e,x:'em breve',soon:1,f:function(){try{toast(a.n+' — em breve');}catch(e){}}};});
-    var all=ac.concat(ap,so);
-    if(q){all=all.filter(function(i){return (i.n+' '+(i.kw||'')).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').indexOf(q.normalize('NFD').replace(/[\u0300-\u036f]/g,''))>=0;});}
-    else{all=ac.slice(0,2).map(function(i){i.s='Sugestões';return i;}).concat(ap,so);}
+    var all=ac.concat(ap,sc,so);
+    if(q){var fq=fold(q);all=all.filter(function(i){return fold(i.n+' '+(i.kw||'')).indexOf(fq)>=0;});}
+    else{var here=sc.filter(function(i){return i.app===cur;});all=ac.slice(0,2).map(function(i){i.s='Sugestões';return i;}).concat(here,ap,so);}
     return all;
   }
   function html(){return '<div class="sp-box" role="dialog"><div class="sp-in"><i class="ti ti-search"></i><input class="sp-q" placeholder="Abrir app ou buscar…" autocomplete="off" aria-label="Abrir app ou buscar"><span class="sp-k">'+(/Mac|iPhone|iPad/.test(navigator.platform)?'⌘':'Ctrl')+' K</span></div><div class="sp-list"></div></div>';}
@@ -4140,11 +4219,17 @@ var SP=(function(){
     h+='<span class="sp-sep"></span><button class="sp-d plus" data-k="+" title="Mais apps e ações (Ctrl+K)" aria-label="Mais apps">＋</button>';
     d.innerHTML=h;
   }
+  var busy=0;
   function sync(){
-    var a=document.querySelector('.page.active'); cur=a?a.id.replace('page-',''):'welcome';
-    document.body.classList.toggle('sp-home',cur==='welcome'); dock();
-    var s=document.querySelector('#sp-home .sp-g'); if(s)s.textContent=greet();
-    var hr=document.getElementById('sp-home'); if(hr&&cur==='welcome')render(hr);
+    if(busy)return;
+    busy=1;
+    try{
+      var a=document.querySelector('.page.active'); cur=a?a.id.replace('page-',''):'welcome';
+      document.body.classList.toggle('sp-home',cur==='welcome'); dock();
+      var s=document.querySelector('#sp-home .sp-g'); if(s)s.textContent=greet();
+      var hr=document.getElementById('sp-home'); if(hr&&cur==='welcome')render(hr);
+      paintTabs();
+    }finally{busy=0;}
   }
   function init(){
     var w=document.getElementById('page-welcome'); if(!w)return;
@@ -4157,6 +4242,8 @@ var SP=(function(){
     });
     var orig=window.setSimplePage; if(typeof orig==='function'){window.setSimplePage=function(){var r=orig.apply(this,arguments);try{sync();}catch(e){}return r;};}
     try{new MutationObserver(function(){sync();}).observe(document.querySelector('main.content')||document.body,{subtree:true,attributes:true,attributeFilter:['class']});}catch(e){}
+    try{var pe=document.getElementById('panel-etiquetas');if(pe)new MutationObserver(function(){paintTabs();}).observe(pe,{attributes:true,attributeFilter:['class']});}catch(e){}
+    mountTabs();
     sync();
   }
   APPS[0].k='welcome';
