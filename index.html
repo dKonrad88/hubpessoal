@@ -805,6 +805,7 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 <div class="sb-group-body">
 <div class="sb-subitem" id="nav-casgastos" onclick="setSimplePage('casgastos',this)"><i class="ti ti-receipt"></i> Gastos do casamento</div>
 <div class="sb-subitem" id="nav-apartamento" onclick="setSimplePage('apartamento',this)"><i class="ti ti-building"></i> Apartamento</div>
+<div class="sb-subitem" id="nav-gastos" onclick="setSimplePage('gastos',this)"><i class="ti ti-credit-card"></i> Gastos</div>
 
 </div></div>
 <!-- ROTINA -->
@@ -855,12 +856,14 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;letter
 </div>
 <div class="home-grid">
 <a class="home-card" onclick="setSimplePage('apartamento',document.getElementById('nav-apartamento'))"><div class="hc-ic">🏠</div><div class="hc-body"><div class="hc-t">Apartamento</div><div class="hc-s">Obra, mobília e contas</div></div><div class="hc-go">›</div></a>
+<a class="home-card" onclick="setSimplePage('gastos',document.getElementById('nav-gastos'))"><div class="hc-ic">💳</div><div class="hc-body"><div class="hc-t">Gastos</div><div class="hc-s">Fatura do cartão, Pix e dinheiro</div></div><div class="hc-go">›</div></a>
 <a class="home-card" onclick="setSimplePage('habits',document.getElementById('nav-habits'))"><div class="hc-ic">🔥</div><div class="hc-body"><div class="hc-t">Hábitos</div><div class="hc-s">Sua rotina e sequências</div></div><div class="hc-go">›</div></a>
 </div>
 </div>
 <script>(function(){try{var h=new Date().getHours();var g=h<12?'Bom dia':(h<18?'Boa tarde':'Boa noite');var ge=document.getElementById('homeGreet');if(ge)ge.textContent=g;}catch(e){}})();</script>
 </div>
 <div class="page" id="page-apartamento"><div id="apartamentoDash" class="sp-stage"></div></div>
+<div class="page" id="page-gastos"><div id="gastosDash" class="sp-stage"></div></div>
 <div class="page" id="page-casgastos"><div id="casgastosDash" class="sp-stage"></div></div>
 <div class="page" id="page-casamento">
 <!-- CAS DASHBOARD -->
@@ -2437,6 +2440,7 @@ function setSimplePage(p,el){
   if(p==='leitura'){try{LEITURA.open();}catch(e){}}
   if(p==='apartamento'){try{APTO.open();}catch(e){}}
   if(p==='casgastos'){try{CASBI.open();}catch(e){}}
+  if(p==='gastos'){try{GASTOS.open();}catch(e){}}
   if(p==='lixeira'){try{lixRender();}catch(e){}}
 }
 /* ===================== HABIT TRACKER ===================== */
@@ -3693,6 +3697,19 @@ var CASBI=(function(){
   return {open:open};
 })();
 
+/* ===================== GASTOS — fatura (PDF) + Gravador (2026-11-02) =====================
+   App em ./gastos/ (gastos/index.html). Mesmo Supabase e mesmo login do HUB.
+   Cada pessoa vê só as próprias linhas (RLS auth.uid() = user_id). O HUB só abre o iframe. */
+var GASTOS=(function(){
+  function open(reload){
+    var box=document.getElementById('gastosDash');if(!box)return;
+    var f=box.querySelector('iframe');
+    if(f&&!reload)return;
+    box.innerHTML='<iframe class="sp-fill" src="gastos/?embed=1" title="Gastos"></iframe>';
+  }
+  return {open:open};
+})();
+
 var ING=(function(){
   var rows={},state='init',errMsg='';
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
@@ -4088,13 +4105,14 @@ var SP=(function(){
     {k:'welcome',n:'Início',e:'🔎',nav:'nav-inicio',dock:0},
     {k:'casgastos',n:'Gastos do casamento',e:'💍',nav:'nav-casgastos',dock:1,kw:'casamento gastos finanças',full:1},
     {k:'apartamento',n:'Apartamento',e:'🏠',nav:'nav-apartamento',dock:1,kw:'apto imóvel obra',full:1},
+    {k:'gastos',n:'Gastos',e:'💳',nav:'nav-gastos',dock:1,kw:'gastos cartão fatura pix dinheiro finanças sicredi',full:1},
     {k:'habits',n:'Habit Tracker',e:'✅',nav:'nav-habits',dock:1,kw:'hábitos rotina equilíbrio foco'},
     {k:'notasglobal',n:'Notas',e:'📝',nav:'nav-notas-global',dock:1,kw:'anotações'},
     {k:'etiquetas',n:'Etiquetas',e:'🏷️',nav:'nav-etiquetas-global',panel:1,kw:'tags etiquetas'},
     {k:'lixeira',n:'Lixeira',e:'🗑️',nav:'nav-lixeira',kw:'excluídos lixo restaurar'}
   ];
   /* futuros apps: troque soon:1 por k/nav quando a página existir */
-  var SOON=[{n:'Viagens',e:'✈️'},{n:'Saúde',e:'🩺'},{n:'Finanças',e:'💰'}];
+  var SOON=[{n:'Viagens',e:'✈️'},{n:'Saúde',e:'🩺'}];
   var cur='welcome',sel=0,items=[];
   function exists(a){return !!document.getElementById(a.nav);}
   function apps(){return APPS.filter(function(a){return a.k!=='welcome'&&exists(a);});}
