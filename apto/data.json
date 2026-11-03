@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-01T20:16-03:00",
+ "geradoEm": "2026-11-03T09:12-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
   "total": 1751888.15,
@@ -493,6 +493,15 @@
    "tarefa": "Avisar o Márcio (mestre de obra) sobre o vidro da janela quebrado na Suíte Master",
    "comodo": "Suíte Master",
    "obs": "Mandar mensagem ao Márcio avisando que há um vidro/janela quebrada na Suíte Master. Início e vencimento: terça 03/11. Solicitante e executor: Diego",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2026-12-07",
+   "resp": "Cherrut",
+   "tarefa": "Instalação dos 4 ar-condicionados (Suíte master, Closet, Sala Gamer e Quarto visita) - Cherrut",
+   "comodo": "Suíte Master, Closet Master, Quarto Visita, Sala Gamer",
+   "obs": "Semana de 07/12. Início: 07/12/2026. Prazo: 11/12/2026. 04 und: Suíte Master, Closet, Sala Gamer e Quarto Visita",
    "status": "Pendente",
    "tipo": "Tarefa"
   }
