@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-03T09:12-03:00",
+ "geradoEm": "2026-11-03T20:03-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
   "total": 1751888.15,
@@ -493,7 +493,7 @@
    "tarefa": "Avisar o Márcio (mestre de obra) sobre o vidro da janela quebrado na Suíte Master",
    "comodo": "Suíte Master",
    "obs": "Mandar mensagem ao Márcio avisando que há um vidro/janela quebrada na Suíte Master. Início e vencimento: terça 03/11. Solicitante e executor: Diego",
-   "status": "Pendente",
+   "status": "Concluído",
    "tipo": "Tarefa"
   },
   {
