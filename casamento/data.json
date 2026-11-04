@@ -1,6 +1,6 @@
 {
  "exemplo": false,
- "geradoEm": "2026-11-01T21:55-03:00",
+ "geradoEm": "2026-11-04T16:03-03:00",
  "fonte": "Google Sheets \"Casamento\"",
  "dataCasamento": "2027-10-16",
  "totais": {
@@ -9,8 +9,8 @@
   "planejado": 149500.0,
   "projecao": 240245.33,
   "saldo": 59754.67,
-  "pago": 33577.33,
-  "aPagar": 57168.0,
+  "pago": 37077.33,
+  "aPagar": 53668.0,
   "economia": 6900.0,
   "itens": 37
  },
@@ -44,8 +44,8 @@
    "orcamento": 0.0,
    "orcado": 35620.0,
    "fechado": 30820.0,
-   "pago": 2850.0,
-   "restante": 27970.0,
+   "pago": 6350.0,
+   "restante": 24470.0,
    "planejado": 0,
    "itens": 3,
    "cancelados": 0,
@@ -298,8 +298,8 @@
    "orcamento": 0,
    "orcado": 151800.0,
    "fechado": 13650.0,
-   "pago": 450.0,
-   "restante": 13200.0,
+   "pago": 3950.0,
+   "restante": 9700.0,
    "planejado": 137500.0,
    "itens": 28,
    "cancelados": 0,
@@ -662,13 +662,13 @@
    "tipo": "fechado",
    "orcado": 12500.0,
    "fechado": 11900.0,
-   "pago": 0.0,
-   "restante": 11900.0,
+   "pago": 3500.0,
+   "restante": 8400.0,
    "parcelas": "2",
-   "proxVenc": "2026-11-05",
+   "proxVenc": "2027-10-11",
    "evento": null,
    "contato": "",
-   "obs": "categoria sugerida | PIX (CPF) 82175365034"
+   "obs": "categoria sugerida"
   },
   {
    "data": "2026-06-14",
@@ -1147,13 +1147,13 @@
    "cat": "Cerimônia"
   },
   {
-   "data": "2026-11-05",
+   "data": "2026-11-04",
    "fornecedor": "",
    "desc": "Banda",
    "parcela": "Parcela 1",
    "valor": 3500.0,
-   "status": "previsto",
-   "forma": "",
+   "status": "pago",
+   "forma": "PIX",
    "cat": "Outros/Imprevistos"
   },
   {
@@ -1223,7 +1223,7 @@
    "parcela": "Parcela 2",
    "valor": 8400.0,
    "status": "previsto",
-   "forma": "",
+   "forma": "PIX",
    "cat": "Outros/Imprevistos"
   },
   {
@@ -1382,8 +1382,8 @@
    "resp": "Diego",
    "tarefa": "Pagar Banda - Parcela 1 (R$ 3.500,00)",
    "cat": "Música/DJ/Banda",
-   "obs": "PIX (CPF) 82175365034",
-   "status": "Pendente",
+   "obs": "",
+   "status": "Concluído",
    "tipo": "Tarefa"
   },
   {
@@ -1436,7 +1436,7 @@
    "resp": "Diego",
    "tarefa": "Pagar Banda - Parcela 2 (R$ 8.400,00)",
    "cat": "Música/DJ/Banda",
-   "obs": "PIX (CPF) 82175365034",
+   "obs": "",
    "status": "Pendente",
    "tipo": "Tarefa"
   },
@@ -1446,6 +1446,15 @@
    "tarefa": "Pagar Celebrante Marcos - Parcela 2 (R$ 1.300,00)",
    "cat": "Cerimônia",
    "obs": "",
+   "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2027-10-14",
+   "resp": "Diego",
+   "tarefa": "Pagar o restante do DJ Polver",
+   "cat": "Música/DJ/Banda",
+   "obs": "Solicitado por Débora; fornecedor DJ Polver; valor não informado",
    "status": "Pendente",
    "tipo": "Tarefa"
   }
