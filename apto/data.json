@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-03T20:03-03:00",
+ "geradoEm": "2026-11-05T20:03-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
   "total": 1751888.15,
@@ -501,8 +501,17 @@
    "resp": "Cherrut",
    "tarefa": "Instalação dos 4 ar-condicionados (Suíte master, Closet, Sala Gamer e Quarto visita) - Cherrut",
    "comodo": "Suíte Master, Closet Master, Quarto Visita, Sala Gamer",
-   "obs": "Semana de 07/12. Início: 07/12/2026. Prazo: 11/12/2026. 04 und: Suíte Master, Closet, Sala Gamer e Quarto Visita",
+   "obs": "Semana de 07/12. Início: 07/12/2026. Prazo: 11/12/2026. 04 und: Suíte Master, Closet, Sala Gamer e Quarto Visita. Hub #18453.",
    "status": "Pendente",
+   "tipo": "Tarefa"
+  },
+  {
+   "data": "2026-11-06",
+   "resp": "Diego",
+   "tarefa": "Visitar lojas de colchão (Pasqualini 475 e Sonhar Sleep Center 265)",
+   "comodo": "Apartamento",
+   "obs": "Sexta 06/11. 15h40–16h10 Pasqualini 475; 16h15–16h45 Sonhar Sleep Center (King Koil/Inducol, Pasqualini 265). Estar no apartamento às 17h15. ~30 min em cada loja.",
+   "status": "Agendado",
    "tipo": "Tarefa"
   }
  ],
