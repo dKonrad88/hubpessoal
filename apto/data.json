@@ -1,10 +1,10 @@
 {
- "geradoEm": "2026-11-05T20:03-03:00",
+ "geradoEm": "2026-11-09T15:39-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 1751888.15,
-  "pago": 1338400.47,
-  "restante": 568900.65
+  "total": 1767670.3599999999,
+  "pago": 1365346.68,
+  "restante": 557736.65
  },
  "categorias": [
   {
@@ -32,6 +32,12 @@
    "restante": 12100.0
   },
   {
+   "nome": "Eletrodomésticos",
+   "total": 15782.21,
+   "pago": 15782.21,
+   "restante": 0.0
+  },
+  {
    "nome": "Projeto",
    "total": 12000.0,
    "pago": 12000.0,
@@ -40,8 +46,8 @@
   {
    "nome": "Imóvel",
    "total": 1510000.0,
-   "pago": 1175608.47,
-   "restante": 489804.5
+   "pago": 1186772.47,
+   "restante": 478640.5
   }
  ],
  "comodos": [
@@ -65,9 +71,9 @@
   },
   {
    "nome": "Cozinha",
-   "total": 12664.78,
-   "pago": 9498.59,
-   "restante": 3166.1900000000005
+   "total": 25727.99,
+   "pago": 22561.8,
+   "restante": 3166.1900000000023
   },
   {
    "nome": "Área de Serviço",
@@ -137,15 +143,15 @@
   },
   {
    "nome": "Adega",
-   "total": 0.0,
-   "pago": 0.0,
+   "total": 2719.0,
+   "pago": 2719.0,
    "restante": 0.0
   },
   {
    "nome": "Imóvel",
    "total": 1510000.0,
-   "pago": 1175608.47,
-   "restante": 489804.5
+   "pago": 1186772.47,
+   "restante": 478640.5
   }
  ],
  "gastos": [
@@ -412,6 +418,66 @@
    "obs": "Contato: Fábio",
    "comodo": "Sala Gamer",
    "cat": "Obra"
+  },
+  {
+   "data": "2026-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR",
+   "qtd": "1 und",
+   "total": 2069.75,
+   "pago": 2069.75,
+   "entrega": "2026-11-24",
+   "obs": "Cartão 12x sem juros",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v",
+   "qtd": "1 und",
+   "total": 1688.46,
+   "pago": 1688.46,
+   "entrega": "2026-11-25",
+   "obs": "Cartão 12x sem juros. Previsão 23 a 25/11",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE",
+   "qtd": "1 und",
+   "total": 2719.0,
+   "pago": 2719.0,
+   "entrega": "2026-11-25",
+   "obs": "Cartão 12x sem juros. Previsão 23 a 25/11",
+   "comodo": "Adega",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR",
+   "qtd": "1 und",
+   "total": 5426.0,
+   "pago": 5426.0,
+   "entrega": "2026-11-25",
+   "obs": "Cartão 12x sem juros. Previsão 23 a 25/11",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR",
+   "qtd": "1 und",
+   "total": 3879.0,
+   "pago": 3879.0,
+   "entrega": "2026-11-25",
+   "obs": "Cartão 12x sem juros. Previsão 23 a 25/11",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
   }
  ],
  "cronograma": [
@@ -510,21 +576,21 @@
    "resp": "Diego",
    "tarefa": "Visitar lojas de colchão (Pasqualini 475 e Sonhar Sleep Center 265)",
    "comodo": "Apartamento",
-   "obs": "Sexta 06/11. 15h40–16h10 Pasqualini 475; 16h15–16h45 Sonhar Sleep Center (King Koil/Inducol, Pasqualini 265). Estar no apartamento às 17h15. ~30 min em cada loja.",
-   "status": "Agendado",
+   "obs": "Sexta 06/11. 15h40–16h10 Pasqualini 475; 16h15–16h45 Sonhar Sleep Center (King Koil/Inducol, Pasqualini 265). Estar no apartamento às 17h15. ~30 min em cada loja. Hub #18844",
+   "status": "Concluído",
    "tipo": "Tarefa"
   }
  ],
  "imovel": {
   "resumo": {
    "Valor do imóvel (Diamond)": "1510000",
-   "Já pago": "1175608.47",
-   "Falta (corrigido)": "489804.5",
-   "Falta (sem correção)": "399750",
-   "Juros/correção pagos": "65358.47",
-   "Parcelas pagas": "50 de 80",
-   "Parcelas restantes": "30",
-   "Quitado": "0.78"
+   "Já pago": "1186772.47",
+   "Falta (corrigido)": "478640.5",
+   "Falta (sem correção)": "390750",
+   "Juros/correção pagos": "67522.47",
+   "Parcelas pagas": "51 de 80",
+   "Parcelas restantes": "29",
+   "Quitado": "0.785942033"
   },
   "parcelas": [
    {
@@ -973,9 +1039,9 @@
     "venc": "2026-11-10",
     "tipo": "Mensal",
     "previsto": 9000.0,
-    "pago": 0.0,
-    "correcao": 0.0,
-    "status": "A pagar"
+    "pago": 11164.0,
+    "correcao": 2164.0,
+    "status": "Pago"
    },
    {
     "n": 51,
@@ -1313,6 +1379,46 @@
    "valor": 2500.0,
    "status": "pago",
    "cat": "Mão de obra"
+  },
+  {
+   "data": "2026-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR",
+   "valor": 2069.75,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v",
+   "valor": 1688.46,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE",
+   "valor": 2719.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR",
+   "valor": 5426.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR",
+   "valor": 3879.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
   },
   {
    "data": "2026-08-31",
@@ -1782,8 +1888,8 @@
    "data": "2026-11-10",
    "fornecedor": "Construtora Diamond",
    "desc": "Parcela 50/80 · Mensal",
-   "valor": 9000.0,
-   "status": "previsto",
+   "valor": 11164.0,
+   "status": "pago",
    "cat": "Imóvel"
   },
   {
