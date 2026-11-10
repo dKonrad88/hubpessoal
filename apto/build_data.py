@@ -27,7 +27,19 @@ for r in g[gi+1:]:
   if not any(r) or not r[1]: continue
   r+=['']*11
   gastos.append(dict(data=dt(r[0]),fornecedor=r[1],desc=r[2],qtd=r[3],total=num(r[4]),pago=num(r[5]),entrega=dt(r[7]),obs=r[8],comodo=r[9],cat=r[10]))
-c=rows(C); cron=[dict(data=dt(r[0]),resp=r[1],tarefa=r[2],comodo=r[3],obs=r[4],status=r[5],tipo=r[6]) for r in c[1:] if r and r[0]]
+c=rows(C); hdr=[(x or '').strip() for x in (c[0] if c else [])]
+def _col(names):
+  for i,h in enumerate(hdr):
+    hl=h.lower()
+    if any(n==hl or n in hl for n in names): return i
+  return None
+iFim=_col(['fim','término','termino','prazo'])
+cron=[]
+for r in c[1:]:
+  if not r or not r[0]: continue
+  r=list(r)+['']*8
+  fim=dt(r[iFim]) if iFim is not None and r[iFim] else None
+  cron.append(dict(data=dt(r[0]),fim=fim,resp=r[1],tarefa=r[2],comodo=r[3],obs=r[4],status=r[5],tipo=r[6]))
 res=rows(R); cats=[];coms=[];tot=None
 for r in res[1:]:
   r+=['']*9

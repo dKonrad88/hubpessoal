@@ -584,7 +584,8 @@
    "comodo": "Escada",
    "obs": "Estar no apto das 07h00 às 08h00",
    "status": "Agendado",
-   "tipo": "Reunião"
+   "tipo": "Reunião",
+   "fim": "2026-11-13"
   },
   {
    "data": "2026-11-03",
@@ -593,7 +594,8 @@
    "comodo": "Escada",
    "obs": "Das 08h00 às 08h30",
    "status": "Agendado",
-   "tipo": "Reunião"
+   "tipo": "Reunião",
+   "fim": null
   },
   {
    "data": "2026-11-03",
@@ -602,16 +604,18 @@
    "comodo": "Apartamento",
    "obs": "Trazer o relatório para lançar na planilha",
    "status": "Concluído",
-   "tipo": "Tarefa"
+   "tipo": "Tarefa",
+   "fim": null
   },
   {
-   "data": "2026-11-09",
+   "data": "2026-11-13",
    "resp": "Marmoraria Estrelense",
    "tarefa": "Entregar mármore e instalar as tabeiras",
    "comodo": "Escada",
    "obs": "Semana de 09/11. Ao terminar as tabeiras, avisar o mestre de obra",
    "status": "Agendado",
-   "tipo": "Tarefa"
+   "tipo": "Tarefa",
+   "fim": "2026-11-14"
   },
   {
    "data": "2026-11-09",
@@ -620,7 +624,8 @@
    "comodo": "Apartamento",
    "obs": "Logo após as tabeiras da Estrelense",
    "status": "Aguardando",
-   "tipo": "Tarefa"
+   "tipo": "Tarefa",
+   "fim": null
   },
   {
    "data": "2026-11-09",
@@ -629,16 +634,18 @@
    "comodo": "Suíte Master, Closet Master, Quarto Visita, Sala Gamer",
    "obs": "Depois que o mestre de obra confirmar a data do piso laminado. 04 und: Master, Closet, Quarto Visita e Sala Gamer",
    "status": "Aguardando",
-   "tipo": "Tarefa"
+   "tipo": "Tarefa",
+   "fim": null
   },
   {
-   "data": "2026-11-16",
+   "data": "2026-11-17",
    "resp": "CR Mármores",
    "tarefa": "Instalar mármore da escada (pisante e espelho)",
    "comodo": "Escada",
    "obs": "Semana de 16/11. Pagar restante R$6.500 em 5x no cartão no início",
    "status": "Agendado",
-   "tipo": "Tarefa"
+   "tipo": "Tarefa",
+   "fim": "2026-11-18"
   },
   {
    "data": "2026-11-23",
@@ -647,7 +654,8 @@
    "comodo": "Escada, Mezanino, Sala Gamer, Banheiros",
    "obs": "Semana de 23 ou 30/11. Box do banho de visita e da master",
    "status": "A confirmar",
-   "tipo": "Tarefa"
+   "tipo": "Tarefa",
+   "fim": "2026-11-29"
   },
   {
    "data": "2026-11-03",
@@ -656,7 +664,8 @@
    "comodo": "Suíte Master",
    "obs": "Mandar mensagem ao Márcio avisando que há um vidro/janela quebrada na Suíte Master. Início e vencimento: terça 03/11. Solicitante e executor: Diego",
    "status": "Concluído",
-   "tipo": "Tarefa"
+   "tipo": "Tarefa",
+   "fim": null
   },
   {
    "data": "2026-12-07",
@@ -665,7 +674,8 @@
    "comodo": "Suíte Master, Closet Master, Quarto Visita, Sala Gamer",
    "obs": "Semana de 07/12. Início: 07/12/2026. Prazo: 11/12/2026. 04 und: Suíte Master, Closet, Sala Gamer e Quarto Visita. Hub #18453.",
    "status": "Pendente",
-   "tipo": "Tarefa"
+   "tipo": "Tarefa",
+   "fim": "2026-12-11"
   },
   {
    "data": "2026-11-06",
@@ -674,7 +684,8 @@
    "comodo": "Apartamento",
    "obs": "Sexta 06/11. 15h40–16h10 Pasqualini 475; 16h15–16h45 Sonhar Sleep Center (King Koil/Inducol, Pasqualini 265). Estar no apartamento às 17h15. ~30 min em cada loja. Hub #18844",
    "status": "Concluído",
-   "tipo": "Tarefa"
+   "tipo": "Tarefa",
+   "fim": null
   }
  ],
  "imovel": {

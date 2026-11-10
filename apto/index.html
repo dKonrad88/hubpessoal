@@ -144,7 +144,7 @@ html.light .theme-btn{background:rgba(120,120,128,.12);color:#1c1c1e}
 <div id="ov" onclick="closeSheet()"></div><div id="sh"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-var D=null,TAB='resumo',MES=null,CRV='prox',F={q:'',fornecedor:'',cat:'',comodo:'',sit:''};
+var D=null,TAB='resumo',MES=null,CRV='prox',CRVuser=0,F={q:'',fornecedor:'',cat:'',comodo:'',sit:''};
 var COR={'Mobília':'#AF52DE','Obra':'#FF9500','Climatização':'#32ADE6','Mão de obra':'#FF2D55','Projeto':'#34C759','Imóvel':'#5E5CE6'};
 var ST={'Agendado':'#0A84FF','Pendente':'#FF9F0A','Aguardando':'#8E8E93','A confirmar':'#BF5AF2'};
 var SC={pago:'#34C759',parcial:'#FF9500',aberto:'#8E8E93',previsto:'#8E8E93',atrasada:'#FF3B30'};
@@ -240,16 +240,60 @@ function vComodo(){
   return h;
 }
 /* ---------- CRONOGRAMA ---------- */
+function cronConcluido(c){
+  if((c.status||'')==='Concluído')return true;
+  if(c.fim)return false;
+  return !!(c.data&&c.data<hoje());
+}
+function cronAtraso(c){return !!(c.fim&&hoje()>c.fim&&!cronConcluido(c))}
+function emAndamento(c){
+  if(cronConcluido(c))return false;
+  var h=hoje();
+  if((c.status||'')==='Em andamento')return true;
+  if(c.data&&c.fim&&c.data<=h&&h<=c.fim)return true;
+  if(c.fim&&h>c.fim)return true;
+  return false;
+}
+function cronDias(c){
+  function n(s){var p=s.split('-');return Date.UTC(+p[0],+p[1]-1,+p[2])/86400000}
+  var y=Math.round(n(c.fim)-n(c.data))+1,x=Math.round(n(hoje())-n(c.data))+1;
+  if(x<0)x=0;if(x>y)x=y;return {x:x,y:y};
+}
+function cronCor(c){return cronAtraso(c)?'#FF3B30':(ST[c.status]||'#8E8E93')}
+function cronMeses(list){
+  var byM={},ord=[];
+  list.forEach(function(c){var k=ym(c.data||'');if(!byM[k]){byM[k]=[];ord.push(k)}byM[k].push(c)});
+  return ord.map(function(k){return {k:k,items:byM[k]}});
+}
+function cronCard(title,list,draw){
+  if(!list.length)return '';
+  return cronMeses(list).map(function(g){
+    var nome=g.k.length>=7?MNL[+g.k.slice(5,7)-1]+' '+g.k.slice(0,4):'Sem data';
+    return '<div class="card full"><h3>'+nome+'</h3><div style="margin-top:12px">'+g.items.map(draw).join('')+'</div></div>';
+  }).join('');
+}
 function vCrono(){
-  var h=hoje(),P=proximos(),C=[];
-  D.cronograma.forEach(function(c){if((c.data||'')<h)C.push({data:c.data,t:c.tarefa,w:c.resp})});
+  var h=hoje(),P=proximos().filter(function(c){return !emAndamento(c)}),A=D.cronograma.filter(emAndamento),C=[];
+  D.cronograma.forEach(function(c){if(!emAndamento(c)&&(c.data||'')<h)C.push({data:c.data,t:c.tarefa,w:c.resp})});
   D.gastos.forEach(function(g){if(g.entrega&&g.entrega<h&&!C.some(function(x){return x.w===g.fornecedor&&x.data===g.entrega}))C.push({data:g.entrega,t:g.desc,w:g.fornecedor})});
   C.sort(function(a,b){return a.data<b.data?1:-1});
+  if(!CRVuser)CRV=A.length?'and':'prox';
+  function pick(v){return 'CRVuser=1;CRV=\''+v+'\';render()'}
   var r=head('Cronograma');
-  r+='<div class="full seg glass"><div class="'+(CRV==='prox'?'on':'')+'" onclick="CRV=\'prox\';render()">Próximos · '+P.length+'</div><div class="'+(CRV==='conc'?'on':'')+'" onclick="CRV=\'conc\';render()">Concluídos · '+C.length+'</div></div>';
-  if(CRV==='prox'){var byM={};P.forEach(function(c){var k=ym(c.data);(byM[k]=byM[k]||[]).push(c)});
-    Object.keys(byM).forEach(function(k){r+='<div class="card full"><h3>'+MNL[+k.slice(5,7)-1]+' '+k.slice(0,4)+'</h3><div style="margin-top:12px">'+byM[k].map(function(c){var col=ST[c.status]||'#8E8E93';return '<div class="tl"><div class="d" style="color:'+col+'">'+dm(c.data)+'</div><div class="dot"><span style="background:'+col+';box-shadow:0 0 0 4px '+col+'33"></span><i></i></div><div style="padding-bottom:18px"><div style="font-size:15px;font-weight:600">'+e(c.tarefa)+'</div><div class="sub">'+e(c.resp)+' · '+e(c.comodo)+'</div>'+(c.obs?'<div class="sub" style="margin-top:2px">'+e(c.obs)+'</div>':'')+'<div style="font-size:12px;color:'+col+';margin-top:3px;font-weight:600">'+e(c.status)+'</div></div></div>'}).join('')+'</div></div>'});
-    if(!P.length)r+='<div class="full empty">Nada agendado</div>';
+  r+='<div class="full seg glass"><div class="'+(CRV==='and'?'on':'')+'" onclick="'+pick('and')+'">Em andamento · '+A.length+'</div><div class="'+(CRV==='prox'?'on':'')+'" onclick="'+pick('prox')+'">Próximos · '+P.length+'</div><div class="'+(CRV==='conc'?'on':'')+'" onclick="'+pick('conc')+'">Concluídos · '+C.length+'</div></div>';
+  if(CRV==='and'){
+    A.sort(function(a,b){return (a.data||'')<(b.data||'')?-1:1});
+    r+=cronCard('',A,function(c){
+      var col=cronCor(c),prog=c.fim?cronDias(c):null;
+      var per=c.fim?'<div class="sub" style="margin-top:4px">'+dm(c.data)+' → '+dm(c.fim)+'</div>'+bar(prog.y?prog.x/prog.y*100:0,col,4)+'<div class="sub" style="margin-top:4px">dia '+prog.x+' de '+prog.y+'</div>':'<div class="sub" style="margin-top:4px">desde '+dm(c.data)+'</div>';
+      var tag=cronAtraso(c)?'<div style="font-size:12px;color:#FF3B30;margin-top:3px;font-weight:600">Atrasado</div>':'<div style="font-size:12px;color:'+col+';margin-top:3px;font-weight:600">'+e(c.status)+'</div>';
+      return '<div class="tl"><div class="d" style="color:'+col+'">'+dm(c.data)+'</div><div class="dot"><span style="background:'+col+';box-shadow:0 0 0 4px '+col+'33"></span><i></i></div><div style="padding-bottom:18px"><div style="font-size:15px;font-weight:600">'+e(c.tarefa)+'</div><div class="sub">'+e(c.resp)+' · '+e(c.comodo)+'</div>'+(c.obs?'<div class="sub" style="margin-top:2px">'+e(c.obs)+'</div>':'')+per+tag+'</div></div>';
+    })||'<div class="full empty">Nada em andamento</div>';
+  }else if(CRV==='prox'){
+    r+=cronCard('',P,function(c){
+      var col=ST[c.status]||'#8E8E93',quando=c.fim?dm(c.data)+' → '+dm(c.fim):dm(c.data);
+      return '<div class="tl"'+(c.fim?' style="grid-template-columns:112px 18px 1fr"':'')+'><div class="d" style="color:'+col+';white-space:nowrap">'+quando+'</div><div class="dot"><span style="background:'+col+';box-shadow:0 0 0 4px '+col+'33"></span><i></i></div><div style="padding-bottom:18px"><div style="font-size:15px;font-weight:600">'+e(c.tarefa)+'</div><div class="sub">'+e(c.resp)+' · '+e(c.comodo)+'</div>'+(c.obs?'<div class="sub" style="margin-top:2px">'+e(c.obs)+'</div>':'')+'<div style="font-size:12px;color:'+col+';margin-top:3px;font-weight:600">'+e(c.status)+'</div></div></div>';
+    })||'<div class="full empty">Nada agendado</div>';
   }else r+='<div class="card full"><h3>Concluídos · entregas e tarefas</h3><div style="margin-top:12px">'+C.map(function(c){return '<div class="tl"><div class="d" style="color:#8E8E93">'+dm(c.data)+(c.data&&c.data.slice(0,4)!==h.slice(0,4)?'<br><span style="font-weight:500">'+c.data.slice(0,4)+'</span>':'')+'</div><div class="dot"><span style="background:#34C759;box-shadow:0 0 0 4px #34C75933"></span><i></i></div><div style="padding-bottom:18px"><div style="font-size:15px;font-weight:600;opacity:.65">'+e(c.t)+'</div><div class="sub">'+e(c.w)+'</div></div></div>'}).join('')+'</div></div>';
   return r;
 }
