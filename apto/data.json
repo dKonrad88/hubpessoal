@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-10T11:21-03:00",
+ "geradoEm": "2026-11-10T12:33-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
   "total": 1967780.52,
@@ -582,8 +582,8 @@
    "resp": "Ronaldo Luís",
    "tarefa": "Instalar pedras na parede",
    "comodo": "Escada",
-   "obs": "Estar no apto das 07h00 às 08h00",
-   "status": "Agendado",
+   "obs": "Estar no apto das 07h00 às 08h00. Início terça 03/11, término sexta 13/11",
+   "status": "Em andamento",
    "tipo": "Reunião",
    "fim": "2026-11-13"
   },
@@ -612,7 +612,7 @@
    "resp": "Marmoraria Estrelense",
    "tarefa": "Entregar mármore e instalar as tabeiras",
    "comodo": "Escada",
-   "obs": "Semana de 09/11. Ao terminar as tabeiras, avisar o mestre de obra",
+   "obs": "Sexta 13/11 ou sábado 14/11 (1 dia). Ao terminar as tabeiras, avisar o mestre de obra",
    "status": "Agendado",
    "tipo": "Tarefa",
    "fim": "2026-11-14"
@@ -642,7 +642,7 @@
    "resp": "CR Mármores",
    "tarefa": "Instalar mármore da escada (pisante e espelho)",
    "comodo": "Escada",
-   "obs": "Semana de 16/11. Pagar restante R$6.500 em 5x no cartão no início",
+   "obs": "Terça 17/11, leva 2 dias. Pagar restante R$6.500 em 5x no cartão no início",
    "status": "Agendado",
    "tipo": "Tarefa",
    "fim": "2026-11-18"
@@ -652,7 +652,7 @@
    "resp": "Box Company (Fábio)",
    "tarefa": "Instalar guarda-corpo de vidro, esquadrias e box",
    "comodo": "Escada, Mezanino, Sala Gamer, Banheiros",
-   "obs": "Semana de 23 ou 30/11. Box do banho de visita e da master",
+   "obs": "Início 23/11, leva 1 semana. Box do banho de visita e da master",
    "status": "A confirmar",
    "tipo": "Tarefa",
    "fim": "2026-11-29"
@@ -697,7 +697,7 @@
    "Juros/correção pagos": "67522.47",
    "Parcelas pagas": "51 de 80",
    "Parcelas restantes": "29",
-   "Quitado": "0.785942033",
+   "Quitado (sobre projetado INCC)": "0.7125995121798528",
    "Total projetado (INCC)": "1665412.97"
   },
   "parcelas": [
