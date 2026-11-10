@@ -1,12 +1,18 @@
 {
- "geradoEm": "2026-11-09T15:39-03:00",
+ "geradoEm": "2026-11-10T10:33-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 1767670.3599999999,
-  "pago": 1365346.68,
-  "restante": 557736.65
+  "total": 1854308.46,
+  "pago": 1451984.78,
+  "restante": 557736.6499999999
  },
  "categorias": [
+  {
+   "nome": "Eletrodomésticos",
+   "total": 102420.30999999998,
+   "pago": 102420.30999999998,
+   "restante": 0.0
+  },
   {
    "nome": "Mobília",
    "total": 101600.0,
@@ -32,12 +38,6 @@
    "restante": 12100.0
   },
   {
-   "nome": "Eletrodomésticos",
-   "total": 15782.21,
-   "pago": 15782.21,
-   "restante": 0.0
-  },
-  {
    "nome": "Projeto",
    "total": 12000.0,
    "pago": 12000.0,
@@ -59,9 +59,9 @@
   },
   {
    "nome": "Sala de Estar",
-   "total": 58133.14,
-   "pago": 43599.850000000006,
-   "restante": 14533.289999999994
+   "total": 93234.24999999999,
+   "pago": 78700.96,
+   "restante": 14533.289999999979
   },
   {
    "nome": "Sala de Jantar",
@@ -71,8 +71,8 @@
   },
   {
    "nome": "Cozinha",
-   "total": 25727.99,
-   "pago": 22561.8,
+   "total": 21848.99,
+   "pago": 18682.8,
    "restante": 3166.1900000000023
   },
   {
@@ -107,8 +107,8 @@
   },
   {
    "nome": "Suíte Master",
-   "total": 3863.97,
-   "pago": 2897.98,
+   "total": 15530.090000000002,
+   "pago": 14564.100000000002,
    "restante": 965.9899999999998
   },
   {
@@ -125,8 +125,8 @@
   },
   {
    "nome": "Sala Gamer",
-   "total": 9900.0,
-   "pago": 0.0,
+   "total": 53649.87,
+   "pago": 43749.87,
    "restante": 9900.0
   },
   {
@@ -468,15 +468,195 @@
    "cat": "Eletrodomésticos"
   },
   {
-   "data": "2026-11-09",
-   "fornecedor": "Amazon",
-   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR",
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD)",
    "qtd": "1 und",
-   "total": 3879.0,
-   "pago": 3879.0,
-   "entrega": "2026-11-25",
-   "obs": "Cartão 12x sem juros. Previsão 23 a 25/11",
-   "comodo": "Cozinha",
+   "total": 8172.03,
+   "pago": 8172.03,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 123,03 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Sala Gamer",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4",
+   "qtd": "1 und",
+   "total": 6411.26,
+   "pago": 6411.26,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 96,52 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Sala Gamer",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD)",
+   "qtd": "1 und",
+   "total": 7373.11,
+   "pago": 7373.11,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 111,00 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Sala de Estar",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4",
+   "qtd": "1 und",
+   "total": 4327.26,
+   "pago": 4327.26,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 65,15 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Sala de Estar",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
+   "qtd": "1 und",
+   "total": 2916.53,
+   "pago": 2916.53,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 43,90 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Suíte Master",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
+   "qtd": "1 und",
+   "total": 2916.53,
+   "pago": 2916.53,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 43,90 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Suíte Master",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD)",
+   "qtd": "1 und",
+   "total": 8172.03,
+   "pago": 8172.03,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 123,03 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Sala Gamer",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4",
+   "qtd": "1 und",
+   "total": 6411.26,
+   "pago": 6411.26,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 96,52 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Sala Gamer",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD)",
+   "qtd": "1 und",
+   "total": 7373.11,
+   "pago": 7373.11,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 111,00 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Sala de Estar",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4",
+   "qtd": "1 und",
+   "total": 4327.26,
+   "pago": 4327.26,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 65,15 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Sala de Estar",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
+   "qtd": "1 und",
+   "total": 2916.53,
+   "pago": 2916.53,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 43,90 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Suíte Master",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD)",
+   "qtd": "1 und",
+   "total": 8172.03,
+   "pago": 8172.03,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 123,03 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Sala Gamer",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4",
+   "qtd": "1 und",
+   "total": 6411.26,
+   "pago": 6411.26,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 96,52 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Sala Gamer",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD)",
+   "qtd": "1 und",
+   "total": 7373.11,
+   "pago": 7373.11,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 111,00 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Sala de Estar",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4",
+   "qtd": "1 und",
+   "total": 4327.26,
+   "pago": 4327.26,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 65,15 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Sala de Estar",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
+   "qtd": "1 und",
+   "total": 2916.53,
+   "pago": 2916.53,
+   "entrega": null,
+   "obs": "Cartão 18x sem juros. Inclui R$ 43,90 de frete rateado (frete total R$ 439,60)",
+   "comodo": "Suíte Master",
    "cat": "Eletrodomésticos"
   }
  ],
@@ -1413,10 +1593,130 @@
    "cat": "Eletrodomésticos"
   },
   {
-   "data": "2026-11-09",
-   "fornecedor": "Amazon",
-   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR",
-   "valor": 3879.0,
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD)",
+   "valor": 8172.03,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4",
+   "valor": 6411.26,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD)",
+   "valor": 7373.11,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4",
+   "valor": 4327.26,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
+   "valor": 2916.53,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
+   "valor": 2916.53,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD)",
+   "valor": 8172.03,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4",
+   "valor": 6411.26,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD)",
+   "valor": 7373.11,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4",
+   "valor": 4327.26,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
+   "valor": 2916.53,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD)",
+   "valor": 8172.03,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4",
+   "valor": 6411.26,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD)",
+   "valor": 7373.11,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4",
+   "valor": 4327.26,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
+   "valor": 2916.53,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
