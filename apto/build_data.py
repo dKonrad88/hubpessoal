@@ -31,6 +31,8 @@ c=rows(C); cron=[dict(data=dt(r[0]),resp=r[1],tarefa=r[2],comodo=r[3],obs=r[4],s
 res=rows(R); cats=[];coms=[];tot=None
 for r in res[1:]:
   r+=['']*9
+  if r[0].startswith('Imóvel'): r[0]='Imóvel'
+  if r[5].startswith('Imóvel'): r[5]='Imóvel'
   if r[0] and r[0]!='TOTAL GERAL': coms.append(dict(nome=r[0],total=num(r[1]),pago=num(r[2]),restante=num(r[3])))
   if r[5] and r[5]!='TOTAL GERAL': cats.append(dict(nome=r[5],total=num(r[6]),pago=num(r[7]),restante=num(r[8])))
   if r[5]=='TOTAL GERAL' or r[0]=='TOTAL GERAL': tot=dict(total=num(r[6] or r[1]),pago=num(r[7] or r[2]),restante=num(r[8] or r[3]))
@@ -45,8 +47,7 @@ for r in im:
 #  - padrão: o valor PAGO cai no mês da coluna DATA do lançamento;
 #  - AJUSTES abaixo vêm das observações da planilha / aba Cronograma (editar aqui se mudar).
 AJ_PAGO={'Estofare':[('2026-08-31',2/3,'Entrada (50%)'),('2026-10-30',1/3,'2ª parcela (25%)')]}
-PREV=[('2026-11-03','Pedras Rossler','Restante em dinheiro (Cronograma 03/11)',4500),
-      ('2026-11-06','Ronaldo Luís','Instalador · pago na sexta da semana trabalhada',5600)]+\
+PREV=[('2026-11-13','Ronaldo Luís','Instalador · restante (obs. planilha 13/11)',2500)]+\
      [(f'{y}-{m:02d}-16','CR Mármores',f'Cartão {i+1}/5 (restante R$ 6.500)',1300) for i,(y,m) in enumerate([(2026,11),(2026,12),(2027,1),(2027,2),(2027,3)])]
 mov=[]
 for x in gastos:

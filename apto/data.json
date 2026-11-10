@@ -1,8 +1,8 @@
 {
- "geradoEm": "2026-11-10T11:17-03:00",
+ "geradoEm": "2026-11-10T11:21-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 1812367.55,
+  "total": 1967780.52,
   "pago": 1432481.8699999999,
   "restante": 535298.65
  },
@@ -45,7 +45,7 @@
   },
   {
    "nome": "Imóvel",
-   "total": 1510000.0,
+   "total": 1665412.97,
    "pago": 1186772.47,
    "restante": 478640.5
   }
@@ -149,7 +149,7 @@
   },
   {
    "nome": "Imóvel",
-   "total": 1510000.0,
+   "total": 1665412.97,
    "pago": 1186772.47,
    "restante": 478640.5
   }
@@ -679,14 +679,15 @@
  ],
  "imovel": {
   "resumo": {
-   "Valor do imóvel (Diamond)": "1510000",
+   "Valor de contrato (nominal)": "1510000",
    "Já pago": "1186772.47",
    "Falta (corrigido)": "478640.5",
    "Falta (sem correção)": "390750",
    "Juros/correção pagos": "67522.47",
    "Parcelas pagas": "51 de 80",
    "Parcelas restantes": "29",
-   "Quitado": "0.785942033"
+   "Quitado": "0.785942033",
+   "Total projetado (INCC)": "1665412.97"
   },
   "parcelas": [
    {
@@ -1654,18 +1655,10 @@
    "cat": "Mobília"
   },
   {
-   "data": "2026-11-03",
-   "fornecedor": "Pedras Rossler",
-   "desc": "Restante em dinheiro (Cronograma 03/11)",
-   "valor": 4500,
-   "status": "previsto",
-   "cat": ""
-  },
-  {
-   "data": "2026-11-06",
+   "data": "2026-11-13",
    "fornecedor": "Ronaldo Luís",
-   "desc": "Instalador · pago na sexta da semana trabalhada",
-   "valor": 5600,
+   "desc": "Instalador · restante (obs. planilha 13/11)",
+   "valor": 2500,
    "status": "previsto",
    "cat": ""
   },

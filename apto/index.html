@@ -159,6 +159,8 @@ function ym(s){return s.slice(0,7)}
 function pill(s,lab){var c=SC[s]||'#8E8E93';return '<span class="pill" style="background:'+c+'22;color:'+c+'">'+(lab||s)+'</span>'}
 function sit(t,p){return p>=t-0.01?'pago':p>0?'parcial':'aberto'}
 function bar(p,c,h){return '<div class="bar"'+(h?' style="height:'+h+'px"':'')+'><i style="width:'+Math.max(0,Math.min(100,p)).toFixed(1)+'%;background:'+c+'"></i></div>'}
+function imovTot(r){return +(r['Total projetado (INCC)']||r['Valor do imóvel (Diamond)'])}
+function imovNom(r){return +(r['Valor de contrato (nominal)']||r['Valor do imóvel (Diamond)'])}
 var SUN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
 var MOON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z"/></svg>';
 function temaClaro(){return document.documentElement.classList.contains('light')}
@@ -172,7 +174,8 @@ function vResumo(){
   var ot=og.reduce(function(s,c){return s+c.total},0),op=og.reduce(function(s,c){return s+c.pago},0);
   var h=head('Apartamento');
   h+='<div class="card full"><h3>Investimento total</h3><div class="num" style="font-size:42px;font-weight:800">'+b(T.total)+'</div><div style="margin:14px 0 10px">'+bar(T.pago/T.total*100,'linear-gradient(90deg,#0A84FF,#5E5CE6)',10)+'</div><div class="row" style="font-size:14px"><span><b style="color:#0A84FF">● Pago</b> '+b(T.pago)+'</span><span><b style="color:#8E8E93">● Restante</b> '+b(T.restante)+'</span></div>'
-   +'<div class="row" style="margin-top:14px;gap:10px">'+mini('🔑 Imóvel',+ir['Já pago'],+ir['Valor do imóvel (Diamond)'],'#5E5CE6')+mini('🔨 Obra e mobília',op,ot,'#FF9500')+'</div></div>';
+   +'<div class="row" style="margin-top:14px;gap:10px">'+mini('🔑 Imóvel (projetado INCC)',+ir['Já pago'],imovTot(ir),'#5E5CE6')+mini('🔨 Obra e mobília',op,ot,'#FF9500')+'</div>'
+   +'<div class="sub" style="margin-top:8px">Contrato nominal '+b(imovNom(ir))+'</div></div>';
   h+='<div class="card"><h3>Por categoria</h3>'+D.categorias.slice().sort(function(a,b){return b.total-a.total}).map(function(c){var col=COR[c.nome]||'#8E8E93';return '<div class="tap" style="margin:11px 0" onclick="sheetCat(\''+e(c.nome)+'\')"><div class="row" style="font-size:14px"><span><b style="color:'+col+'">●</b> '+e(c.nome)+'</span><span class="num" style="font-weight:600">'+b(c.total)+' <span style="opacity:.3">›</span></span></div><div style="margin-top:6px">'+bar(c.total?c.pago/c.total*100:0,col)+'</div></div>'}).join('')+'</div>';
   var p=proximos().slice(0,3);
   h+='<div class="card"><h3>Próximos passos</h3>'+(p.length?p.map(crow).join(''):'<div class="empty">Nada agendado</div>')+'<div class="tap" style="font-size:13px;color:#0A84FF;font-weight:600;padding-top:10px" onclick="go(\'crono\')">Ver cronograma completo ›</div></div>';
@@ -202,7 +205,7 @@ function vMes(){
 }
 function semData(){var s=0;D.gastos.forEach(function(g){s+=g.total-g.pago});D.movimentos.forEach(function(m){if(m.status!=='pago'&&m.cat!=='Imóvel')s-=m.valor});return Math.max(0,s)}
 /* ---------- GASTOS ---------- */
-function itens(){var L=D.gastos.slice();var ir=D.imovel.resumo;L.push({fornecedor:'Construtora Diamond',desc:'Imóvel · '+ir['Parcelas pagas']+' parcelas',total:+ir['Valor do imóvel (Diamond)'],pago:+ir['Já pago'],cat:'Imóvel',comodo:'Apartamento',imovel:1});return L}
+function itens(){var L=D.gastos.slice();var ir=D.imovel.resumo;L.push({fornecedor:'Construtora Diamond',desc:'Imóvel (projetado INCC) · '+ir['Parcelas pagas']+' parcelas',total:imovTot(ir),pago:+ir['Já pago'],cat:'Imóvel',comodo:'Apartamento',imovel:1});return L}
 function filtrados(){var q=F.q.toLowerCase();return itens().filter(function(g){var s=sit(g.total,g.pago);return (!q||(g.fornecedor+' '+g.desc+' '+g.comodo+' '+g.cat).toLowerCase().indexOf(q)>=0)&&(!F.fornecedor||g.fornecedor===F.fornecedor)&&(!F.cat||g.cat===F.cat)&&(!F.comodo||g.comodo===F.comodo)&&(!F.sit||s===F.sit)})}
 function opts(k,lab,vals){vals=vals.filter(function(v,i){return v&&vals.indexOf(v)===i}).sort();return '<select class="glass'+(F[k]?' act':'')+'" onchange="F.'+k+'=this.value;render()"><option value="">'+lab+'</option>'+vals.map(function(v){return '<option'+(F[k]===v?' selected':'')+'>'+e(v)+'</option>'}).join('')+'</select>'}
 function soma(a,k){return a.reduce(function(s,x){return s+x[k]},0)}
@@ -268,9 +271,9 @@ function sheetForn(f){if(f==='Construtora Diamond')return sheetImovel();var L=D.
   openSheet(shHead('FORNECEDOR · '+L.length+' '+(L.length>1?'ITENS':'ITEM'),'#8E8E93',f,t,p)+L.map(itemRow).join('')+'<div style="height:12px"></div>'+kv(info)+(obs.length?'<h3 style="margin-top:16px">Observações</h3>'+obs.map(function(o){return '<div class="sub" style="font-size:13px;opacity:.7;margin:6px 0">'+e(o)+'</div>'}).join(''):''))}
 function sheetComodo(nome){var L=filtrados().filter(function(g){return comodoDe(g)===nome}),t=0,p=0;L.forEach(function(g){t+=g.total;p+=g.pago});
   openSheet(shHead('CÔMODO · '+L.length+' '+(L.length>1?'ITENS':'ITEM'),'#8E8E93',nome,t,p)+L.map(itemRow).join(''))}
-function sheetImovel(){var r=D.imovel.resumo,P=D.imovel.parcelas,tot=+r['Valor do imóvel (Diamond)'],p=+r['Já pago'];
+function sheetImovel(){var r=D.imovel.resumo,P=D.imovel.parcelas,tot=imovTot(r),p=+r['Já pago'];
   var ab=P.filter(function(x){return !/^pago/i.test(x.status)});
-  openSheet(shHead('🔑 IMÓVEL · CONSTRUTORA DIAMOND','#5E5CE6','Imóvel',tot,p,'',+r['Falta (corrigido)'])+kv([['Falta (corrigido)',b(+r['Falta (corrigido)'])],['Falta (sem correção)',b(+r['Falta (sem correção)'])],['Juros/correção pagos',b(+r['Juros/correção pagos'])],['Parcelas pagas',r['Parcelas pagas']],['Pago fora do extrato (sem data)',b(p-P.reduce(function(s,x){return s+x.pago},0))]])
+  openSheet(shHead('🔑 IMÓVEL · CONSTRUTORA DIAMOND · PROJETADO INCC','#5E5CE6','Imóvel',tot,p,'',+r['Falta (corrigido)'])+kv([['Valor de contrato (nominal)',b(imovNom(r))],['Total projetado (INCC)',b(imovTot(r))],['Falta (corrigido)',b(+r['Falta (corrigido)'])],['Falta (sem correção)',b(+r['Falta (sem correção)'])],['Juros/correção pagos',b(+r['Juros/correção pagos'])],['Parcelas pagas',r['Parcelas pagas']],['Pago fora do extrato (sem data)',b(p-P.reduce(function(s,x){return s+x.pago},0))]])
    +'<h3 style="margin-top:16px">Próximas parcelas</h3>'+ab.slice(0,8).map(function(x){return '<div class="row li"><div><div class="b">Parcela '+x.n+'/80 · '+e(x.tipo)+'</div><div class="sub">vence '+dfull(x.venc)+'</div></div><div style="text-align:right"><div class="num b">'+b(x.previsto)+'</div>'+pill(/atras/i.test(x.status)?'atrasada':'previsto',x.status.toLowerCase())+'</div></div>'}).join('')
    +'<h3 style="margin-top:16px">Últimas pagas</h3>'+P.filter(function(x){return /^pago/i.test(x.status)}).slice(-6).reverse().map(function(x){return '<div class="row li"><div><div class="b">Parcela '+x.n+'/80 · '+e(x.tipo)+'</div><div class="sub">venc. '+dfull(x.venc)+(x.correcao?' · correção '+b(x.correcao):'')+'</div></div><div style="text-align:right"><div class="num b">'+b(x.pago)+'</div>'+pill('pago',x.status.toLowerCase())+'</div></div>'}).join(''))}
 /* ---------- GRAVADOR (só áudio) · Supabase: apto_gravador / bucket apto-audio / edge apto-gravador-ping ---------- */
