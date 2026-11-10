@@ -1,9 +1,9 @@
 {
- "geradoEm": "2026-11-10T12:33-03:00",
+ "geradoEm": "2026-11-10T15:42-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 1967780.52,
-  "pago": 1432481.8699999999,
+  "total": 1976056.4,
+  "pago": 1440757.75,
   "restante": 535298.65
  },
  "categorias": [
@@ -21,8 +21,8 @@
   },
   {
    "nome": "Eletrodomésticos",
-   "total": 60479.4,
-   "pago": 60479.4,
+   "total": 68755.28,
+   "pago": 68755.28,
    "restante": 0.0
   },
   {
@@ -125,8 +125,8 @@
   },
   {
    "nome": "Sala Gamer",
-   "total": 24483.29,
-   "pago": 18543.17,
+   "total": 32759.170000000002,
+   "pago": 26819.05,
    "restante": 5940.120000000003
   },
   {
@@ -561,6 +561,30 @@
    "entrega": null,
    "obs": "Cartão 12x sem juros. Entrega em até 12 dias úteis",
    "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "-",
+   "desc": "Impressora 3D",
+   "qtd": "1 und",
+   "total": 6863.61,
+   "pago": 6863.61,
+   "entrega": null,
+   "obs": "Cartão 1x (R$ 447,00 + R$ 6.416,61)",
+   "comodo": "Sala Gamer",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "AliExpress",
+   "desc": "Vídeo game portátil Trimui Smart Pro S",
+   "qtd": "1 und",
+   "total": 1412.27,
+   "pago": 1412.27,
+   "entrega": null,
+   "obs": "Cartão 1x",
+   "comodo": "Sala Gamer",
    "cat": "Eletrodomésticos"
   },
   {
@@ -1638,6 +1662,22 @@
    "fornecedor": "Midea",
    "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea",
    "valor": 8174.56,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "-",
+   "desc": "Impressora 3D",
+   "valor": 6863.61,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "AliExpress",
+   "desc": "Vídeo game portátil Trimui Smart Pro S",
+   "valor": 1412.27,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
