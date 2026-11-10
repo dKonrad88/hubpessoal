@@ -1,18 +1,12 @@
 {
- "geradoEm": "2026-11-10T10:33-03:00",
+ "geradoEm": "2026-11-10T10:44-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 1854308.46,
-  "pago": 1451984.78,
-  "restante": 557736.6499999999
+  "total": 1812367.55,
+  "pago": 1410043.8699999999,
+  "restante": 557736.65
  },
  "categorias": [
-  {
-   "nome": "Eletrodomésticos",
-   "total": 102420.30999999998,
-   "pago": 102420.30999999998,
-   "restante": 0.0
-  },
   {
    "nome": "Mobília",
    "total": 101600.0,
@@ -24,6 +18,12 @@
    "total": 84580.15,
    "pago": 42984.0,
    "restante": 41596.149999999994
+  },
+  {
+   "nome": "Eletrodomésticos",
+   "total": 60479.4,
+   "pago": 60479.4,
+   "restante": 0.0
   },
   {
    "nome": "Climatização",
@@ -59,9 +59,9 @@
   },
   {
    "nome": "Sala de Estar",
-   "total": 93234.24999999999,
-   "pago": 78700.96,
-   "restante": 14533.289999999979
+   "total": 69833.51,
+   "pago": 55300.22000000001,
+   "restante": 14533.289999999986
   },
   {
    "nome": "Sala de Jantar",
@@ -71,14 +71,14 @@
   },
   {
    "nome": "Cozinha",
-   "total": 21848.99,
-   "pago": 18682.8,
+   "total": 36801.55,
+   "pago": 33635.36,
    "restante": 3166.1900000000023
   },
   {
    "nome": "Área de Serviço",
-   "total": 0.0,
-   "pago": 0.0,
+   "total": 4423.44,
+   "pago": 4423.44,
    "restante": 0.0
   },
   {
@@ -107,8 +107,8 @@
   },
   {
    "nome": "Suíte Master",
-   "total": 15530.090000000002,
-   "pago": 14564.100000000002,
+   "total": 6780.5,
+   "pago": 5814.51,
    "restante": 965.9899999999998
   },
   {
@@ -125,8 +125,8 @@
   },
   {
    "nome": "Sala Gamer",
-   "total": 53649.87,
-   "pago": 43749.87,
+   "total": 24483.29,
+   "pago": 14583.29,
    "restante": 9900.0
   },
   {
@@ -528,135 +528,51 @@
    "cat": "Eletrodomésticos"
   },
   {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
+   "data": "2026-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR",
    "qtd": "1 und",
-   "total": 2916.53,
-   "pago": 2916.53,
-   "entrega": null,
-   "obs": "Cartão 18x sem juros. Inclui R$ 43,90 de frete rateado (frete total R$ 439,60)",
-   "comodo": "Suíte Master",
+   "total": 3879.0,
+   "pago": 3879.0,
+   "entrega": "2026-11-25",
+   "obs": "Cartão 12x sem juros. Previsão 23 a 25/11",
+   "comodo": "Cozinha",
    "cat": "Eletrodomésticos"
   },
   {
    "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD)",
+   "fornecedor": "Midea",
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea",
    "qtd": "1 und",
-   "total": 8172.03,
-   "pago": 8172.03,
+   "total": 4423.44,
+   "pago": 4423.44,
    "entrega": null,
-   "obs": "Cartão 18x sem juros. Inclui R$ 123,03 de frete rateado (frete total R$ 439,60)",
-   "comodo": "Sala Gamer",
+   "obs": "Cartão 12x sem juros. Entrega em até 12 dias úteis",
+   "comodo": "Área de Serviço",
    "cat": "Eletrodomésticos"
   },
   {
    "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "Soundbar Samsung HW-Q990H 11.1.4",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea",
    "qtd": "1 und",
-   "total": 6411.26,
-   "pago": 6411.26,
+   "total": 8174.56,
+   "pago": 8174.56,
    "entrega": null,
-   "obs": "Cartão 18x sem juros. Inclui R$ 96,52 de frete rateado (frete total R$ 439,60)",
-   "comodo": "Sala Gamer",
+   "obs": "Cartão 12x sem juros. Entrega em até 12 dias úteis",
+   "comodo": "Cozinha",
    "cat": "Eletrodomésticos"
   },
   {
    "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD)",
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea",
    "qtd": "1 und",
-   "total": 7373.11,
-   "pago": 7373.11,
+   "total": 2899.0,
+   "pago": 2899.0,
    "entrega": null,
-   "obs": "Cartão 18x sem juros. Inclui R$ 111,00 de frete rateado (frete total R$ 439,60)",
-   "comodo": "Sala de Estar",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "Soundbar Samsung HW-Q930H 9.1.4",
-   "qtd": "1 und",
-   "total": 4327.26,
-   "pago": 4327.26,
-   "entrega": null,
-   "obs": "Cartão 18x sem juros. Inclui R$ 65,15 de frete rateado (frete total R$ 439,60)",
-   "comodo": "Sala de Estar",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
-   "qtd": "1 und",
-   "total": 2916.53,
-   "pago": 2916.53,
-   "entrega": null,
-   "obs": "Cartão 18x sem juros. Inclui R$ 43,90 de frete rateado (frete total R$ 439,60)",
-   "comodo": "Suíte Master",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD)",
-   "qtd": "1 und",
-   "total": 8172.03,
-   "pago": 8172.03,
-   "entrega": null,
-   "obs": "Cartão 18x sem juros. Inclui R$ 123,03 de frete rateado (frete total R$ 439,60)",
-   "comodo": "Sala Gamer",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "Soundbar Samsung HW-Q990H 11.1.4",
-   "qtd": "1 und",
-   "total": 6411.26,
-   "pago": 6411.26,
-   "entrega": null,
-   "obs": "Cartão 18x sem juros. Inclui R$ 96,52 de frete rateado (frete total R$ 439,60)",
-   "comodo": "Sala Gamer",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD)",
-   "qtd": "1 und",
-   "total": 7373.11,
-   "pago": 7373.11,
-   "entrega": null,
-   "obs": "Cartão 18x sem juros. Inclui R$ 111,00 de frete rateado (frete total R$ 439,60)",
-   "comodo": "Sala de Estar",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "Soundbar Samsung HW-Q930H 9.1.4",
-   "qtd": "1 und",
-   "total": 4327.26,
-   "pago": 4327.26,
-   "entrega": null,
-   "obs": "Cartão 18x sem juros. Inclui R$ 65,15 de frete rateado (frete total R$ 439,60)",
-   "comodo": "Sala de Estar",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
-   "qtd": "1 und",
-   "total": 2916.53,
-   "pago": 2916.53,
-   "entrega": null,
-   "obs": "Cartão 18x sem juros. Inclui R$ 43,90 de frete rateado (frete total R$ 439,60)",
-   "comodo": "Suíte Master",
+   "obs": "Cartão 12x sem juros. Entrega em até 12 dias úteis",
+   "comodo": "Cozinha",
    "cat": "Eletrodomésticos"
   }
  ],
@@ -1633,90 +1549,34 @@
    "cat": "Eletrodomésticos"
   },
   {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
-   "valor": 2916.53,
+   "data": "2026-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR",
+   "valor": 3879.0,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
   {
    "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD)",
-   "valor": 8172.03,
+   "fornecedor": "Midea",
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea",
+   "valor": 4423.44,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
   {
    "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "Soundbar Samsung HW-Q990H 11.1.4",
-   "valor": 6411.26,
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea",
+   "valor": 8174.56,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
   {
    "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD)",
-   "valor": 7373.11,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "Soundbar Samsung HW-Q930H 9.1.4",
-   "valor": 4327.26,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
-   "valor": 2916.53,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD)",
-   "valor": 8172.03,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "Soundbar Samsung HW-Q990H 11.1.4",
-   "valor": 6411.26,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD)",
-   "valor": 7373.11,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "Soundbar Samsung HW-Q930H 9.1.4",
-   "valor": 4327.26,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
-   "valor": 2916.53,
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea",
+   "valor": 2899.0,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
