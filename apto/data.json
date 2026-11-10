@@ -1,10 +1,10 @@
 {
- "geradoEm": "2026-11-10T10:44-03:00",
+ "geradoEm": "2026-11-10T11:17-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
   "total": 1812367.55,
-  "pago": 1410043.8699999999,
-  "restante": 557736.65
+  "pago": 1432481.8699999999,
+  "restante": 535298.65
  },
  "categorias": [
   {
@@ -16,8 +16,8 @@
   {
    "nome": "Obra",
    "total": 84580.15,
-   "pago": 42984.0,
-   "restante": 41596.149999999994
+   "pago": 62322.00000000001,
+   "restante": 22258.149999999987
   },
   {
    "nome": "Eletrodomésticos",
@@ -34,8 +34,8 @@
   {
    "nome": "Mão de obra",
    "total": 17590.0,
-   "pago": 5490.0,
-   "restante": 12100.0
+   "pago": 8590.0,
+   "restante": 9000.0
   },
   {
    "nome": "Projeto",
@@ -96,14 +96,14 @@
   {
    "nome": "Escada",
    "total": 59852.0,
-   "pago": 21754.0,
-   "restante": 38098.0
+   "pago": 37952.94,
+   "restante": 21899.059999999998
   },
   {
    "nome": "Mezanino",
    "total": 1709.21,
-   "pago": 0.0,
-   "restante": 1709.21
+   "pago": 683.66,
+   "restante": 1025.5500000000002
   },
   {
    "nome": "Suíte Master",
@@ -114,8 +114,8 @@
   {
    "nome": "Banho Master",
    "total": 2373.76,
-   "pago": 0.0,
-   "restante": 2373.76
+   "pago": 949.47,
+   "restante": 1424.2900000000002
   },
   {
    "nome": "Closet Master",
@@ -126,8 +126,8 @@
   {
    "nome": "Sala Gamer",
    "total": 24483.29,
-   "pago": 14583.29,
-   "restante": 9900.0
+   "pago": 18543.17,
+   "restante": 5940.120000000003
   },
   {
    "nome": "Quarto Visita",
@@ -138,8 +138,8 @@
   {
    "nome": "Banho Visita",
    "total": 1615.18,
-   "pago": 0.0,
-   "restante": 1615.18
+   "pago": 646.05,
+   "restante": 969.1300000000001
   },
   {
    "nome": "Adega",
@@ -161,9 +161,9 @@
    "desc": "Pedra parede escada - Moledo Champagne",
    "qtd": "28 M + Cola + Impermeabilizante",
    "total": 7908.0,
-   "pago": 3408.0,
+   "pago": 7908.0,
    "entrega": "2026-10-30",
-   "obs": "Irão me chamar no dia da entrega para ver onde descarregar, lado caminhão ou lado do elevador. Se for do lado do elevador, terá um acréscimo de R$300",
+   "obs": "Irão me chamar no dia da entrega para ver onde descarregar, lado caminhão ou lado do elevador. Se for do lado do elevador, terá um acréscimo de R$300. Restante R$ 4.500 pago em dinheiro na entrega.",
    "comodo": "Escada",
    "cat": "Obra"
   },
@@ -173,9 +173,9 @@
    "desc": "Instalador - Pedras parede",
    "qtd": "20 M",
    "total": 5600.0,
-   "pago": 0.0,
+   "pago": 3100.0,
    "entrega": "2026-11-02",
-   "obs": "Pagamento na sexta da semana que trabalha, em cima do que colocou",
+   "obs": "Pagamento na sexta da semana que trabalha, em cima do que colocou. Pago R$ 3.100 em 06/11/26; restante R$ 2.500 em 13/11/26.",
    "comodo": "Escada",
    "cat": "Mão de obra"
   },
@@ -365,9 +365,9 @@
    "desc": "Guarda-corpo de vidro + Mezanino - Escada",
    "qtd": "-",
    "total": 21498.0,
-   "pago": 0.0,
+   "pago": 8598.94,
    "entrega": "2026-11-23",
-   "obs": "Contato: Fábio. Instalação prevista semana de 23 ou 30/11",
+   "obs": "Contato: Fábio. Instalação prevista semana de 23 ou 30/11. 40% pago via PIX (R$ 14.838 no total); restante na entrega da obra (~2 semanas).",
    "comodo": "Escada",
    "cat": "Obra"
   },
@@ -377,9 +377,9 @@
    "desc": "Box banheiro - Master",
    "qtd": "01 und + película de segurança",
    "total": 2373.76,
-   "pago": 0.0,
+   "pago": 949.47,
    "entrega": "2026-11-23",
-   "obs": "Contato: Fábio. R$2.023,76 do box + R$350 de película",
+   "obs": "Contato: Fábio. R$2.023,76 do box + R$350 de película. 40% pago via PIX (R$ 14.838 no total); restante na entrega da obra (~2 semanas).",
    "comodo": "Banho Master",
    "cat": "Obra"
   },
@@ -389,9 +389,9 @@
    "desc": "Box banheiro - Visita",
    "qtd": "01 und + película de segurança",
    "total": 1615.18,
-   "pago": 0.0,
+   "pago": 646.05,
    "entrega": "2026-11-23",
-   "obs": "Contato: Fábio. R$1.265,18 do box + R$350 de película",
+   "obs": "Contato: Fábio. R$1.265,18 do box + R$350 de película. 40% pago via PIX (R$ 14.838 no total); restante na entrega da obra (~2 semanas).",
    "comodo": "Banho Visita",
    "cat": "Obra"
   },
@@ -401,9 +401,9 @@
    "desc": "Guarda-corpo de vidro - Mezanino",
    "qtd": "-",
    "total": 1709.21,
-   "pago": 0.0,
+   "pago": 683.66,
    "entrega": "2026-11-23",
-   "obs": "Contato: Fábio",
+   "obs": "Contato: Fábio. 40% pago via PIX (R$ 14.838 no total); restante na entrega da obra (~2 semanas).",
    "comodo": "Mezanino",
    "cat": "Obra"
   },
@@ -413,9 +413,9 @@
    "desc": "Esquadrias - Sala Gamer",
    "qtd": "-",
    "total": 9900.0,
-   "pago": 0.0,
+   "pago": 3959.88,
    "entrega": "2026-11-23",
-   "obs": "Contato: Fábio",
+   "obs": "Contato: Fábio. 40% pago via PIX (R$ 14.838 no total); restante na entrega da obra (~2 semanas).",
    "comodo": "Sala Gamer",
    "cat": "Obra"
   },
@@ -689,6 +689,15 @@
    "Quitado": "0.785942033"
   },
   "parcelas": [
+   {
+    "n": 0,
+    "venc": null,
+    "tipo": "Permuta (sobrado)",
+    "previsto": 200000.0,
+    "pago": 200000.0,
+    "correcao": 0.0,
+    "status": "Pago"
+   },
    {
     "n": 1,
     "venc": "2022-11-30",
@@ -1416,9 +1425,17 @@
    "data": "2026-10-23",
    "fornecedor": "Pedras Rossler",
    "desc": "Pedra parede escada - Moledo Champagne",
-   "valor": 3408.0,
+   "valor": 7908.0,
    "status": "pago",
    "cat": "Obra"
+  },
+  {
+   "data": "2026-10-23",
+   "fornecedor": "Ronaldo Luís",
+   "desc": "Instalador - Pedras parede",
+   "valor": 3100.0,
+   "status": "pago",
+   "cat": "Mão de obra"
   },
   {
    "data": "2026-10-23",
@@ -1475,6 +1492,46 @@
    "valor": 2500.0,
    "status": "pago",
    "cat": "Mão de obra"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "Box Company",
+   "desc": "Guarda-corpo de vidro + Mezanino - Escada",
+   "valor": 8598.94,
+   "status": "pago",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "Box Company",
+   "desc": "Box banheiro - Master",
+   "valor": 949.47,
+   "status": "pago",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "Box Company",
+   "desc": "Box banheiro - Visita",
+   "valor": 646.05,
+   "status": "pago",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "Box Company",
+   "desc": "Guarda-corpo de vidro - Mezanino",
+   "valor": 683.66,
+   "status": "pago",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-10-30",
+   "fornecedor": "Box Company",
+   "desc": "Esquadrias - Sala Gamer",
+   "valor": 3959.88,
+   "status": "pago",
+   "cat": "Obra"
   },
   {
    "data": "2026-11-09",
@@ -1651,6 +1708,14 @@
    "valor": 1300,
    "status": "previsto",
    "cat": ""
+  },
+  {
+   "data": null,
+   "fornecedor": "Construtora Diamond",
+   "desc": "Parcela 0/80 · Permuta (sobrado)",
+   "valor": 200000.0,
+   "status": "pago",
+   "cat": "Imóvel"
   },
   {
    "data": "2022-11-30",
