@@ -98,48 +98,58 @@ body {
 .wrap { max-width: 480px; margin: 0 auto; padding: 12px 16px 48px; }
 h1 { font-size: 2.15rem; line-height: 1.1; letter-spacing: -0.03em; margin: 8px 0 0; font-weight: 800; }
 h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800; }
-.updated {
-  background: var(--updated-bg);
-  color: var(--updated-ink);
-  border: 2px solid var(--updated-border);
-  border-radius: 16px;
-  padding: 14px 16px;
-  font-size: 1.2rem;
-  font-weight: 750;
-  line-height: 1.35;
-  margin: 14px 0 12px;
+.update-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  margin: 14px 0 8px;
+  box-shadow: var(--shadow);
+}
+.update-k { color: #5c584f; font-size: 17px; font-weight: 650; line-height: 1.3; }
+.update-v { color: var(--text); font-size: 1.4rem; font-weight: 800; line-height: 1.25; margin-top: 2px; }
+@media (prefers-color-scheme: dark) {
+  .update-k { color: #c8c2b4; }
 }
 .wrap { min-width: 0; }
 .filters {
-  min-width: 0;
   display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  padding: 6px 0 12px;
-  margin: 0;
-  scrollbar-width: none;
-  position: sticky;
-  top: 0;
-  z-index: 3;
-  background: var(--bg);
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
 }
-.filters::-webkit-scrollbar { display: none; }
 .filters button {
   flex: 0 0 auto;
   min-height: 48px;
-  padding: 0 18px;
+  padding: 8px 16px;
   border-radius: 999px;
   border: 2px solid var(--line);
-  background: var(--card);
+  background: var(--bg);
   color: var(--text);
-  font: 750 1.08rem/1 system-ui, "Segoe UI", Roboto, sans-serif;
+  font: 750 1.08rem/1.1 system-ui, "Segoe UI", Roboto, sans-serif;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
-.filters button[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
-@media (prefers-color-scheme: dark) {
-  .filters button[aria-pressed="true"] { color: #102418; }
+.filters button[aria-pressed="true"] {
+  background: #14532d;
+  border-color: #14532d;
+  color: #fff;
 }
+.fdot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex: none;
+  background: #64748b;
+}
+.fdot.graos { background: var(--g-graos); }
+.fdot.softs { background: var(--g-softs); }
+.fdot.energia { background: var(--g-energia); }
+.fdot.oleos { background: var(--g-oleos); }
+.fdot.lacteos { background: var(--g-lacteos); }
+.filters button[aria-pressed="true"] .fdot { box-shadow: 0 0 0 2px #fff; }
 .filters button:focus-visible, summary:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
 .group h2, #elnino h2, #tendencias h2 { display: flex; align-items: center; gap: 10px; }
 .group h2::before, #elnino h2::before, #tendencias h2::before {
@@ -175,7 +185,7 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
 .chg.down { color: var(--down); }
 .chg.flat { color: var(--flat); }
 .since { color: var(--muted); font-size: 1.05rem; font-weight: 650; margin-top: 2px; }
-.bullets { margin: 16px 0 0; padding: 0 0 0 1.25em; display: flex; flex-direction: column; gap: 14px; }
+.bullets { margin: 16px 0 0; padding: 0 0 0 1.25em; display: flex; flex-direction: column; gap: 16px; }
 .bullets li { padding-left: 4px; overflow-wrap: break-word; }
 .chart {
   margin-top: 16px;
@@ -244,30 +254,28 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
 .trend-kicker {
   margin-top: 16px;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 17px;
   font-weight: 750;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
 }
 .horizons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
 .pill {
   border-radius: 14px;
-  padding: 10px 8px 12px;
+  padding: 12px 10px;
   text-align: center;
-  border: 3px solid transparent;
+  border: 2px solid transparent;
   min-width: 0;
-  min-height: 76px;
 }
-.pill .h { color: var(--muted); font-size: 1rem; font-weight: 750; letter-spacing: 0.03em; text-transform: uppercase; }
-.pill .v { font-size: 1.2rem; font-weight: 800; margin-top: 2px; }
-.pill .ch { color: var(--accent-ink); font-size: 1rem; font-weight: 800; margin-top: 2px; }
+.pill .h { color: var(--muted); font-size: 17px; font-weight: 700; }
+.pill .v { font-size: 1.2rem; font-weight: 800; margin-top: 2px; white-space: nowrap; }
+.pill .h { white-space: nowrap; }
+.pill .ch { color: var(--muted); font-size: 17px; font-weight: 650; margin-top: 2px; white-space: nowrap; }
 .pill.A { background: var(--up-soft); }
 .pill.A .v { color: var(--up-ink); }
 .pill.N { background: var(--flat-bg); }
 .pill.N .v { color: var(--flat); }
 .pill.Q { background: var(--down-soft); }
 .pill.Q .v { color: var(--down-ink); }
-.pill.changed { border-color: var(--brand); }
+.pill.changed { border-color: transparent; }
 .callout {
   background: var(--warn-bg);
   color: var(--warn-ink);
@@ -276,65 +284,66 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
   padding: 16px;
 }
 .lead { font-size: 1.3rem; font-weight: 800; line-height: 1.3; }
-.gauge-title { margin: 16px 0 8px; font-size: 1.2rem; font-weight: 800; line-height: 1.3; }
-.mark-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.mark-list li { display: flex; align-items: flex-start; gap: 10px; font-weight: 750; font-size: 1.08rem; line-height: 1.3; overflow-wrap: break-word; }
-.swatch, .key {
+.gauge {
+  background: #fff;
+  color: #1a1a1a;
+  border: 1px solid #d5d0c6;
+  border-radius: 18px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.gauge-title { margin: 0 0 12px; font-size: 1.25rem; font-weight: 800; line-height: 1.3; color: #1a1a1a; }
+.key {
   flex: none;
-  margin-top: 4px;
+  margin-top: 5px;
 }
 .key.now, .dot {
-  width: 16px; height: 16px; border-radius: 50%; background: var(--down); box-shadow: 0 0 0 3px var(--warn-bg), 0 0 0 5px var(--down);
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #7F1D1D;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #7F1D1D;
 }
 .key.forecast, .key.record {
-  width: 0; height: 18px; border-left: 3px dashed var(--down); margin-left: 6px; margin-right: 6px;
+  width: 0; height: 18px; border-left: 3px dashed #9F1D12; margin-left: 6px; margin-right: 7px;
 }
-.key.record { border-left-color: var(--muted); }
-.plot { position: relative; margin: 12px 0 6px; }
-.bar { display: flex; height: 42px; border-radius: 12px; overflow: hidden; }
-.zone.normal { background: #d5d2cb; }
-.zone.nino { background: #f6d48a; }
-.zone.strong { background: #f6b4b4; }
-@media (prefers-color-scheme: dark) {
-  .zone.normal { background: #4a514c; }
-  .zone.nino { background: #8a6420; }
-  .zone.strong { background: #8a3030; }
-}
+.key.record { border-left-color: #111; }
+.plot { position: relative; margin: 8px 0 4px; }
+.bar { display: flex; height: 32px; border-radius: 16px; overflow: hidden; }
+.zone.normal { background: #94A3B8; }
+.zone.nino { background: #F5B841; }
+.zone.strong { background: #E4573D; }
 .markline {
   position: absolute;
-  top: -8px;
-  height: 58px;
-  border-left: 3px dashed var(--muted);
+  top: -16px;
+  height: 48px;
+  border-left: 3px dashed #111;
   transform: translateX(-1.5px);
   pointer-events: none;
 }
-.markline.forecast { border-left-color: var(--down); }
+.markline.forecast { border-left-color: #9F1D12; }
 .dot {
   position: absolute;
-  top: 21px;
+  top: 16px;
   width: 22px;
   height: 22px;
   margin: -11px 0 0 -11px;
+  border: 3px solid #fff;
   z-index: 1;
+  box-sizing: border-box;
 }
-.axis-zero { font-weight: 750; font-size: 1.02rem; margin-top: 8px; }
-.axis-nums { position: relative; height: 1.8em; margin-top: 2px; font-weight: 750; font-size: 1.02rem; }
+.axis-nums { position: relative; height: 1.7em; margin-top: 8px; font-weight: 750; font-size: 17px; color: #1a1a1a; }
 .axis-nums span { position: absolute; top: 0; white-space: nowrap; transform: translateX(-50%); }
-.axis-nums span.end { transform: translateX(-100%); }
-.zone-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 10px 0 0; padding: 0; font-weight: 750; }
+.axis-nums span.start { transform: none; }
+.axis-unit { margin-top: 2px; font-size: 17px; font-weight: 650; color: #3f3f3f; }
+.zone-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 14px; margin: 12px 0 0; padding: 0; font-weight: 750; font-size: 17px; color: #1a1a1a; }
 .zone-legend li { display: flex; align-items: center; gap: 8px; }
-.swatch { width: 18px; height: 18px; border-radius: 5px; margin-top: 0; }
-.swatch.normal { background: #d5d2cb; }
-.swatch.nino { background: #f6d48a; }
-.swatch.strong { background: #f6b4b4; }
-@media (prefers-color-scheme: dark) {
-  .swatch.normal { background: #4a514c; }
-  .swatch.nino { background: #8a6420; }
-  .swatch.strong { background: #8a3030; }
-}
-.notes { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.notes li { font-size: 1.05rem; line-height: 1.4; }
-.topics { margin: 14px 0 0; padding: 0 0 0 1.2em; display: flex; flex-direction: column; gap: 12px; }
+.swatch { width: 18px; height: 18px; border-radius: 5px; flex: none; }
+.swatch.normal { background: #94A3B8; }
+.swatch.nino { background: #F5B841; }
+.swatch.strong { background: #E4573D; }
+.notes { margin: 14px 0 0; padding: 0 0 0 0.2em; list-style: none; display: flex; flex-direction: column; gap: 14px; color: #1a1a1a; }
+.notes li { font-size: 17px; line-height: 1.4; display: flex; align-items: flex-start; gap: 10px; }
+.notes li.plain { display: block; padding-left: 26px; }
+.topics { margin: 14px 0 0; padding: 0 0 0 1.2em; display: flex; flex-direction: column; gap: 16px; }
 .topics li { overflow-wrap: break-word; }
 .caption { margin: -4px 0 14px; font-size: 1.05rem; line-height: 1.4; color: var(--text-soft); }
 .tlist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
@@ -359,7 +368,7 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
 <noscript><p class="state">Este app precisa de JavaScript para mostrar as notícias.</p></noscript>
 <script>
 (function () {
-  var GROUP_ORDER = ["Energia", "Grãos", "Softs", "Óleos", "Lácteos"];
+  var GROUP_ORDER = ["Grãos", "Softs", "Energia", "Óleos", "Lácteos"];
   var FILTERS = ["Todos"].concat(GROUP_ORDER);
   var GROUP_META = {
     Energia: { heading: "Energia", id: "energia" },
@@ -368,7 +377,7 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
     "Óleos": { heading: "Óleos vegetais", id: "oleos" },
     "Lácteos": { heading: "Lácteos", id: "lacteos" }
   };
-  var TREND_LABEL = { A: "▲ Alta", N: "► Neutro", Q: "▼ Queda" };
+  var TREND_LABEL = { A: "Alta ▲", N: "Neutro", Q: "Queda ▼" };
   var HORIZONS = ["1 mês", "2 meses", "3 meses", "6 meses"];
   var current = "Todos";
 
@@ -533,18 +542,16 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
     return node;
   }
 
+  function fmtC(v) {
+    var n = Math.round(Number(v) * 10) / 10;
+    var body = Math.abs(n).toFixed(1).replace(".", ",").replace(",0", "");
+    return (n < 0 ? "−" : "+") + body;
+  }
+
   function gauge(g) {
     if (!g || !g.max) return null;
     var box = el("div", "gauge");
     box.appendChild(el("div", "gauge-title", "Quanto o oceano está mais quente que o normal"));
-    var keys = el("ul", "mark-list");
-    [["now", g.nowLabel], ["forecast", g.forecastLabel], ["record", g.recordLabel]].forEach(function (row) {
-      var li = el("li");
-      li.appendChild(el("span", "key " + row[0]));
-      li.appendChild(el("span", null, row[1]));
-      keys.appendChild(li);
-    });
-    box.appendChild(keys);
     function pct(v) {
       var c = Math.max(0, Math.min(Number(v) || 0, g.max));
       return (c / g.max) * 100;
@@ -552,7 +559,7 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
     var plot = el("div", "plot");
     var bar = el("div", "bar");
     bar.setAttribute("role", "img");
-    bar.setAttribute("aria-label", "Termômetro do El Niño, de 0 a " + g.max + " graus");
+    bar.setAttribute("aria-label", "Termômetro do El Niño. Agora " + g.nowLabel + ". Pico previsto " + g.forecastLabel + ".");
     var z1 = el("div", "zone normal");
     var z2 = el("div", "zone nino");
     var z3 = el("div", "zone strong");
@@ -569,14 +576,14 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
     dot.style.left = pct(g.now) + "%";
     plot.appendChild(rec); plot.appendChild(fore); plot.appendChild(dot);
     box.appendChild(plot);
-    box.appendChild(el("div", "axis-zero", "0 °C (normal)"));
     var nums = el("div", "axis-nums");
-    [[1, "+1", ""], [2, "+2", ""], [3, "+3", ""], [4, "+4 °C", "end"]].forEach(function (t) {
+    [[0, "0", "start"], [1, "+1", ""], [2, "+2", ""], [3, "+3", ""], [4, "+4", ""]].forEach(function (t) {
       var s = el("span", t[2], t[1]);
       s.style.left = pct(t[0]) + "%";
       nums.appendChild(s);
     });
     box.appendChild(nums);
+    box.appendChild(el("div", "axis-unit", "°C acima do normal"));
     var legend = el("ul", "zone-legend");
     [["normal", "Normal"], ["nino", "El Niño"], ["strong", "Forte"]].forEach(function (z) {
       var li = el("li");
@@ -586,8 +593,16 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
     });
     box.appendChild(legend);
     var notes = el("ul", "notes");
-    notes.appendChild(el("li", null, g.nowNote));
-    notes.appendChild(el("li", null, g.forecastNote));
+    function marked(kind, text) {
+      var li = el("li");
+      li.appendChild(el("span", "key " + kind));
+      li.appendChild(el("span", null, text));
+      notes.appendChild(li);
+    }
+    marked("now", g.nowLabel + " (bolinha): " + g.nowNote);
+    marked("forecast", g.forecastLabel + " (tracejado vermelho): " + g.forecastNote);
+    marked("record", g.recordLabel + " (tracejado preto)");
+    notes.appendChild(el("li", "plain", "Acima de " + fmtC(g.elNinoFrom) + " °C já é El Niño; acima de " + fmtC(g.strongFrom) + " °C, El Niño forte"));
     box.appendChild(notes);
     return box;
   }
@@ -622,19 +637,26 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
     var app = document.getElementById("app");
     app.replaceChildren();
     app.appendChild(el("h1", null, "Commodities"));
-    app.appendChild(el("p", "updated", "Atualizado em " + data.updatedAt));
+    var top = el("div", "update-card");
+    top.appendChild(el("div", "update-k", "Última atualização"));
+    top.appendChild(el("div", "update-v", data.updatedAt));
     var bar = el("div", "filters");
     bar.setAttribute("role", "group");
     bar.setAttribute("aria-label", "Filtrar por grupo");
     FILTERS.forEach(function (name) {
-      var b = el("button", null, name);
+      var b = el("button");
       b.type = "button";
+      var dotClass = "fdot";
+      if (name !== "Todos" && GROUP_META[name]) dotClass += " " + GROUP_META[name].id;
+      b.appendChild(el("span", dotClass));
+      b.appendChild(document.createTextNode(name));
       b.setAttribute("data-group", name);
       b.setAttribute("aria-pressed", name === "Todos" ? "true" : "false");
       b.addEventListener("click", function () { applyFilter(name); });
       bar.appendChild(b);
     });
-    app.appendChild(bar);
+    top.appendChild(bar);
+    app.appendChild(top);
 
     GROUP_ORDER.forEach(function (g) {
       var meta = GROUP_META[g];
@@ -658,20 +680,24 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
     nino.appendChild(el("h2", null, "El Niño"));
     var call = el("div", "callout");
     call.appendChild(el("div", "lead", data.elNinoLead));
-    var g = gauge(data.elNinoGauge);
-    if (g) call.appendChild(g);
     var topics = el("ul", "topics");
     (data.elNino || []).forEach(function (item) { topics.appendChild(el("li", null, item)); });
     call.appendChild(topics);
     nino.appendChild(call);
+    var g = gauge(data.elNinoGauge);
+    if (g) nino.appendChild(g);
     app.appendChild(nino);
 
     var table = el("section");
     table.id = "tendencias";
     table.appendChild(el("h2", null, "Tendências em tabela"));
-    table.appendChild(el("p", "caption", "Tendência prevista para os próximos 1, 2, 3 e 6 meses · ▲ Alta · ► Neutro · ▼ Queda · ↻ mudou vs. a edição anterior"));
+    table.appendChild(el("p", "caption", "O que tende a acontecer em 1, 2, 3 e 6 meses. Alta ▲, Neutro e Queda ▼. ↻ mudou desde a leitura anterior."));
     var list = el("ul", "tlist");
-    (data.assets || []).forEach(function (a) { list.appendChild(tableItem(a, data.chgShort)); });
+    GROUP_ORDER.forEach(function (g) {
+      (data.assets || []).forEach(function (a) {
+        if (a.group === g) list.appendChild(tableItem(a, data.chgShort));
+      });
+    });
     table.appendChild(list);
     app.appendChild(table);
 
