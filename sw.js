@@ -6,7 +6,7 @@
    - equilibrio.js do Foco (mesma origem): network-first, cache só como fallback offline.
    - Demais GET (CDNs: fontes, ícones, chart.js, supabase-js): stale-while-revalidate.
    Bump CACHE quando quiser forçar limpeza do cache antigo. */
-var CACHE = 'hub-v46';
+var CACHE = 'hub-v47';
 var SHELL = ['./', './index.html', './manifest.json',
              './apple-touch-icon.png', './icon-192.png', './icon-512.png'];
 
@@ -47,6 +47,8 @@ self.addEventListener('fetch', function (e) {
   if (url.origin === self.location.origin && /\/hubpessoal\/casamento\//.test(url.pathname)) return;
   // App Gastos (./gastos/, dados no Supabase): sempre rede, sem cache do HUB
   if (url.origin === self.location.origin && /\/hubpessoal\/gastos\//.test(url.pathname)) return;
+  // News de commodities (./commodities/, read-only, dados em commodities/data.json): sempre rede, sem cache do HUB
+  if (url.origin === self.location.origin && /\/hubpessoal\/commodities\//.test(url.pathname)) return;
 
   // Abrir o app: network-first com fallback pro cache (offline).
   if (req.mode === 'navigate') {
