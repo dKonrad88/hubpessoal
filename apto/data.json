@@ -1,9 +1,9 @@
 {
- "geradoEm": "2026-11-10T15:42-03:00",
+ "geradoEm": "2026-11-11T08:29-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 1976056.4,
-  "pago": 1440757.75,
+  "total": 1977185.57,
+  "pago": 1441886.92,
   "restante": 535298.65
  },
  "categorias": [
@@ -21,8 +21,8 @@
   },
   {
    "nome": "Eletrodomésticos",
-   "total": 68755.28,
-   "pago": 68755.28,
+   "total": 69884.45,
+   "pago": 69884.45,
    "restante": 0.0
   },
   {
@@ -71,8 +71,8 @@
   },
   {
    "nome": "Cozinha",
-   "total": 36801.55,
-   "pago": 33635.36,
+   "total": 37930.72,
+   "pago": 34764.53,
    "restante": 3166.1900000000023
   },
   {
@@ -596,6 +596,18 @@
    "pago": 2899.0,
    "entrega": null,
    "obs": "Cartão 12x sem juros. Entrega em até 12 dias úteis",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme)",
+   "qtd": "1 und",
+   "total": 1129.17,
+   "pago": 1129.17,
+   "entrega": null,
+   "obs": "Cartão 1x",
    "comodo": "Cozinha",
    "cat": "Eletrodomésticos"
   }
@@ -1686,6 +1698,14 @@
    "fornecedor": "Midea",
    "desc": "Lava-Louças 10 serviços Inox SmartHome Midea",
    "valor": 2899.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme)",
+   "valor": 1129.17,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
