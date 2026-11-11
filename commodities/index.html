@@ -176,11 +176,13 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
 .g-softs { --accent: var(--g-softs); }
 .g-oleos { --accent: var(--g-oleos); }
 .g-lacteos { --accent: var(--g-lacteos); }
-.name { font-size: 1.5rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
-.sub { margin-top: 4px; color: var(--muted); font-size: 1.05rem; overflow-wrap: anywhere; }
+.name { font-size: 1.5rem; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; overflow-wrap: break-word; }
+.safra { margin-top: 8px; font-size: 1.15rem; line-height: 1.4; font-weight: 650; display: flex; flex-direction: column; gap: 4px; }
+.sub { margin-top: 4px; color: var(--muted); font-size: 1.05rem; overflow-wrap: break-word; }
 .sub .ticker { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-weight: 700; }
-.price { margin-top: 14px; font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; font-variant-numeric: tabular-nums; }
-.chg { margin-top: 2px; font-size: 1.4rem; font-weight: 800; line-height: 1.2; }
+.price { margin-top: 14px; font-size: clamp(1.55rem, 7.5vw, 2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.chg { margin-top: 2px; font-size: 1.4rem; font-weight: 800; line-height: 1.2; white-space: nowrap; }
+.orig { margin-top: 6px; color: var(--muted); font-size: 17px; line-height: 1.35; overflow-wrap: break-word; }
 .chg.up { color: var(--up); }
 .chg.down { color: var(--down); }
 .chg.flat { color: var(--flat); }
@@ -356,7 +358,7 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
 }
 .t-name { font-size: 1.25rem; font-weight: 800; line-height: 1.2; }
 .t-sub { color: var(--muted); font-size: 1rem; margin-top: 2px; }
-.t-price { margin-top: 8px; font-size: 1.25rem; font-weight: 800; }
+.t-price { margin-top: 8px; font-size: 1.25rem; font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .state { padding: 28px 8px; font-size: 1.2rem; font-weight: 650; }
 [hidden] { display: none !important; }
 </style>
@@ -520,6 +522,12 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
     var node = el("article", "card g-" + meta.id);
     node.setAttribute("data-ticker", a.ticker);
     node.appendChild(el("div", "name", a.name));
+    if (a.safraMundo || a.safraBrasil) {
+      var safra = el("div", "safra");
+      if (a.safraMundo) safra.appendChild(el("div", null, a.safraMundo.indexOf(":") >= 0 ? a.safraMundo : "Safra mundial: " + a.safraMundo));
+      if (a.safraBrasil) safra.appendChild(el("div", null, "Safra Brasil: " + a.safraBrasil));
+      node.appendChild(safra);
+    }
     var sub = el("div", "sub");
     sub.appendChild(el("span", "ticker", a.ticker));
     sub.appendChild(document.createTextNode(" · " + a.sub));
@@ -527,6 +535,7 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
     node.appendChild(el("div", "price", a.price));
     node.appendChild(el("div", "chg " + (a.chgDir || "flat"), a.chg));
     node.appendChild(el("div", "since", a._chgShort || ""));
+    if (a.orig) node.appendChild(el("div", "orig", a.orig));
     var ul = el("ul", "bullets");
     (a.bullets || []).forEach(function (item) { ul.appendChild(el("li", null, item)); });
     node.appendChild(ul);
@@ -613,10 +622,8 @@ h2 { font-size: 1.55rem; line-height: 1.2; margin: 26px 0 12px; font-weight: 800
     li.setAttribute("data-group", a.group);
     li.appendChild(el("div", "t-name", a.name));
     li.appendChild(el("div", "t-sub", a.ticker));
-    var price = el("div", "t-price");
-    price.appendChild(document.createTextNode(a.price + "  "));
-    price.appendChild(el("span", "chg " + (a.chgDir || "flat"), a.chg));
-    li.appendChild(price);
+    li.appendChild(el("div", "t-price", a.price));
+    li.appendChild(el("div", "chg " + (a.chgDir || "flat"), a.chg));
     li.appendChild(el("div", "since", chgShort));
     li.appendChild(horizons(a.trends || [], a.changed || []));
     return li;
