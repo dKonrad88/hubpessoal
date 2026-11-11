@@ -2,7 +2,7 @@
    Escopo: a pasta do script. No GitHub Pages isso é /hubpessoal/commodities/.
    index.html e data.json entram em network-first (a edição nova aparece sozinha).
    Sem rede, a última cópia em cache abre. */
-var CACHE = 'commodities-v2';
+var CACHE = 'commodities-v3';
 
 self.addEventListener('install', function (e) {
   var scope = self.registration.scope;
