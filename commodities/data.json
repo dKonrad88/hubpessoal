@@ -1,40 +1,38 @@
 {
-  "updatedAt": "11/11/2026 às 12:36 (Brasília)",
-  "date": "11/11/2026",
-  "weekday": "Quarta-feira",
-  "period": "02/11 a 11/11",
-  "asOf": "Notícias de 02/11 a 11/11 · Preços de 11/11, por volta das 11h40 (Brasília), todos em US$ (câmbio do TradingView às 12h30) · Variação % do contrato na moeda de origem, comparada ao fechamento de 30/10",
-  "chgShort": "desde 30/10",
-  "chgFrom": "fechamento de 30/10 (último pregão de outubro)",
-  "panorama": "O petróleo despencou no período (WTI US$ 87,00, −16,4%) com a retirada do prêmio de guerra, apesar dos ataques em Ormuz. O gás subiu quase 17% com o frio e a produção mais baixa. O WASDE apertou milho e soja nos EUA; a palma recuou na semana e raliou hoje com estoque abaixo do esperado; o cacau caiu 9% com o corte de peso nos índices.",
+  "updatedAt": "12/11/2026 às 07:58 (Brasília)",
+  "date": "12/11/2026",
+  "weekday": "Quinta-feira",
+  "period": "11/11 a 12/11",
+  "asOf": "Notícias de 11/11 a 12/11 · Preços de 12/11 às 07h58 (Brasília), todos em US$ (câmbio do TradingView às 07h58) · Variação % do contrato na moeda de origem, comparada ao fechamento de 10/11",
+  "chgShort": "desde 10/11",
+  "chgFrom": "fechamento de 10/11 (último pregão antes da edição de 11/11)",
+  "panorama": "Dia de ajustes: o cacau (+4,2%) e a palma (+4,3%) recuperaram parte das perdas, o petróleo ficou de lado (WTI US$ 85,81) entre a produção maior e as ameaças do Irã, e os grãos devolveram parte do salto pós-WASDE.",
   "assets": [
     {
       "name": "Petróleo WTI",
       "ticker": "CL1!",
       "group": "Energia",
-      "price": "US$ 87,00",
-      "chg": "▼ −16,4%",
+      "price": "US$ 85,81",
+      "chg": "▼ −0,3%",
       "chgDir": "down",
       "sub": "dez/26",
       "safraMundo": "",
       "safraBrasil": "",
-      "orig": "Brent: US$ 92,64 (−18,3%)",
+      "orig": "Brent: US$ 91,97 (+0,5%)",
       "bullets": [
-        "Prêmio de guerra recuou após Trump sinalizar contenção com o Irã; WTI tocou a mínima de 2 meses em 10/11",
-        "Ataques no estreito de Ormuz seguem: 37 navios em outubro e mais 10 em novembro",
-        "OPEP elevou a produção de outubro em 1,38 mi b/d, para 22,87 mi b/d (90% do nível pré-guerra)",
-        "EIA vê Brent perto de US$ 100 até dezembro, abaixo de US$ 90 no 2º tri de 2027 e a US$ 77 no 4º tri"
+        "Oscilou perto da estabilidade: a produção maior de petróleo compensou os riscos no Golfo (Reuters, 12/11)",
+        "Irã ameaçou atacar bases dos EUA na Europa e no Oriente Médio se houver novos ataques; o WTI dez/26 chegou a US$ 87,07 de madrugada",
+        "Novo incidente com petroleiro em Ormuz (UKMTO, 11/11); o Irã diz que o estreito nunca voltará ao status de antes da guerra",
+        "Índia passou a importar mais petróleo do Golfo do que da Rússia pela primeira vez desde o início da guerra"
       ],
-      "why": "Mês e bimestre neutros: a queda de 16% já tirou o prêmio de guerra, mas Ormuz segue sob ataque e a EIA vê o Brent perto de US$ 100 até dezembro. Semestre em queda: a curva aponta WTI a US$ 79 em junho e a EIA, Brent abaixo de US$ 90 no 2º tri de 2027, com a volta da produção do Golfo.",
+      "why": "1 e 2 meses — neutro: a queda de outubro e novembro já tirou boa parte do prêmio de guerra, mas Ormuz segue sob ameaça. A EIA vê o Brent perto de US$ 100 até dezembro. 6 meses — queda: a EIA vê o Brent abaixo de US$ 90 no 2º tri de 2027, com a volta da produção do Golfo.",
       "trends": [
         "N",
         "N",
         "N",
         "Q"
       ],
-      "changed": [
-        0
-      ],
+      "changed": [],
       "monthlyStart": "2021-12",
       "monthly": [
         75.21,
@@ -96,27 +94,27 @@
         85.76,
         90.42,
         104.12,
-        87
+        85.81
       ]
     },
     {
       "name": "Gás Natural",
       "ticker": "NG1!",
       "group": "Energia",
-      "price": "US$ 3,388",
-      "chg": "▲ +16,9%",
+      "price": "US$ 3,299",
+      "chg": "▲ +0,1%",
       "chgDir": "up",
       "sub": "dez/26",
       "safraMundo": "",
       "safraBrasil": "",
       "orig": "",
       "bullets": [
-        "CWG prevê frio abaixo da média no sudeste dos EUA de 15 a 19/11",
-        "Produção caiu a 110,9 bcf/d, mínima de 9 meses; fluxo para GNL bateu recorde de 20,4 bcf/d",
-        "EIA (STEO) projeta produção de 113 bcf/d em 2026 e Henry Hub a US$ 2,87 de novembro a março",
-        "Fundos com posição vendida recorde (636 mil contratos), o que pode alimentar recompras"
+        "Tocou a máxima de 8 meses em 11/11 e fechou em queda de 2,5%: previsões trazem temperatura normal depois do frio de 16 a 20/11 no leste dos EUA",
+        "EIA elevou a previsão de produção de 2026 para 113 bcf/d; produção em 112,2 bcf/d e fluxo para GNL em 20,6 bcf/d (BNEF)",
+        "Relatório semanal de estoques sai hoje, atrasado pelo feriado de 11/11; o consenso é de +65 bcf",
+        "Fundos seguem com venda recorde (636 mil contratos), o que pode alimentar recompras"
       ],
-      "why": "Mês em alta: frio, produção na mínima de 9 meses, GNL recorde e fundos muito vendidos; o contrato de janeiro já está em US$ 3,74. Bimestre neutro (fevereiro a US$ 3,33). Trimestre e semestre em queda: curva a US$ 2,50 na primavera, estoques maiores que o previsto pela EIA e El Niño com inverno ameno.",
+      "why": "1 mês — alta: frio de 16 a 20/11, GNL perto do recorde e fundos muito vendidos. 2 meses — neutro: as previsões já voltam ao normal depois de 20/11. 3 e 6 meses — queda: a EIA vê produção maior e o El Niño indica inverno ameno no norte dos EUA.",
       "trends": [
         "A",
         "N",
@@ -185,35 +183,33 @@
         2.935,
         3.026,
         2.898,
-        3.388
+        3.299
       ]
     },
     {
       "name": "Etanol hidratado B3",
       "ticker": "ETH1!",
       "group": "Energia",
-      "price": "US$ 544,65/m³",
-      "chg": "▼ −2,6%",
-      "chgDir": "down",
+      "price": "US$ 546,40/m³",
+      "chg": "▲ +0,3%",
+      "chgDir": "up",
       "sub": "B3 · 1º vencimento",
-      "safraMundo": "",
-      "safraBrasil": "abr–nov (cana)",
-      "orig": "Original: R$ 3.029,50/m³ (último ajuste) · câmbio 5,56",
+      "safraMundo": "EUA o ano todo, de milho (52%)",
+      "safraBrasil": "cana: Centro-Sul abr–nov · milho: o ano todo (27% do mundo)",
+      "orig": "Original: R$ 3.050,00/m³ (último ajuste, 11/11) · câmbio 5,58",
       "bullets": [
-        "Cepea: hidratado a US$ 0,52/L (R$ 2,8799/L) na semana de 02 a 06/11 (+2,36%), com chuvas atrasando a moagem",
-        "Governo prorrogou a desoneração de PIS/Cofins da gasolina e do etanol até 09/12",
-        "Curva na B3: jan/27 a US$ 565, mar/27 a US$ 545 e mai/27 a US$ 474/m³ (R$ 3.145, 3.034 e 2.639), já com a safra nova"
+        "Ajuste subiu para R$ 3.050/m³ (US$ 546) em 11/11; o jan/27 fechou a R$ 3.140 (US$ 563)",
+        "Cepea: hidratado a US$ 0,52/L (R$ 2,8799/L) na semana de 02 a 06/11 (+2,36%), com o menor volume negociado da safra",
+        "Chuvas em São Paulo fazem as usinas adiarem o fim da safra 26/27 e seguram a oferta"
       ],
-      "why": "Mês e bimestre em alta com a entressafra e a moagem atrasada pela chuva; a curva sobe até janeiro. Trimestre neutro: março já negocia no nível de hoje. Semestre em queda com a safra 27/28 a partir de abril (maio a US$ 474/m³) e o petróleo mais fraco.",
+      "why": "1 e 2 meses — alta: entressafra e moagem atrasada pela chuva; a curva sobe até janeiro. 3 meses — neutro: março já negocia no nível de hoje. 6 meses — queda: safra 27/28 a partir de abril (maio a US$ 474/m³) e petróleo mais fraco.",
       "trends": [
         "A",
         "A",
         "N",
         "Q"
       ],
-      "changed": [
-        2
-      ],
+      "changed": [],
       "monthlyStart": "2021-12",
       "monthly": [
         601.33,
@@ -275,35 +271,34 @@
         484.8,
         521.56,
         571.72,
-        544.65
+        546.4
       ]
     },
     {
       "name": "Milho",
       "ticker": "ZC1!",
       "group": "Grãos",
-      "price": "US$ 4,4650",
-      "chg": "▼ −0,3%",
+      "price": "US$ 4,4700",
+      "chg": "▼ −0,4%",
       "chgDir": "down",
       "sub": "dez/26",
-      "safraMundo": "EUA set–nov · China set–out",
-      "safraBrasil": "verão fev–mai · safrinha jun–ago",
+      "safraMundo": "EUA set–nov (31%) · China set–out (24%)",
+      "safraBrasil": "verão fev–mai · safrinha jun–ago (11% do mundo)",
       "orig": "",
       "bullets": [
-        "WASDE cortou a produtividade dos EUA para 179,6 bu/acre (−1,6) e a safra para 15,893 bi bu",
-        "Estoque final dos EUA caiu a 1,758 bi bu (−91 mi), abaixo do esperado; o contrato subiu forte em 10/11 e devolveu parte",
-        "USDA subiu as safras de Brasil (141 Mt) e Argentina (57 Mt); o México comprou 312,7 mil t de milho dos EUA"
+        "Devolveu parte do salto pós-WASDE em 11/11 (dez/26 a US$ 4,48, −1 centavo), com realização de lucros",
+        "WASDE: estoque final dos EUA caiu a 1,758 bi bu (−91 mi) e a produtividade a 179,6 bu/acre",
+        "ANEC elevou a exportação de milho do Brasil em novembro para 7,21 Mt; chuvas na América do Sul atrasam o plantio",
+        "Relatório de etanol da EIA sai hoje (atrasado pelo feriado); a produção vinha na 2ª maior marca da história"
       ],
-      "why": "Mês em alta: balanço dos EUA mais apertado que o esperado, colheita atrasada (81%, 5 pontos abaixo da média) e compras do México. Bimestre a semestre neutros: safras maiores e chuva regular na América do Sul, e o USDA mantém estoque mundial em alta.",
+      "why": "1 mês — alta: balanço dos EUA mais apertado que o esperado, colheita atrasada (81%, 5 pontos abaixo da média) e compras do México. 2, 3 e 6 meses — neutro: safras maiores e chuva regular na América do Sul. O USDA mantém o estoque mundial em alta.",
       "trends": [
         "A",
         "N",
         "N",
         "N"
       ],
-      "changed": [
-        3
-      ],
+      "changed": [],
       "monthlyStart": "2021-11",
       "monthly": [
         5.675,
@@ -366,26 +361,26 @@
         5.3775,
         5.0075,
         4.4775,
-        4.465
+        4.47
       ]
     },
     {
       "name": "Soja",
       "ticker": "ZS1!",
       "group": "Grãos",
-      "price": "US$ 12,2625",
-      "chg": "▼ −0,6%",
-      "chgDir": "down",
+      "price": "US$ 12,2750",
+      "chg": "► 0,0%",
+      "chgDir": "flat",
       "sub": "jan/27",
-      "safraMundo": "EUA set–nov · Argentina abr–jun",
-      "safraBrasil": "jan–abr",
+      "safraMundo": "EUA set–nov (28%) · Argentina abr–jun (11%)",
+      "safraBrasil": "jan–mai (42% do mundo)",
       "orig": "",
       "bullets": [
-        "WASDE: produtividade subiu a 53,3 bu/acre e a safra a um recorde de 4,574 bi bu",
-        "Exportação dos EUA +25 mi bu (1,720 bi) e estoque final de 300 mi bu (−15), abaixo do esperado",
-        "Contrato subiu forte em 10/11 e devolve um pouco; safra do Brasil mantida em 186 Mt"
+        "Subiu pelo 2º dia em 11/11 (jan/27 a US$ 12,3075) após o USDA cortar o estoque final dos EUA a 300 mi bu (−15)",
+        "Recua levemente hoje; a análise técnica da Reuters vê recuo até US$ 12,145",
+        "Chuvas na América do Sul devem atrasar o plantio de soja e milho"
       ],
-      "why": "Mês a trimestre neutros: o estoque menor nos EUA dá suporte, mas a safra recorde americana limita altas e o preço médio do USDA (US$ 12,10) está no nível do futuro. Semestre em queda com a colheita recorde no Brasil de fevereiro a abril.",
+      "why": "1, 2 e 3 meses — neutro: o estoque menor nos EUA dá suporte, mas a safra recorde americana limita altas. O preço médio do USDA (US$ 12,10) está no nível do futuro. 6 meses — queda: colheita recorde no Brasil de fevereiro a abril.",
       "trends": [
         "N",
         "N",
@@ -455,36 +450,34 @@
         12.88,
         12.93,
         12.3425,
-        12.2625
+        12.275
       ]
     },
     {
       "name": "Trigo Chicago (mole)",
       "ticker": "ZW1!",
       "group": "Grãos",
-      "price": "US$ 5,9625",
-      "chg": "▼ −1,2%",
-      "chgDir": "down",
+      "price": "US$ 5,9575",
+      "chg": "▲ +0,5%",
+      "chgDir": "up",
       "sub": "dez/26",
-      "safraMundo": "Hem. Norte jun–ago · Argentina e Austrália nov–jan",
-      "safraBrasil": "set–dez",
+      "safraMundo": "China mai–jun (17%) · UE jul–ago (16%) · Índia mar–mai (15%) · Argentina e Austrália nov–jan (7%)",
+      "safraBrasil": "set–dez (1% do mundo)",
       "orig": "",
       "bullets": [
-        "Abu Dhabi terminou com acordo de prisioneiros, mas sem retomada dos grãos no Mar Negro",
-        "WASDE subiu o estoque final dos EUA a 743 mi bu e o mundial a 280,8 Mt (+4,8 Mt)",
-        "USDA cortou exportações de Rússia e Ucrânia em 1 Mt cada e elevou Argentina e Austrália",
-        "Contrato chegou a US$ 5,85 em 06/11 e 10/11, menor nível em 4 meses, e segue perto disso"
+        "Subiu em 11/11 sem sinal de acordo Rússia–Ucrânia para os grãos do Mar Negro; Paris também subiu",
+        "China comprou ao menos 120 mil t de trigo francês após a queda dos preços mundiais",
+        "Dez/26 fechou a US$ 5,995 em 11/11; a análise técnica da Reuters vê resistência em US$ 6,05",
+        "WASDE subiu o estoque final dos EUA a 743 mi bu e o mundial a 280,8 Mt (+4,8 Mt)"
       ],
-      "why": "Mês e bimestre em queda: preço abaixo das médias de 50 e 200 dias, estoque mundial maior e colheitas grandes na Argentina e Austrália em dez/jan. Trimestre e semestre neutros: a exportação menor de Rússia e Ucrânia e o preço já perto da mínima de 4 meses limitam novas quedas.",
+      "why": "1 e 2 meses — queda: preço abaixo das médias de 50 e 200 dias e estoque mundial maior. Colheitas grandes na Argentina e Austrália em dez/jan. 3 e 6 meses — neutro: a exportação menor de Rússia e Ucrânia e o preço já perto da mínima de 4 meses limitam novas quedas.",
       "trends": [
         "Q",
         "Q",
         "N",
         "N"
       ],
-      "changed": [
-        0
-      ],
+      "changed": [],
       "monthlyStart": "2021-11",
       "monthly": [
         7.8725,
@@ -547,35 +540,33 @@
         7.74,
         6.7575,
         6.035,
-        5.9625
+        5.9575
       ]
     },
     {
       "name": "Trigo Kansas (duro)",
       "ticker": "KE1!",
       "group": "Grãos",
-      "price": "US$ 6,3550",
-      "chg": "▼ −1,4%",
+      "price": "US$ 6,3275",
+      "chg": "▼ −0,2%",
       "chgDir": "down",
       "sub": "dez/26",
-      "safraMundo": "Planícies dos EUA jun–jul · Rússia jul–ago",
-      "safraBrasil": "set–dez",
+      "safraMundo": "EUA, só trigo duro jun–jul (2%) · Rússia jul–ago (11%)",
+      "safraBrasil": "set–dez (1% do mundo)",
       "orig": "",
       "bullets": [
-        "WASDE cortou as exportações de HRW, agora as segundas menores da história",
-        "Contrato cai 11% em um mês e está abaixo das médias de 50 e 200 dias",
+        "Acompanhou Chicago em 11/11 (dez/26 a US$ 6,395) com o impasse no Mar Negro e devolve hoje",
+        "WASDE cortou as exportações de trigo duro dos EUA, agora as segundas menores da história",
         "El Niño costuma trazer inverno mais úmido nas Plains, o que limita a recuperação"
       ],
-      "why": "Mês e bimestre em queda: exportação fraca, colheitas maiores no Hemisfério Sul e El Niño mais úmido nas Plains. Trimestre e semestre neutros, com o preço já perto da mínima de 3 meses (US$ 6,22).",
+      "why": "1 e 2 meses — queda: exportação fraca e colheitas maiores no Hemisfério Sul. El Niño mais úmido nas Plains. 3 e 6 meses — neutro: preço já perto da mínima de 4 meses (US$ 6,22).",
       "trends": [
         "Q",
         "Q",
         "N",
         "N"
       ],
-      "changed": [
-        1
-      ],
+      "changed": [],
       "monthlyStart": "2021-11",
       "monthly": [
         8.2225,
@@ -638,27 +629,26 @@
         8.38,
         7.33,
         6.4425,
-        6.355
+        6.3275
       ]
     },
     {
       "name": "Amendoim",
       "ticker": "PK1!",
       "group": "Grãos",
-      "price": "US$ 1.167/t",
-      "chg": "▼ −1,6%",
+      "price": "US$ 1.170/t",
+      "chg": "▼ −0,2%",
       "chgDir": "down",
       "sub": "jan/27 · Zhengzhou",
-      "safraMundo": "China e EUA set–out · Índia out–dez",
-      "safraBrasil": "jan–abr",
-      "orig": "Original: ¥ 7.786/t · câmbio 6,67",
+      "safraMundo": "China set–out (36%) · Índia set–nov (15%) · EUA set–nov (4%)",
+      "safraBrasil": "jan–abr (2% do mundo)",
+      "orig": "Original: ¥ 7.800/t · câmbio 6,67",
       "bullets": [
-        "China colhe a safra nova: o USDA estima 18 Mt, contra 18,4 Mt no ano passado, por clima ruim e área menor",
-        "Procura fraca da indústria de alimentos; as grandes esmagadoras (óleo) começaram a comprar e seguram o preço",
-        "Contrato na mínima de 6 meses (US$ 1.165/t, ou ¥ 7.772) e abaixo das médias de 50 e 200 dias",
-        "WASDE de 10/11 cortou a produção mundial de amendoim, junto com soja e girassol"
+        "Sem notícias novas relevantes; o contrato anda de lado entre ¥ 7.772 e 7.854 (US$ 1.166 a 1.178/t) nos últimos 4 pregões, perto da mínima de 6 meses",
+        "China colhe a safra nova: o USDA estima 18 Mt, contra 18,4 Mt no ano passado",
+        "Procura fraca da indústria de alimentos; as compras das esmagadoras (óleo) seguram o preço"
       ],
-      "why": "Mês a trimestre neutros: a colheita nova chega com procura fraca da indústria de alimentos, mas as compras das esmagadoras e o custo de produção dão piso, e analistas chineses (Huatai) esperam preço de lado. Semestre em alta: a safra chinesa menor (USDA: 18 Mt) tende a apertar a oferta depois que a colheita for absorvida.",
+      "why": "1, 2 e 3 meses — neutro: a colheita nova chega com procura fraca da indústria de alimentos. As compras das esmagadoras e o custo de produção dão piso; analistas chineses (Huatai) esperam preço de lado. 6 meses — alta: a safra chinesa menor (USDA: 18 Mt) tende a apertar a oferta depois que a colheita for absorvida.",
       "trends": [
         "N",
         "N",
@@ -728,26 +718,26 @@
         1190,
         1214,
         1189,
-        1167
+        1170
       ]
     },
     {
       "name": "Açúcar nº11",
       "ticker": "SB1!",
       "group": "Softs",
-      "price": "US$ 0,1835/lb",
-      "chg": "▼ −5,2%",
+      "price": "US$ 0,1803/lb",
+      "chg": "▼ −0,3%",
       "chgDir": "down",
       "sub": "mar/27",
-      "safraMundo": "Índia e Tailândia nov–abr",
-      "safraBrasil": "abr–nov",
-      "orig": "Original: 18,35 ¢/lb na ICE",
+      "safraMundo": "Índia e Tailândia nov–abr (23%)",
+      "safraBrasil": "abr–nov (23% do mundo)",
+      "orig": "Original: 18,03 ¢/lb na ICE",
       "bullets": [
-        "Real na mínima de 15 meses estimula a exportação do Brasil e pressiona Nova York",
-        "Chuvas do El Niño atrasam a moagem no Centro-Sul (cerca de −20% na 1ª quinzena de outubro)",
-        "Índia produziu 1,29 Mt no início da safra, quatro vezes mais que há um ano; petróleo em queda também pesou"
+        "Subiu 1,9% em 11/11 com a alta do petróleo (estimula as usinas a fazer mais etanol) e devolve hoje",
+        "Real perto da mínima de 15 meses estimula a exportação do Brasil",
+        "Chuvas atrasam a moagem no Centro-Sul; a Índia já produziu 1,29 Mt, quatro vezes mais que há um ano"
       ],
-      "why": "Mês em queda com a Índia moendo forte e o real fraco. Bimestre e trimestre neutros: a moagem atrasada no Brasil dá piso. Semestre em queda: a curva cai a US$ 0,1741/lb em jul/27 e o Rabobank vê o Centro-Sul +14% em 27/28, com NY entre US$ 0,17 e 0,19/lb.",
+      "why": "1 mês — queda: Índia moendo forte e real fraco. 2 e 3 meses — neutro: a moagem atrasada no Brasil dá piso. 6 meses — queda: a curva cai a US$ 0,1753/lb em jul/27. O Rabobank vê o Centro-Sul +14% em 27/28, com NY entre US$ 0,17 e 0,19/lb.",
       "trends": [
         "Q",
         "N",
@@ -817,26 +807,27 @@
         0.1781,
         0.1861,
         0.1936,
-        0.1835
+        0.1803
       ]
     },
     {
       "name": "Cacau",
       "ticker": "CC1!",
       "group": "Softs",
-      "price": "US$ 5.034/t",
-      "chg": "▼ −9,4%",
-      "chgDir": "down",
+      "price": "US$ 5.076/t",
+      "chg": "▲ +4,2%",
+      "chgDir": "up",
       "sub": "mar/27",
-      "safraMundo": "África Ocidental out–mar (temporão abr–set)",
-      "safraBrasil": "out–mar (temporão mai–set)",
+      "safraMundo": "Costa do Marfim e Gana out–mar, temporão abr–set (49%)",
+      "safraBrasil": "out–mar, temporão mai–set (4% do mundo)",
       "orig": "",
       "bullets": [
-        "S&P GSCI vai cortar o peso do cacau em 2027 para 0,5%; o Bloomberg Commodity Index também reduz",
-        "Estoques na ICE na máxima de 2,5 anos (3,75 mi bags) aceleraram a venda de fundos",
-        "Chegadas da Costa do Marfim caem 45% na temporada; safra principal estimada em 1,8 Mt (−18%)"
+        "Recompra de vendidos em 11/11 (+3,5%): chuva forte na Costa do Marfim danificou estradas e atrasa o transporte das amêndoas",
+        "Na véspera tocou a mínima de 4,5 meses, com estoques na ICE na máxima de 2,5 anos (3,75 mi sacas)",
+        "Corte de peso nos índices S&P GSCI e Bloomberg em 2027 segue pesando; chegadas da Costa do Marfim −45% na temporada",
+        "Agência de clima da Costa do Marfim diz que a produção pode cair 25% com o El Niño"
       ],
-      "why": "Mês e bimestre em queda: estoques na ICE na máxima de 2,5 anos e fundos se antecipando ao corte nos índices em janeiro. Trimestre neutro. Semestre em alta: El Niño forte tende a secar a África Ocidental e a StoneX vê déficit de 64 mil t, embora a curva ainda não precifique isso.",
+      "why": "1 e 2 meses — queda: estoques na ICE na máxima de 2,5 anos e fundos se antecipando ao corte nos índices em janeiro. 3 meses — neutro. 6 meses — alta: El Niño forte tende a secar a África Ocidental e a StoneX vê déficit de 64 mil t. A agência de clima da Costa do Marfim diz que a produção pode cair 25% com o El Niño (11/11).",
       "trends": [
         "Q",
         "Q",
@@ -906,7 +897,7 @@
         6771,
         5367,
         5453,
-        5034
+        5076
       ]
     },
     {
@@ -914,18 +905,18 @@
       "ticker": "FCPO1!",
       "group": "Óleos",
       "price": "US$ 1.089/t",
-      "chg": "▼ −5,3%",
-      "chgDir": "down",
+      "chg": "▲ +4,3%",
+      "chgDir": "up",
       "sub": "jan/27",
-      "safraMundo": "Malásia e Indonésia o ano todo, pico ago–out",
+      "safraMundo": "Malásia e Indonésia o ano todo, pico ago–out (82%)",
       "safraBrasil": "",
-      "orig": "Original: RM 4.433/t na Bursa · câmbio 4,07",
+      "orig": "Original: RM 4.439/t na Bursa · câmbio 4,08",
       "bullets": [
-        "Estoque da Malásia em outubro bateu recorde de 3,62 Mt, mas ficou abaixo do esperado (3,75 Mt)",
-        "Produção recorde de 2,15 Mt e exportação +56% (1,71 Mt); o contrato teve a maior queda semanal em quase 2 anos e subiu 3,6% em 11/11",
-        "Óleo de soja mais firme e o El Niño, que deve cortar a oferta em 2027, deram suporte no fim do período"
+        "Subiu pelo 2º pregão (RM 4.439, US$ 1.089/t), puxada pelo óleo de soja e pelo óleo de Dalian, na China",
+        "Petróleo fraco e estoques altos limitam a alta; o estoque da Malásia em outubro foi recorde (3,62 Mt), mas abaixo do esperado",
+        "GAPKI: Indonésia exportou 27,3 Mt de produtos de palma de janeiro a setembro; consumo de biodiesel no país chegou a 13,84 mi kL até 10/11"
       ],
-      "why": "Mês e bimestre neutros: o estoque recorde de 3,62 Mt pesa, mas a exportação forte segura o preço. Trimestre e semestre em alta: a produção cai sazonalmente de dezembro a fevereiro e o El Niño deve cortar a oferta em 2027.",
+      "why": "1 e 2 meses — neutro: o estoque recorde de 3,62 Mt pesa, mas a exportação forte segura o preço. 3 e 6 meses — alta: a produção cai sazonalmente de dezembro a fevereiro. O El Niño deve cortar a oferta em 2027.",
       "trends": [
         "N",
         "N",
@@ -1002,28 +993,26 @@
       "name": "Óleo de palmiste",
       "ticker": "FPKO1!",
       "group": "Óleos",
-      "price": "US$ 1.641/t",
+      "price": "US$ 1.638/t",
       "chg": "► 0,0%",
       "chgDir": "flat",
       "sub": "1º vencimento",
-      "safraMundo": "Malásia e Indonésia o ano todo, pico ago–out",
+      "safraMundo": "Sudeste Asiático o ano todo, pico ago–out (86%)",
       "safraBrasil": "",
-      "orig": "Original: RM 6.679/t (último ajuste) · câmbio 4,07",
+      "orig": "Original: RM 6.679/t (último ajuste) · câmbio 4,08",
       "bullets": [
-        "Futuro ilíquido: sem negócios e preço parado em RM 6.679/t (US$ 1.641) nas últimas semanas",
-        "MPOB: estoque de palmiste (PKO) de 454.479 t em outubro, alta de 12,92% no mês",
-        "Acompanha a palma, que recuou na semana e subiu 3,6% em 11/11 com estoque abaixo do esperado"
+        "Futuro sem negócios desde 08/2024: o preço é só um ajuste de referência, que segue em RM 6.679/t (US$ 1.638) desde o início de novembro",
+        "MPOB: estoque de palmiste de 454.479 t em outubro, alta de 12,92% no mês",
+        "Acompanha a palma, que subiu dois pregões seguidos com o óleo de soja e Dalian"
       ],
-      "why": "Leitura de baixa confiança, porque o contrato não negocia. Mês a trimestre neutros, seguindo a palma, com o estoque de palmiste +12,9% em outubro pesando. Semestre em alta com o El Niño reduzindo a oferta em 2027.",
+      "why": "Leitura de baixa confiança, porque o contrato não negocia. 1, 2 e 3 meses — neutro: segue a palma, com o estoque de palmiste +12,9% em outubro pesando. 6 meses — alta: El Niño reduzindo a oferta em 2027.",
       "trends": [
         "N",
         "N",
         "N",
         "A"
       ],
-      "changed": [
-        0
-      ],
+      "changed": [],
       "monthlyStart": "2021-11",
       "monthly": [
         1986,
@@ -1086,7 +1075,7 @@
         1831,
         1938,
         1648,
-        1641
+        1638
       ]
     },
     {
@@ -1099,22 +1088,19 @@
       "sub": "temporada 26/27",
       "safraMundo": "Coleta na NZ: ago–mai, pico em outubro",
       "safraBrasil": "",
-      "orig": "Original: NZ$ 10,48/kgMS na NZX · câmbio 0,5564",
+      "orig": "Original: NZ$ 10,48/kgMS na NZX · câmbio 0,5567",
       "bullets": [
-        "GDT de 03/11 subiu 3%, com leite em pó integral em alta de 5,9%",
-        "Fonterra subiu a previsão para NZ$ 9,75/kgMS (US$ 5,42; faixa de NZ$ 9,00 a 10,50, ou US$ 5,01 a 5,84); o ASB foi a NZ$ 10,00 (US$ 5,56)",
-        "O futuro, a NZ$ 10,48 (US$ 5,83), já está acima das previsões e perto do teto da faixa da Fonterra"
+        "Futuro firme em NZ$ 10,48 (US$ 5,83), acima das previsões da Fonterra (NZ$ 9,75, US$ 5,43) e do ASB (NZ$ 10,00, US$ 5,57)",
+        "Sem notícias novas relevantes no período; o próximo leilão GDT é em 17/11, depois da alta de 3% em 03/11"
       ],
-      "why": "Mês em alta com dois leilões seguidos em alta e demanda firme da Ásia. Bimestre a semestre neutros: o futuro já supera as previsões da Fonterra e do ASB, e a coleta recorde na Nova Zelândia limita novas altas.",
+      "why": "1 mês — alta: dois leilões seguidos em alta e demanda firme da Ásia. 2, 3 e 6 meses — neutro: o futuro já supera as previsões da Fonterra e do ASB. A coleta recorde na Nova Zelândia limita novas altas.",
       "trends": [
         "A",
         "N",
         "N",
         "N"
       ],
-      "changed": [
-        1
-      ],
+      "changed": [],
       "monthlyStart": "2021-12",
       "monthly": [
         6.174,
@@ -1176,7 +1162,7 @@
         5.767,
         5.459,
         5.859,
-        5.831
+        5.834
       ]
     },
     {
@@ -1184,18 +1170,18 @@
       "ticker": "CB1!",
       "group": "Lácteos",
       "price": "US$ 1,3200/lb",
-      "chg": "▼ −2,7%",
-      "chgDir": "down",
+      "chg": "► 0,0%",
+      "chgDir": "flat",
       "sub": "nov/26",
       "safraMundo": "Pico do leite nos EUA: mar–jun",
       "safraBrasil": "",
       "orig": "",
       "bullets": [
-        "Spot na CME a US$ 1,2650/lb em 10/11, com alta de US$ 0,0050 no dia",
-        "Futuro recua 2,7% no período; estoques nos EUA 16,5% acima de um ano atrás",
+        "Futuro nov/26 parado em US$ 1,3200/lb, sem negócios nos últimos pregões",
+        "Spot na CME a US$ 1,2650/lb em 10/11, abaixo do futuro; estoques nos EUA 16,5% acima de um ano atrás",
         "Curva em contango (jul/27 a US$ 1,547); o USDA cortou a média de 2027 para US$ 1,465 (antes 1,55)"
       ],
-      "why": "Mês em queda: o spot a US$ 1,265 está abaixo do futuro e os estoques seguem 16,5% acima de 2025. Bimestre e trimestre neutros. Semestre em alta: mesmo após o corte, o USDA vê média de US$ 1,465 em 2027, acima do preço atual, e a curva sobe até julho.",
+      "why": "1 mês — queda: o spot a US$ 1,265 está abaixo do futuro e os estoques seguem 16,5% acima de 2025. 2 e 3 meses — neutro. 6 meses — alta: mesmo após o corte, o USDA vê média de US$ 1,465 em 2027, acima do preço atual. A curva sobe até julho.",
       "trends": [
         "Q",
         "N",
@@ -1268,7 +1254,7 @@
       ]
     }
   ],
-  "elNinoLead": "El Niño segue forte · novo boletim amanhã (12/11)",
+  "elNinoLead": "El Niño segue forte · boletim dos EUA sai hoje (12/11)",
   "elNinoGauge": {
     "now": 2.75,
     "nowLabel": "Agora: +2,75 °C",
@@ -1287,7 +1273,7 @@
     "Açúcar e etanol: chuva demais no Centro-Sul do Brasil atrasa a colheita da cana. Menos produto agora tende a segurar os preços.",
     "Cacau e óleo de palma: o tempo seco na África e na Ásia pode reduzir as safras de 2027. É um risco de alta mais para frente.",
     "Gás natural: o mercado espera inverno mais ameno no norte dos EUA, ou seja, menos aquecimento. Isso pesa para baixo no preço.",
-    "Amanhã (12/11) sai o boletim do serviço de clima dos EUA (NOAA), que pode confirmar ou mudar esse quadro."
+    "Hoje (12/11), por volta das 11h de Brasília, sai o boletim mensal do serviço de clima dos EUA (NOAA), que pode confirmar ou mudar esse quadro."
   ],
   "sources": [
     {
@@ -1529,7 +1515,52 @@
           "href": "http://www.cnpeanut.com/fenxi.asp"
         }
       ]
+    },
+    {
+      "group": "Participação na produção mundial (bloco Safra)",
+      "links": [
+        {
+          "title": "WASDE 677 (10/11/2026): milho, soja e trigo 2026/27",
+          "site": "USDA",
+          "href": "https://www.usda.gov/oce/commodity/wasde/wasde1126.pdf"
+        },
+        {
+          "title": "Oilseeds: World Markets and Trade (nov/2026): amendoim, palma, palmiste 2026/27",
+          "site": "USDA FAS",
+          "href": "https://apps.fas.usda.gov/psdonline/circulars/oilseeds.pdf"
+        },
+        {
+          "title": "Sugar: World Markets and Trade (mai/2026): açúcar 2026/27",
+          "site": "USDA FAS",
+          "href": "https://apps.fas.usda.gov/psdonline/circulars/sugar.pdf"
+        },
+        {
+          "title": "ICCO Annual Report 2024/25: cacau por país",
+          "site": "ICCO",
+          "href": "https://www.icco.org/wp-content/uploads/ICCO-Annual-Report-2024-2025-EN.pdf"
+        },
+        {
+          "title": "Annual World Fuel Ethanol Production (2025)",
+          "site": "RFA",
+          "href": "https://ethanolrfa.org/markets-and-statistics/annual-ethanol-production"
+        },
+        {
+          "title": "PSD Online: produção 2026/27 por país (trigo, amendoim, palma, palmiste)",
+          "site": "USDA FAS",
+          "href": "https://apps.fas.usda.gov/psdonline/app/index.html"
+        },
+        {
+          "title": "Crop Progress 09/11/2026 (milho 81%, amendoim 77% colhido)",
+          "site": "USDA NASS",
+          "href": "https://release.nass.usda.gov/reports/prog4526.pdf"
+        },
+        {
+          "title": "Ivory Coast cocoa production could fall 25% from El Nino, weather agency says",
+          "site": "Reuters / TradingView",
+          "href": "https://www.tradingview.com/news/reuters.com,2026:newsml_L5N46S0LF:0-ivory-coast-cocoa-production-could-fall-25-from-el-nino-weather-agency-says/"
+        }
+      ]
     }
   ],
-  "footnote": "Tendências: visão analítica revisada em 11/11/2026 com base em notícias, fundamentos, curva de futuros, médias de 50 e 200 dias e projeções publicadas (USDA, EIA, Rabobank, StoneX) — não é recomendação. Variação dos cards vs. fechamento de 30/10. Gráfico: fechamento mensal do contrato contínuo, últimos 5 anos."
+  "footnote": "Tendências: visão analítica revisada em 12/11/2026 com base em notícias, fundamentos, curva de futuros, médias de 50 e 200 dias e projeções publicadas (USDA, EIA, Rabobank, StoneX) — não é recomendação. Variação dos cards vs. fechamento de 10/11. Gráfico: fechamento mensal do contrato contínuo, últimos 5 anos."
 }
