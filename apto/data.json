@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-12T14:39-03:00",
+ "geradoEm": "2026-11-12T14:57-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
   "total": 1977185.57,
@@ -728,7 +728,7 @@
    "resp": "Diego / Débora",
    "tarefa": "Reunião com o Arquiteto na obra",
    "comodo": "Apartamento",
-   "obs": "Quinta 19/11, das 13h00 às 17h00 na obra. Participantes: Diego e Débora (aba Pessoas do compromisso no Hub).",
+   "obs": "Quinta 19/11, das 13h00 às 17h00 na obra. Participantes: Diego e Débora (aba Pessoas do compromisso no Hub). Hub #1645.",
    "status": "Agendado",
    "tipo": "Reunião",
    "fim": "2026-11-19"
