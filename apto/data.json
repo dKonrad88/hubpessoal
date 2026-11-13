@@ -1,9 +1,9 @@
 {
- "geradoEm": "2026-11-13T05:33-03:00",
+ "geradoEm": "2026-11-13T08:56-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 1977185.57,
-  "pago": 1441886.92,
+  "total": 1981185.55,
+  "pago": 1445886.9,
   "restante": 535298.65
  },
  "categorias": [
@@ -21,8 +21,8 @@
   },
   {
    "nome": "Eletrodomésticos",
-   "total": 69884.45,
-   "pago": 69884.45,
+   "total": 73884.43,
+   "pago": 73884.43,
    "restante": 0.0
   },
   {
@@ -119,8 +119,8 @@
   },
   {
    "nome": "Closet Master",
-   "total": 0.0,
-   "pago": 0.0,
+   "total": 3999.98,
+   "pago": 3999.98,
    "restante": 0.0
   },
   {
@@ -609,6 +609,18 @@
    "entrega": null,
    "obs": "Cartão 1x",
    "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata",
+   "qtd": "1 und",
+   "total": 3999.98,
+   "pago": 3999.98,
+   "entrega": null,
+   "obs": "Cartão 12x sem juros (12x de R$ 333,35)",
+   "comodo": "Closet Master",
    "cat": "Eletrodomésticos"
   }
  ],
@@ -1716,6 +1728,14 @@
    "fornecedor": "Amazon",
    "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme)",
    "valor": 1129.17,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata",
+   "valor": 3999.98,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
