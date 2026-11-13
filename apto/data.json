@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-12T14:57-03:00",
+ "geradoEm": "2026-11-13T05:33-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
   "total": 1977185.57,
@@ -669,7 +669,7 @@
    "tarefa": "Avisar Cherrut para instalar os 4 ares que faltam",
    "comodo": "Suíte Master, Closet Master, Quarto Visita, Sala Gamer",
    "obs": "Depois que o mestre de obra confirmar a data do piso laminado. 04 und: Master, Closet, Quarto Visita e Sala Gamer",
-   "status": "Aguardando",
+   "status": "Concluído",
    "tipo": "Tarefa",
    "fim": null
   },
@@ -679,7 +679,7 @@
    "tarefa": "Instalar mármore da escada (pisante e espelho)",
    "comodo": "Escada",
    "obs": "Terça 17/11, leva 2 dias. Pagar restante R$6.500 em 5x no cartão no início",
-   "status": "Agendado",
+   "status": "Concluído",
    "tipo": "Tarefa",
    "fim": "2026-11-18"
   },
