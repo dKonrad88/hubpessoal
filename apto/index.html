@@ -98,6 +98,9 @@ body.withsub .wrap{padding-bottom:190px}
 .cp-del{width:36px;height:36px;border:0;border-radius:12px;background:transparent;color:#FF453A;cursor:pointer;flex:none;display:grid;place-items:center;padding:0}
 .cp-py{width:36px;height:36px;border:0;border-radius:12px;background:transparent;color:#8e8e93;cursor:pointer;flex:none;display:grid;place-items:center;padding:0}
 .cp-py.on{color:#0A84FF;background:rgba(10,132,255,.16)}
+.cp-ord{width:22px;flex:none;text-align:center;font-size:13px;font-weight:700;opacity:.45}
+.cp-loja{font:600 16px -apple-system,Inter,sans-serif;color:#f5f5f7}
+.cp-loja.done{color:#8e8e93;text-decoration:line-through}
 .cp-del:active,.cp-ck:active,.cp-py:active{opacity:.6}
 .cp-new{padding-left:40px}
 .cp-add{font-weight:500}
@@ -138,6 +141,7 @@ html.light .cp-nome:focus{background:rgba(0,0,0,.05)}
 html.light .cp-ck{border-color:rgba(0,0,0,.28)}
 html.light .cp-py{color:#8e8e93}
 html.light .cp-py.on{color:#0A84FF;background:rgba(10,132,255,.16)}
+html.light .cp-loja{color:#1c1c1e}
 html.light .auth-in{border-color:rgba(0,0,0,.1);background:rgba(255,255,255,.9);color:#1c1c1e}
 html.light .theme-btn{background:rgba(120,120,128,.12);color:#1c1c1e}
 </style></head><body>
@@ -326,7 +330,7 @@ function sheetImovel(){var r=D.imovel.resumo,P=D.imovel.parcelas,tot=imovTot(r),
    +'<h3 style="margin-top:16px">Últimas pagas</h3>'+P.filter(function(x){return /^pago/i.test(x.status)}).slice(-6).reverse().map(function(x){return '<div class="row li"><div><div class="b">Parcela '+x.n+'/80 · '+e(x.tipo)+'</div><div class="sub">venc. '+dfull(x.venc)+(x.correcao?' · correção '+b(x.correcao):'')+'</div></div><div style="text-align:right"><div class="num b">'+b(x.pago)+'</div>'+pill('pago',x.status.toLowerCase())+'</div></div>'}).join(''))}
 /* ---------- GRAVADOR (só áudio) · Supabase: apto_gravador / bucket apto-audio / edge apto-gravador-ping ---------- */
 var SB_URL='https://jlouesrrmqeauzlgvrpw.supabase.co',SB_KEY='sb_publishable_ulG1woVG1p1Seax63GGYPQ_PG6-8l-G';
-var GSV='lanc',CPA='',CP={itens:[],rt:null,draft:{},novo:{},extras:[],busy:{},painting:0,focusNew:null,skipAdd:0,view:'main'};
+var GSV='lanc',CPA='',CP={itens:[],lojas:[],rt:null,lojasRt:null,lojaBusy:{},draft:{},novo:{},extras:[],busy:{},painting:0,focusNew:null,skipAdd:0,view:'main'};
 var GRV='gravar',GHV='prop',PR={rows:[],rt:null,edit:{},busy:{}};
 var GR={sb:null,user:null,lista:null,rows:[],ready:0,loading:0,note:'',rec:null,stream:null,chunks:[],mime:'',t0:0,timer:0,busy:0,rt:null,url:{}};
 function grSb(){if(GR.sb)return GR.sb;if(!(window.supabase&&window.supabase.createClient))return null;try{GR.sb=window.supabase.createClient(SB_URL,SB_KEY)}catch(e){GR.sb=null}return GR.sb}
@@ -342,7 +346,7 @@ function grInit(){
     if(!GR.user){GR.ready=1;return}
     return sb.from('listas').select('id').eq('tipo','apto').limit(1).maybeSingle().then(function(q){
       if(q.error||!q.data){GR.note='Sem acesso à lista do apto nesta conta.';GR.ready=1;return}
-      GR.lista=q.data.id;return Promise.all([grLoad(),prLoad(),cpLoad()]).then(function(){grWatch();prWatch();cpWatch()});
+      GR.lista=q.data.id;return Promise.all([grLoad(),prLoad(),cpLoad(),cpLojasLoad()]).then(function(){grWatch();prWatch();cpWatch();cpLojasWatch()});
     });
   }).catch(function(e){GR.note='Erro: '+(e&&e.message||e)}).then(function(){GR.loading=0;GR.ready=1;grRedraw()});
 }
@@ -548,6 +552,21 @@ function cpLoad(){if(!GR.sb||!GR.lista)return Promise.resolve();
     CP.itens=server.concat(pending)})}
 function cpWatch(){if(CP.rt||!GR.sb.channel)return;var f=function(){cpLoad().then(function(){if(TAB==='compras'&&!document.getElementById('sh').classList.contains('open'))render()})};
   CP.rt=GR.sb.channel('apto-compras-'+GR.lista).on('postgres_changes',{event:'*',schema:'public',table:'apto_compras_itens',filter:'lista_id=eq.'+GR.lista},f).subscribe()}
+function cpLojasLoad(){if(!GR.sb||!GR.lista)return Promise.resolve();
+  return GR.sb.from('apto_paraguai_lojas').select('id,ordem,nome,foco,visitada').order('ordem').then(function(q){
+    if(q.error){GR.note='Erro nas lojas: '+q.error.message;return}
+    CP.lojas=q.data||[]})}
+function cpLojasWatch(){if(CP.lojasRt||!GR.sb||!GR.sb.channel)return;
+  CP.lojasRt=GR.sb.channel('apto-lojas').on('postgres_changes',{event:'*',schema:'public',table:'apto_paraguai_lojas'},function(){
+    cpLojasLoad().then(function(){if(TAB==='compras'&&CP.view==='py'&&!document.getElementById('sh').classList.contains('open'))render()});
+  }).subscribe()}
+function cpLoja(id){var L=CP.lojas||[],it=null,i;for(i=0;i<L.length;i++)if(L[i].id===id)it=L[i];
+  if(!it||CP.lojaBusy[id])return;var next=!it.visitada;it.visitada=next;CP.lojaBusy[id]=1;render();
+  GR.sb.from('apto_paraguai_lojas').update({visitada:next}).eq('id',id).then(function(q){delete CP.lojaBusy[id];if(q.error){it.visitada=!next;GR.note='Falha: '+q.error.message;render()}}).catch(function(err){delete CP.lojaBusy[id];it.visitada=!next;cpErr(err);render()})}
+function cpLojasHTML(){var L=CP.lojas||[],n=L.length,v=L.filter(function(x){return !!x.visitada}).length,lab=v?'Lojas · '+v+'/'+n+' visitadas':'Lojas · '+n;
+  return '<div class="card full"><div class="row"><h3 style="margin:0">'+lab+'</h3></div>'+L.map(function(l){
+    return '<div class="cp-row'+(l.visitada?' done':'')+'"><button type="button" class="cp-ck'+(l.visitada?' on':'')+'" aria-pressed="'+(l.visitada?'true':'false')+'" aria-label="'+(l.visitada?'Desmarcar visitada':'Marcar como visitada')+'" onclick="cpLoja(\''+l.id+'\')">'+CPCK+'</button><span class="cp-ord">'+e(l.ordem)+'</span><div style="flex:1;min-width:0"><div class="cp-loja'+(l.visitada?' done':'')+'">'+e(l.nome)+'</div>'+(l.foco?'<div class="sub">'+e(l.foco)+'</div>':'')+'</div></div>';
+  }).join('')+'</div>'}
 function cpAmbs(){var L=[];var add=function(x){x=(x||'').trim();if(x&&L.indexOf(x)<0)L.push(x)};
   CP.itens.forEach(function(i){add(i.ambiente)});CP.extras.forEach(add);
   if(D){(D.gastos||[]).concat(D.cronograma||[]).forEach(function(g){String(g.comodo||'').split(',').forEach(function(x){if(x.trim()!=='Apartamento')add(x)})})}
@@ -570,6 +589,7 @@ function vCompras(){
   if(!GR.user)return h+cpLogin()+note;if(!GR.lista)return h+note;
   var py=CP.view==='py',nPy=CP.itens.filter(function(i){return !!i.paraguai}).length,pool=py?CP.itens.filter(function(i){return !!i.paraguai}):CP.itens;
   h+='<div class="full seg glass"><div class="'+(py?'':'on')+'" onclick="CP.view=\'main\';render()">Lista principal · '+CP.itens.length+'</div><div class="'+(py?'on':'')+'" onclick="CP.view=\'py\';render()">Paraguai · '+nPy+'</div></div>';
+  if(py)h+=cpLojasHTML();
   var ambs=[];
   if(py)pool.forEach(function(i){if(ambs.indexOf(i.ambiente)<0)ambs.push(i.ambiente)});
   else{CP.itens.forEach(function(i){if(ambs.indexOf(i.ambiente)<0)ambs.push(i.ambiente)});CP.extras.forEach(function(a){if(ambs.indexOf(a)<0)ambs.push(a)});}
@@ -692,7 +712,7 @@ function ptrRefresh(){
   if(PTR.busy)return;
   PTR.busy=1;PTR.on=0;
   ptrShow(72,1);
-  loadData().then(function(d){D=d;if((TAB==='grav'||TAB==='compras')&&GR.lista&&!GR.rec)return Promise.all([grLoad(),prLoad(),cpLoad()]).then(function(){render();ptrNote()});render();ptrNote()}).catch(function(){}).then(function(){PTR.busy=0;ptrHide()});
+  loadData().then(function(d){D=d;if((TAB==='grav'||TAB==='compras')&&GR.lista&&!GR.rec)return Promise.all([grLoad(),prLoad(),cpLoad(),cpLojasLoad()]).then(function(){render();ptrNote()});render();ptrNote()}).catch(function(){}).then(function(){PTR.busy=0;ptrHide()});
 }
 document.addEventListener('touchstart',function(ev){
   if(PTR.busy||ev.touches.length!==1||!ptrTop()||ptrIgnore(ev.target)){PTR.on=0;return}
