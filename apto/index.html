@@ -101,6 +101,7 @@ body.withsub .wrap{padding-bottom:190px}
 .cp-ord{width:22px;flex:none;text-align:center;font-size:13px;font-weight:700;opacity:.45}
 .cp-loja{font:600 16px -apple-system,Inter,sans-serif;color:#f5f5f7}
 .cp-loja.done{color:#8e8e93;text-decoration:line-through}
+.cp-foco{margin-top:1px;overflow-wrap:anywhere;word-break:break-word}
 .cp-del:active,.cp-ck:active,.cp-py:active{opacity:.6}
 .cp-new{padding-left:40px}
 .cp-add{font-weight:500}
@@ -553,7 +554,7 @@ function cpLoad(){if(!GR.sb||!GR.lista)return Promise.resolve();
 function cpWatch(){if(CP.rt||!GR.sb.channel)return;var f=function(){cpLoad().then(function(){if(TAB==='compras'&&!document.getElementById('sh').classList.contains('open'))render()})};
   CP.rt=GR.sb.channel('apto-compras-'+GR.lista).on('postgres_changes',{event:'*',schema:'public',table:'apto_compras_itens',filter:'lista_id=eq.'+GR.lista},f).subscribe()}
 function cpLojasLoad(){if(!GR.sb||!GR.lista)return Promise.resolve();
-  return GR.sb.from('apto_paraguai_lojas').select('id,ordem,nome,foco,visitada').order('ordem').then(function(q){
+  return GR.sb.from('apto_paraguai_lojas').select('id,ordem,nome,foco,visitada,grupo').order('ordem').then(function(q){
     if(q.error){GR.note='Erro nas lojas: '+q.error.message;return}
     CP.lojas=q.data||[]})}
 function cpLojasWatch(){if(CP.lojasRt||!GR.sb||!GR.sb.channel)return;
@@ -563,10 +564,21 @@ function cpLojasWatch(){if(CP.lojasRt||!GR.sb||!GR.sb.channel)return;
 function cpLoja(id){var L=CP.lojas||[],it=null,i;for(i=0;i<L.length;i++)if(L[i].id===id)it=L[i];
   if(!it||CP.lojaBusy[id])return;var next=!it.visitada;it.visitada=next;CP.lojaBusy[id]=1;render();
   GR.sb.from('apto_paraguai_lojas').update({visitada:next}).eq('id',id).then(function(q){delete CP.lojaBusy[id];if(q.error){it.visitada=!next;GR.note='Falha: '+q.error.message;render()}}).catch(function(err){delete CP.lojaBusy[id];it.visitada=!next;cpErr(err);render()})}
-function cpLojasHTML(){var L=CP.lojas||[],n=L.length,v=L.filter(function(x){return !!x.visitada}).length,lab=v?'Lojas · '+v+'/'+n+' visitadas':'Lojas · '+n;
-  return '<div class="card full"><div class="row"><h3 style="margin:0">'+lab+'</h3></div>'+L.map(function(l){
-    return '<div class="cp-row'+(l.visitada?' done':'')+'"><button type="button" class="cp-ck'+(l.visitada?' on':'')+'" aria-pressed="'+(l.visitada?'true':'false')+'" aria-label="'+(l.visitada?'Desmarcar visitada':'Marcar como visitada')+'" onclick="cpLoja(\''+l.id+'\')">'+CPCK+'</button><span class="cp-ord">'+e(l.ordem)+'</span><div style="flex:1;min-width:0"><div class="cp-loja'+(l.visitada?' done':'')+'">'+e(l.nome)+'</div>'+(l.foco?'<div class="sub">'+e(l.foco)+'</div>':'')+'</div></div>';
-  }).join('')+'</div>'}
+function cpLojasGrupos(){
+  var L=(CP.lojas||[]).slice().sort(function(a,b){return (+a.ordem||0)-(+b.ordem||0)});
+  var map={},keys=[];
+  L.forEach(function(l){var g=String(l.grupo||'').trim(),k=g||'\0';if(!map[k]){map[k]=[];keys.push(k)}map[k].push(l)});
+  function rank(k){if(k==='\0')return 3;var n=k.toLowerCase();if(n==='tecnologia')return 0;if(n==='casa')return 1;return 2}
+  keys.sort(function(a,b){var d=rank(a)-rank(b);return d||(rank(a)===2?a.localeCompare(b,'pt'):0)});
+  return keys.map(function(k){return {nome:k==='\0'?'Outras':k,items:map[k]}});
+}
+function cpLojasHTML(){var groups=cpLojasGrupos(),all=CP.lojas||[],n=all.length,v=all.filter(function(x){return !!x.visitada}).length;
+  var body=groups.map(function(g){var gv=g.items.filter(function(x){return !!x.visitada}).length;
+    return '<h3 style="margin:14px 0 0">'+e(g.nome)+' · '+gv+'/'+g.items.length+'</h3>'+g.items.map(function(l){
+      return '<div class="cp-row'+(l.visitada?' done':'')+'"><button type="button" class="cp-ck'+(l.visitada?' on':'')+'" aria-pressed="'+(l.visitada?'true':'false')+'" aria-label="'+(l.visitada?'Desmarcar visitada':'Marcar como visitada')+'" onclick="cpLoja(\''+l.id+'\')">'+CPCK+'</button><span class="cp-ord">'+e(l.ordem)+'</span><div style="flex:1;min-width:0"><div class="cp-loja'+(l.visitada?' done':'')+'">'+e(l.nome)+'</div>'+(l.foco?'<div class="sub cp-foco">'+e(l.foco)+'</div>':'')+'</div></div>';
+    }).join('');
+  }).join('');
+  return '<div class="card full"><div class="row"><h3 style="margin:0">Lojas · '+v+'/'+n+' visitadas</h3></div>'+body+'</div>'}
 function cpAmbs(){var L=[];var add=function(x){x=(x||'').trim();if(x&&L.indexOf(x)<0)L.push(x)};
   CP.itens.forEach(function(i){add(i.ambiente)});CP.extras.forEach(add);
   if(D){(D.gastos||[]).concat(D.cronograma||[]).forEach(function(g){String(g.comodo||'').split(',').forEach(function(x){if(x.trim()!=='Apartamento')add(x)})})}
