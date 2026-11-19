@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-13T08:56-03:00",
+ "geradoEm": "2026-11-19T09:14-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
   "total": 1981185.55,
@@ -641,7 +641,7 @@
    "tarefa": "Entregar R$4.500 em dinheiro",
    "comodo": "Escada",
    "obs": "Das 08h00 às 08h30",
-   "status": "Agendado",
+   "status": "Concluído",
    "tipo": "Reunião",
    "fim": null
   },
@@ -661,7 +661,7 @@
    "tarefa": "Entregar mármore e instalar as tabeiras",
    "comodo": "Escada",
    "obs": "Sexta 13/11 ou sábado 14/11 (1 dia). Ao terminar as tabeiras, avisar o mestre de obra",
-   "status": "Agendado",
+   "status": "Concluído",
    "tipo": "Tarefa",
    "fim": "2026-11-14"
   },
