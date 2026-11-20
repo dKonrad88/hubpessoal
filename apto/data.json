@@ -1,9 +1,9 @@
 {
- "geradoEm": "2026-11-19T09:14-03:00",
+ "geradoEm": "2026-11-20T09:01-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 1981185.55,
-  "pago": 1445886.9,
+  "total": 2004152.75,
+  "pago": 1468854.1,
   "restante": 535298.65
  },
  "categorias": [
@@ -14,16 +14,16 @@
    "restante": 25400.0
   },
   {
+   "nome": "Eletrodomésticos",
+   "total": 96851.62999999999,
+   "pago": 96851.62999999999,
+   "restante": 0.0
+  },
+  {
    "nome": "Obra",
    "total": 84580.15,
    "pago": 62322.00000000001,
    "restante": 22258.149999999987
-  },
-  {
-   "nome": "Eletrodomésticos",
-   "total": 73884.43,
-   "pago": 73884.43,
-   "restante": 0.0
   },
   {
    "nome": "Climatização",
@@ -53,8 +53,8 @@
  "comodos": [
   {
    "nome": "Apartamento",
-   "total": 64838.0,
-   "pago": 64838.0,
+   "total": 72268.0,
+   "pago": 72268.0,
    "restante": 0.0
   },
   {
@@ -71,8 +71,8 @@
   },
   {
    "nome": "Cozinha",
-   "total": 37930.72,
-   "pago": 34764.53,
+   "total": 43872.72,
+   "pago": 40706.53,
    "restante": 3166.1900000000023
   },
   {
@@ -113,21 +113,21 @@
   },
   {
    "nome": "Banho Master",
-   "total": 2373.76,
-   "pago": 949.47,
+   "total": 2823.76,
+   "pago": 1399.47,
    "restante": 1424.2900000000002
   },
   {
    "nome": "Closet Master",
-   "total": 3999.98,
-   "pago": 3999.98,
+   "total": 7590.18,
+   "pago": 7590.18,
    "restante": 0.0
   },
   {
    "nome": "Sala Gamer",
-   "total": 32759.170000000002,
-   "pago": 26819.05,
-   "restante": 5940.120000000003
+   "total": 37864.17,
+   "pago": 31924.05,
+   "restante": 5940.119999999999
   },
   {
    "nome": "Quarto Visita",
@@ -137,9 +137,9 @@
   },
   {
    "nome": "Banho Visita",
-   "total": 1615.18,
-   "pago": 646.05,
-   "restante": 969.1300000000001
+   "total": 2065.1800000000003,
+   "pago": 1096.05,
+   "restante": 969.1300000000003
   },
   {
    "nome": "Adega",
@@ -621,6 +621,150 @@
    "entrega": null,
    "obs": "Cartão 12x sem juros (12x de R$ 333,35)",
    "comodo": "Closet Master",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Secador de cabelo Dyson",
+   "qtd": "1 und",
+   "total": 3590.2,
+   "pago": 3590.2,
+   "entrega": null,
+   "obs": "Dinheiro. US$ 619 convertido a R$ 5,80 (cotação do Diego)",
+   "comodo": "Closet Master",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Torradeira",
+   "qtd": "1 und",
+   "total": 261.0,
+   "pago": 261.0,
+   "entrega": null,
+   "obs": "Dinheiro. US$ 45 convertido a R$ 5,80 (cotação do Diego)",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "-",
+   "desc": "Speakers",
+   "qtd": "6 und",
+   "total": 5024.0,
+   "pago": 5024.0,
+   "entrega": null,
+   "obs": "Cartão 12x. Marca, loja e ambiente não informados",
+   "comodo": "Apartamento",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-20",
+   "fornecedor": "-",
+   "desc": "Utensílios de cozinha (3 panelas + 8 potes plásticos)",
+   "qtd": "1 und",
+   "total": 2085.0,
+   "pago": 2085.0,
+   "entrega": null,
+   "obs": "Cartão 6x. Utensílios de cozinha em geral. Loja não informada",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Sorveteira",
+   "qtd": "1 und",
+   "total": 1711.0,
+   "pago": 1711.0,
+   "entrega": null,
+   "obs": "Cartão 1x. US$ 295 convertido a R$ 5,80 (cotação do Diego)",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Air fryer",
+   "qtd": "1 und",
+   "total": 261.0,
+   "pago": 261.0,
+   "entrega": null,
+   "obs": "Pix. US$ 45 convertido a R$ 5,80 (cotação do Diego)",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Liquidificador",
+   "qtd": "1 und",
+   "total": 1305.0,
+   "pago": 1305.0,
+   "entrega": null,
+   "obs": "Dinheiro. US$ 225 convertido a R$ 5,80 (cotação do Diego)",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Panela de pressão",
+   "qtd": "1 und",
+   "total": 319.0,
+   "pago": 319.0,
+   "entrega": null,
+   "obs": "Pix. US$ 55 convertido a R$ 5,80 (cotação do Diego)",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "PS5 + controle + jogo",
+   "qtd": "1 und",
+   "total": 5105.0,
+   "pago": 5105.0,
+   "entrega": null,
+   "obs": "Cartão 12x. Pago em R$",
+   "comodo": "Sala Gamer",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Roteador",
+   "qtd": "1 und",
+   "total": 2406.0,
+   "pago": 2406.0,
+   "entrega": null,
+   "obs": "Cartão 10x. Pago em R$",
+   "comodo": "Apartamento",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Dispensers de sabão e aromatizador",
+   "qtd": "1 und",
+   "total": 450.0,
+   "pago": 450.0,
+   "entrega": null,
+   "obs": "Cartão 3x. Rateio 50/50 dos R$ 900 entre os banheiros",
+   "comodo": "Banho Master",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Dispensers de sabão e aromatizador",
+   "qtd": "1 und",
+   "total": 450.0,
+   "pago": 450.0,
+   "entrega": null,
+   "obs": "Cartão 3x. Rateio 50/50 dos R$ 900 entre os banheiros",
+   "comodo": "Banho Visita",
    "cat": "Eletrodomésticos"
   }
  ],
@@ -1736,6 +1880,102 @@
    "fornecedor": "Amazon",
    "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata",
    "valor": 3999.98,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Secador de cabelo Dyson",
+   "valor": 3590.2,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Torradeira",
+   "valor": 261.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "-",
+   "desc": "Speakers",
+   "valor": 5024.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-20",
+   "fornecedor": "-",
+   "desc": "Utensílios de cozinha (3 panelas + 8 potes plásticos)",
+   "valor": 2085.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Sorveteira",
+   "valor": 1711.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Air fryer",
+   "valor": 261.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Liquidificador",
+   "valor": 1305.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Panela de pressão",
+   "valor": 319.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "PS5 + controle + jogo",
+   "valor": 5105.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Roteador",
+   "valor": 2406.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Dispensers de sabão e aromatizador",
+   "valor": 450.0,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Dispensers de sabão e aromatizador",
+   "valor": 450.0,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
