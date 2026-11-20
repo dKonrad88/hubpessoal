@@ -212,7 +212,7 @@ function vMes(){
   h+='<div class="card full"><h3>Contas do mês · '+L.length+'</h3>'+(L.length?L.map(function(m){return '<div class="row li"><div style="display:flex;gap:12px;align-items:center;min-width:0"><div style="width:42px;font-size:12px;font-weight:700;opacity:.55;flex:none">'+dm(m.data)+'</div><div style="min-width:0"><div class="b">'+e(m.fornecedor)+'</div><div class="sub">'+e(m.desc)+'</div></div></div><div style="text-align:right;flex:none"><div class="num b">'+b(m.valor)+'</div>'+pill(m.status)+'</div></div>'}).join(''):'<div class="empty">Nenhuma conta neste mês</div>')+'</div>';
   return h;
 }
-function semData(){var s=0;D.gastos.forEach(function(g){s+=g.total-g.pago});D.movimentos.forEach(function(m){if(m.status!=='pago'&&m.cat!=='Imóvel')s-=m.valor});return Math.max(0,s)}
+function semData(){var s=0;D.gastos.forEach(function(g){s+=g.total-g.pago});D.movimentos.forEach(function(m){if(m.status!=='pago'&&m.cat!=='Imóvel'&&!m.cartao)s-=m.valor});return Math.max(0,s)}
 /* ---------- GASTOS ---------- */
 function itens(){var L=D.gastos.slice();var ir=D.imovel.resumo;L.push({fornecedor:'Construtora Diamond',desc:'Imóvel (projetado INCC) · '+ir['Parcelas pagas']+' parcelas',total:imovTot(ir),pago:+ir['Já pago'],cat:'Imóvel',comodo:'Apartamento',imovel:1});return L}
 function filtrados(){var q=F.q.toLowerCase();return itens().filter(function(g){var s=sit(g.total,g.pago);return (!q||(g.fornecedor+' '+g.desc+' '+g.comodo+' '+g.cat).toLowerCase().indexOf(q)>=0)&&(!F.fornecedor||g.fornecedor===F.fornecedor)&&(!F.cat||g.cat===F.cat)&&(!F.comodo||g.comodo===F.comodo)&&(!F.sit||s===F.sit)})}

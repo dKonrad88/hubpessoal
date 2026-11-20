@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-20T09:01-03:00",
+ "geradoEm": "2026-11-20T09:08-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
   "total": 2004152.75,
@@ -1748,100 +1748,1570 @@
    "cat": "Obra"
   },
   {
-   "data": "2026-11-09",
+   "data": "2026-12-09",
    "fornecedor": "Amazon",
-   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR",
-   "valor": 2069.75,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR · cartão 1/12",
+   "valor": 172.48,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
-   "data": "2026-11-09",
+   "data": "2027-01-09",
    "fornecedor": "Amazon",
-   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v",
-   "valor": 1688.46,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR · cartão 2/12",
+   "valor": 172.48,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
-   "data": "2026-11-09",
+   "data": "2027-02-09",
    "fornecedor": "Amazon",
-   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE",
-   "valor": 2719.0,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR · cartão 3/12",
+   "valor": 172.48,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
-   "data": "2026-11-09",
+   "data": "2027-03-09",
    "fornecedor": "Amazon",
-   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR",
-   "valor": 5426.0,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR · cartão 4/12",
+   "valor": 172.48,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD)",
-   "valor": 8172.03,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "Soundbar Samsung HW-Q990H 11.1.4",
-   "valor": 6411.26,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD)",
-   "valor": 7373.11,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "Soundbar Samsung HW-Q930H 9.1.4",
-   "valor": 4327.26,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "Samsung Shop",
-   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD)",
-   "valor": 2916.53,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-09",
+   "data": "2027-04-09",
    "fornecedor": "Amazon",
-   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR",
-   "valor": 3879.0,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR · cartão 5/12",
+   "valor": 172.48,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
-   "data": "2026-11-10",
+   "data": "2027-05-09",
+   "fornecedor": "Amazon",
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR · cartão 6/12",
+   "valor": 172.48,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-09",
+   "fornecedor": "Amazon",
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR · cartão 7/12",
+   "valor": 172.48,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-09",
+   "fornecedor": "Amazon",
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR · cartão 8/12",
+   "valor": 172.48,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-09",
+   "fornecedor": "Amazon",
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR · cartão 9/12",
+   "valor": 172.48,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-09",
+   "fornecedor": "Amazon",
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR · cartão 10/12",
+   "valor": 172.48,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-09",
+   "fornecedor": "Amazon",
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR · cartão 11/12",
+   "valor": 172.48,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Cooktop 5 Bocas Brastemp Gourmand inox Duplachama - BDK75DR · cartão 12/12",
+   "valor": 172.47,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v · cartão 1/12",
+   "valor": 140.71,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v · cartão 2/12",
+   "valor": 140.71,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v · cartão 3/12",
+   "valor": 140.71,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v · cartão 4/12",
+   "valor": 140.71,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v · cartão 5/12",
+   "valor": 140.71,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v · cartão 6/12",
+   "valor": 140.71,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v · cartão 7/12",
+   "valor": 140.71,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v · cartão 8/12",
+   "valor": 140.71,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v · cartão 9/12",
+   "valor": 140.71,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v · cartão 10/12",
+   "valor": 140.71,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v · cartão 11/12",
+   "valor": 140.71,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Coifa de Parede 90cm Smart Pro Touch Midea 220v · cartão 12/12",
+   "valor": 140.65,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE · cartão 1/12",
+   "valor": 226.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE · cartão 2/12",
+   "valor": 226.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE · cartão 3/12",
+   "valor": 226.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE · cartão 4/12",
+   "valor": 226.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE · cartão 5/12",
+   "valor": 226.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE · cartão 6/12",
+   "valor": 226.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE · cartão 7/12",
+   "valor": 226.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE · cartão 8/12",
+   "valor": 226.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE · cartão 9/12",
+   "valor": 226.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE · cartão 10/12",
+   "valor": 226.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE · cartão 11/12",
+   "valor": 226.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Adega Brastemp Dual Zone 33 Garrafas - BZB33BE · cartão 12/12",
+   "valor": 226.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR · cartão 1/12",
+   "valor": 452.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR · cartão 2/12",
+   "valor": 452.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR · cartão 3/12",
+   "valor": 452.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR · cartão 4/12",
+   "valor": 452.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR · cartão 5/12",
+   "valor": 452.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR · cartão 6/12",
+   "valor": 452.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR · cartão 7/12",
+   "valor": 452.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR · cartão 8/12",
+   "valor": 452.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR · cartão 9/12",
+   "valor": 452.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR · cartão 10/12",
+   "valor": 452.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR · cartão 11/12",
+   "valor": 452.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Micro-ondas de Embutir Brastemp 40L Inox BMO40AR · cartão 12/12",
+   "valor": 452.13,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 1/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 2/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 3/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 4/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 5/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 6/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 7/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 8/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 9/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 10/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 11/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 12/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-12-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 13/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-01-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 14/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-02-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 15/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-03-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 16/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-04-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 17/18",
+   "valor": 454.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-05-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 65\" OLED 4K S85H (QN65S85HAEXZD) · cartão 18/18",
+   "valor": 454.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 1/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 2/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 3/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 4/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 5/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 6/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 7/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 8/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 9/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 10/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 11/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 12/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-12-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 13/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-01-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 14/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-02-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 15/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-03-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 16/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-04-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 17/18",
+   "valor": 356.18,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-05-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q990H 11.1.4 · cartão 18/18",
+   "valor": 356.2,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 1/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 2/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 3/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 4/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 5/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 6/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 7/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 8/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 9/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 10/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 11/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 12/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-12-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 13/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-01-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 14/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-02-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 15/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-03-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 16/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-04-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 17/18",
+   "valor": 409.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-05-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 85\" Mini LED 4K M75H (UN85M75HAGXZD) · cartão 18/18",
+   "valor": 409.57,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 1/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 2/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 3/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 4/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 5/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 6/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 7/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 8/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 9/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 10/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 11/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 12/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-12-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 13/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-01-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 14/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-02-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 15/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-03-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 16/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-04-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 17/18",
+   "valor": 240.4,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-05-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "Soundbar Samsung HW-Q930H 9.1.4 · cartão 18/18",
+   "valor": 240.46,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 1/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 2/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 3/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 4/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 5/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 6/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 7/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 8/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 9/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 10/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 11/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 12/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-12-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 13/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-01-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 14/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-02-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 15/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-03-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 16/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-04-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 17/18",
+   "valor": 162.03,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2028-05-10",
+   "fornecedor": "Samsung Shop",
+   "desc": "TV Samsung 55\" Mini LED 4K M75H (UN55M75HAGXZD) · cartão 18/18",
+   "valor": 162.02,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR · cartão 1/12",
+   "valor": 323.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR · cartão 2/12",
+   "valor": 323.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR · cartão 3/12",
+   "valor": 323.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR · cartão 4/12",
+   "valor": 323.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR · cartão 5/12",
+   "valor": 323.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR · cartão 6/12",
+   "valor": 323.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR · cartão 7/12",
+   "valor": 323.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR · cartão 8/12",
+   "valor": 323.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR · cartão 9/12",
+   "valor": 323.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR · cartão 10/12",
+   "valor": 323.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR · cartão 11/12",
+   "valor": 323.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-09",
+   "fornecedor": "Amazon",
+   "desc": "Forno de embutir elétrico Brastemp 67L inox BO260AR · cartão 12/12",
+   "valor": 323.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-10",
    "fornecedor": "Midea",
-   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea",
-   "valor": 4423.44,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea · cartão 1/12",
+   "valor": 368.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
-   "data": "2026-11-10",
+   "data": "2027-01-10",
    "fornecedor": "Midea",
-   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea",
-   "valor": 8174.56,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea · cartão 2/12",
+   "valor": 368.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-10",
+   "fornecedor": "Midea",
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea · cartão 3/12",
+   "valor": 368.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-10",
+   "fornecedor": "Midea",
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea · cartão 4/12",
+   "valor": 368.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-10",
+   "fornecedor": "Midea",
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea · cartão 5/12",
+   "valor": 368.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-10",
+   "fornecedor": "Midea",
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea · cartão 6/12",
+   "valor": 368.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-10",
+   "fornecedor": "Midea",
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea · cartão 7/12",
+   "valor": 368.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-10",
+   "fornecedor": "Midea",
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea · cartão 8/12",
+   "valor": 368.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-10",
+   "fornecedor": "Midea",
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea · cartão 9/12",
+   "valor": 368.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-10",
+   "fornecedor": "Midea",
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea · cartão 10/12",
+   "valor": 368.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-10",
+   "fornecedor": "Midea",
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea · cartão 11/12",
+   "valor": 368.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-10",
+   "fornecedor": "Midea",
+   "desc": "Lava e Seca 13kg Titanium Space Master Conectada Midea · cartão 12/12",
+   "valor": 368.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-10",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea · cartão 1/12",
+   "valor": 681.21,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-10",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea · cartão 2/12",
+   "valor": 681.21,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-10",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea · cartão 3/12",
+   "valor": 681.21,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-10",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea · cartão 4/12",
+   "valor": 681.21,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-10",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea · cartão 5/12",
+   "valor": 681.21,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-10",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea · cartão 6/12",
+   "valor": 681.21,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-10",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea · cartão 7/12",
+   "valor": 681.21,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-10",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea · cartão 8/12",
+   "valor": 681.21,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-10",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea · cartão 9/12",
+   "valor": 681.21,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-10",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea · cartão 10/12",
+   "valor": 681.21,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-10",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea · cartão 11/12",
+   "valor": 681.21,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-10",
+   "fornecedor": "Midea",
+   "desc": "Geladeira Frost Free 570L Side by Side Inverter Inox Midea · cartão 12/12",
+   "valor": 681.25,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
    "data": "2026-11-10",
@@ -1860,12 +3330,112 @@
    "cat": "Eletrodomésticos"
   },
   {
-   "data": "2026-11-10",
+   "data": "2026-12-10",
    "fornecedor": "Midea",
-   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea",
-   "valor": 2899.0,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea · cartão 1/12",
+   "valor": 241.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-10",
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea · cartão 2/12",
+   "valor": 241.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-10",
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea · cartão 3/12",
+   "valor": 241.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-10",
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea · cartão 4/12",
+   "valor": 241.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-10",
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea · cartão 5/12",
+   "valor": 241.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-10",
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea · cartão 6/12",
+   "valor": 241.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-10",
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea · cartão 7/12",
+   "valor": 241.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-10",
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea · cartão 8/12",
+   "valor": 241.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-10",
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea · cartão 9/12",
+   "valor": 241.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-10",
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea · cartão 10/12",
+   "valor": 241.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-10",
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea · cartão 11/12",
+   "valor": 241.58,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-10",
+   "fornecedor": "Midea",
+   "desc": "Lava-Louças 10 serviços Inox SmartHome Midea · cartão 12/12",
+   "valor": 241.62,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
    "data": "2026-11-10",
@@ -1876,12 +3446,112 @@
    "cat": "Eletrodomésticos"
   },
   {
-   "data": "2026-11-12",
+   "data": "2026-12-12",
    "fornecedor": "Amazon",
-   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata",
-   "valor": 3999.98,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata · cartão 1/12",
+   "valor": 333.33,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata · cartão 2/12",
+   "valor": 333.33,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata · cartão 3/12",
+   "valor": 333.33,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata · cartão 4/12",
+   "valor": 333.33,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata · cartão 5/12",
+   "valor": 333.33,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata · cartão 6/12",
+   "valor": 333.33,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata · cartão 7/12",
+   "valor": 333.33,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata · cartão 8/12",
+   "valor": 333.33,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata · cartão 9/12",
+   "valor": 333.33,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata · cartão 10/12",
+   "valor": 333.33,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata · cartão 11/12",
+   "valor": 333.33,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-12",
+   "fornecedor": "Amazon",
+   "desc": "Dyson Airwrap Multiestilizador de cabelo — Kit Completo 220V, cor prata · cartão 12/12",
+   "valor": 333.35,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
    "data": "2026-11-19",
@@ -1900,20 +3570,166 @@
    "cat": "Eletrodomésticos"
   },
   {
-   "data": "2026-11-19",
+   "data": "2026-12-19",
    "fornecedor": "-",
-   "desc": "Speakers",
-   "valor": 5024.0,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "Speakers · cartão 1/12",
+   "valor": 418.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
-   "data": "2026-11-20",
+   "data": "2027-01-19",
    "fornecedor": "-",
-   "desc": "Utensílios de cozinha (3 panelas + 8 potes plásticos)",
-   "valor": 2085.0,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "Speakers · cartão 2/12",
+   "valor": 418.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-19",
+   "fornecedor": "-",
+   "desc": "Speakers · cartão 3/12",
+   "valor": 418.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-19",
+   "fornecedor": "-",
+   "desc": "Speakers · cartão 4/12",
+   "valor": 418.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-19",
+   "fornecedor": "-",
+   "desc": "Speakers · cartão 5/12",
+   "valor": 418.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-19",
+   "fornecedor": "-",
+   "desc": "Speakers · cartão 6/12",
+   "valor": 418.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-19",
+   "fornecedor": "-",
+   "desc": "Speakers · cartão 7/12",
+   "valor": 418.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-19",
+   "fornecedor": "-",
+   "desc": "Speakers · cartão 8/12",
+   "valor": 418.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-19",
+   "fornecedor": "-",
+   "desc": "Speakers · cartão 9/12",
+   "valor": 418.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-19",
+   "fornecedor": "-",
+   "desc": "Speakers · cartão 10/12",
+   "valor": 418.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-19",
+   "fornecedor": "-",
+   "desc": "Speakers · cartão 11/12",
+   "valor": 418.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-19",
+   "fornecedor": "-",
+   "desc": "Speakers · cartão 12/12",
+   "valor": 418.63,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-20",
+   "fornecedor": "-",
+   "desc": "Utensílios de cozinha (3 panelas + 8 potes plásticos) · cartão 1/6",
+   "valor": 347.5,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-20",
+   "fornecedor": "-",
+   "desc": "Utensílios de cozinha (3 panelas + 8 potes plásticos) · cartão 2/6",
+   "valor": 347.5,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-20",
+   "fornecedor": "-",
+   "desc": "Utensílios de cozinha (3 panelas + 8 potes plásticos) · cartão 3/6",
+   "valor": 347.5,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-20",
+   "fornecedor": "-",
+   "desc": "Utensílios de cozinha (3 panelas + 8 potes plásticos) · cartão 4/6",
+   "valor": 347.5,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-20",
+   "fornecedor": "-",
+   "desc": "Utensílios de cozinha (3 panelas + 8 potes plásticos) · cartão 5/6",
+   "valor": 347.5,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-20",
+   "fornecedor": "-",
+   "desc": "Utensílios de cozinha (3 panelas + 8 potes plásticos) · cartão 6/6",
+   "valor": 347.5,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
    "data": "2026-11-19",
@@ -1948,36 +3764,256 @@
    "cat": "Eletrodomésticos"
   },
   {
-   "data": "2026-11-19",
+   "data": "2026-12-19",
    "fornecedor": "Compras Paraguai (Ciudad del Este)",
-   "desc": "PS5 + controle + jogo",
-   "valor": 5105.0,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "PS5 + controle + jogo · cartão 1/12",
+   "valor": 425.42,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
-   "data": "2026-11-19",
+   "data": "2027-01-19",
    "fornecedor": "Compras Paraguai (Ciudad del Este)",
-   "desc": "Roteador",
-   "valor": 2406.0,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "PS5 + controle + jogo · cartão 2/12",
+   "valor": 425.42,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
-   "data": "2026-11-19",
+   "data": "2027-02-19",
    "fornecedor": "Compras Paraguai (Ciudad del Este)",
-   "desc": "Dispensers de sabão e aromatizador",
-   "valor": 450.0,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "PS5 + controle + jogo · cartão 3/12",
+   "valor": 425.42,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
-   "data": "2026-11-19",
+   "data": "2027-03-19",
    "fornecedor": "Compras Paraguai (Ciudad del Este)",
-   "desc": "Dispensers de sabão e aromatizador",
-   "valor": 450.0,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "PS5 + controle + jogo · cartão 4/12",
+   "valor": 425.42,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "PS5 + controle + jogo · cartão 5/12",
+   "valor": 425.42,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "PS5 + controle + jogo · cartão 6/12",
+   "valor": 425.42,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "PS5 + controle + jogo · cartão 7/12",
+   "valor": 425.42,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "PS5 + controle + jogo · cartão 8/12",
+   "valor": 425.42,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "PS5 + controle + jogo · cartão 9/12",
+   "valor": 425.42,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "PS5 + controle + jogo · cartão 10/12",
+   "valor": 425.42,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "PS5 + controle + jogo · cartão 11/12",
+   "valor": 425.42,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "PS5 + controle + jogo · cartão 12/12",
+   "valor": 425.38,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Roteador · cartão 1/10",
+   "valor": 240.6,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Roteador · cartão 2/10",
+   "valor": 240.6,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Roteador · cartão 3/10",
+   "valor": 240.6,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Roteador · cartão 4/10",
+   "valor": 240.6,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Roteador · cartão 5/10",
+   "valor": 240.6,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Roteador · cartão 6/10",
+   "valor": 240.6,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Roteador · cartão 7/10",
+   "valor": 240.6,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Roteador · cartão 8/10",
+   "valor": 240.6,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Roteador · cartão 9/10",
+   "valor": 240.6,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Roteador · cartão 10/10",
+   "valor": 240.6,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Dispensers de sabão e aromatizador · cartão 1/3",
+   "valor": 150.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Dispensers de sabão e aromatizador · cartão 2/3",
+   "valor": 150.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Dispensers de sabão e aromatizador · cartão 3/3",
+   "valor": 150.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Dispensers de sabão e aromatizador · cartão 1/3",
+   "valor": 150.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Dispensers de sabão e aromatizador · cartão 2/3",
+   "valor": 150.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-19",
+   "fornecedor": "Compras Paraguai (Ciudad del Este)",
+   "desc": "Dispensers de sabão e aromatizador · cartão 3/3",
+   "valor": 150.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
    "data": "2026-08-31",
