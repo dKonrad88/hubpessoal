@@ -610,16 +610,21 @@ function vConv(){
 }
 function cvSyncInputs(){
   if(!CV.draft)return;
+  // só lê o input se ele pertence ao convite aberto agora: cvPaint() roda antes de
+  // redesenhar o sheet, então ao abrir outro convite os campos ainda estão com o
+  // texto do anterior — sem esta guarda o nome do anterior era gravado neste.
+  var alvo=String(CV.draft.id||'novo');
   var n=document.getElementById('cvNome'),c=document.getElementById('cvConj');
-  if(n)CV.draft.nome=n.value;if(c)CV.draft.conjuge=c.value;
+  if(n&&n.getAttribute('data-for')===alvo)CV.draft.nome=n.value;
+  if(c&&c.getAttribute('data-for')===alvo)CV.draft.conjuge=c.value;
 }
 function cvPaint(){cvSyncInputs();var s=document.getElementById('sh');s.innerHTML=cvFormHtml();s.scrollTop=0;s.classList.add('open');document.getElementById('ov').style.display='block'}
 function cvFormHtml(){
   var d=CV.draft,novo=!d.id;
   function chip(arr,key){return arr.map(function(x){return '<button type="button" class="chip'+(d[key]===x[0]?' on':'')+'" onclick="cvSet('+q(key)+','+q(x[0])+')">'+e(x[1])+'</button>'}).join('')}
   return '<div class="grab"></div><div class="row"><div><div class="kick">'+(novo?'Novo convite':'Editar convite')+'</div><div class="h" style="font-size:32px;font-weight:600;font-style:italic">'+(novo?'Novo convite':e(d.nome||'Sem nome'))+'</div></div><div class="x" onclick="closeSheet()">✕</div></div>'
-    +'<div class="flab">Nome</div><input class="fld" id="cvNome" value="'+e(d.nome)+'">'
-    +'<div class="flab">Cônjuge / acompanhante</div><input class="fld" id="cvConj" value="'+e(d.conjuge)+'">'
+    +'<div class="flab">Nome</div><input class="fld" id="cvNome" data-for="'+e(String(d.id||'novo'))+'" value="'+e(d.nome)+'">'
+    +'<div class="flab">Cônjuge / acompanhante</div><input class="fld" id="cvConj" data-for="'+e(String(d.id||'novo'))+'" value="'+e(d.conjuge)+'">'
     +'<div class="flab">Nível</div><div style="display:flex;gap:8px;flex-wrap:wrap">'+chip(CV_NIVEL,'nivel')+'</div>'
     +'<div class="row" style="align-items:flex-end;margin-top:4px"><div><div class="flab">Pessoas</div><div class="step"><button type="button" onclick="cvStep(-1)" aria-label="Menos uma pessoa">−</button><b>'+d.qtd+'</b><button type="button" onclick="cvStep(1)" aria-label="Mais uma pessoa">+</button></div></div>'
     +'<div style="text-align:right"><div class="flab">Padrinho</div><button type="button" class="swi'+(d.padrinho?' on':'')+'" onclick="cvPad()" aria-pressed="'+(d.padrinho?'true':'false')+'" aria-label="Padrinho"><i></i></button></div></div>'
