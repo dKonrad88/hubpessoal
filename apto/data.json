@@ -1,23 +1,23 @@
 {
- "geradoEm": "2026-11-20T09:08-03:00",
+ "geradoEm": "2026-11-22T08:56-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 2004152.75,
-  "pago": 1468854.1,
+  "total": 2012822.08,
+  "pago": 1477523.43,
   "restante": 535298.65
  },
  "categorias": [
+  {
+   "nome": "Eletrodomésticos",
+   "total": 105520.95999999999,
+   "pago": 105520.95999999999,
+   "restante": 0.0
+  },
   {
    "nome": "Mobília",
    "total": 101600.0,
    "pago": 76200.0,
    "restante": 25400.0
-  },
-  {
-   "nome": "Eletrodomésticos",
-   "total": 96851.62999999999,
-   "pago": 96851.62999999999,
-   "restante": 0.0
   },
   {
    "nome": "Obra",
@@ -53,8 +53,8 @@
  "comodos": [
   {
    "nome": "Apartamento",
-   "total": 72268.0,
-   "pago": 72268.0,
+   "total": 72905.99,
+   "pago": 72905.99,
    "restante": 0.0
   },
   {
@@ -71,14 +71,14 @@
   },
   {
    "nome": "Cozinha",
-   "total": 43872.72,
-   "pago": 40706.53,
+   "total": 51651.13,
+   "pago": 48484.939999999995,
    "restante": 3166.1900000000023
   },
   {
    "nome": "Área de Serviço",
-   "total": 4423.44,
-   "pago": 4423.44,
+   "total": 4623.339999999999,
+   "pago": 4623.339999999999,
    "restante": 0.0
   },
   {
@@ -125,8 +125,8 @@
   },
   {
    "nome": "Sala Gamer",
-   "total": 37864.17,
-   "pago": 31924.05,
+   "total": 37917.2,
+   "pago": 31977.079999999998,
    "restante": 5940.119999999999
   },
   {
@@ -568,10 +568,10 @@
    "fornecedor": "-",
    "desc": "Impressora 3D",
    "qtd": "1 und",
-   "total": 6863.61,
-   "pago": 6863.61,
+   "total": 6916.64,
+   "pago": 6916.64,
    "entrega": null,
-   "obs": "Cartão 1x (R$ 447,00 + R$ 6.416,61)",
+   "obs": "Cartão 1x (R$ 447,00 + R$ 6.416,61) + TekBond 200 100g R$ 53,03 (Amazon 20/11/26, cartão 12x Visa final 2910, inclui R$ 18,39 de frete, pedido 701-8941891-0527418)",
    "comodo": "Sala Gamer",
    "cat": "Eletrodomésticos"
   },
@@ -604,10 +604,10 @@
    "fornecedor": "Amazon",
    "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme)",
    "qtd": "1 und",
-   "total": 1129.17,
-   "pago": 1129.17,
+   "total": 1188.6,
+   "pago": 1188.6,
    "entrega": null,
-   "obs": "Cartão 1x",
+   "obs": "Cartão 12x sem juros. Pedido 702-7321954-8811409",
    "comodo": "Cozinha",
    "cat": "Eletrodomésticos"
   },
@@ -765,6 +765,54 @@
    "entrega": null,
    "obs": "Cartão 3x. Rateio 50/50 dos R$ 900 entre os banheiros",
    "comodo": "Banho Visita",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-20",
+   "fornecedor": "Amazon",
+   "desc": "Jogo de facas Ninja 11 peças",
+   "qtd": "1 und",
+   "total": 2820.67,
+   "pago": 2820.67,
+   "entrega": "2026-12-15",
+   "obs": "Cartão 10x sem juros (Visa final 2910). Inclui R$ 1.245,60 de taxa de importação. Pedido 701-8211727-5134667",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro",
+   "qtd": "1 und",
+   "total": 637.99,
+   "pago": 637.99,
+   "entrega": null,
+   "obs": "Cartão 12x sem juros (Visa final 2910). Cômodo não informado. Pedido 701-2909746-7027412",
+   "comodo": "Apartamento",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V",
+   "qtd": "1 und",
+   "total": 199.9,
+   "pago": 199.9,
+   "entrega": null,
+   "obs": "Cartão 12x sem juros (Visa final 2910). Pedido 701-8309994-6097805",
+   "comodo": "Área de Serviço",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas",
+   "qtd": "1 und",
+   "total": 4898.31,
+   "pago": 4898.31,
+   "entrega": null,
+   "obs": "Cartão 12x sem juros (Visa final 2910). Cafeteira R$ 4.913,90, copos R$ 102,59, taças R$ 38,90, desconto -R$ 157,08. Pedido 701-7227005-9089022",
+   "comodo": "Cozinha",
    "cat": "Eletrodomésticos"
   }
  ],
@@ -3317,7 +3365,7 @@
    "data": "2026-11-10",
    "fornecedor": "-",
    "desc": "Impressora 3D",
-   "valor": 6863.61,
+   "valor": 6916.64,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
@@ -3438,12 +3486,112 @@
    "cartao": 1
   },
   {
-   "data": "2026-11-10",
+   "data": "2026-12-10",
    "fornecedor": "Amazon",
-   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme)",
-   "valor": 1129.17,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme) · cartão 1/12",
+   "valor": 99.05,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme) · cartão 2/12",
+   "valor": 99.05,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme) · cartão 3/12",
+   "valor": 99.05,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme) · cartão 4/12",
+   "valor": 99.05,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme) · cartão 5/12",
+   "valor": 99.05,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme) · cartão 6/12",
+   "valor": 99.05,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme) · cartão 7/12",
+   "valor": 99.05,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme) · cartão 8/12",
+   "valor": 99.05,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme) · cartão 9/12",
+   "valor": 99.05,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme) · cartão 10/12",
+   "valor": 99.05,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme) · cartão 11/12",
+   "valor": 99.05,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-10",
+   "fornecedor": "Amazon",
+   "desc": "Kit jogo de panelas esmaltadas ferro fundido estilo Creuset (Branco Creme) · cartão 12/12",
+   "valor": 99.05,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
   },
   {
    "data": "2026-12-12",
@@ -4011,6 +4159,420 @@
    "fornecedor": "Compras Paraguai (Ciudad del Este)",
    "desc": "Dispensers de sabão e aromatizador · cartão 3/3",
    "valor": 150.0,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-20",
+   "fornecedor": "Amazon",
+   "desc": "Jogo de facas Ninja 11 peças · cartão 1/10",
+   "valor": 282.07,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-20",
+   "fornecedor": "Amazon",
+   "desc": "Jogo de facas Ninja 11 peças · cartão 2/10",
+   "valor": 282.07,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-20",
+   "fornecedor": "Amazon",
+   "desc": "Jogo de facas Ninja 11 peças · cartão 3/10",
+   "valor": 282.07,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-20",
+   "fornecedor": "Amazon",
+   "desc": "Jogo de facas Ninja 11 peças · cartão 4/10",
+   "valor": 282.07,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-20",
+   "fornecedor": "Amazon",
+   "desc": "Jogo de facas Ninja 11 peças · cartão 5/10",
+   "valor": 282.07,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-20",
+   "fornecedor": "Amazon",
+   "desc": "Jogo de facas Ninja 11 peças · cartão 6/10",
+   "valor": 282.07,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-20",
+   "fornecedor": "Amazon",
+   "desc": "Jogo de facas Ninja 11 peças · cartão 7/10",
+   "valor": 282.07,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-20",
+   "fornecedor": "Amazon",
+   "desc": "Jogo de facas Ninja 11 peças · cartão 8/10",
+   "valor": 282.07,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-20",
+   "fornecedor": "Amazon",
+   "desc": "Jogo de facas Ninja 11 peças · cartão 9/10",
+   "valor": 282.07,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-20",
+   "fornecedor": "Amazon",
+   "desc": "Jogo de facas Ninja 11 peças · cartão 10/10",
+   "valor": 282.04,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro · cartão 1/12",
+   "valor": 53.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro · cartão 2/12",
+   "valor": 53.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro · cartão 3/12",
+   "valor": 53.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro · cartão 4/12",
+   "valor": 53.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro · cartão 5/12",
+   "valor": 53.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro · cartão 6/12",
+   "valor": 53.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro · cartão 7/12",
+   "valor": 53.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro · cartão 8/12",
+   "valor": 53.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro · cartão 9/12",
+   "valor": 53.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro · cartão 10/12",
+   "valor": 53.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro · cartão 11/12",
+   "valor": 53.17,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-20",
+   "fornecedor": "Amazon",
+   "desc": "Luminária de mesa JBL Table Lamp 2 Pro · cartão 12/12",
+   "valor": 53.12,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V · cartão 1/12",
+   "valor": 16.66,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V · cartão 2/12",
+   "valor": 16.66,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V · cartão 3/12",
+   "valor": 16.66,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V · cartão 4/12",
+   "valor": 16.66,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V · cartão 5/12",
+   "valor": 16.66,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V · cartão 6/12",
+   "valor": 16.66,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V · cartão 7/12",
+   "valor": 16.66,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V · cartão 8/12",
+   "valor": 16.66,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V · cartão 9/12",
+   "valor": 16.66,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V · cartão 10/12",
+   "valor": 16.66,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V · cartão 11/12",
+   "valor": 16.66,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-20",
+   "fornecedor": "Amazon",
+   "desc": "Ferro a vapor Philips Walita DST3010/34 220V · cartão 12/12",
+   "valor": 16.64,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-12-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas · cartão 1/12",
+   "valor": 408.19,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas · cartão 2/12",
+   "valor": 408.19,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas · cartão 3/12",
+   "valor": 408.19,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas · cartão 4/12",
+   "valor": 408.19,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas · cartão 5/12",
+   "valor": 408.19,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas · cartão 6/12",
+   "valor": 408.19,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas · cartão 7/12",
+   "valor": 408.19,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas · cartão 8/12",
+   "valor": 408.19,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas · cartão 9/12",
+   "valor": 408.19,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas · cartão 10/12",
+   "valor": 408.19,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas · cartão 11/12",
+   "valor": 408.19,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-20",
+   "fornecedor": "Amazon",
+   "desc": "Cafeteira espresso Philips Walita LatteGo Série 5500 EP5547/93 220V + copos Bohemia + kit 6 taças caneladas · cartão 12/12",
+   "valor": 408.22,
    "status": "previsto",
    "cat": "Eletrodomésticos",
    "cartao": 1
