@@ -1,16 +1,16 @@
 {
- "geradoEm": "2026-11-22T08:56-03:00",
+ "geradoEm": "2026-11-22T09:01-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 2012822.08,
-  "pago": 1477523.43,
+  "total": 2014468.94,
+  "pago": 1479170.29,
   "restante": 535298.65
  },
  "categorias": [
   {
    "nome": "Eletrodomésticos",
-   "total": 105520.95999999999,
-   "pago": 105520.95999999999,
+   "total": 107167.81999999999,
+   "pago": 107167.81999999999,
    "restante": 0.0
   },
   {
@@ -53,8 +53,8 @@
  "comodos": [
   {
    "nome": "Apartamento",
-   "total": 72905.99,
-   "pago": 72905.99,
+   "total": 73240.58,
+   "pago": 73240.58,
    "restante": 0.0
   },
   {
@@ -71,8 +71,8 @@
   },
   {
    "nome": "Cozinha",
-   "total": 51651.13,
-   "pago": 48484.939999999995,
+   "total": 51914.579999999994,
+   "pago": 48748.38999999999,
    "restante": 3166.1900000000023
   },
   {
@@ -125,9 +125,9 @@
   },
   {
    "nome": "Sala Gamer",
-   "total": 37917.2,
-   "pago": 31977.079999999998,
-   "restante": 5940.119999999999
+   "total": 38966.02,
+   "pago": 33025.9,
+   "restante": 5940.119999999995
   },
   {
    "nome": "Quarto Visita",
@@ -568,10 +568,10 @@
    "fornecedor": "-",
    "desc": "Impressora 3D",
    "qtd": "1 und",
-   "total": 6916.64,
-   "pago": 6916.64,
+   "total": 7590.0,
+   "pago": 7590.0,
    "entrega": null,
-   "obs": "Cartão 1x (R$ 447,00 + R$ 6.416,61) + TekBond 200 100g R$ 53,03 (Amazon 20/11/26, cartão 12x Visa final 2910, inclui R$ 18,39 de frete, pedido 701-8941891-0527418)",
+   "obs": "Cartão 1x (R$ 447,00 + R$ 6.416,61) + TekBond 200 100g R$ 53,03 (Amazon 20/11/26, cartão 12x Visa final 2910, inclui R$ 18,39 de frete, pedido 701-8941891-0527418) + Secador de filamento Sovol SH01 R$ 673,36 (AliExpress 11/11/26, cartão 1x)",
    "comodo": "Sala Gamer",
    "cat": "Eletrodomésticos"
   },
@@ -812,6 +812,66 @@
    "pago": 4898.31,
    "entrega": null,
    "obs": "Cartão 12x sem juros (Visa final 2910). Cafeteira R$ 4.913,90, copos R$ 102,59, taças R$ 38,90, desconto -R$ 157,08. Pedido 701-7227005-9089022",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-20",
+   "fornecedor": "AliExpress",
+   "desc": "Etiquetadora Niimbot D110",
+   "qtd": "1 und",
+   "total": 234.09,
+   "pago": 234.09,
+   "entrega": null,
+   "obs": "Cartão 1x",
+   "comodo": "Apartamento",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-13",
+   "fornecedor": "AliExpress",
+   "desc": "Lixeira inteligente com sensor 12L",
+   "qtd": "1 und",
+   "total": 60.79,
+   "pago": 60.79,
+   "entrega": null,
+   "obs": "Cartão 1x",
+   "comodo": "Apartamento",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-20",
+   "fornecedor": "AliExpress",
+   "desc": "Lenços de limpeza para óculos e tela",
+   "qtd": "1 und",
+   "total": 39.71,
+   "pago": 39.71,
+   "entrega": null,
+   "obs": "Cartão 1x",
+   "comodo": "Apartamento",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-13",
+   "fornecedor": "AliExpress",
+   "desc": "NerdMiner V2",
+   "qtd": "3 und",
+   "total": 375.46,
+   "pago": 375.46,
+   "entrega": null,
+   "obs": "Cartão 1x. R$ 138,60 + R$ 138,11 + R$ 98,75",
+   "comodo": "Sala Gamer",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-20",
+   "fornecedor": "AliExpress",
+   "desc": "Copos de whisky (conjunto de 6 com suporte e copo giratório)",
+   "qtd": "1 und",
+   "total": 263.45,
+   "pago": 263.45,
+   "entrega": null,
+   "obs": "Cartão 1x. R$ 182,57 + R$ 80,88",
    "comodo": "Cozinha",
    "cat": "Eletrodomésticos"
   }
@@ -3365,7 +3425,7 @@
    "data": "2026-11-10",
    "fornecedor": "-",
    "desc": "Impressora 3D",
-   "valor": 6916.64,
+   "valor": 7590.0,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
@@ -4576,6 +4636,46 @@
    "status": "previsto",
    "cat": "Eletrodomésticos",
    "cartao": 1
+  },
+  {
+   "data": "2026-11-20",
+   "fornecedor": "AliExpress",
+   "desc": "Etiquetadora Niimbot D110",
+   "valor": 234.09,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-13",
+   "fornecedor": "AliExpress",
+   "desc": "Lixeira inteligente com sensor 12L",
+   "valor": 60.79,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-20",
+   "fornecedor": "AliExpress",
+   "desc": "Lenços de limpeza para óculos e tela",
+   "valor": 39.71,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-13",
+   "fornecedor": "AliExpress",
+   "desc": "NerdMiner V2",
+   "valor": 375.46,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-20",
+   "fornecedor": "AliExpress",
+   "desc": "Copos de whisky (conjunto de 6 com suporte e copo giratório)",
+   "valor": 263.45,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
   },
   {
    "data": "2026-08-31",
