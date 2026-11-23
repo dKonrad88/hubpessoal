@@ -249,7 +249,7 @@ html,body{overscroll-behavior-y:contain}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* Publicação: manter igual a casamento/version.json */
-var APP_VERSION='20261104-1605';
+var APP_VERSION='20261123-1145';
 var D=null,TAB='resumo',MES=null,CRF='todos',F={q:'',cat:'',fornecedor:'',tipo:''};
 var AC='#B08D57',AC2='#D9C29A',MU='#9a8a70',TRK='rgba(176,141,87,.15)',PAL=['#B08D57','#C9A96A','#8E7550','#D8BF8E','#A3865E','#E3D1AE'];
 var MN=['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'],MNL=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
@@ -618,7 +618,7 @@ function cvSyncInputs(){
   if(n&&n.getAttribute('data-for')===alvo)CV.draft.nome=n.value;
   if(c&&c.getAttribute('data-for')===alvo)CV.draft.conjuge=c.value;
 }
-function cvPaint(){cvSyncInputs();var s=document.getElementById('sh');s.innerHTML=cvFormHtml();s.scrollTop=0;s.classList.add('open');document.getElementById('ov').style.display='block'}
+function cvPaint(fresh){if(!fresh)cvSyncInputs();var s=document.getElementById('sh');s.innerHTML=cvFormHtml();s.scrollTop=0;s.classList.add('open');document.getElementById('ov').style.display='block'}
 function cvFormHtml(){
   var d=CV.draft,novo=!d.id;
   function chip(arr,key){return arr.map(function(x){return '<button type="button" class="chip'+(d[key]===x[0]?' on':'')+'" onclick="cvSet('+q(key)+','+q(x[0])+')">'+e(x[1])+'</button>'}).join('')}
@@ -635,12 +635,14 @@ function cvFormHtml(){
     +(novo?'':('<button type="button" class="btn-del" onclick="cvAskDel()">Excluir convite</button>'
       +(CV.confirmDel?'<div class="card" style="margin-top:12px"><div class="b">Excluir este convite?</div><div class="sub" style="margin-top:4px">Remove o convite e as pessoas dele da lista. Não dá para desfazer.</div><div style="display:flex;gap:8px;margin-top:12px"><button type="button" class="btn-cancel" onclick="cvCancelDel()">Cancelar</button><button type="button" class="btn-excl" onclick="cvDoDel()">Excluir</button></div></div>':'')));
 }
-function cvNew(){CV.draft={id:null,nome:'',conjuge:'',nivel:'obrigatorio',qtd:1,padrinho:false,via:'',ui:'aenviar',base:null};CV.confirmDel=false;cvPaint()}
+function cvNew(){if(CV.busy)return;CV.draft={id:null,nome:'',conjuge:'',nivel:'obrigatorio',qtd:1,padrinho:false,via:'',ui:'aenviar',base:null};CV.confirmDel=false;cvPaint(true)}
 function cvEdit(id){
+  if(CV.busy)return;
   var c=null;CV.list.forEach(function(x){if(String(x.id)===String(id))c=x});
   if(!c)return;
   CV.draft={id:c.id,nome:c.nome||'',conjuge:c.conjuge||'',nivel:CV_NIVEL.some(function(n){return n[0]===c.nivel})?c.nivel:'obrigatorio',qtd:cvQtd(c),padrinho:!!c.padrinho,via:(c.via==='fisico'||c.via==='online')?c.via:'',ui:cvUi(c),base:cvClone(c)};
-  CV.confirmDel=false;cvPaint();
+  // fresh: rascunho novo vem só do convite clicado, nunca dos campos que ainda estão na tela
+  CV.confirmDel=false;cvPaint(true);
 }
 function cvSet(key,val){if(!CV.draft)return;cvSyncInputs();CV.draft[key]=val;cvPaint()}
 function cvStep(d){if(!CV.draft)return;cvSyncInputs();CV.draft.qtd=Math.max(1,(parseInt(CV.draft.qtd,10)||1)+d);cvPaint()}
