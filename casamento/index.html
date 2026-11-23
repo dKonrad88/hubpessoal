@@ -238,18 +238,34 @@ html,body{overscroll-behavior-y:contain}
 .g2-ttl{margin-bottom:18px}
 .g2-count{margin:0 0 14px;font-size:13px;color:#9a8a70}
 .g2-empty{min-height:calc(100dvh - 330px);display:flex;align-items:center;justify-content:center;text-align:center;background:none;border:0;box-shadow:none;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:28px;color:rgba(176,141,87,.78);padding:0 24px}
+
+/* deslizar para marcar Enviado (Convidados) */
+.cvsw{position:relative;padding:0;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.cvsw .cvfg{position:relative;z-index:1;padding:11px 0;will-change:transform}
+.cvsw.drag .cvfg{background:rgba(255,253,248,.97);border-radius:0 14px 14px 0;box-shadow:6px 0 14px rgba(150,120,60,.10);opacity:1!important}
+.cvsw .cvbg{position:absolute;top:4px;bottom:4px;left:0;right:0;border-radius:14px;display:flex;align-items:center;justify-content:flex-end;gap:7px;padding-right:16px;background:linear-gradient(90deg,rgba(201,169,106,.06),rgba(201,169,106,.24));color:#8a6a35;font:600 13px Inter,sans-serif;letter-spacing:.02em;opacity:0;transition:opacity .15s,background .15s}
+.cvsw .cvbg svg{width:18px;height:18px;transition:transform .15s}
+.cvsw.drag .cvbg{opacity:1}
+.cvsw.armed .cvbg{background:linear-gradient(90deg,rgba(201,169,106,.16),rgba(176,141,87,.40));color:#6f5228}
+.cvsw.armed .cvbg svg{transform:scale(1.18)}
+#cv-toast{position:fixed;z-index:9;left:18px;right:18px;bottom:calc(env(safe-area-inset-bottom) + 96px);max-width:520px;margin:auto;padding:10px 10px 10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid rgba(201,169,106,.5);border-radius:16px;background:rgba(255,248,236,.9);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 10px 26px rgba(150,120,60,.14);color:#3b3124;font:600 13px Inter,sans-serif;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .25s}
+#cv-toast.show{opacity:1;pointer-events:auto;transform:none}
+#cv-toast span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#cv-toast button{flex:none;border:1px solid rgba(176,141,87,.55);background:transparent;color:#8a6a35;border-radius:999px;padding:7px 14px;font:600 12px Inter,sans-serif;cursor:pointer}
+#cv-toast button:disabled{opacity:.5}
 </style></head><body>
 <svg class="eiffel-wm" viewBox="0 0 200 600" preserveAspectRatio="xMidYMax meet" fill="none" stroke="currentColor" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M100.0 6.0 L100.0 40.0 M96.0 40.0 L104.0 40.0 M93.0 40.0 L107.0 40.0 L105.0 52.0 L95.0 52.0 L93.0 40.0 M95.0 52.0 L84.0 190.0 M100.0 52.0 L97.0 190.0 M95.0 52.0 L99.7 67.3 M100.0 52.0 L93.8 67.3 M93.8 67.3 L99.7 67.3 M93.8 67.3 L99.3 82.7 M99.7 67.3 L92.6 82.7 M92.6 82.7 L99.3 82.7 M92.6 82.7 L99.0 98.0 M99.3 82.7 L91.3 98.0 M91.3 98.0 L99.0 98.0 M91.3 98.0 L98.7 113.3 M99.0 98.0 L90.1 113.3 M90.1 113.3 L98.7 113.3 M90.1 113.3 L98.3 128.7 M98.7 113.3 L88.9 128.7 M88.9 128.7 L98.3 128.7 M88.9 128.7 L98.0 144.0 M98.3 128.7 L87.7 144.0 M87.7 144.0 L98.0 144.0 M87.7 144.0 L97.7 159.3 M98.0 144.0 L86.4 159.3 M86.4 159.3 L97.7 159.3 M86.4 159.3 L97.3 174.7 M97.7 159.3 L85.2 174.7 M85.2 174.7 L97.3 174.7 M85.2 174.7 L97.0 190.0 M97.3 174.7 L84.0 190.0 M84.0 190.0 L97.0 190.0 M105.0 52.0 L116.0 190.0 M100.0 52.0 L103.0 190.0 M105.0 52.0 L100.3 67.3 M100.0 52.0 L106.2 67.3 M106.2 67.3 L100.3 67.3 M106.2 67.3 L100.7 82.7 M100.3 67.3 L107.4 82.7 M107.4 82.7 L100.7 82.7 M107.4 82.7 L101.0 98.0 M100.7 82.7 L108.7 98.0 M108.7 98.0 L101.0 98.0 M108.7 98.0 L101.3 113.3 M101.0 98.0 L109.9 113.3 M109.9 113.3 L101.3 113.3 M109.9 113.3 L101.7 128.7 M101.3 113.3 L111.1 128.7 M111.1 128.7 L101.7 128.7 M111.1 128.7 L102.0 144.0 M101.7 128.7 L112.3 144.0 M112.3 144.0 L102.0 144.0 M112.3 144.0 L102.3 159.3 M102.0 144.0 L113.6 159.3 M113.6 159.3 L102.3 159.3 M113.6 159.3 L102.7 174.7 M102.3 159.3 L114.8 174.7 M114.8 174.7 L102.7 174.7 M114.8 174.7 L103.0 190.0 M102.7 174.7 L116.0 190.0 M116.0 190.0 L103.0 190.0 M76.0 190.0 L124.0 190.0 L124.0 202.0 L76.0 202.0 L76.0 190.0 M80.0 190.0 L80.0 202.0 M86.0 190.0 L86.0 202.0 M92.0 190.0 L92.0 202.0 M98.0 190.0 L98.0 202.0 M104.0 190.0 L104.0 202.0 M110.0 190.0 L110.0 202.0 M116.0 190.0 L116.0 202.0 M122.0 190.0 L122.0 202.0 M82.0 202.0 L62.0 330.0 M93.0 202.0 L84.0 330.0 M82.0 202.0 L91.7 220.3 M93.0 202.0 L79.1 220.3 M79.1 220.3 L91.7 220.3 M79.1 220.3 L90.4 238.6 M91.7 220.3 L76.3 238.6 M76.3 238.6 L90.4 238.6 M76.3 238.6 L89.1 256.9 M90.4 238.6 L73.4 256.9 M73.4 256.9 L89.1 256.9 M73.4 256.9 L87.9 275.1 M89.1 256.9 L70.6 275.1 M70.6 275.1 L87.9 275.1 M70.6 275.1 L86.6 293.4 M87.9 275.1 L67.7 293.4 M67.7 293.4 L86.6 293.4 M67.7 293.4 L85.3 311.7 M86.6 293.4 L64.9 311.7 M64.9 311.7 L85.3 311.7 M64.9 311.7 L84.0 330.0 M85.3 311.7 L62.0 330.0 M62.0 330.0 L84.0 330.0 M118.0 202.0 L138.0 330.0 M107.0 202.0 L116.0 330.0 M118.0 202.0 L108.3 220.3 M107.0 202.0 L120.9 220.3 M120.9 220.3 L108.3 220.3 M120.9 220.3 L109.6 238.6 M108.3 220.3 L123.7 238.6 M123.7 238.6 L109.6 238.6 M123.7 238.6 L110.9 256.9 M109.6 238.6 L126.6 256.9 M126.6 256.9 L110.9 256.9 M126.6 256.9 L112.1 275.1 M110.9 256.9 L129.4 275.1 M129.4 275.1 L112.1 275.1 M129.4 275.1 L113.4 293.4 M112.1 275.1 L132.3 293.4 M132.3 293.4 L113.4 293.4 M132.3 293.4 L114.7 311.7 M113.4 293.4 L135.1 311.7 M135.1 311.7 L114.7 311.7 M135.1 311.7 L116.0 330.0 M114.7 311.7 L138.0 330.0 M138.0 330.0 L116.0 330.0 M93.0 202.0 L116.0 330.0 M107.0 202.0 L84.0 330.0 M50.0 330.0 L150.0 330.0 L150.0 350.0 L50.0 350.0 L50.0 330.0 M50.0 340.0 L150.0 340.0 M54.0 330.0 L54.0 340.0 M62.0 330.0 L62.0 340.0 M70.0 330.0 L70.0 340.0 M78.0 330.0 L78.0 340.0 M86.0 330.0 L86.0 340.0 M94.0 330.0 L94.0 340.0 M102.0 330.0 L102.0 340.0 M110.0 330.0 L110.0 340.0 M118.0 330.0 L118.0 340.0 M126.0 330.0 L126.0 340.0 M134.0 330.0 L134.0 340.0 M142.0 330.0 L142.0 340.0 M52.0 340.0 L56.0 350.0 L60.0 340.0 M60.0 340.0 L64.0 350.0 L68.0 340.0 M68.0 340.0 L72.0 350.0 L76.0 340.0 M76.0 340.0 L80.0 350.0 L84.0 340.0 M84.0 340.0 L88.0 350.0 L92.0 340.0 M92.0 340.0 L96.0 350.0 L100.0 340.0 M100.0 340.0 L104.0 350.0 L108.0 340.0 M108.0 340.0 L112.0 350.0 L116.0 340.0 M116.0 340.0 L120.0 350.0 L124.0 340.0 M124.0 340.0 L128.0 350.0 L132.0 340.0 M132.0 340.0 L136.0 350.0 L140.0 340.0 M140.0 340.0 L144.0 350.0 L148.0 340.0 M148.0 340.0 L152.0 350.0 L156.0 340.0 M58 350 C44 440 28 520 12 590 M84 350 C80 430 74 520 66 590 M142 350 C156 440 172 520 188 590 M116 350 C120 430 126 520 134 590 M58.0 350.0 L82.4 380.4 M84.0 350.0 L52.7 383.3 M52.7 383.3 L82.4 380.4 M52.7 383.3 L80.6 411.4 M82.4 380.4 L47.2 415.6 M47.2 415.6 L80.6 411.4 M47.2 415.6 L78.7 442.6 M80.6 411.4 L41.5 447.0 M41.5 447.0 L78.7 442.6 M41.5 447.0 L76.5 473.8 M78.7 442.6 L35.8 477.5 M35.8 477.5 L76.5 473.8 M35.8 477.5 L74.2 504.4 M76.5 473.8 L29.9 507.0 M29.9 507.0 L74.2 504.4 M29.9 507.0 L71.6 534.2 M74.2 504.4 L24.0 535.6 M24.0 535.6 L71.6 534.2 M24.0 535.6 L68.9 562.9 M71.6 534.2 L18.0 563.3 M18.0 563.3 L68.9 562.9 M18.0 563.3 L66.0 590.0 M68.9 562.9 L12.0 590.0 M12.0 590.0 L66.0 590.0 M142.0 350.0 L117.6 380.4 M116.0 350.0 L147.3 383.3 M147.3 383.3 L117.6 380.4 M147.3 383.3 L119.4 411.4 M117.6 380.4 L152.8 415.6 M152.8 415.6 L119.4 411.4 M152.8 415.6 L121.3 442.6 M119.4 411.4 L158.5 447.0 M158.5 447.0 L121.3 442.6 M158.5 447.0 L123.5 473.8 M121.3 442.6 L164.2 477.5 M164.2 477.5 L123.5 473.8 M164.2 477.5 L125.8 504.4 M123.5 473.8 L170.1 507.0 M170.1 507.0 L125.8 504.4 M170.1 507.0 L128.4 534.2 M125.8 504.4 L176.0 535.6 M176.0 535.6 L128.4 534.2 M176.0 535.6 L131.1 562.9 M128.4 534.2 L182.0 563.3 M182.0 563.3 L131.1 562.9 M182.0 563.3 L134.0 590.0 M131.1 562.9 L188.0 590.0 M188.0 590.0 L134.0 590.0 M66 590 C70 470 130 470 134 590 M72 560 C80 486 120 486 128 560 M4.0 590.0 L196.0 590.0 M8.0 596.0 L22.0 596.0 M60.0 596.0 L72.0 596.0 M128.0 596.0 L140.0 596.0 M178.0 596.0 L192.0 596.0"/></svg>
 <div id="ptr" aria-hidden="true"><div class="bubble"><div class="spin"></div></div></div>
 <div id="ptr-note"></div>
 <div id="gv-toast" role="status"></div>
+<div id="cv-toast" role="status" aria-live="polite"></div>
 <button type="button" id="ver-toast" onclick="verReload()">Nova versão disponível · Atualizar</button>
 <div class="wrap" id="app"><div class="full sub">Carregando…</div></div>
 <div id="segbar"></div><div id="tb"></div><div id="ov" onclick="closeSheet()"></div><div id="sh"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* Publicação: manter igual a casamento/version.json */
-var APP_VERSION='20261123-1145';
+var APP_VERSION='20261123-1255';
 var D=null,TAB='resumo',MES=null,CRF='todos',F={q:'',cat:'',fornecedor:'',tipo:''};
 var AC='#B08D57',AC2='#D9C29A',MU='#9a8a70',TRK='rgba(176,141,87,.15)',PAL=['#B08D57','#C9A96A','#8E7550','#D8BF8E','#A3865E','#E3D1AE'];
 var MN=['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'],MNL=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
@@ -538,16 +554,17 @@ function cvCommit(op){
     if(res.missing||res.warn){
       if(res.fresh){CV.list=res.fresh.value||[];CV.updatedAt=res.fresh.updated_at||''}
       CV.note='Esse convite mudou em outro aparelho. Atualizei a lista.';
-      closeSheet();render();return;
+      closeSheet();render();return false;
     }
     CV.list=res.list;CV.updatedAt=res.ts;
     CV.note=res.merged?'Havia outra alteração. Juntei com a sua.':'';
-    closeSheet();render();
+    closeSheet();render();return true;
   }).catch(function(err){
     CV.busy=false;
     CV.note='Não salvou: '+((err&&err.message)||'erro');
     var box=document.getElementById('cvsaveerr');
     if(box)box.textContent=CV.note;else render();
+    return false;
   });
 }
 function cvLogin(){
@@ -592,7 +609,10 @@ function vConv(){
     var hp=hidden.reduce(function(s,c){return s+cvQtd(c)},0);
     var body=shown.map(function(c){
       var sub=cvSub(c);
-      return '<div class="li tap" onclick="cvEdit('+q(String(c.id))+')"><div class="row" style="align-items:center"><div style="display:flex;gap:10px;align-items:center;min-width:0"><div class="cvn">'+cvNum(cvQtd(c))+'</div><div style="min-width:0"><div class="b">'+e(c.nome||'Sem nome')+'</div>'+(sub?'<div class="sub">'+sub+'</div>':'')+'</div></div><div class="cvside">'+cvSlot(cvViaIcon(c.via))+cvSlot(c.padrinho?cvPadIcon():'')+cvPill(cvUi(c))+'</div></div></div>';
+      var u=cvUi(c),sw=(u==='aenviar'||u==='enviado');
+      var fg='<div class="cvfg tap" onclick="cvTap('+q(String(c.id))+')"><div class="row" style="align-items:center"><div style="display:flex;gap:10px;align-items:center;min-width:0"><div class="cvn">'+cvNum(cvQtd(c))+'</div><div style="min-width:0"><div class="b">'+e(c.nome||'Sem nome')+'</div>'+(sub?'<div class="sub">'+sub+'</div>':'')+'</div></div><div class="cvside">'+cvSlot(cvViaIcon(c.via))+cvSlot(c.padrinho?cvPadIcon():'')+cvPill(cvUi(c))+'</div></div></div>';
+      if(!sw)return '<div class="li tap" onclick="cvTap('+q(String(c.id))+')"><div class="row" style="align-items:center"><div style="display:flex;gap:10px;align-items:center;min-width:0"><div class="cvn">'+cvNum(cvQtd(c))+'</div><div style="min-width:0"><div class="b">'+e(c.nome||'Sem nome')+'</div>'+(sub?'<div class="sub">'+sub+'</div>':'')+'</div></div><div class="cvside">'+cvSlot(cvViaIcon(c.via))+cvSlot(c.padrinho?cvPadIcon():'')+cvPill(cvUi(c))+'</div></div></div>';
+      return '<div class="li cvsw" data-cvid="'+e(String(c.id))+'"><div class="cvbg" aria-hidden="true">'+(u==='enviado'?cvUndoSvg()+'Desfazer':cvCheckSvg()+'Enviado')+'</div>'+fg+'</div>';
     }).join('');
     var more=hidden.length?'<div class="sub tap" style="margin-top:8px;color:'+AC+';font-weight:600" onclick="cvMore('+q(n[0])+')">Ver mais '+hp+(hp===1?' pessoa':' pessoas')+' ›</div>':'';
     return '<div class="card"><h3>'+e(n[1])+' · '+pess+(pess===1?' pessoa':' pessoas')+'</h3>'+body+more+'</div>';
@@ -666,6 +686,92 @@ function cvSave(){
   cvCommit({type:'edit',id:d.id,patch:patch});
 }
 function cvDoDel(){if(!CV.draft||!CV.draft.id)return;cvCommit({type:'del',id:CV.draft.id})}
+/* ---------- DESLIZAR PARA ENVIADO (direita → esquerda) ----------
+   Grava só enviado (e envio, se a linha tiver esse campo) do id da linha, pelo cvCommit
+   normal: lê a linha atual do banco, aplica o patch por id e grava com o mesmo controle de
+   concorrência. Nunca usa CV.draft, então nome e cônjuge não entram no patch. */
+var CVSW={g:null,last:0,pend:false,toastT:0,undo:null};
+var CVSW_LOCK=10,CVSW_PCT=0.4;
+function cvCheckSvg(){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12.5l5 5L19.5 7"/></svg>'}
+function cvUndoSvg(){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>'}
+function cvTap(id){if(Date.now()-CVSW.last<450)return;cvEdit(id)}
+function cvSentPatch(c,sent){var p={enviado:!!sent};if(c&&Object.prototype.hasOwnProperty.call(c,'envio'))p.envio=!!sent;return p}
+function cvFindId(id){for(var i=0;i<CV.list.length;i++)if(String(CV.list[i].id)===String(id))return CV.list[i];return null}
+function cvSwipeSet(id,sent,isUndo){
+  // devolve a Promise da gravação; false se não gravou nada
+  if(CV.busy||CVSW.pend||!sb||!CV.listaId)return Promise.resolve(false);
+  var c=cvFindId(id);if(!c)return Promise.resolve(false);
+  var u=cvUi(c);if(u!=='aenviar'&&u!=='enviado')return Promise.resolve(false);
+  if(cvSent(c)===!!sent)return Promise.resolve(false);
+  var patch=cvSentPatch(c,sent),prev={};Object.keys(patch).forEach(function(k){prev[k]=c[k]});
+  Object.keys(patch).forEach(function(k){c[k]=patch[k]});   // otimista: a linha já aparece no novo estado
+  CVSW.pend=true;render();
+  if(!isUndo)cvToastShow(c.nome||'Convite',sent,id);else cvToastMsg(sent?'Voltou para Enviado':'Voltou para A enviar');
+  return cvCommit({type:'edit',id:c.id,patch:patch}).then(function(ok){
+    CVSW.pend=false;
+    if(!ok){var c2=cvFindId(id);if(c2&&String(CV.note||'').indexOf('Não salvou')===0){ // erro de rede: desfaz o otimista
+      Object.keys(prev).forEach(function(k){if(prev[k]===undefined)delete c2[k];else c2[k]=prev[k]})}cvToastHide();render()}
+    return ok;
+  });
+}
+function cvToastShow(nome,sent,id){
+  var el=document.getElementById('cv-toast');if(!el)return;
+  CVSW.undo={id:id,sent:sent};
+  el.innerHTML='<span>'+e(nome)+' · '+(sent?'Enviado':'A enviar')+'</span><button type="button" onclick="cvSwipeUndo(this)">Desfazer</button>';
+  el.className='show';clearTimeout(CVSW.toastT);CVSW.toastT=setTimeout(cvToastHide,4000);
+}
+function cvToastMsg(t){var el=document.getElementById('cv-toast');if(!el)return;el.innerHTML='<span>'+e(t)+'</span>';el.className='show';clearTimeout(CVSW.toastT);CVSW.toastT=setTimeout(cvToastHide,1800)}
+function cvToastHide(){var el=document.getElementById('cv-toast');if(el)el.className='';CVSW.undo=null}
+function cvSwipeUndo(btn){
+  var u=CVSW.undo;if(!u)return;CVSW.undo=null;if(btn)btn.disabled=true;
+  var tries=0;
+  (function go(){ // se a gravação do gesto ainda está em andamento, espera ela terminar
+    if(CV.busy||CVSW.pend){if(++tries<60)setTimeout(go,100);return}
+    cvSwipeSet(u.id,!u.sent,true);
+  })();
+}
+function cvSwReset(g,anim){
+  if(!g||!g.fg)return;
+  g.fg.style.transition=anim?'transform .2s ease':'';g.fg.style.transform='';
+  var row=g.row;setTimeout(function(){row.classList.remove('drag','armed');if(g.fg)g.fg.style.transition=''},anim?200:0);
+}
+document.addEventListener('pointerdown',function(ev){
+  if(ev.pointerType==='mouse'&&ev.button!==0)return;
+  var row=ev.target&&ev.target.closest?ev.target.closest('.cvsw'):null;
+  if(!row||CVSW.g)return;
+  CVSW.g={row:row,fg:row.querySelector('.cvfg'),id:row.getAttribute('data-cvid'),x0:ev.clientX,y0:ev.clientY,dx:0,mode:'',pid:ev.pointerId,w:row.offsetWidth||300};
+},{passive:true});
+document.addEventListener('pointermove',function(ev){
+  var g=CVSW.g;if(!g||ev.pointerId!==g.pid)return;
+  var dx=ev.clientX-g.x0,dy=ev.clientY-g.y0;
+  if(!g.mode){
+    var ax=Math.abs(dx),ay=Math.abs(dy);
+    if(ax<CVSW_LOCK&&ay<CVSW_LOCK)return;
+    // só vira gesto se for claramente horizontal e para a esquerda; senão é scroll
+    if(dx<0&&ax>ay*1.5){g.mode='h';g.row.classList.add('drag');try{g.row.setPointerCapture(ev.pointerId)}catch(err){}}
+    else{CVSW.g=null;return}
+  }
+  if(ev.cancelable)ev.preventDefault();
+  g.dx=Math.min(0,dx);
+  g.fg.style.transform='translateX('+g.dx+'px)';
+  g.row.classList.toggle('armed',-g.dx>=g.w*CVSW_PCT);
+},{passive:false});
+function cvSwEnd(ev,cancel){
+  var g=CVSW.g;if(!g||(ev&&ev.pointerId!==g.pid))return;
+  CVSW.g=null;
+  if(g.mode!=='h')return;
+  CVSW.last=Date.now();
+  var pass=!cancel&&-g.dx>=g.w*CVSW_PCT;
+  if(!pass||CV.busy||CVSW.pend){cvSwReset(g,true);return}
+  var c=cvFindId(g.id);if(!c){cvSwReset(g,true);return}
+  var sent=!cvSent(c);
+  g.fg.style.transition='transform .18s ease';g.fg.style.transform='translateX(-100%)';
+  setTimeout(function(){cvSwipeSet(g.id,sent,false).then(function(ok){if(ok===false&&document.body.contains(g.row))cvSwReset(g,true)})},180);
+}
+document.addEventListener('pointerup',function(ev){cvSwEnd(ev,false)});
+// iPhone: com o gesto travado na horizontal, a página não rola junto
+document.addEventListener('touchmove',function(ev){if(CVSW.g&&CVSW.g.mode==='h'&&ev.cancelable)ev.preventDefault()},{passive:false});
+document.addEventListener('pointercancel',function(ev){cvSwEnd(ev,true)});
 /* ---------- CHAT (casamento_chat; mesma sessão e lista dos convidados) ---------- */
 var CH={state:'init',err:'',note:'',msgs:[],urls:{},listaId:'',email:'',uid:'',draft:'',busy:false,rec:null,recAt:0,transcript:'',rt:null,askId:'',tipo:'automatico',tipoAt:'automatico',durSec:0,mode:'',fails:[],sending:null,pend:[],histP:[],exigir:true,hist:'propostas',dd:false,inModo:'voz',txt:''};
 try{if(localStorage.getItem('cas_grav_modo')==='texto')CH.inModo='texto'}catch(err){}
