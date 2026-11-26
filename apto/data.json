@@ -1,29 +1,29 @@
 {
- "geradoEm": "2026-11-22T09:01-03:00",
+ "geradoEm": "2026-11-26T18:12-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 2014468.94,
-  "pago": 1479170.29,
-  "restante": 535298.65
+  "total": 2484756.39,
+  "pago": 1819457.7400000002,
+  "restante": 665298.65
  },
  "categorias": [
   {
-   "nome": "Eletrodomésticos",
-   "total": 107167.81999999999,
-   "pago": 107167.81999999999,
-   "restante": 0.0
-  },
-  {
    "nome": "Mobília",
-   "total": 101600.0,
-   "pago": 76200.0,
-   "restante": 25400.0
+   "total": 451600.0,
+   "pago": 326200.0,
+   "restante": 125400.0
   },
   {
    "nome": "Obra",
-   "total": 84580.15,
-   "pago": 62322.00000000001,
-   "restante": 22258.149999999987
+   "total": 202567.13,
+   "pago": 150308.98,
+   "restante": 52258.149999999994
+  },
+  {
+   "nome": "Eletrodomésticos",
+   "total": 108708.29,
+   "pago": 108708.29,
+   "restante": 0.0
   },
   {
    "nome": "Climatização",
@@ -33,8 +33,8 @@
   },
   {
    "nome": "Mão de obra",
-   "total": 17590.0,
-   "pago": 8590.0,
+   "total": 18350.0,
+   "pago": 9350.0,
    "restante": 9000.0
   },
   {
@@ -53,9 +53,9 @@
  "comodos": [
   {
    "nome": "Apartamento",
-   "total": 73240.58,
-   "pago": 73240.58,
-   "restante": 0.0
+   "total": 540142.56,
+   "pago": 410142.56,
+   "restante": 130000.00000000006
   },
   {
    "nome": "Sala de Estar",
@@ -71,8 +71,8 @@
   },
   {
    "nome": "Cozinha",
-   "total": 51914.579999999994,
-   "pago": 48748.38999999999,
+   "total": 52969.31,
+   "pago": 49803.119999999995,
    "restante": 3166.1900000000023
   },
   {
@@ -125,9 +125,9 @@
   },
   {
    "nome": "Sala Gamer",
-   "total": 38966.02,
-   "pago": 33025.9,
-   "restante": 5940.119999999995
+   "total": 39451.76,
+   "pago": 33511.64,
+   "restante": 5940.120000000003
   },
   {
    "nome": "Quarto Visita",
@@ -143,8 +143,8 @@
   },
   {
    "nome": "Adega",
-   "total": 2719.0,
-   "pago": 2719.0,
+   "total": 4564.0,
+   "pago": 4564.0,
    "restante": 0.0
   },
   {
@@ -568,22 +568,10 @@
    "fornecedor": "-",
    "desc": "Impressora 3D",
    "qtd": "1 und",
-   "total": 7590.0,
-   "pago": 7590.0,
+   "total": 9488.01,
+   "pago": 9488.01,
    "entrega": null,
-   "obs": "Cartão 1x (R$ 447,00 + R$ 6.416,61) + TekBond 200 100g R$ 53,03 (Amazon 20/11/26, cartão 12x Visa final 2910, inclui R$ 18,39 de frete, pedido 701-8941891-0527418) + Secador de filamento Sovol SH01 R$ 673,36 (AliExpress 11/11/26, cartão 1x)",
-   "comodo": "Sala Gamer",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "AliExpress",
-   "desc": "Vídeo game portátil Trimui Smart Pro S",
-   "qtd": "1 und",
-   "total": 1412.27,
-   "pago": 1412.27,
-   "entrega": null,
-   "obs": "Cartão 1x",
+   "obs": "Cartão 1x (R$ 447,00 + R$ 6.416,61) + TekBond 200 100g R$ 53,03 (Amazon 20/11/26, cartão 12x Visa final 2910, inclui R$ 18,39 de frete, pedido 701-8941891-0527418) + Secador de filamento Sovol SH01 R$ 673,36 (AliExpress 11/11/26, cartão 1x) + Amazon 25/11/26 (cartão 12x sem juros): filamentos PLA F3D Brasil Nude/Rosa/Granito R$ 256,47; Bambu PLA Lite vermelho R$ 129,90; termo-higrômetro VIVOSUN Bluetooth R$ 131,58; Bambu Lab PLA Lite Sunflower Yellow/Matte Beige/Green R$ 1.098,16; Bambu PLA Lite Marrom Cacau R$ 160,00; Bambu Lab PLA Lite White R$ 121,90",
    "comodo": "Sala Gamer",
    "cat": "Eletrodomésticos"
   },
@@ -874,6 +862,90 @@
    "obs": "Cartão 1x. R$ 182,57 + R$ 80,88",
    "comodo": "Cozinha",
    "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-23",
+   "fornecedor": "Mercado Livre",
+   "desc": "Taças de cristal (7 jogos de 6: Titanium Vinho Tinto, Xtra 360ml e Bohemia Degustação)",
+   "qtd": "7 und",
+   "total": 878.73,
+   "pago": 878.73,
+   "entrega": null,
+   "obs": "Cartão 1x. Transação #2000016220872939. 2 jogos Titanium Vinho Tinto R$ 206 + 2 jogos Xtra 360ml R$ 339,40 + 2 jogos Titanium Vinho Tinto (outro modelo) R$ 379,80 + 1 jogo Bohemia Degustação R$ 121; desconto -R$ 161,47, cupom -R$ 6, frete grátis. Loja presumida (tela do pedido)",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio)",
+   "qtd": "1 und",
+   "total": 176.0,
+   "pago": 176.0,
+   "entrega": "2026-12-11",
+   "obs": "Cartão 12x sem juros",
+   "comodo": "Cozinha",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-23",
+   "fornecedor": "Rossler",
+   "desc": "Pedras parede da adega",
+   "qtd": "-",
+   "total": 1085.0,
+   "pago": 1085.0,
+   "entrega": null,
+   "obs": "Pix",
+   "comodo": "Adega",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-11-23",
+   "fornecedor": "Rossler",
+   "desc": "Instalação pedras parede da adega",
+   "qtd": "-",
+   "total": 760.0,
+   "pago": 760.0,
+   "entrega": null,
+   "obs": "Pix",
+   "comodo": "Adega",
+   "cat": "Mão de obra"
+  },
+  {
+   "data": "2026-11-26",
+   "fornecedor": "Conceito Mármores",
+   "desc": "Pedras (um pouco em cada ambiente)",
+   "qtd": "1 und",
+   "total": 80000.0,
+   "pago": 50000.0,
+   "entrega": null,
+   "obs": "Pix R$ 50.000 em 26/11/26. Restante R$ 30.000 na entrega, prevista para março/27",
+   "comodo": "Apartamento",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-11-26",
+   "fornecedor": "Elevato",
+   "desc": "Acabamentos - apartamento completo (chuveiro, toalheiro, misturador etc.)",
+   "qtd": "1 und",
+   "total": 36901.98,
+   "pago": 36901.98,
+   "entrega": null,
+   "obs": "Cartão 6x sem juros, 1ª parcela dez/26",
+   "comodo": "Apartamento",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-11-26",
+   "fornecedor": "Maharo",
+   "desc": "Mobília - apartamento completo",
+   "qtd": "1 und",
+   "total": 350000.0,
+   "pago": 250000.0,
+   "entrega": null,
+   "obs": "Cartão 10x de R$ 15.000 a partir de dez/26 (R$ 150.000). Pix R$ 100.000 em 26/11/26. R$ 100.000 na entrega em fev/27 (sem dia definido)",
+   "comodo": "Apartamento",
+   "cat": "Mobília"
   }
  ],
  "cronograma": [
@@ -3425,15 +3497,7 @@
    "data": "2026-11-10",
    "fornecedor": "-",
    "desc": "Impressora 3D",
-   "valor": 7590.0,
-   "status": "pago",
-   "cat": "Eletrodomésticos"
-  },
-  {
-   "data": "2026-11-10",
-   "fornecedor": "AliExpress",
-   "desc": "Vídeo game portátil Trimui Smart Pro S",
-   "valor": 1412.27,
+   "valor": 9488.01,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
@@ -4676,6 +4740,208 @@
    "valor": 263.45,
    "status": "pago",
    "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-23",
+   "fornecedor": "Mercado Livre",
+   "desc": "Taças de cristal (7 jogos de 6: Titanium Vinho Tinto, Xtra 360ml e Bohemia Degustação)",
+   "valor": 878.73,
+   "status": "pago",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-12-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio) · cartão 1/12",
+   "valor": 14.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio) · cartão 2/12",
+   "valor": 14.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio) · cartão 3/12",
+   "valor": 14.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio) · cartão 4/12",
+   "valor": 14.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio) · cartão 5/12",
+   "valor": 14.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio) · cartão 6/12",
+   "valor": 14.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio) · cartão 7/12",
+   "valor": 14.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio) · cartão 8/12",
+   "valor": 14.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio) · cartão 9/12",
+   "valor": 14.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio) · cartão 10/12",
+   "valor": 14.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio) · cartão 11/12",
+   "valor": 14.67,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-25",
+   "fornecedor": "Amazon",
+   "desc": "Jogo 6 taças Bohemia Xtra Martine para champanhe (cristal titânio) · cartão 12/12",
+   "valor": 14.63,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-11-23",
+   "fornecedor": "Rossler",
+   "desc": "Pedras parede da adega",
+   "valor": 1085.0,
+   "status": "pago",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-11-23",
+   "fornecedor": "Rossler",
+   "desc": "Instalação pedras parede da adega",
+   "valor": 760.0,
+   "status": "pago",
+   "cat": "Mão de obra"
+  },
+  {
+   "data": "2026-11-26",
+   "fornecedor": "Conceito Mármores",
+   "desc": "Pedras (um pouco em cada ambiente)",
+   "valor": 50000.0,
+   "status": "pago",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-12-26",
+   "fornecedor": "Elevato",
+   "desc": "Acabamentos - apartamento completo (chuveiro, toalheiro, misturador etc.) · cartão 1/6",
+   "valor": 6150.33,
+   "status": "previsto",
+   "cat": "Obra",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-26",
+   "fornecedor": "Elevato",
+   "desc": "Acabamentos - apartamento completo (chuveiro, toalheiro, misturador etc.) · cartão 2/6",
+   "valor": 6150.33,
+   "status": "previsto",
+   "cat": "Obra",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-26",
+   "fornecedor": "Elevato",
+   "desc": "Acabamentos - apartamento completo (chuveiro, toalheiro, misturador etc.) · cartão 3/6",
+   "valor": 6150.33,
+   "status": "previsto",
+   "cat": "Obra",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-26",
+   "fornecedor": "Elevato",
+   "desc": "Acabamentos - apartamento completo (chuveiro, toalheiro, misturador etc.) · cartão 4/6",
+   "valor": 6150.33,
+   "status": "previsto",
+   "cat": "Obra",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-26",
+   "fornecedor": "Elevato",
+   "desc": "Acabamentos - apartamento completo (chuveiro, toalheiro, misturador etc.) · cartão 5/6",
+   "valor": 6150.33,
+   "status": "previsto",
+   "cat": "Obra",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-26",
+   "fornecedor": "Elevato",
+   "desc": "Acabamentos - apartamento completo (chuveiro, toalheiro, misturador etc.) · cartão 6/6",
+   "valor": 6150.33,
+   "status": "previsto",
+   "cat": "Obra",
+   "cartao": 1
+  },
+  {
+   "data": "2026-11-26",
+   "fornecedor": "Maharo",
+   "desc": "Mobília - apartamento completo",
+   "valor": 250000.0,
+   "status": "pago",
+   "cat": "Mobília"
   },
   {
    "data": "2026-08-31",
