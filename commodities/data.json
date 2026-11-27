@@ -1,47 +1,47 @@
 {
-  "updatedAt": "26/11/2026 às 08:02 (Brasília)",
-  "date": "26/11/2026",
-  "weekday": "Quinta-feira",
-  "period": "25/11 a 26/11",
-  "newsDate": "Qui, 26/11",
+  "updatedAt": "27/11/2026 às 08:03 (Brasília)",
+  "date": "27/11/2026",
+  "weekday": "Sexta-feira",
+  "period": "26/11 a 27/11",
+  "newsDate": "Sex, 27/11",
   "prevNewsDates": [
-    "Qua, 25/11",
-    "Ter, 24/11"
+    "Qui, 26/11",
+    "Qua, 25/11"
   ],
-  "asOf": "Notícias de 25/11 a 26/11 · Preços de 26/11 às 08h (Brasília), todos em US$ (câmbio do TradingView) · Variação % do contrato na moeda de origem, comparada ao fechamento de 24/11 · Bolsas dos EUA fechadas ou sem ajuste hoje (Ação de Graças)",
-  "chgShort": "desde 24/11",
-  "chgFrom": "fechamento de 24/11 (último pregão antes da edição de 25/11)",
-  "panorama": "Petróleo +2,6% desde 24/11 com ataque houthi a refinaria saudita e minas em Ormuz; açúcar +3,9% com safra menor na Índia (1 mês passa a neutro); palma +1,2% com taxa de exportação proposta na Indonésia; bolsas dos EUA fechadas hoje pela Ação de Graças.",
+  "asOf": "Notícias de 26/11 a 27/11 · Preços de 27/11 às 08h (Brasília), todos em US$ (câmbio do TradingView; real pelo dólar futuro da B3, R$ 5,7465) · Variação % do contrato na moeda de origem, comparada ao fechamento de 25/11 · CBOT ainda sem pregão desde 25/11 (reabre hoje às 11h30, horário curto)",
+  "chgShort": "desde 25/11",
+  "chgFrom": "fechamento de 25/11 (último pregão antes da edição de 26/11)",
+  "panorama": "Petróleo +2,3% desde 25/11 (WTI a US$ 85,61, Brent na máxima desde 09/11) com novo ataque a refinaria saudita; açúcar +2,6% e palma +1,8%; gás −2,5%; grãos da CBOT sem pregão desde quarta. Nenhuma tendência mudou.",
   "assets": [
     {
       "name": "Petróleo WTI",
       "ticker": "CL1!",
       "group": "Energia",
-      "price": "US$ 84,16",
-      "chg": "▲ +2,6%",
+      "price": "US$ 85,61",
+      "chg": "▲ +2,3%",
       "chgDir": "up",
       "sub": "jan/27",
       "safraMundo": "",
       "safraBrasil": "",
-      "orig": "Brent jan/27: US$ 94,73 (+3,6% desde 24/11)",
+      "orig": "Brent jan/27: US$ 96,98",
       "bullets": [
-        "Subiu 2,0% na quarta (jan/27 a US$ 83,68): os houthis dizem ter atacado Ras Tanura, maior refinaria da Arábia Saudita, e o Irã diz que minas atingiram navios em Ormuz (Reuters)",
-        "A Ucrânia atingiu 15 refinarias russas em novembro; o refino da Rússia caiu à metade desde 30/10, o menor em mais de 20 anos (Bloomberg/Rystad, via Barchart)",
-        "Estoque de petróleo dos EUA +1,1 mi barris, a 418,9 mi, abaixo dos +1,5 mi esperados; produção dos EUA em recorde pela 5ª semana (EIA)",
-        "Hoje a US$ 84,16 (Brent a US$ 94,73), sem ajuste pelo feriado de Ação de Graças nos EUA; a OPEP+ decide 2027 em 29/11"
+        "Sobe 2,3% desde quarta (jan/27 a US$ 85,61) e o Brent, a US$ 96,98, tocou a máxima desde 09/11; o petróleo caminha para encerrar 3 semanas seguidas de queda (Reuters)",
+        "Um projétil atingiu na quinta a refinaria de Jazan (400 mil barris/dia), da Saudi Aramco, que parou parte da operação, um dia depois do ataque houthi a Ras Tanura (Reuters/ING)",
+        "A OPEP+ tem acordo em princípio para manter as metas de produção no 1º tri de 2027 na reunião de domingo (29/11), segundo três fontes (Reuters)",
+        "Sem ajuste do WTI na quinta pelo feriado de Ação de Graças nos EUA"
       ],
       "prevNews": [
+        [
+          "Subiu 2,0% na quarta (jan/27 a US$ 83,68): os houthis dizem ter atacado Ras Tanura, maior refinaria da Arábia Saudita, e o Irã diz que minas atingiram navios em Ormuz (Reuters)",
+          "A Ucrânia atingiu 15 refinarias russas em novembro; o refino da Rússia caiu à metade desde 30/10, o menor em mais de 20 anos (Bloomberg/Rystad, via Barchart)",
+          "Estoque de petróleo dos EUA +1,1 mi barris, a 418,9 mi, abaixo dos +1,5 mi esperados; produção dos EUA em recorde pela 5ª semana (EIA)",
+          "Hoje a US$ 84,16 (Brent a US$ 94,73), sem ajuste pelo feriado de Ação de Graças nos EUA; a OPEP+ decide 2027 em 29/11"
+        ],
         [
           "Subiu 2,3% na terça (jan/27 a US$ 82,05) depois de tocar US$ 79,07, mínima desde 10/08: novos ataques a navios em Ormuz (CNBC/Reuters)",
           "A Líbia reabriu o oleoduto de Sharara e o Iraque pressiona a OPEP+ a elevar sua capacidade antes da reunião de 29/11 (Reuters)",
           "Estoque de petróleo dos EUA +126 mil barris na semana até 20/11, abaixo dos +1,5 mi esperados (API)",
           "Hoje cai 0,8% (US$ 81,38) com a expectativa de sobra de oferta; Brent a US$ 90,96"
-        ],
-        [
-          "Caiu 3,9% na segunda (jan/27 a US$ 80,17), mínima em 3 meses; o Brent fechou abaixo de US$ 90, menor nível desde agosto",
-          "Motivo: a exportação do Golfo voltou com força, com a Arábia Saudita produzindo 9,19 mi barris/dia, +1,18 mi (Stocktwits)",
-          "Riscos seguem: a Guarda Revolucionária do Irã diz que três petroleiros bateram em minas em Ormuz, e os EUA lançaram novas sanções ao Irã (Benzinga)",
-          "Hoje quase estável (US$ 80,09); a OPEP+ decide a produção de 2027 em 29/11"
         ]
       ],
       "why": "1 mês — queda: a AIE prevê sobra já neste trimestre, a exportação do Golfo voltou ao nível do início do ano e o dólar forte pesa. 2 e 3 meses — neutro: ataques a navios e infraestrutura no Golfo seguem como risco de alta; a OPEP+ decide 2027 em 29/11. 6 meses — queda: a AIE vê sobra maior em 2027 e a EIA vê o Brent abaixo de US$ 90 no 2º tri de 2027.",
@@ -113,37 +113,37 @@
         85.76,
         90.42,
         104.12,
-        84.16
+        85.61
       ]
     },
     {
       "name": "Gás Natural",
       "ticker": "NG1!",
       "group": "Energia",
-      "price": "US$ 3,618",
-      "chg": "▼ −1,2%",
+      "price": "US$ 3,567",
+      "chg": "▼ −2,5%",
       "chgDir": "down",
       "sub": "jan/27",
       "safraMundo": "",
       "safraBrasil": "",
       "orig": "",
       "bullets": [
-        "O dez/26 venceu na quarta em queda de 1,6%; o jan/27 fechou a US$ 3,658 (−0,1%) com previsão de calor acima do normal nos EUA de 30/11 a 04/12 (Vaisala, via Barchart)",
-        "Estoque caiu 24 bcf na semana até 20/11, igual ao esperado e à média de 5 anos; segue 2,1% acima da média sazonal (EIA)",
-        "Produção dos EUA em 114,4 bcf/d (+3,5% no ano) e GNL em 22,1 bcf/d (BNEF); sondas de gás −1, a 127 (Baker Hughes)",
-        "Hoje cai 1,1% (US$ 3,618)"
+        "Cai 2,5% desde quarta (jan/27 a US$ 3,567); sem ajuste na quinta pelo feriado de Ação de Graças",
+        "GNL na Ásia para janeiro a US$ 28,40/MMBtu, ante US$ 26,90 na semana anterior; o fluxo por Ormuz e a procura fraca seguram os preços (Reuters)",
+        "A Austrália, grande exportadora de GNL, aprovou lei que reserva até 1/5 das cargas ao mercado interno a partir de 2028 (Dow Jones)"
       ],
       "prevNews": [
+        [
+          "O dez/26 venceu na quarta em queda de 1,6%; o jan/27 fechou a US$ 3,658 (−0,1%) com previsão de calor acima do normal nos EUA de 30/11 a 04/12 (Vaisala, via Barchart)",
+          "Estoque caiu 24 bcf na semana até 20/11, igual ao esperado e à média de 5 anos; segue 2,1% acima da média sazonal (EIA)",
+          "Produção dos EUA em 114,4 bcf/d (+3,5% no ano) e GNL em 22,1 bcf/d (BNEF); sondas de gás −1, a 127 (Baker Hughes)",
+          "Hoje cai 1,1% (US$ 3,618)"
+        ],
         [
           "O card passa a seguir o jan/27, porque o dez/26 vence hoje; o dez/26 subiu 4,4% na terça, a US$ 3,323",
           "Frio nos EUA levou a demanda de aquecimento a 96,9 bcf/d, máxima em 8 meses; exportação de GNL em 21,8 bcf/d (Barchart)",
           "Analistas esperam a 1ª retirada de estoque da temporada (17 a 25 bcf); a EIA divulga hoje às 14h (Brasília), antecipada pelo feriado nos EUA",
           "Jan/27 a US$ 3,648 hoje (−0,4% no dia); o Goldman Sachs vê os data centers elevando a demanda por gás até 2028 (Reuters)"
-        ],
-        [
-          "Despencou 6,7% na segunda (dez/26 a US$ 3,184): a agência de clima dos EUA (NOAA) prevê calor acima da média por duas semanas no Meio-Oeste e Leste (Barchart)",
-          "Produção dos EUA em 112,7 bcf/d (+2,6% no ano) e consumo 7,8% menor que há um ano; sondas de gás +1, a 128 (Baker Hughes)",
-          "Hoje sobe 1,9% (US$ 3,245); o dez/26 vence nesta quarta (25/11)"
         ]
       ],
       "why": "1 e 2 meses — neutro: frio no curto prazo e GNL perto do recorde sustentam, mas o estoque acima da média e previsões mais amenas adiante pesam (Reuters). 3 e 6 meses — queda: a EIA vê produção maior e o El Niño indica inverno ameno no norte dos EUA.",
@@ -215,35 +215,35 @@
         2.935,
         3.026,
         2.898,
-        3.618
+        3.567
       ]
     },
     {
       "name": "Etanol hidratado B3",
       "ticker": "ETH1!",
       "group": "Energia",
-      "price": "US$ 546,40/m³",
-      "chg": "► 0,0%",
-      "chgDir": "flat",
+      "price": "US$ 551,47/m³",
+      "chg": "▼ −0,4%",
+      "chgDir": "down",
       "sub": "dez/26",
       "safraMundo": "EUA o ano todo, de milho (52%)",
       "safraBrasil": "cana: Centro-Sul abr–nov · milho: o ano todo (27% do mundo)",
-      "orig": "Original: R$ 3.183/m³ (dez/26, ajuste de 24/11, último no TradingView) · câmbio 5,83",
+      "orig": "Original: R$ 3.169/m³ (dez/26, último negócio no TradingView, em 26/11; −0,4% contra o ajuste anterior de R$ 3.183) · câmbio 5,7465 (dólar futuro B3)",
       "bullets": [
-        "O TradingView mostra agora o ajuste de 24/11 do dez/26: R$ 3.183/m³ (US$ 546), −0,7% no dia; o pregão de 25/11 ainda não aparece",
-        "O real se fortaleceu para R$ 5,83 por dólar (era R$ 5,91 em 23/11), o que deixa o etanol mais caro em dólar",
-        "Petróleo +2,0% na quarta; nos EUA, produção de etanol em 1,129 mi barris/dia na semana até 20/11 e estoque +345 mil barris (EIA, via Barchart)"
+        "O dez/26 recuou 0,4%, a R$ 3.169/m³ (US$ 551); em dólar sobe porque o real se fortaleceu",
+        "O dólar caiu 1,23% na quinta, a R$ 5,7464, 4ª queda seguida, com a chance de Luiz Carlos Trabuco assumir a Fazenda (InfoMoney/Reuters)",
+        "No físico, o etanol em Paulínia fechou a quinta em R$ 3.091/m³ (US$ 538), +0,24% no dia e +5,53% no mês (Cepea)"
       ],
       "prevNews": [
+        [
+          "O TradingView mostra agora o ajuste de 24/11 do dez/26: R$ 3.183/m³ (US$ 546), −0,7% no dia; o pregão de 25/11 ainda não aparece",
+          "O real se fortaleceu para R$ 5,83 por dólar (era R$ 5,91 em 23/11), o que deixa o etanol mais caro em dólar",
+          "Petróleo +2,0% na quarta; nos EUA, produção de etanol em 1,129 mi barris/dia na semana até 20/11 e estoque +345 mil barris (EIA, via Barchart)"
+        ],
         [
           "Ajuste de 23/11 do dez/26: R$ 3.205/m³ (US$ 543), −0,2% no dia; o TradingView ainda não mostra o pregão de 24/11",
           "O real se recuperou para R$ 5,90 por dólar, saindo da mínima em 1,75 ano",
           "O petróleo +2,3% na terça favorece o etanol frente à gasolina (Barchart)"
-        ],
-        [
-          "O TradingView ainda não mostra o pregão de 23/11; o último ajuste do dez/26 é R$ 3.210,50/m³ (US$ 541), sem variação desde 19/11",
-          "Cepea Paulínia: R$ 3.087,50/m³ (US$ 521) em 23/11, +0,15% no dia e +5,4% em novembro",
-          "O real caiu à mínima em 1,75 ano (R$ 5,93 por dólar), o que deixa o etanol mais barato em dólar"
         ]
       ],
       "why": "1 e 2 meses — alta: entressafra e moagem atrasada pela chuva; a curva sobe até janeiro. 3 meses — neutro: março já negocia no nível de hoje. 6 meses — queda: safra 27/28 a partir de abril (maio a US$ 474/m³) e petróleo mais fraco.",
@@ -315,7 +315,7 @@
         484.8,
         521.56,
         571.72,
-        546.4
+        551.47
       ]
     },
     {
@@ -323,29 +323,28 @@
       "ticker": "ZC1!",
       "group": "Grãos",
       "price": "US$ 4,3975",
-      "chg": "▲ +1,3%",
-      "chgDir": "up",
+      "chg": "► 0,0%",
+      "chgDir": "flat",
       "sub": "dez/26",
       "safraMundo": "EUA set–nov (31%) · China set–out (24%)",
       "safraBrasil": "verão fev–mai · safrinha jun–ago (11% do mundo)",
       "orig": "",
       "bullets": [
-        "Subiu 1,3% na quarta (dez/26 a US$ 4,3975) com recompra de vendidos antes do feriado, depois da mínima em 5 meses na terça (Reuters/Barchart)",
-        "O Brasil deve exportar 7,92 mi t de milho em novembro, 0,14 mi t a menos que na estimativa anterior (ANEC)",
-        "CBOT fechada hoje (Ação de Graças) e com pregão curto na sexta; as vendas semanais de exportação saem sexta (esperado 0,7 a 2 mi t)"
+        "A África do Sul deve colher a maior safra de milho da história, 17,76 mi t, 6,2% acima da anterior (comitê oficial CEC, via Reuters)",
+        "Na Argentina, o plantio de milho 26/27 chegou a 52,7% da área (Bolsa de Cereais de Buenos Aires, via Reuters)",
+        "CBOT sem pregão desde quarta (dez/26 a US$ 4,3975); reabre hoje às 11h30 em horário curto, com as vendas semanais de exportação"
       ],
       "prevNews": [
+        [
+          "Subiu 1,3% na quarta (dez/26 a US$ 4,3975) com recompra de vendidos antes do feriado, depois da mínima em 5 meses na terça (Reuters/Barchart)",
+          "O Brasil deve exportar 7,92 mi t de milho em novembro, 0,14 mi t a menos que na estimativa anterior (ANEC)",
+          "CBOT fechada hoje (Ação de Graças) e com pregão curto na sexta; as vendas semanais de exportação saem sexta (esperado 0,7 a 2 mi t)"
+        ],
         [
           "Quase estável na terça (dez/26 a US$ 4,34, −0,25 centavo); março e maio subiram até 1,25 centavo (Barchart)",
           "Colheita ainda atrasada em Iowa, Nebraska e Dakota do Sul; a Coreia do Sul comprou 68 mil t em licitação (Barchart)",
           "A EIA divulga hoje a produção de etanol dos EUA; o mercado espera alta",
           "Hoje cai 0,3% (US$ 4,325)"
-        ],
-        [
-          "Quase estável na segunda (dez/26 a US$ 4,3425, −0,25 centavo), em semana de feriado nos EUA",
-          "Embarques dos EUA: 1,19 Mt na semana até 19/11, +37% na semana, mas 30% abaixo de um ano antes (USDA)",
-          "Colheita dos EUA em 94% (média 96%); no Brasil, o milho verão está 90% plantado no Centro-Sul, contra 93% em 2025 (AgRural)",
-          "Hoje sobe leve (US$ 4,35), mesmo com o dólar perto da máxima em 20 meses"
         ]
       ],
       "why": "1 mês — neutro: o dólar na máxima em 19 meses e nenhuma compra nova da China derrubaram o milho à mínima em meses, anulando o balanço dos EUA mais apertado. 2, 3 e 6 meses — neutro: safras maiores e chuva regular na América do Sul. O USDA mantém o estoque mundial em alta.",
@@ -426,29 +425,29 @@
       "ticker": "ZS1!",
       "group": "Grãos",
       "price": "US$ 12,4400",
-      "chg": "▲ +0,8%",
-      "chgDir": "up",
+      "chg": "► 0,0%",
+      "chgDir": "flat",
       "sub": "jan/27",
       "safraMundo": "EUA set–nov (28%) · Argentina abr–jun (11%)",
       "safraBrasil": "jan–mai (42% do mundo)",
       "orig": "",
       "bullets": [
-        "Subiu 0,8% na quarta (jan/27 a US$ 12,44), máxima em 1 mês, puxada pelo farelo (Reuters)",
-        "Farelo em alta com a expectativa de mais procura da UE com a nova regra antidesmatamento, que vale a partir do fim de dezembro (Reuters)",
-        "Os EUA propuseram novas tarifas a 14 parceiros, incluindo a China, mas o mercado aposta que ela mantém as compras; o USDA confirmou venda de 132 mil t à China (Reuters/Dow Jones)",
-        "CBOT fechada hoje (Ação de Graças); reabre sexta em pregão curto"
+        "O plantio no Brasil chegou a 82,9% da área até 20/11, acima dos 76,7% de um ano antes e da média de 5 anos (80,6%) (Conab)",
+        "Na Argentina, o plantio de soja 26/27 chegou a 39,7% (Bolsa de Cereais de Buenos Aires, via Reuters)",
+        "CBOT sem pregão desde quarta (jan/27 a US$ 12,44); reabre hoje às 11h30 em horário curto"
       ],
       "prevNews": [
+        [
+          "Subiu 0,8% na quarta (jan/27 a US$ 12,44), máxima em 1 mês, puxada pelo farelo (Reuters)",
+          "Farelo em alta com a expectativa de mais procura da UE com a nova regra antidesmatamento, que vale a partir do fim de dezembro (Reuters)",
+          "Os EUA propuseram novas tarifas a 14 parceiros, incluindo a China, mas o mercado aposta que ela mantém as compras; o USDA confirmou venda de 132 mil t à China (Reuters/Dow Jones)",
+          "CBOT fechada hoje (Ação de Graças); reabre sexta em pregão curto"
+        ],
         [
           "Subiu 5,25 centavos na terça (jan/27 a US$ 12,34) e tocou US$ 12,4425, máxima desde 28/10 (CME)",
           "Embarques dos EUA no ano 58% à frente de 2025, com a China levando metade do volume da semana (CME)",
           "Farelo dez/26 +US$ 7,30, a US$ 353/t curta; óleo de soja −1,25 centavo (Brownfield)",
           "Hoje cai 0,9% (US$ 12,225)"
-        ],
-        [
-          "Subiu 8 centavos na segunda (jan/27 a US$ 12,2875) com procura forte por farelo, ainda com pouca oferta nas esmagadoras (Reuters)",
-          "Brasil plantou 86% da área de soja 26/27, contra 81% um ano antes (AgRural); embarques dos EUA em 1,56 Mt na semana",
-          "Hoje estável (US$ 12,3275); o óleo de soja fraco limita a alta"
         ]
       ],
       "why": "1, 2 e 3 meses — neutro: o estoque menor nos EUA dá suporte, mas a safra recorde americana limita altas. O preço médio do USDA (US$ 12,10) está no nível do futuro. 6 meses — queda: colheita recorde no Brasil de fevereiro a abril.",
@@ -529,28 +528,27 @@
       "ticker": "ZW1!",
       "group": "Grãos",
       "price": "US$ 5,8750",
-      "chg": "▼ −0,3%",
-      "chgDir": "down",
+      "chg": "► 0,0%",
+      "chgDir": "flat",
       "sub": "mar/27",
       "safraMundo": "China mai–jun (17%) · UE jul–ago (16%) · Índia mar–mai (15%) · Argentina e Austrália nov–jan (7%)",
       "safraBrasil": "set–dez (1% do mundo)",
       "orig": "",
       "bullets": [
-        "Caiu 0,3% na quarta (mar/27 a US$ 5,875) com o dólar forte e lavouras melhores nos EUA; o dez/26 perdeu 0,7%, a US$ 5,655 (Reuters/Barchart)",
-        "As vendas semanais de exportação saem na sexta pelo feriado; esperado 250 a 550 mil t de trigo 2026/27 (Reuters)",
-        "CBOT fechada hoje (Ação de Graças); reabre sexta em pregão curto"
+        "A Argentina pode elevar a previsão de trigo 26/27, hoje em 23,4 mi t (2ª maior da história), com produtividade acima do esperado; 24,9% da área colhida (Bolsa de Cereais de Buenos Aires, via Reuters)",
+        "CBOT sem pregão desde quarta (mar/27 a US$ 5,875); reabre hoje às 11h30 em horário curto, com as vendas semanais de exportação"
       ],
       "prevNews": [
+        [
+          "Caiu 0,3% na quarta (mar/27 a US$ 5,875) com o dólar forte e lavouras melhores nos EUA; o dez/26 perdeu 0,7%, a US$ 5,655 (Reuters/Barchart)",
+          "As vendas semanais de exportação saem na sexta pelo feriado; esperado 250 a 550 mil t de trigo 2026/27 (Reuters)",
+          "CBOT fechada hoje (Ação de Graças); reabre sexta em pregão curto"
+        ],
         [
           "Caiu 6,25 centavos na terça (mar/27 a US$ 5,8925), em queda geral antes do feriado nos EUA (Barchart)",
           "A UE exportou 11,4 Mt de trigo de 01/07 a 22/11, 0,58 Mt a mais que um ano antes: mais concorrência para os EUA (Comissão Europeia)",
           "Paquistão recebe ofertas até 30/11 para 800 mil t; trigo russo pelo Báltico a cerca de US$ 246/t FOB (Business Recorder)",
           "Hoje cai mais 0,7% (US$ 5,85)"
-        ],
-        [
-          "Subiu 3,5 centavos na segunda (mar/27 a US$ 5,955): drones atingiram um navio russo no Mar Báltico, rota que substituiu o Mar Negro (Reuters)",
-          "O Paquistão abriu compra de 800 mil t de trigo, sinal de procura nova",
-          "Lavouras de inverno dos EUA melhoram pela 3ª semana: 54% boas ou ótimas (USDA); hoje quase estável (US$ 5,9625)"
         ]
       ],
       "why": "1 e 2 meses — queda: preço abaixo das médias de 50 e 200 dias e estoque mundial maior. Colheitas grandes na Argentina e na Austrália em dez/jan. 3 e 6 meses — neutro: o Mar Negro travado e o preço perto da mínima desde janeiro limitam novas quedas.",
@@ -631,27 +629,26 @@
       "ticker": "KE1!",
       "group": "Grãos",
       "price": "US$ 6,3050",
-      "chg": "▼ −0,3%",
-      "chgDir": "down",
+      "chg": "► 0,0%",
+      "chgDir": "flat",
       "sub": "mar/27",
       "safraMundo": "EUA, só trigo duro jun–jul (2%) · Rússia jul–ago (11%)",
       "safraBrasil": "set–dez (1% do mundo)",
       "orig": "",
       "bullets": [
-        "Caiu 0,3% na quarta (mar/27 a US$ 6,305); o dez/26 perdeu 1,4%, a US$ 6,04 (Barchart)",
-        "Trigos de inverno em queda e o de primavera de Minneapolis em alta (mar/27 a US$ 6,475, +0,6%) (Barchart)",
-        "CBOT fechada hoje (Ação de Graças); reabre sexta em pregão curto"
+        "Mais oferta do Hemisfério Sul: a Argentina pode elevar a previsão de trigo 26/27, hoje em 23,4 mi t (Bolsa de Cereais de Buenos Aires, via Reuters)",
+        "CBOT sem pregão desde quarta (mar/27 a US$ 6,305); reabre hoje às 11h30 em horário curto"
       ],
       "prevNews": [
+        [
+          "Caiu 0,3% na quarta (mar/27 a US$ 6,305); o dez/26 perdeu 1,4%, a US$ 6,04 (Barchart)",
+          "Trigos de inverno em queda e o de primavera de Minneapolis em alta (mar/27 a US$ 6,475, +0,6%) (Barchart)",
+          "CBOT fechada hoje (Ação de Graças); reabre sexta em pregão curto"
+        ],
         [
           "Caiu 5,25 centavos na terça (mar/27 a US$ 6,3225); o dez/26 perdeu 8,75 centavos (Barchart)",
           "Notas das lavouras de inverno seguem melhorando: o índice Brugler500 subiu 3 pontos, a 350 (Barchart)",
           "Hoje cai mais 0,7% (US$ 6,28)"
-        ],
-        [
-          "Caiu 2,75 centavos na segunda (mar/27 a US$ 6,375), devolvendo parte da alta da semana passada",
-          "Trigo de inverno dos EUA: 95% plantado e 87% emergido, perto da média; 54% das lavouras boas ou ótimas (USDA)",
-          "Hoje sobe leve (US$ 6,3825), com o dólar forte limitando"
         ]
       ],
       "why": "1 e 2 meses — queda: exportação fraca e colheitas maiores no Hemisfério Sul. El Niño mais úmido nas Plains. 3 e 6 meses — neutro: o preço segue perto da mínima em meses.",
@@ -731,26 +728,27 @@
       "name": "Amendoim",
       "ticker": "PK1!",
       "group": "Grãos",
-      "price": "US$ 1.132/t",
-      "chg": "▼ −0,6%",
-      "chgDir": "down",
+      "price": "US$ 1.144/t",
+      "chg": "▲ +1,1%",
+      "chgDir": "up",
       "sub": "jan/27 · Zhengzhou",
       "safraMundo": "China set–out (36%) · Índia set–nov (15%) · EUA set–nov (4%)",
       "safraBrasil": "jan–abr (2% do mundo)",
-      "orig": "Original: ¥ 7.542/t · câmbio 6,66",
+      "orig": "Original: ¥ 7.614/t · câmbio 6,6536",
       "bullets": [
-        "Sem notícias novas de safra ou procura nas fontes consultadas",
-        "O jan/27 fechou a quarta em ¥ 7.530/t (−0,8%) e hoje sobe 0,2%, a ¥ 7.542/t (US$ 1.132)"
+        "O jan/27 subiu 1,0% hoje, a ¥ 7.614/t (US$ 1.144); o contrato principal fechou +1,31%, a ¥ 7.582/t (10jqka)",
+        "A corretora Nanhua diz que o preço chegou perto do custo de produção e tem pouco espaço para cair (10jqka)",
+        "Contra a alta: no físico a venda segue lenta e a Mysteel espera preço de lado a fraco (Mysteel)"
       ],
       "prevNews": [
+        [
+          "Sem notícias novas de safra ou procura nas fontes consultadas",
+          "O jan/27 fechou a quarta em ¥ 7.530/t (−0,8%) e hoje sobe 0,2%, a ¥ 7.542/t (US$ 1.132)"
+        ],
         [
           "O contrato mais negociado (mar/27) fechou a terça em ¥ 7.550/t (US$ 1.131), −0,08% (Mysteel)",
           "Oferta à vista farta e negócios fracos; as esmagadoras baixaram os preços de compra (analistas chineses)",
           "Hoje o jan/27 cai 0,8%, a ¥ 7.530/t (US$ 1.128)"
-        ],
-        [
-          "Sem notícias novas; hoje estável, jan/27 a ¥ 7.588/t (US$ 1.139), −1,5% desde 20/11",
-          "O contrato mais negociado (mar/27) fechou a segunda em ¥ 7.536/t (US$ 1.131), −1,9% no dia (100ppi)"
         ]
       ],
       "why": "1, 2 e 3 meses — neutro: a colheita nova chega com procura fraca da indústria de alimentos. As compras das esmagadoras e o custo de produção dão piso; analistas chineses (Huatai) esperam preço de lado. 6 meses — alta: a safra chinesa menor (USDA: 18 Mt) tende a apertar a oferta depois que a colheita for absorvida.",
@@ -823,36 +821,37 @@
         1190,
         1214,
         1189,
-        1132
+        1144.34
       ]
     },
     {
       "name": "Açúcar nº11",
       "ticker": "SB1!",
       "group": "Softs",
-      "price": "US$ 0,1834/lb",
-      "chg": "▲ +3,9%",
+      "price": "US$ 0,1882/lb",
+      "chg": "▲ +2,6%",
       "chgDir": "up",
       "sub": "mar/27",
       "safraMundo": "Índia e Tailândia nov–abr (23%)",
       "safraBrasil": "abr–nov (23% do mundo)",
-      "orig": "Original: 18,34 ¢/lb na ICE",
+      "orig": "Original: 18,82 ¢/lb na ICE",
       "bullets": [
-        "Disparou 3,9% na quarta (mar/27 a US$ 0,1834/lb), máxima em 1,5 semana (Barchart)",
-        "Motivo: a associação das usinas da Índia (ISMA) projeta a safra 2026/27 em 26,5 mi t, 5,4% menor que a de 2025/26",
-        "O real mais forte (R$ 5,82 por dólar na quarta) reduz o incentivo à exportação do Brasil",
-        "ICE fechada hoje (Ação de Graças)"
+        "Sobe mais 2,6% hoje (mar/27 a US$ 0,1882/lb), depois da alta de 3,9% na quarta",
+        "O açúcar branco em Londres subiu 1% na quinta, a US$ 522,40/t, máximo desde o fim de outubro; a Índia deve produzir o menor volume em 10 anos em 26/27 (Reuters)",
+        "Os EUA propuseram tarifa extra de US$ 0,20/lb sobre o açúcar bruto importado fora da cota, de qualquer origem; ainda é proposta, com audiência em janeiro (USTR/G1)",
+        "O real mais forte (R$ 5,75 por dólar na quinta) segue reduzindo o incentivo à exportação do Brasil"
       ],
       "prevNews": [
+        [
+          "Disparou 3,9% na quarta (mar/27 a US$ 0,1834/lb), máxima em 1,5 semana (Barchart)",
+          "Motivo: a associação das usinas da Índia (ISMA) projeta a safra 2026/27 em 26,5 mi t, 5,4% menor que a de 2025/26",
+          "O real mais forte (R$ 5,82 por dólar na quarta) reduz o incentivo à exportação do Brasil",
+          "ICE fechada hoje (Ação de Graças)"
+        ],
         [
           "Subiu 0,3% na terça (mar/27 a US$ 0,1766/lb) com o dólar mais fraco e o petróleo +2%, que estimula o desvio de cana para etanol (Barchart)",
           "A consultoria Green Pool vê a safra de açúcar da Tailândia 11% menor (24/11)",
           "Hoje sobe mais 1,2% (US$ 0,1788/lb)"
-        ],
-        [
-          "Disparou 3,4% na segunda (mar/27 a US$ 0,1761/lb): fundos recompraram depois da mínima em 3,5 meses de sexta (Barchart)",
-          "Subiu mesmo com o petróleo −4% e o real na mínima em 1,75 ano, que costumam pesar",
-          "Hoje estável (US$ 0,1762/lb)"
         ]
       ],
       "why": "1, 2 e 3 meses — neutro: a Índia deve produzir 5,4% menos em 26/27 (ISMA) e a moagem atrasada no Brasil dá piso, mas a oferta mundial segue ampla. 6 meses — queda: o Rabobank vê o Centro-Sul +14% em 27/28, com NY entre US$ 0,17 e 0,19/lb.",
@@ -862,9 +861,7 @@
         "N",
         "Q"
       ],
-      "changed": [
-        0
-      ],
+      "changed": [],
       "monthlyStart": "2021-11",
       "monthly": [
         0.186,
@@ -927,35 +924,35 @@
         0.1781,
         0.1861,
         0.1936,
-        0.1834
+        0.1882
       ]
     },
     {
       "name": "Cacau",
       "ticker": "CC1!",
       "group": "Softs",
-      "price": "US$ 5.434/t",
-      "chg": "▲ +0,4%",
+      "price": "US$ 5.474/t",
+      "chg": "▲ +0,7%",
       "chgDir": "up",
       "sub": "mar/27",
       "safraMundo": "Costa do Marfim e Gana out–mar, temporão abr–set (49%)",
       "safraBrasil": "out–mar, temporão mai–set (4% do mundo)",
       "orig": "",
       "bullets": [
-        "Subiu 0,4% na quarta (mar/27 a US$ 5.434/t): apagou a queda do começo do dia com o dólar mais fraco e recompra de vendidos; Londres +0,8% (Barchart)",
-        "Contra a alta: a Nigéria, 5ª maior produtora, exportou 19.343 t em setembro, +33% no ano, com o preço alto estimulando vendas (Barchart)",
-        "ICE fechada hoje (Ação de Graças)"
+        "Sobe 0,7% hoje (mar/27 a US$ 5.474/t); Londres tocou na quinta a máxima desde o início de novembro (Reuters)",
+        "Operadores dizem que a oferta piora na Costa do Marfim, em Gana e no Equador; em Gana, o órgão regulador recolheu um fertilizante que produtores dizem estar vencido (Reuters)",
+        "Contra a alta: vendas dos países produtores e muito cacau disponível da safra recorde 2025/26 (Reuters)"
       ],
       "prevNews": [
+        [
+          "Subiu 0,4% na quarta (mar/27 a US$ 5.434/t): apagou a queda do começo do dia com o dólar mais fraco e recompra de vendidos; Londres +0,8% (Barchart)",
+          "Contra a alta: a Nigéria, 5ª maior produtora, exportou 19.343 t em setembro, +33% no ano, com o preço alto estimulando vendas (Barchart)",
+          "ICE fechada hoje (Ação de Graças)"
+        ],
         [
           "Disparou 2,2% na terça (mar/27 a US$ 5.413/t), máxima em 2,5 semanas, ainda puxado pela entrega menor da Costa do Marfim; Londres +0,8% (Barchart)",
           "O Equador estendeu até sexta o alerta de chuva forte na região produtora de cacau (CocoaIntel)",
           "Hoje devolve 1,3% (US$ 5.340/t)"
-        ],
-        [
-          "Subiu 0,6% na segunda (mar/27 a US$ 5.299/t) com menos entregas da Costa do Marfim",
-          "Costa do Marfim: 53,7 mil t nos portos na semana até 22/11 (102,1 mil um ano antes); na safra, −47%, a 330,8 mil t (Bloomberg via Barchart)",
-          "Contra a alta: estoques na ICE em 3,87 mi sacas, máxima em 2,5 anos; hoje sobe mais 0,4% (US$ 5.318/t)"
         ]
       ],
       "why": "1 e 2 meses — queda: estoques na ICE na máxima de 2,5 anos e fundos se antecipando ao corte nos índices em janeiro. 3 meses — neutro. 6 meses — alta: El Niño forte tende a secar a África Ocidental e a StoneX vê déficit de 64 mil t. A agência de clima da Costa do Marfim diz que a produção pode cair 25% com o El Niño (11/11).",
@@ -1028,36 +1025,36 @@
         6771,
         5367,
         5453,
-        5434
+        5474
       ]
     },
     {
       "name": "Óleo de palma",
       "ticker": "FCPO1!",
       "group": "Óleos",
-      "price": "US$ 1.022/t",
-      "chg": "▲ +1,2%",
+      "price": "US$ 1.021/t",
+      "chg": "▲ +1,8%",
       "chgDir": "up",
       "sub": "jan/27",
       "safraMundo": "Malásia e Indonésia o ano todo, pico ago–out (82%)",
       "safraBrasil": "",
-      "orig": "Original: RM 4.199/t na Bursa · câmbio 4,1105",
+      "orig": "Original: RM 4.208/t na Bursa · câmbio 4,1195",
       "bullets": [
-        "Fechou hoje na máxima em 1 semana: o fev/27, referência, +1,5%, a RM 4.293 (US$ 1.044/t); o jan/27 a RM 4.199 (US$ 1.022/t) (Reuters)",
-        "Motivo: a Indonésia propõe taxa de 0,5% sobre o valor exportado de palma, o que pode levar compradores para a Malásia (associação GAPKI, via Reuters)",
-        "Contra a alta: exportação da Malásia de 1 a 25/11 caiu 9,3% contra outubro (AmSpec) ou 4% (Intertek), e o estoque segue alto",
-        "O conselho do óleo de palma da Malásia (MPOC) vê preço acima de RM 4.100 (US$ 997/t) em dezembro"
+        "Subiu na semana 2,1%: o fev/27, referência, fechou hoje a RM 4.307 (US$ 1.046/t), e o jan/27 a RM 4.208 (US$ 1.021/t) (Reuters)",
+        "Motivos: alta dos óleos de soja e de palma em Dalian (China) e expectativa de produção menor na Malásia em novembro (Reuters/Everbright, via Dow Jones)",
+        "A estatal da Indonésia (DSI) ainda avalia a taxa final sobre as exportações de palma (Reuters)"
       ],
       "prevNews": [
+        [
+          "Fechou hoje na máxima em 1 semana: o fev/27, referência, +1,5%, a RM 4.293 (US$ 1.044/t); o jan/27 a RM 4.199 (US$ 1.022/t) (Reuters)",
+          "Motivo: a Indonésia propõe taxa de 0,5% sobre o valor exportado de palma, o que pode levar compradores para a Malásia (associação GAPKI, via Reuters)",
+          "Contra a alta: exportação da Malásia de 1 a 25/11 caiu 9,3% contra outubro (AmSpec) ou 4% (Intertek), e o estoque segue alto",
+          "O conselho do óleo de palma da Malásia (MPOC) vê preço acima de RM 4.100 (US$ 997/t) em dezembro"
+        ],
         [
           "Fechou a terça +2,4% (fev/27 a RM 4.240, US$ 1.029/t), fim de 5 quedas seguidas, com compras na baixa e óleos firmes em Dalian (Business Recorder)",
           "O óleo de soja em Chicago caiu 1,25 centavo na terça (Brownfield), o que limita a palma",
           "Hoje o jan/27 está a RM 4.138 (US$ 1.005/t), −0,3% no dia e +2,1% desde 23/11"
-        ],
-        [
-          "Caiu 2,1% na segunda (jan/27 a RM 4.052, US$ 985/t), perto da mínima em 9 meses, com óleos fracos em Dalian e Chicago (Reuters)",
-          "Hoje caiu de manhã com o petróleo, mas virou e interrompeu 5 quedas seguidas: realização de lucro e óleos mais firmes em Dalian (Reuters)",
-          "Jan/27 a RM 4.151 (US$ 1.009/t), +0,2% desde 20/11"
         ]
       ],
       "why": "1 e 2 meses — neutro: o estoque recorde de 3,62 Mt pesa, mas a exportação forte segura o preço. 3 e 6 meses — alta: a produção cai de dezembro a fevereiro e a seca do El Niño pesa a partir do 1º tri de 2027. Glenauk vê aperto de 4,6 Mt na oferta em 2027 e preço perto de RM 5.000 (US$ 1.224/t) no meio do ano.",
@@ -1130,32 +1127,32 @@
         1217,
         1132,
         1155,
-        1022
+        1021.48
       ]
     },
     {
       "name": "Óleo de palmiste",
       "ticker": "FPKO1!",
       "group": "Óleos",
-      "price": "US$ 1.619/t",
+      "price": "US$ 1.616/t",
       "chg": "► 0,0%",
       "chgDir": "flat",
       "sub": "1º vencimento",
       "safraMundo": "Sudeste Asiático o ano todo, pico ago–out (86%)",
       "safraBrasil": "",
-      "orig": "Original: RM 6.656/t (último ajuste) · câmbio 4,1105",
+      "orig": "Original: RM 6.656/t (último ajuste) · câmbio 4,1195",
       "bullets": [
-        "Sem notícias novas; o ajuste de referência segue em RM 6.656/t (US$ 1.619), sem negócios desde 08/2024",
-        "A palma subiu 1,2% desde 24/11 com a proposta de taxa de exportação da Indonésia, mas o ajuste do palmiste não mudou"
+        "Sem notícias novas; o ajuste de referência segue em RM 6.656/t (US$ 1.616), sem negócios desde 08/2024",
+        "A palma subiu 1,8% desde 25/11, mas o ajuste do palmiste não mudou"
       ],
       "prevNews": [
         [
-          "Sem notícias novas; o ajuste de referência segue em RM 6.656/t (US$ 1.616), sem negócios desde 08/2024",
-          "A palma subiu 2,4% na terça, mas o ajuste do palmiste não mudou"
+          "Sem notícias novas; o ajuste de referência segue em RM 6.656/t (US$ 1.619), sem negócios desde 08/2024",
+          "A palma subiu 1,2% desde 24/11 com a proposta de taxa de exportação da Indonésia, mas o ajuste do palmiste não mudou"
         ],
         [
-          "Sem notícias novas; o ajuste de referência segue em RM 6.656/t (US$ 1.618), sem negócios desde 08/2024",
-          "A palma voltou a subir hoje e está +0,2% desde 20/11"
+          "Sem notícias novas; o ajuste de referência segue em RM 6.656/t (US$ 1.616), sem negócios desde 08/2024",
+          "A palma subiu 2,4% na terça, mas o ajuste do palmiste não mudou"
         ]
       ],
       "why": "Leitura de baixa confiança, porque o contrato não negocia. 1, 2 e 3 meses — neutro: segue a palma, com o estoque de palmiste +12,9% em outubro pesando. 6 meses — alta: El Niño reduzindo a oferta em 2027.",
@@ -1228,7 +1225,7 @@
         1831,
         1938,
         1648,
-        1619
+        1615.73
       ]
     },
     {
@@ -1236,22 +1233,22 @@
       "ticker": "MKP1!",
       "group": "Lácteos",
       "price": "US$ 5,64/kgMS",
-      "chg": "▼ −0,3%",
+      "chg": "▼ −0,2%",
       "chgDir": "down",
       "sub": "temporada 26/27",
       "safraMundo": "Coleta na NZ: ago–mai, pico em outubro",
       "safraBrasil": "",
-      "orig": "Original: NZ$ 10,30/kgMS na NZX · câmbio 0,5480",
+      "orig": "Original: NZ$ 10,28/kgMS na NZX · câmbio 0,54857",
       "bullets": [
-        "Sem notícias novas; o futuro da temporada 26/27 segue em NZ$ 10,30 (US$ 5,64), −0,3% desde 24/11, com poucos negócios na NZX"
+        "Sem notícias novas; o futuro da temporada 26/27 recua a NZ$ 10,28 (US$ 5,64), −0,2% desde 25/11, ainda acima da previsão da Fonterra (NZ$ 10,10)"
       ],
       "prevNews": [
         [
-          "Sem notícias novas; o futuro da temporada 26/27 recua a NZ$ 10,30 (US$ 5,63), −0,6% desde 23/11, ainda acima da previsão da Fonterra (NZ$ 10,10)",
-          "O próximo leilão da Global Dairy Trade deve ser em 01/12 (o anterior, em 17/11, ficou estável)"
+          "Sem notícias novas; o futuro da temporada 26/27 segue em NZ$ 10,30 (US$ 5,64), −0,3% desde 24/11, com poucos negócios na NZX"
         ],
         [
-          "Sem notícias novas; o futuro da temporada 26/27 recua 0,4% desde 20/11, a NZ$ 10,32 (US$ 5,63), ainda acima da previsão da Fonterra (NZ$ 10,10)"
+          "Sem notícias novas; o futuro da temporada 26/27 recua a NZ$ 10,30 (US$ 5,63), −0,6% desde 23/11, ainda acima da previsão da Fonterra (NZ$ 10,10)",
+          "O próximo leilão da Global Dairy Trade deve ser em 01/12 (o anterior, em 17/11, ficou estável)"
         ]
       ],
       "why": "1 mês — alta: leite em pó firme e a Fonterra elevou a previsão para NZ$ 10,10/kgMS em 20/11. 2, 3 e 6 meses — neutro: o futuro (NZ$ 10,35) ainda supera a previsão da Fonterra. A coleta recorde na Nova Zelândia limita novas altas.",
@@ -1323,7 +1320,7 @@
         5.767,
         5.459,
         5.859,
-        5.6443
+        5.6393
       ]
     },
     {
@@ -1338,18 +1335,16 @@
       "safraBrasil": "",
       "orig": "",
       "bullets": [
-        "Spot na CME subiu 0,5 centavo na quarta, a US$ 1,25/lb; média de 23 a 25/11 em US$ 1,2517, −1,3% na semana (HighGround Dairy)",
-        "Futuro nov/26 parado em US$ 1,3250/lb; leite em pó desnatado +1,25 centavo, a US$ 2,0125/lb; CME fechada hoje (Ação de Graças)"
+        "Sem notícias novas; o futuro nov/26 segue em US$ 1,3250/lb, sem negócios desde quarta; a CME fechou na quinta (Ação de Graças) e reabre hoje em horário curto"
       ],
       "prevNews": [
         [
-          "Spot na CME caiu 1,5 centavo na terça, a US$ 1,245/lb (Daily Dairy Report)",
-          "Futuro nov/26 estável em US$ 1,3250/lb, ainda acima do spot; leite em pó desnatado −7 centavos, a US$ 2,00/lb (Brownfield)"
+          "Spot na CME subiu 0,5 centavo na quarta, a US$ 1,25/lb; média de 23 a 25/11 em US$ 1,2517, −1,3% na semana (HighGround Dairy)",
+          "Futuro nov/26 parado em US$ 1,3250/lb; leite em pó desnatado +1,25 centavo, a US$ 2,0125/lb; CME fechada hoje (Ação de Graças)"
         ],
         [
-          "Spot na CME caiu 1 centavo na segunda, a US$ 1,26/lb, sem negócios (HighGround Dairy)",
-          "Média da semana de 16 a 20/11: US$ 1,268/lb, +1,7 centavo na semana",
-          "Futuro nov/26 saiu do lugar e caiu 0,5 centavo, a US$ 1,3250/lb, ainda acima do spot"
+          "Spot na CME caiu 1,5 centavo na terça, a US$ 1,245/lb (Daily Dairy Report)",
+          "Futuro nov/26 estável em US$ 1,3250/lb, ainda acima do spot; leite em pó desnatado −7 centavos, a US$ 2,00/lb (Brownfield)"
         ]
       ],
       "why": "1 mês — queda: o spot a US$ 1,28 segue abaixo do futuro e os estoques seguem 16,5% acima de 2025. 2 e 3 meses — neutro. 6 meses — alta: mesmo após o corte, o USDA vê média de US$ 1,465 em 2027, acima do preço atual. A curva sobe até julho.",
@@ -1449,6 +1444,76 @@
   ],
   "sources": [
     {
+      "group": "Edição de 27/11",
+      "links": [
+        {
+          "title": "Oil on track to snap three-week losing streak over supply fears",
+          "site": "Reuters / TradingView",
+          "href": "https://www.tradingview.com/news/reuters.com,2026:newsml_L2N478039:0/"
+        },
+        {
+          "title": "OPEC+ set to keep oil production targets steady in first quarter, sources say",
+          "site": "Reuters / TradingView",
+          "href": "https://www.tradingview.com/news/reuters.com,2026:newsml_S8N4340CT:0-opec-set-to-keep-oil-production-targets-steady-in-first-quarter-sources-say/"
+        },
+        {
+          "title": "Asia spot LNG prices steady amid tepid demand, continued Hormuz flows",
+          "site": "Reuters / TradingView",
+          "href": "https://www.tradingview.com/news/reuters.com,2026:newsml_L2N4780B0:0/"
+        },
+        {
+          "title": "Australia Orders LNG Exporters Reserve Some Gas",
+          "site": "Dow Jones / TradingView",
+          "href": "https://www.tradingview.com/news/DJN_DN20261126004248:0/"
+        },
+        {
+          "title": "Palm oil posts over 2% weekly gains on rival oils at Dalian",
+          "site": "Reuters / TradingView",
+          "href": "https://www.tradingview.com/news/reuters.com,2026:newsml_L2N47807J:0/"
+        },
+        {
+          "title": "Robusta coffee up off 3-year low, cocoa, sugar hit near one-month peaks",
+          "site": "Reuters / TradingView",
+          "href": "https://www.tradingview.com/news/reuters.com,2026:newsml_L2N4770NI:0/"
+        },
+        {
+          "title": "Argentina's 2026/27 wheat forecast may rise on strong yields",
+          "site": "Reuters / TradingView",
+          "href": "https://www.tradingview.com/news/reuters.com,2026:newsml_L6N47712T:0/"
+        },
+        {
+          "title": "South Africa's 2026 maize harvest is the country's largest on record",
+          "site": "Reuters / TradingView",
+          "href": "https://www.tradingview.com/news/reuters.com,2026:newsml_L5N4770KS:0/"
+        },
+        {
+          "title": "EUA querem mudar taxação sobre açúcar",
+          "site": "G1",
+          "href": "https://g1.globo.com/economia/agronegocios/noticia/2026/11/25/eua-querem-mudar-taxacao-sobre-acucar-brasileiro-veja-como-pode-ficar.ghtml"
+        },
+        {
+          "title": "Dólar cai 1,25% e fecha a R$ 5,74",
+          "site": "InfoMoney",
+          "href": "https://www.infomoney.com.br/mercados/dolar-hoje-abertura-fechamento-comercial-turismo-26112026/"
+        },
+        {
+          "title": "Etanol diário Paulínia",
+          "site": "Cepea",
+          "href": "https://cepea.org.br/br/indicador/etanol-diario-paulinia.aspx"
+        },
+        {
+          "title": "花生日内上涨1.31%",
+          "site": "10jqka",
+          "href": "https://goodsfu.10jqka.com.cn/20261127/c682295839.shtml"
+        },
+        {
+          "title": "Conab: semeadura de soja atinge 82,9%",
+          "site": "UOL/Estadão",
+          "href": "https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2026/11/24/conab-semeadura-de-soja-atinge-829-da-area-no-pais-e-a-de-milho-verao-659.htm"
+        }
+      ]
+    },
+    {
       "group": "Edição de 26/11",
       "links": [
         {
@@ -1500,61 +1565,6 @@
           "title": "CME Spot Market Results (25/11)",
           "site": "HighGround Dairy",
           "href": "https://marketing.highgrounddairy.com/cme-spot-market-results"
-        }
-      ]
-    },
-    {
-      "group": "Edição de 25/11",
-      "links": [
-        {
-          "title": "Oil settles up $2 as traders weigh continued Hormuz ship attacks",
-          "site": "CNBC / Reuters",
-          "href": "https://www.cnbc.com/2026/11/24/oil-wti-brent-hormuz-supply.html"
-        },
-        {
-          "title": "Oil prices fall as supply glut concerns offset Middle East disruption fears",
-          "site": "CNBC / Reuters",
-          "href": "https://www.cnbc.com/2026/11/25/oil-wti-brent-hormuz-middle-east.html"
-        },
-        {
-          "title": "Corn Closes Tuesday with Slight Gains",
-          "site": "Barchart",
-          "href": "https://www.barchart.com/story/news/8994328/corn-closes-tuesday-with-slight-gains"
-        },
-        {
-          "title": "Wheat Closes Lower on Tuesday",
-          "site": "Barchart",
-          "href": "https://www.barchart.com/story/news/8994348/wheat-closes-lower-on-tuesday"
-        },
-        {
-          "title": "Closing Grain and Livestock Futures: November 24, 2026",
-          "site": "Brownfield",
-          "href": "https://brownfieldagnews.com/news/closing-grain-and-livestock-futures-november-24-2026/"
-        },
-        {
-          "title": "Soybean futures reach highest level since October on export data",
-          "site": "CME Group",
-          "href": "https://www.cmegroup.com/videos/2026/11/24/soybean-futures-reach-highest-level-since-october-on-export-data.html"
-        },
-        {
-          "title": "Sugar Prices Supported by Dollar Weakness and Strength in Crude Oil",
-          "site": "Barchart / Yahoo",
-          "href": "https://finance.yahoo.com/markets/commodities/articles/sugar-prices-supported-dollar-weakness-192419685.html"
-        },
-        {
-          "title": "Cocoa Prices Climb as Ivory Coast Shipments Decline",
-          "site": "Barchart",
-          "href": "https://www.barchart.com/story/news/8990724/cocoa-prices-climb-as-ivory-coast-shipments-decline"
-        },
-        {
-          "title": "Palm oil snaps five-session losing streak on profit taking",
-          "site": "Business Recorder",
-          "href": "https://www.brecorder.com/"
-        },
-        {
-          "title": "Nonfat dry milk drops 7 cents Tuesday at CME",
-          "site": "Brownfield",
-          "href": "https://brownfieldagnews.com/"
         }
       ]
     },
@@ -1994,5 +2004,5 @@
       ]
     }
   ],
-  "footnote": "Tendências: visão analítica revisada em 26/11/2026 com base em notícias, fundamentos, curva de futuros, médias de 50 e 200 dias e projeções publicadas (USDA, EIA, AIE, Rabobank, StoneX) — não é recomendação. Variação dos cards vs. fechamento de 24/11. Gráfico: fechamento mensal do contrato contínuo, últimos 5 anos."
+  "footnote": "Tendências: visão analítica revisada em 27/11/2026 com base em notícias, fundamentos, curva de futuros, médias de 50 e 200 dias e projeções publicadas (USDA, EIA, AIE, Rabobank, StoneX) — não é recomendação. Variação dos cards vs. fechamento de 25/11. Gráfico: fechamento mensal do contrato contínuo, últimos 5 anos."
 }
