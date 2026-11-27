@@ -51,20 +51,33 @@ AJ_PAGO={'Estofare':[('2026-08-31',2/3,'Entrada (50%)'),('2026-10-30',1/3,'2ª p
 PREV=[('2026-11-13','Ronaldo Luís','Instalador · restante (obs. planilha 13/11)',2500)]+\
      [(f'{y}-{m:02d}-16','CR Mármores',f'Cartão {i+1}/5 (restante R$ 6.500)',1300) for i,(y,m) in enumerate([(2026,11),(2026,12),(2027,1),(2027,2),(2027,3)])]
 mov=[]
-# Compras no cartão parcelado (OBS "Cartão Nx", N>1, pago = total): 1 parcela por mês,
-# a 1ª no mês seguinte ao da compra (fatura), mesmo dia (limitado a 28).
+# Cartão (regra do Diego, 27/11/2026): a fatura fecha no dia 23 e é paga no dia 15.
+#  - compra até o dia 23 -> 1ª (ou única) cobrança no dia 15 do mês seguinte;
+#  - compra depois do dia 23 -> dia 15 de dois meses depois; demais parcelas, mês a mês.
+#  Vale para "Cartão 1x" e "Cartão Nx" (pago = total) e para a parte no cartão de
+#  OBS mista "Cartão Nx de R$ V" (pago != total); o resto do PAGO fica na DATA da compra.
 HOJE=datetime.date.today().isoformat()
-def addm(d,n):
-  y,m,dd=int(d[:4]),int(d[5:7])-1+n,min(int(d[8:10]),28);y+=m//12;m=m%12
+def fat(d,i):
+  y,m,dd=int(d[:4]),int(d[5:7])-1+i+(1 if int(d[8:10])>23 else 0),15;y+=m//12;m=m%12
   return f'{y}-{m+1:02d}-{dd:02d}'
+def cartao(x,n,total,tag=''):
+  v=round(total/n,2)
+  for i in range(1,n+1):
+    d=fat(x['data'],i);val=v if i<n else round(total-v*(n-1),2)
+    mov.append(dict(data=d,fornecedor=x['fornecedor'],desc=x['desc']+(f" · cartão {i}/{n}" if n>1 else ' · cartão 1x')+tag,valor=val,status='pago' if d<=HOJE else 'previsto',cat=x['cat'],cartao=1))
 for x in gastos:
-  mc=re.search(r'Cart[aã]o\s*(\d+)\s*x',x.get('obs') or '',re.I)
-  if mc and int(mc.group(1))>1 and x['data'] and x['pago']>0 and abs(x['pago']-x['total'])<0.01 and x['fornecedor'] not in AJ_PAGO:
-    n=int(mc.group(1));v=round(x['pago']/n,2)
-    for i in range(1,n+1):
-      d=addm(x['data'],i);val=v if i<n else round(x['pago']-v*(n-1),2)
-      mov.append(dict(data=d,fornecedor=x['fornecedor'],desc=f"{x['desc']} · cartão {i}/{n}",valor=val,status='pago' if d<=HOJE else 'previsto',cat=x['cat'],cartao=1))
-    continue
+  obs=x.get('obs') or ''
+  mc=re.search(r'Cart[aã]o\s*(\d+)\s*x',obs,re.I)
+  if mc and x['data'] and x['pago']>0 and x['fornecedor'] not in AJ_PAGO:
+    n=int(mc.group(1))
+    if abs(x['pago']-x['total'])<0.01:
+      cartao(x,n,x['pago']); continue
+    mv=re.search(r'Cart[aã]o\s*\d+\s*x\s*de\s*R\$\s*([\d.]+(?:,\d+)?)',obs,re.I)
+    if mv:
+      tc=min(round(n*float(mv.group(1).replace('.','').replace(',','.')),2),x['pago']); cartao(x,n,tc)
+      resto=round(x['pago']-tc,2)
+      if resto>0: mov.append(dict(data=x['data'],fornecedor=x['fornecedor'],desc=x['desc']+' · à vista',valor=resto,status='pago',cat=x['cat']))
+      continue
   if x['pago']>0:
     for d,f,lab in AJ_PAGO.get(x['fornecedor'],[(x['data'],1,'')]):
       mov.append(dict(data=d,fornecedor=x['fornecedor'],desc=x['desc']+(' · '+lab if lab else ''),valor=round(x['pago']*f,2),status='pago',cat=x['cat']))
