@@ -1,9 +1,9 @@
 {
- "geradoEm": "2026-11-26T18:12-03:00",
+ "geradoEm": "2026-11-27T05:31-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 2484756.39,
-  "pago": 1819457.7400000002,
+  "total": 2484791.31,
+  "pago": 1819492.6600000001,
   "restante": 665298.65
  },
  "categorias": [
@@ -21,8 +21,8 @@
   },
   {
    "nome": "Eletrodomésticos",
-   "total": 108708.29,
-   "pago": 108708.29,
+   "total": 108743.20999999999,
+   "pago": 108743.20999999999,
    "restante": 0.0
   },
   {
@@ -125,8 +125,8 @@
   },
   {
    "nome": "Sala Gamer",
-   "total": 39451.76,
-   "pago": 33511.64,
+   "total": 39486.68,
+   "pago": 33546.56,
    "restante": 5940.120000000003
   },
   {
@@ -568,10 +568,10 @@
    "fornecedor": "-",
    "desc": "Impressora 3D",
    "qtd": "1 und",
-   "total": 9488.01,
-   "pago": 9488.01,
+   "total": 9522.93,
+   "pago": 9522.93,
    "entrega": null,
-   "obs": "Cartão 1x (R$ 447,00 + R$ 6.416,61) + TekBond 200 100g R$ 53,03 (Amazon 20/11/26, cartão 12x Visa final 2910, inclui R$ 18,39 de frete, pedido 701-8941891-0527418) + Secador de filamento Sovol SH01 R$ 673,36 (AliExpress 11/11/26, cartão 1x) + Amazon 25/11/26 (cartão 12x sem juros): filamentos PLA F3D Brasil Nude/Rosa/Granito R$ 256,47; Bambu PLA Lite vermelho R$ 129,90; termo-higrômetro VIVOSUN Bluetooth R$ 131,58; Bambu Lab PLA Lite Sunflower Yellow/Matte Beige/Green R$ 1.098,16; Bambu PLA Lite Marrom Cacau R$ 160,00; Bambu Lab PLA Lite White R$ 121,90",
+   "obs": "Cartão 1x (R$ 447,00 + R$ 6.416,61) + TekBond 200 100g R$ 53,03 (Amazon 20/11/26, cartão 12x Visa final 2910, inclui R$ 18,39 de frete, pedido 701-8941891-0527418) + Secador de filamento Sovol SH01 R$ 673,36 (AliExpress 11/11/26, cartão 1x) + Amazon 25/11/26 (cartão 12x sem juros): filamentos PLA F3D Brasil Nude/Rosa/Granito R$ 256,47; Bambu PLA Lite vermelho R$ 129,90; termo-higrômetro VIVOSUN Bluetooth R$ 131,58; Bambu Lab PLA Lite Sunflower Yellow/Matte Beige/Green R$ 1.098,16; Bambu PLA Lite Marrom Cacau R$ 160,00; Bambu Lab PLA Lite White R$ 121,90 + Disco de polimento para resina R$ 34,92 (AliExpress, pedido entre 10 e 13/11/26, cartão 1x)",
    "comodo": "Sala Gamer",
    "cat": "Eletrodomésticos"
   },
@@ -3497,7 +3497,7 @@
    "data": "2026-11-10",
    "fornecedor": "-",
    "desc": "Impressora 3D",
-   "valor": 9488.01,
+   "valor": 9522.93,
    "status": "pago",
    "cat": "Eletrodomésticos"
   },
