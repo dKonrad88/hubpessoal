@@ -87,6 +87,18 @@ for m in mov:
     k=(m['data'],m['fornecedor']);a=agg.setdefault(k,dict(m,desc=m['desc'].split(' · ')[-1]+' · pedido de mobília',valor=0));a['valor']=round(a['valor']+m['valor'],2)
 mov=[m for m in mov if m['fornecedor'] not in AJ_PAGO]+list(agg.values())
 for d,f,desc,v in PREV: mov.append(dict(data=d,fornecedor=f,desc=desc,valor=v,status='previsto',cat=''))
+# Engetec: 5 boletos restantes (2/6–6/6), venc. dia 27. Total R$ 27.917,99 (última R$ 5.583,59).
+# A 1/6 foi Pix em 27/11/26; as 3 linhas só entram na planilha quando os cards forem aprovados,
+# com PAGO parcial (soma R$ 5.583,60). O script já não gera movimento do saldo em aberto
+# (total-pago) — só do valor PAGO — então os boletos não se somam a um segundo movimento.
+# Depois do lançamento, o semData do app abate esses boletos do restante Engetec (como Ronaldo
+# e CR Mármores). Antes disso, cartao=1 evita que eles abatam o saldo em aberto de outros gastos.
+ENGETEC=[(f'{y}-{m:02d}-27',5583.60 if i<4 else 5583.59) for i,(y,m) in enumerate([(2026,12),(2027,1),(2027,2),(2027,3),(2027,4)])]
+engetec_ok=any((x.get('fornecedor') or '').lower()=='engetec' for x in gastos)
+for i,(d,v) in enumerate(ENGETEC,2):
+  m=dict(data=d,fornecedor='Engetec',desc=f'Engetec · boleto {i}/6',valor=v,status='pago' if d<=HOJE else 'previsto',cat='')
+  if not engetec_ok: m['cartao']=1
+  mov.append(m)
 for p in parc:
   pago=p['status'].lower().startswith('pago')
   mov.append(dict(data=p['venc'],fornecedor='Construtora Diamond',desc=f"Parcela {p['n']}/80 · {p['tipo']}"+(' (antecipada)' if 'antecip' in p['status'].lower() else ''),

@@ -1,5 +1,5 @@
 {
- "geradoEm": "2026-11-27T20:40-03:00",
+ "geradoEm": "2026-11-27T21:03-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
   "total": 2484791.31,
@@ -5104,6 +5104,51 @@
    "valor": 1300,
    "status": "previsto",
    "cat": ""
+  },
+  {
+   "data": "2026-12-27",
+   "fornecedor": "Engetec",
+   "desc": "Engetec · boleto 2/6",
+   "valor": 5583.6,
+   "status": "previsto",
+   "cat": "",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-27",
+   "fornecedor": "Engetec",
+   "desc": "Engetec · boleto 3/6",
+   "valor": 5583.6,
+   "status": "previsto",
+   "cat": "",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-27",
+   "fornecedor": "Engetec",
+   "desc": "Engetec · boleto 4/6",
+   "valor": 5583.6,
+   "status": "previsto",
+   "cat": "",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-27",
+   "fornecedor": "Engetec",
+   "desc": "Engetec · boleto 5/6",
+   "valor": 5583.6,
+   "status": "previsto",
+   "cat": "",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-27",
+   "fornecedor": "Engetec",
+   "desc": "Engetec · boleto 6/6",
+   "valor": 5583.59,
+   "status": "previsto",
+   "cat": "",
+   "cartao": 1
   },
   {
    "data": null,
