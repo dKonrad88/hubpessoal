@@ -1,16 +1,16 @@
 {
- "geradoEm": "2026-11-27T21:35-03:00",
+ "geradoEm": "2026-11-28T06:30-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 2525592.44,
-  "pago": 1832375.78,
+  "total": 2529842.08,
+  "pago": 1836625.42,
   "restante": 693216.66
  },
  "categorias": [
   {
    "nome": "Mobília",
-   "total": 455333.00000000006,
-   "pago": 329933.00000000006,
+   "total": 459582.6400000001,
+   "pago": 334182.6400000001,
    "restante": 125400.0
   },
   {
@@ -53,8 +53,8 @@
  "comodos": [
   {
    "nome": "Apartamento",
-   "total": 577210.6900000001,
-   "pago": 419292.68,
+   "total": 581460.3300000001,
+   "pago": 423542.32,
    "restante": 157918.01000000007
   },
   {
@@ -1065,6 +1065,18 @@
    "entrega": null,
    "obs": "Cartão 1x (rateio tapetes R$ 3.733,00)",
    "comodo": "Sala de Estar",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-11-28",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa)",
+   "qtd": "5 pedidos",
+   "total": 4249.64,
+   "pago": 4249.64,
+   "entrega": null,
+   "obs": "Cartão 12x sem juros. 5 pedidos Amazon: R$ 2.078,90 + R$ 349,90 + R$ 599,90 + R$ 1.067,38 + R$ 153,56",
+   "comodo": "Apartamento",
    "cat": "Mobília"
   }
  ],
@@ -5244,6 +5256,114 @@
    "fornecedor": "Carpacho",
    "desc": "Tapete - Sala de Estar (40%) · cartão 1x",
    "valor": 1493.2,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-15",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa) · cartão 1/12",
+   "valor": 354.14,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-02-15",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa) · cartão 2/12",
+   "valor": 354.14,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-03-15",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa) · cartão 3/12",
+   "valor": 354.14,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-04-15",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa) · cartão 4/12",
+   "valor": 354.14,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-05-15",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa) · cartão 5/12",
+   "valor": 354.14,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-06-15",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa) · cartão 6/12",
+   "valor": 354.14,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-07-15",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa) · cartão 7/12",
+   "valor": 354.14,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-08-15",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa) · cartão 8/12",
+   "valor": 354.14,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-09-15",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa) · cartão 9/12",
+   "valor": 354.14,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-10-15",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa) · cartão 10/12",
+   "valor": 354.14,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-11-15",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa) · cartão 11/12",
+   "valor": 354.14,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-12-15",
+   "fornecedor": "Amazon",
+   "desc": "Enxoval Buddemeyer (colcha, lençóis, jogos de cama, cobertor, toalhas, pano de copa) · cartão 12/12",
+   "valor": 354.1,
    "status": "previsto",
    "cat": "Mobília",
    "cartao": 1
