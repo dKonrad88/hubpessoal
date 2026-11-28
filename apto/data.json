@@ -1,41 +1,41 @@
 {
- "geradoEm": "2026-11-27T21:06-03:00",
+ "geradoEm": "2026-11-27T21:35-03:00",
  "fonte": "Google Sheets \"Apto\"",
  "total": {
-  "total": 2484791.31,
-  "pago": 1819492.6600000001,
-  "restante": 665298.65
+  "total": 2525592.44,
+  "pago": 1832375.78,
+  "restante": 693216.66
  },
  "categorias": [
   {
    "nome": "Mobília",
-   "total": 451600.0,
-   "pago": 326200.0,
+   "total": 455333.00000000006,
+   "pago": 329933.00000000006,
    "restante": 125400.0
   },
   {
    "nome": "Obra",
-   "total": 202567.13,
-   "pago": 150308.98,
-   "restante": 52258.149999999994
+   "total": 220628.74,
+   "pago": 153319.25000000003,
+   "restante": 67309.48999999996
   },
   {
    "nome": "Eletrodomésticos",
-   "total": 108743.20999999999,
-   "pago": 108743.20999999999,
+   "total": 112309.73,
+   "pago": 112309.73,
    "restante": 0.0
+  },
+  {
+   "nome": "Mão de obra",
+   "total": 33790.0,
+   "pago": 11923.33,
+   "restante": 21866.67
   },
   {
    "nome": "Climatização",
    "total": 26118.0,
    "pago": 26118.0,
    "restante": 0.0
-  },
-  {
-   "nome": "Mão de obra",
-   "total": 18350.0,
-   "pago": 9350.0,
-   "restante": 9000.0
   },
   {
    "nome": "Projeto",
@@ -53,14 +53,14 @@
  "comodos": [
   {
    "nome": "Apartamento",
-   "total": 540142.56,
-   "pago": 410142.56,
-   "restante": 130000.00000000006
+   "total": 577210.6900000001,
+   "pago": 419292.68,
+   "restante": 157918.01000000007
   },
   {
    "nome": "Sala de Estar",
-   "total": 69833.51,
-   "pago": 55300.22000000001,
+   "total": 71326.70999999999,
+   "pago": 56793.420000000006,
    "restante": 14533.289999999986
   },
   {
@@ -107,20 +107,20 @@
   },
   {
    "nome": "Suíte Master",
-   "total": 6780.5,
-   "pago": 5814.51,
+   "total": 7340.45,
+   "pago": 6374.46,
    "restante": 965.9899999999998
   },
   {
    "nome": "Banho Master",
-   "total": 2823.76,
-   "pago": 1399.47,
-   "restante": 1424.2900000000002
+   "total": 3757.01,
+   "pago": 2332.7200000000003,
+   "restante": 1424.29
   },
   {
    "nome": "Closet Master",
-   "total": 7590.18,
-   "pago": 7590.18,
+   "total": 8150.13,
+   "pago": 8150.13,
    "restante": 0.0
   },
   {
@@ -137,8 +137,8 @@
   },
   {
    "nome": "Banho Visita",
-   "total": 2065.1800000000003,
-   "pago": 1096.05,
+   "total": 2251.8300000000004,
+   "pago": 1282.7,
    "restante": 969.1300000000003
   },
   {
@@ -945,6 +945,126 @@
    "entrega": null,
    "obs": "Cartão 10x de R$ 15.000 a partir de dez/26 (R$ 150.000). Pix R$ 100.000 em 26/11/26. R$ 100.000 na entrega em fev/27 (sem dia definido)",
    "comodo": "Apartamento",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Mercado Livre",
+   "desc": "Interruptor inteligente Ekaza Mercúrio Lite 3 teclas, cinza",
+   "qtd": "23 und",
+   "total": 3146.88,
+   "pago": 3146.88,
+   "entrega": null,
+   "obs": "Cartão 1x (Visa final 2910). Pedido ML total R$ 3.566,52",
+   "comodo": "Apartamento",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Mercado Livre",
+   "desc": "Hub Zigbee 3.0 WiFi + BLE Ekaza T3010m",
+   "qtd": "2 und",
+   "total": 419.64,
+   "pago": 419.64,
+   "entrega": null,
+   "obs": "Cartão 1x (Visa final 2910). Pedido ML total R$ 3.566,52",
+   "comodo": "Apartamento",
+   "cat": "Eletrodomésticos"
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Engetec",
+   "desc": "Elétrica e rede - materiais (cabos, disjuntores, perfis e fita LED)",
+   "qtd": "1 und",
+   "total": 3859.0,
+   "pago": 643.17,
+   "entrega": null,
+   "obs": "6x (1ª Pix 27/11/26, demais 5 em boleto mensal). Total Engetec R$ 33.501,61",
+   "comodo": "Apartamento",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Engetec",
+   "desc": "Elétrica e rede - mão de obra (iluminação, interruptores zigbee, rede e configuração de hub)",
+   "qtd": "1 und",
+   "total": 15440.0,
+   "pago": 2573.33,
+   "entrega": null,
+   "obs": "6x (1ª Pix 27/11/26, demais 5 em boleto mensal). Total Engetec R$ 33.501,61",
+   "comodo": "Apartamento",
+   "cat": "Mão de obra"
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Engetec",
+   "desc": "Luminárias Stella (orçamento de luminárias)",
+   "qtd": "1 und",
+   "total": 14202.61,
+   "pago": 2367.1,
+   "entrega": null,
+   "obs": "6x (1ª Pix 27/11/26, demais 5 em boleto mensal). Total Engetec R$ 33.501,61",
+   "comodo": "Apartamento",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Carpacho",
+   "desc": "Tapete - Suíte Master (15%)",
+   "qtd": "1 und",
+   "total": 559.95,
+   "pago": 559.95,
+   "entrega": null,
+   "obs": "Cartão 1x (rateio tapetes R$ 3.733,00)",
+   "comodo": "Suíte Master",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Carpacho",
+   "desc": "Tapete - Closet Master (15%)",
+   "qtd": "1 und",
+   "total": 559.95,
+   "pago": 559.95,
+   "entrega": null,
+   "obs": "Cartão 1x (rateio tapetes R$ 3.733,00)",
+   "comodo": "Closet Master",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Carpacho",
+   "desc": "Tapete - Banho Master (25%)",
+   "qtd": "1 und",
+   "total": 933.25,
+   "pago": 933.25,
+   "entrega": null,
+   "obs": "Cartão 1x (rateio tapetes R$ 3.733,00)",
+   "comodo": "Banho Master",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Carpacho",
+   "desc": "Tapete - Banho Visita (5%)",
+   "qtd": "1 und",
+   "total": 186.65,
+   "pago": 186.65,
+   "entrega": null,
+   "obs": "Cartão 1x (rateio tapetes R$ 3.733,00)",
+   "comodo": "Banho Visita",
+   "cat": "Mobília"
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Carpacho",
+   "desc": "Tapete - Sala de Estar (40%)",
+   "qtd": "1 und",
+   "total": 1493.2,
+   "pago": 1493.2,
+   "entrega": null,
+   "obs": "Cartão 1x (rateio tapetes R$ 3.733,00)",
+   "comodo": "Sala de Estar",
    "cat": "Mobília"
   }
  ],
@@ -5042,6 +5162,93 @@
    "cat": "Mobília"
   },
   {
+   "data": "2027-01-15",
+   "fornecedor": "Mercado Livre",
+   "desc": "Interruptor inteligente Ekaza Mercúrio Lite 3 teclas, cinza · cartão 1x",
+   "valor": 3146.88,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-15",
+   "fornecedor": "Mercado Livre",
+   "desc": "Hub Zigbee 3.0 WiFi + BLE Ekaza T3010m · cartão 1x",
+   "valor": 419.64,
+   "status": "previsto",
+   "cat": "Eletrodomésticos",
+   "cartao": 1
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Engetec",
+   "desc": "Elétrica e rede - materiais (cabos, disjuntores, perfis e fita LED)",
+   "valor": 643.17,
+   "status": "pago",
+   "cat": "Obra"
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Engetec",
+   "desc": "Elétrica e rede - mão de obra (iluminação, interruptores zigbee, rede e configuração de hub)",
+   "valor": 2573.33,
+   "status": "pago",
+   "cat": "Mão de obra"
+  },
+  {
+   "data": "2026-11-27",
+   "fornecedor": "Engetec",
+   "desc": "Luminárias Stella (orçamento de luminárias)",
+   "valor": 2367.1,
+   "status": "pago",
+   "cat": "Obra"
+  },
+  {
+   "data": "2027-01-15",
+   "fornecedor": "Carpacho",
+   "desc": "Tapete - Suíte Master (15%) · cartão 1x",
+   "valor": 559.95,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-15",
+   "fornecedor": "Carpacho",
+   "desc": "Tapete - Closet Master (15%) · cartão 1x",
+   "valor": 559.95,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-15",
+   "fornecedor": "Carpacho",
+   "desc": "Tapete - Banho Master (25%) · cartão 1x",
+   "valor": 933.25,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-15",
+   "fornecedor": "Carpacho",
+   "desc": "Tapete - Banho Visita (5%) · cartão 1x",
+   "valor": 186.65,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
+   "data": "2027-01-15",
+   "fornecedor": "Carpacho",
+   "desc": "Tapete - Sala de Estar (40%) · cartão 1x",
+   "valor": 1493.2,
+   "status": "previsto",
+   "cat": "Mobília",
+   "cartao": 1
+  },
+  {
    "data": "2026-08-31",
    "fornecedor": "Estofare",
    "desc": "Entrada (50%) · pedido de mobília",
@@ -5111,8 +5318,7 @@
    "desc": "Engetec · boleto 2/6",
    "valor": 5583.6,
    "status": "previsto",
-   "cat": "",
-   "cartao": 1
+   "cat": ""
   },
   {
    "data": "2027-01-27",
@@ -5120,8 +5326,7 @@
    "desc": "Engetec · boleto 3/6",
    "valor": 5583.6,
    "status": "previsto",
-   "cat": "",
-   "cartao": 1
+   "cat": ""
   },
   {
    "data": "2027-02-27",
@@ -5129,8 +5334,7 @@
    "desc": "Engetec · boleto 4/6",
    "valor": 5583.6,
    "status": "previsto",
-   "cat": "",
-   "cartao": 1
+   "cat": ""
   },
   {
    "data": "2027-03-27",
@@ -5138,8 +5342,7 @@
    "desc": "Engetec · boleto 5/6",
    "valor": 5583.6,
    "status": "previsto",
-   "cat": "",
-   "cartao": 1
+   "cat": ""
   },
   {
    "data": "2027-04-27",
@@ -5147,8 +5350,7 @@
    "desc": "Engetec · boleto 6/6",
    "valor": 5583.61,
    "status": "previsto",
-   "cat": "",
-   "cartao": 1
+   "cat": ""
   },
   {
    "data": null,
